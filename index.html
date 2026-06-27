@@ -240,9 +240,25 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       <div class="hero-stat"><div class="num" id="statTools">67</div><div class="label">AI 工具</div></div>
       <div class="hero-stat"><div class="num">10</div><div class="label">分类</div></div>
       <div class="hero-stat"><div class="num">43</div><div class="label">深度评测</div></div>
+      <div class="hero-stat" onclick="showLeaderboard()" style="cursor:pointer"><div class="num">🏆</div><div class="label">排行榜</div></div>
     </div>
   </div>
 </section>
+
+<!-- 🎯 快速场景入口 -->
+<div style="max-width:900px;margin:0 auto;padding:0 24px 20px;position:relative;z-index:1;text-align:center">
+  <div style="display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center">
+    <button class="cat-btn uc-btn" onclick="selectUseCase('写作')" style="border-color:rgba(167,139,250,.3);color:#a78bfa">✍️ 写作</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('编码')" style="border-color:rgba(52,211,153,.3);color:#34d399">💻 编码</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('设计')" style="border-color:rgba(244,114,182,.3);color:#f472b6">🎨 设计</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('视频')" style="border-color:rgba(251,146,60,.3);color:#fb923c">🎬 视频</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('营销')" style="border-color:rgba(250,204,21,.3);color:#facc15">📢 营销</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('自动化')" style="border-color:rgba(34,211,238,.3);color:#22d3ee">⚡ 自动化</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('研究')" style="border-color:rgba(240,168,48,.3);color:#f5c060">🔬 研究</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('学习')" style="border-color:rgba(52,211,153,.3);color:#34d399">📚 学习</button>
+  </div>
+  <p style="font-size:12px;color:var(--text3);margin-top:8px">点击场景，快速找到该用途的AI工具</p>
+</div>
 
 <div class="categories-wrap">
   <div class="categories" id="categories"></div>
@@ -281,6 +297,15 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 
 <div class="hive-wrap">
   <div class="hive-grid" id="content"></div>
+</div>
+
+
+<div class="modal-overlay" id="leaderboardModal" onclick="closeModal('leaderboardModal')">
+  <div class="modal-content" onclick="event.stopPropagation()" style="max-width:600px">
+    <span class="modal-close" onclick="closeModal('leaderboardModal')">✕</span>
+    <h3 style="margin-bottom:16px">🏆 蜂巢热门排行榜 TOP 10</h3>
+    <div id="leaderboardContent"></div>
+  </div>
 </div>
 
 <div class="modal-overlay" id="detailModal" onclick="closeModal()">
@@ -364,6 +389,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文件分析",
       "代码生成",
       "插件生态"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -382,6 +414,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "学术论文",
       "安全对齐",
       "代码编写"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -401,6 +440,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "实时搜索",
       "多模态",
       "免费"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -421,6 +467,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "开源",
       "编程强",
       "R1"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -440,6 +493,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "中文优化",
       "文档阅读",
       "联网搜索"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -458,6 +518,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "数据分析",
       "图像生成",
       "智能体"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -476,6 +543,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "语音对话",
       "多模态",
       "角色扮演"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -493,6 +567,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "百度搜索",
       "文库整合",
       "插件市场"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -510,6 +591,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文档理解",
       "数据处理",
       "企业应用"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -527,6 +615,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "开源免费",
       "本地部署",
       "社区生态"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -545,6 +640,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "欧洲开源",
       "高效推理",
       "多语言"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -562,6 +664,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "营销文案",
       "博客生成",
       "SEO优化"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "写作",
+      "营销",
+      "文案"
     ]
   },
   {
@@ -579,6 +687,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文案生成",
       "营销工具",
       "工作流"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "写作",
+      "营销",
+      "文案"
     ]
   },
   {
@@ -597,6 +711,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文档总结",
       "翻译",
       "知识库"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "写作",
+      "营销",
+      "文案"
     ]
   },
   {
@@ -614,6 +734,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "SEO优化",
       "文章生成",
       "多语言"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "写作",
+      "营销",
+      "文案"
     ]
   },
   {
@@ -631,6 +757,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "中文润色",
       "纠错改写",
       "学术写作"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "写作",
+      "营销",
+      "文案"
     ]
   },
   {
@@ -649,6 +781,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "高质量",
       "V6",
       "社区活跃"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -666,6 +804,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文本精准",
       "ChatGPT集成",
       "API"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -684,6 +828,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "本地部署",
       "ControlNet",
       "LoRA"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -701,6 +851,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文字生成",
       "高质量",
       "海报设计"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -719,6 +875,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "开源免费",
       "高质量",
       "快速"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -736,6 +898,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "角色设计",
       "游戏素材",
       "一致性"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -753,6 +921,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文生图",
       "图生图",
       "中文友好"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -771,6 +945,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "免费使用",
       "中文提示词",
       "图生视频"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "设计",
+      "创意",
+      "营销"
     ]
   },
   {
@@ -788,6 +968,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文生视频",
       "Gen-3",
       "绿幕移除"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -805,6 +991,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "简单易用",
       "多风格",
       "局部编辑"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -823,6 +1015,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "长视频",
       "高质量",
       "物理理解"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -841,6 +1039,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "中文场景",
       "1080P",
       "运动控制"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -858,6 +1062,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "数字人",
       "多语言",
       "口播视频"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -876,6 +1086,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "AI字幕",
       "特效",
       "模板"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -893,6 +1109,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "语音克隆",
       "多语言",
       "情感控制"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "音频",
+      "音乐",
+      "配音"
     ]
   },
   {
@@ -911,6 +1133,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "完整歌曲",
       "多风格",
       "歌词生成"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "音频",
+      "音乐",
+      "配音"
     ]
   },
   {
@@ -928,6 +1156,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "高质量",
       "多风格",
       "remix"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "音频",
+      "音乐",
+      "配音"
     ]
   },
   {
@@ -945,6 +1179,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "开源免费",
       "多语言",
       "实时转写"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "音频",
+      "音乐",
+      "配音"
     ]
   },
   {
@@ -962,6 +1202,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "代码补全",
       "多语言",
       "IDE集成"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -980,6 +1226,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "AI编辑器",
       "对话编程",
       "多模型"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -997,6 +1249,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "在线IDE",
       "AI编程",
       "一键部署"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -1014,6 +1272,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "免费",
       "多编辑器",
       "代码搜索"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -1031,6 +1295,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "AI原生",
       "Cascade",
       "免费额度"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -1048,6 +1318,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "AI设计",
       "自动布局",
       "组件生成"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "设计",
+      "UI",
+      "品牌"
     ]
   },
   {
@@ -1065,6 +1341,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "海报生成",
       "PPT设计",
       "Magic Write"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "设计",
+      "UI",
+      "品牌"
     ]
   },
   {
@@ -1082,6 +1364,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "Logo设计",
       "品牌套件",
       "多方案"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "设计",
+      "UI",
+      "品牌"
     ]
   },
   {
@@ -1099,6 +1387,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "一键抠图",
       "批量处理",
       "API"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "设计",
+      "UI",
+      "品牌"
     ]
   },
   {
@@ -1116,6 +1410,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "PPT生成",
       "自动排版",
       "模板丰富"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "效率",
+      "办公",
+      "自动化"
     ]
   },
   {
@@ -1133,6 +1433,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "会议记录",
       "实时转写",
       "协作"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "效率",
+      "办公",
+      "自动化"
     ]
   },
   {
@@ -1150,6 +1456,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "演示生成",
       "故事叙述",
       "AI排版"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "效率",
+      "办公",
+      "自动化"
     ]
   },
   {
@@ -1167,6 +1479,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "智能PPT",
       "自动设计",
       "模板"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "效率",
+      "办公",
+      "自动化"
     ]
   },
   {
@@ -1184,6 +1502,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "带引用",
       "精准答案",
       "实时搜索"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "搜索",
+      "研究",
+      "分析"
     ]
   },
   {
@@ -1201,6 +1525,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "无广告",
       "结构化",
       "学术搜索"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "搜索",
+      "研究",
+      "分析"
     ]
   },
   {
@@ -1218,6 +1548,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "学术论文",
       "研究共识",
       "科学检索"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "搜索",
+      "研究",
+      "分析"
     ]
   },
   {
@@ -1235,6 +1571,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "技术搜索",
       "代码优先",
       "开发者"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "搜索",
+      "研究",
+      "分析"
     ]
   },
   {
@@ -1252,6 +1594,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "AI辅导",
       "个性化",
       "免费教育"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "学习",
+      "教育",
+      "课程"
     ]
   },
   {
@@ -1269,6 +1617,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "语言学习",
       "个性化",
       "游戏化"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "学习",
+      "教育",
+      "课程"
     ]
   },
   {
@@ -1286,6 +1640,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "在线课程",
       "AI推荐",
       "证书"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "学习",
+      "教育",
+      "课程"
     ]
   },
   {
@@ -1303,6 +1663,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "闪卡生成",
       "AI测试",
       "智能复习"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "学习",
+      "教育",
+      "课程"
     ]
   },
   {
@@ -1320,6 +1686,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "实时搜索",
       "多模态",
       "幽默风格"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -1337,6 +1710,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "数字人",
       "多语言",
       "模板库"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -1354,6 +1733,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "终端编程",
       "多文件编辑",
       "Git集成"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -1371,6 +1756,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "一键安装",
       "开源AI",
       "图形界面"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "效率",
+      "办公",
+      "自动化"
     ]
   },
   {
@@ -1388,6 +1779,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "图表生成",
       "文字转图示",
       "PPT导出"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "设计",
+      "UI",
+      "品牌"
     ]
   },
   {
@@ -1406,6 +1803,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "自主任务",
       "多步骤",
       "浏览器操作"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "效率",
+      "办公",
+      "自动化"
     ]
   },
   {
@@ -1423,6 +1826,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "文字转3D",
       "图片转3D",
       "多格式"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "设计",
+      "UI",
+      "品牌"
     ]
   },
   {
@@ -1442,6 +1851,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "中文编程",
       "全栈开发",
       "永久免费"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -1460,6 +1875,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "微信生态",
       "长文档处理",
       "AI录音笔"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   },
   {
@@ -1479,6 +1901,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "物理模拟",
       "1080P高清",
       "海螺语音"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "视频",
+      "营销",
+      "教育"
     ]
   },
   {
@@ -1497,6 +1925,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "深度研究",
       "多模态",
       "免费使用"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "搜索",
+      "研究",
+      "分析"
     ]
   },
   {
@@ -1516,6 +1950,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "插件市场",
       "知识库",
       "多渠道发布"
+    ],
+    "pricing": "free",
+    "useCases": [
+      "效率",
+      "办公",
+      "自动化"
     ]
   },
   {
@@ -1533,6 +1973,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "代码审查",
       "多文件重构",
       "IDE集成"
+    ],
+    "pricing": "paid",
+    "useCases": [
+      "编码",
+      "开发",
+      "调试"
     ]
   },
   {
@@ -1550,6 +1996,13 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
       "视觉理解",
       "3D多模态",
       "行业定制"
+    ],
+    "pricing": "free+paid",
+    "useCases": [
+      "对话",
+      "写作",
+      "编码",
+      "研究"
     ]
   }
 ]
@@ -1634,7 +2087,7 @@ function renderTools(){
       +(tagLabel?'<span class="hive-tag">'+tagLabel+'</span>':'')
       +'<span class="hive-icon">'+t.icon+'</span>'
       +'<span class="hive-name">'+t.name+'</span>'
-      +'<span class="hive-cat">'+catMap[t.cat]+'</span>'
+      +'<span class="hive-cat">'+(t.pricing==='free'?'🆓 免费':t.pricing==='paid'?'💎 付费':'🔄 免费+付费')+'</span>'
       +'</div></div>';
   });
   c.innerHTML=h;
@@ -1694,6 +2147,25 @@ function t(key){var v=i18n[currentLang][key];if(!v)return key;return v.replace('
 function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';localStorage.setItem('hive-lang',currentLang);updateLangUI();renderCats();renderFeatured();renderTools();}
 function updateLangUI(){document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';document.querySelector('.lang-btn').textContent=currentLang==='zh'?' EN':' 中文';document.querySelector('#searchInput').placeholder=t('searchPlaceholder');document.querySelector('#resultInfo').textContent=t('resultText');}
 updateLangUI();
+
+function selectUseCase(uc){
+  document.querySelectorAll('.uc-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  filtered=tools.filter(t=>(t.useCases||[]).includes(uc));
+  document.querySelectorAll('.cat-btn[data-cat]').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.cat-btn[data-cat="all"]').classList.add('active');
+  currentCat='all';
+  renderTools();
+  document.getElementById('resultInfo').textContent=uc+'场景: '+filtered.length+' 个工具';
+}
+
+
+function showLeaderboard(){
+  const sorted=[...tools].sort((a,b)=>(parseInt(b.views)||0)-(parseInt(a.views)||0)).slice(0,10);
+  document.getElementById('leaderboardContent').innerHTML=sorted.map((t,i)=>'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')"><span style="font-size:20px;font-weight:900;color:'+(i<3?'var(--honey)':'var(--text3)')+';width:30px">'+(i+1)+'</span><span style="font-size:24px">'+t.icon+'</span><div><div style="font-weight:600">'+t.name+'</div><div style="font-size:12px;color:var(--text3)">'+t.desc.substring(0,30)+'... · '+t.views+'</div></div><span style="margin-left:auto;font-size:11px;padding:2px 8px;border-radius:6px;background:'+(t.pricing==="free"?"rgba(52,211,153,.15)":t.pricing==="paid"?"rgba(248,113,113,.15)":"rgba(240,168,48,.15)")+';color:'+(t.pricing==="free"?"#34d399":t.pricing==="paid"?"#f87171":"#f5c060")+'">'+(t.pricing==="free"?"免费":t.pricing==="paid"?"付费":"免费+付费")+'</span></div>').join('');
+  document.getElementById('leaderboardModal').classList.add('active');
+}
+
 init();
 </script>
 </body>
