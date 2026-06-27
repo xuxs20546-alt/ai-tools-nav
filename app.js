@@ -121,17 +121,8 @@ function showFavorites(){
 }
 
 function showDetail(name){
-  const t=tools.find(x=>x.name===name);if(!t)return;
-  const isFav=favs.includes(t.name);
-  const feats=(t.features||[]).map(f=>'<li>'+f+'</li>').join('');
-  document.getElementById('detailContent').innerHTML='<h2>'+t.icon+' '+t.name+'</h2>'
-    +'<p class="detail-cat">'+catMap[t.cat]+'</p>'
-    +'<p class="detail-desc">'+t.desc+'</p>'
-    +'<div class="detail-stats"><span>👁 '+t.views+'</span><span>🏷️ '+catMap[t.cat]+'</span></div>'
-    +(feats?'<ul class="detail-features">'+feats+'</ul>':'')
-    +'<div class="detail-actions"><a href="https://'+t.url+'" target="_blank" class="btn btn-primary">🔗 访问网站</a>'
-    +'<button class="btn btn-ghost" onclick="toggleFav(\''+t.name.replace(/'/g,"\\'")+'\');showDetail(\''+t.name.replace(/'/g,"\\'")+'\')">'+(isFav?'❤️ 已收藏':'🤍 收藏')+'</button></div>';
-  document.getElementById('detailModal').classList.add('active');
+  const slug='tool-'+name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'-').toLowerCase();
+  window.location.href='/'+slug+'.html';
 }
 
 function closeModal(id){
