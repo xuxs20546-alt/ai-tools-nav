@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>蜂巢 AI · 管理后台</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0806;--bg2:#120e0a;--bg3:#1a1510;--bg4:#221c14;--text:#faf6f0;--text2:#c4b8a4;--text3:#706858;--honey:#f0a830;--honey2:#f5c060;--green:#34d399;--red:#f87171;--border:#2a2218;--radius:10px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.login-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:420px;width:100%;text-align:center}
+.login-card h1{font-size:24px;font-weight:800;margin-bottom:8px;color:var(--honey)}
+.login-card p{color:var(--text3);font-size:14px;margin-bottom:24px}
+.login-card input{width:100%;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;color:var(--text);font-size:14px;margin-bottom:12px}
+.login-card input:focus{border-color:var(--honey);outline:none}
+.login-card button{width:100%;padding:12px;background:linear-gradient(135deg,var(--honey),#e8942a);color:#1a1000;border:none;border-radius:50px;font-weight:700;font-size:15px;cursor:pointer}
+.login-card .hint{font-size:12px;color:var(--text3);margin-top:16px}
+.admin-layout{display:none;min-height:100vh}
+.admin-layout.active,.login-wrap.hidden{display:none}
+.admin-layout.active{display:flex}
+.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border);padding:20px 0;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:10}
+.sidebar-brand{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:16px;font-size:18px;font-weight:800;color:var(--honey);display:flex;align-items:center;gap:8px}
+.sidebar-nav a,.sidebar-nav button{display:flex;align-items:center;gap:8px;padding:10px 20px;font-size:14px;color:var(--text2);text-decoration:none;background:none;border:none;width:100%;text-align:left;cursor:pointer;transition:.2s}
+.sidebar-nav a:hover,.sidebar-nav button:hover,.sidebar-nav .active{background:var(--bg3);color:var(--honey)}
+.main{flex:1;margin-left:220px;padding:24px 32px}
+.main-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.main-header h2{font-size:22px;font-weight:800}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.stat-card .num{font-size:28px;font-weight:800;color:var(--honey);margin-bottom:4px}
+.stat-card .label{font-size:12px;color:var(--text3)}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.panel h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--text3);font-weight:600;font-size:12px;text-transform:uppercase}
+td{color:var(--text2)}
+tr:hover td{background:rgba(240,168,48,.03)}
+.btn-sm{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:none;transition:.2s}
+.btn-edit{background:rgba(124,106,239,.15);color:#a78bfa}
+.btn-del{background:rgba(248,113,113,.15);color:#f87171}
+.btn-add{background:rgba(52,211,153,.15);color:#34d399;padding:8px 20px;border-radius:50px;font-size:13px}
+.btn-save{background:var(--honey);color:#1a1000;padding:10px 24px;border-radius:50px;font-weight:700;border:none;cursor:pointer}
+.btn-cancel{background:var(--bg3);color:var(--text2);padding:10px 24px;border-radius:50px;border:1px solid var(--border);cursor:pointer}
+.btn-logout{background:transparent;color:var(--text3);border:1px solid var(--border);padding:8px 16px;border-radius:50px;font-size:12px;cursor:pointer}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-size:12px;color:var(--text3);margin-bottom:4px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit}
+.form-group textarea{min-height:80px;resize:vertical}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--honey);outline:none}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
+.tag-hot{background:rgba(248,113,113,.15);color:#f87171}
+.tag-free{background:rgba(52,211,153,.15);color:#34d399}
+.tag-new{background:rgba(124,106,239,.15);color:#a78bfa}
+.toast{position:fixed;top:20px;right:20px;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:600;z-index:999;animation:slideIn .3s ease}
+.toast.success{background:#34d399;color:#0a0806}
+.toast.error{background:#f87171;color:#fff}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@media(max-width:768px){.sidebar{width:60px}.sidebar-brand{font-size:14px;padding:0 10px 20px}.sidebar-nav a,.sidebar-nav button{justify-content:center;padding:10px}.sidebar-nav span{display:none}.main{margin-left:60px;padding:16px}}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-wrap" id="loginScreen">
+  <div class="login-card">
+    <h1>🐝 蜂巢管理后台</h1>
+    <p>输入 GitHub Token 登录</p>
+    <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx">
+    <button onclick="doLogin()">登录后台</button>
+    <p class="hint">需要 <b>repo</b> 权限的 GitHub Personal Access Token<br>在 github.com/settings/tokens 创建</p>
+  </div>
+</div>
+
+<!-- Admin Layout -->
+<div class="admin-layout" id="adminLayout">
+  <aside class="sidebar">
+    <div class="sidebar-brand">🐝 蜂巢后台</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" onclick="switchTab('dashboard')"><span>📊</span> <span>仪表盘</span></a>
+      <a href="#" onclick="switchTab('tools')"><span>🛠️</span> <span>工具管理</span></a>
+      <a href="#" onclick="switchTab('blog')"><span>📝</span> <span>文章管理</span></a>
+      <a href="#" onclick="switchTab('daily')"><span>📰</span> <span>日报管理</span></a>
+      <a href="#" onclick="switchTab('deploy')"><span>🚀</span> <span>部署状态</span></a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="main-header">
+      <h2 id="tabTitle">📊 仪表盘</h2>
+      <button class="btn-logout" onclick="doLogout()">退出</button>
+    </div>
+
+    <!-- Dashboard Tab -->
+    <div id="tab-dashboard">
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="panel">
+        <h3>🚀 快速操作</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn-add" onclick="switchTab('tools');showToolForm()">+ 添加工具</button>
+          <button class="btn-add" onclick="switchTab('blog');showBlogForm()">+ 写文章</button>
+          <button class="btn-add" onclick="switchTab('daily');showDailyForm()">+ 加日报</button>
+          <button class="btn-save" onclick="commitAll()" style="margin-left:auto">💾 提交所有更改</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>📋 最近提交</h3>
+        <div id="recentCommits">加载中...</div>
+      </div>
+    </div>
+
+    <!-- Tools Tab -->
+    <div id="tab-tools" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <span style="color:var(--text3);font-size:13px" id="toolCount"></span>
+        <button class="btn-add" onclick="showToolForm()">+ 添加工具</button>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>图标</th><th>名称</th><th>分类</th><th>标签</th><th>热度</th><th>操作</th></tr></thead><tbody id="toolsTable"></tbody></table></div>
+    </div>
+
+    <!-- Blog Tab -->
+    <div id="tab-blog" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <span style="color:var(--text3);font-size:13px" id="blogCount"></span>
+        <button class="btn-add" onclick="showBlogForm()">+ 写文章</button>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>标题</th><th>标签</th><th>日期</th><th>操作</th></tr></thead><tbody id="blogTable"></tbody></table></div>
+    </div>
+
+    <!-- Daily Tab -->
+    <div id="tab-daily" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <span style="color:var(--text3);font-size:13px" id="dailyCount"></span>
+        <button class="btn-add" onclick="showDailyForm()">+ 加日报</button>
+      </div>
+      <div id="dailyList"></div>
+    </div>
+
+    <!-- Deploy Tab -->
+    <div id="tab-deploy" style="display:none">
+      <div class="panel">
+        <h3>🚀 Vercel 部署</h3>
+        <p style="color:var(--text2);font-size:14px;margin-bottom:12px">push 到 GitHub 的「主要的」分支后，Vercel 会自动部署。通常 1-2 分钟生效。</p>
+        <div id="deployStatus"></div>
+      </div>
+      <div class="panel">
+        <h3>📦 待提交更改</h3>
+        <div id="pendingChanges">暂无待提交的更改</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// ── State ──
+let TOKEN = localStorage.getItem('hive-admin-token') || '';
+let pendingChanges = new Set();
+let siteData = { tools: [], blog: [], dailyCards: [] };
+
+// ── Auth ──
+function doLogin() {
+  TOKEN = document.getElementById('tokenInput').value.trim();
+  if (!TOKEN) return toast('请输入 Token', 'error');
+  localStorage.setItem('hive-admin-token', TOKEN);
+  init();
+}
+
+function doLogout() {
+  localStorage.removeItem('hive-admin-token');
+  location.reload();
+}
+
+// ── Init ──
+async function init() {
+  if (!TOKEN) return;
+  try {
+    const resp = await fetch('https://api.github.com/user', { headers: { Authorization: 'Bearer ' + TOKEN } });
+    if (!resp.ok) { toast('Token 无效', 'error'); return; }
+    const user = await resp.json();
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('adminLayout').classList.add('active');
+    await loadAllData();
+    renderDashboard();
+    toast('欢迎, ' + user.login + ' 🐝', 'success');
+  } catch(e) {
+    toast('连接失败', 'error');
+  }
+}
+
+async function api(path, opts = {}) {
+  const url = 'https://api.github.com/repos/xuxs20546-alt/ai-tools-nav' + path;
+  const res = await fetch(url, { ...opts, headers: { Authorization: 'Bearer ' + TOKEN, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json', ...opts.headers } });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+async function getFile(path) {
+  const data = await api('/contents/' + path);
+  return atob(data.content);
+}
+
+async function putFile(path, content, message) {
+  try {
+    const existing = await api('/contents/' + path).catch(() => null);
+    const body = { message, content: btoa(unescape(encodeURIComponent(content))) };
+    if (existing) body.sha = existing.sha;
+    await api('/contents/' + path, { method: 'PUT', body: JSON.stringify(body) });
+    pendingChanges.add(path);
+    return true;
+  } catch(e) {
+    console.error('Put failed:', path, e.message);
+    return false;
+  }
+}
+
+// ── Load ──
+async function loadAllData() {
+  try {
+    const idx = await getFile('index.html');
+    const m = idx.match(/<script type="application\/json" id="tools-data">([\s\S]*?)<\/script>/);
+    siteData.tools = m ? JSON.parse(m[1]) : [];
+    
+    const blog = await getFile('blog.html');
+    const am = blog.match(/const articles=\[([\s\S]*?)\];/);
+    siteData.blog = am ? new Function('return [' + am[1] + ']')() : [];
+    
+    const daily = await getFile('daily.html');
+    const cm = daily.match(/<div class="daily-card">[\s\S]*?<span class="time-badge[^>]*>([^<]+)<\/span>/g);
+    siteData.dailyCards = cm ? cm.map(c => {
+      const badge = c.match(/time-badge[^>]*>([^<]+)</)?.[1] || '';
+      const title = daily.match(new RegExp(c + '[\\s\\S]*?<h3>([^<]+)<\\/h3>'))?.[1] || '';
+      return { badge, title };
+    }) : [];
+  } catch(e) {
+    console.error('Load error:', e);
+    toast('加载数据失败', 'error');
+  }
+}
+
+// ── Dashboard ──
+function renderDashboard() {
+  document.getElementById('statsGrid').innerHTML = `
+    <div class="stat-card"><div class="num">${siteData.tools.length}</div><div class="label">AI 工具</div></div>
+    <div class="stat-card"><div class="num">${siteData.blog.length}</div><div class="label">博客文章</div></div>
+    <div class="stat-card"><div class="num">${siteData.dailyCards.length}</div><div class="label">日报条目</div></div>
+    <div class="stat-card"><div class="num">${new Set(siteData.tools.map(t=>t.cat)).size}</div><div class="label">覆盖分类</div></div>
+  `;
+  loadRecentCommits();
+}
+
+async function loadRecentCommits() {
+  try {
+    const commits = await api('/commits?per_page=5');
+    document.getElementById('recentCommits').innerHTML = commits.map(c => 
+      '<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px"><span style="color:var(--honey)">' + 
+      c.commit.author.date.substring(0,10) + '</span> · ' + c.commit.message.split('\n')[0] + '</div>'
+    ).join('');
+  } catch(e) { document.getElementById('recentCommits').textContent = '加载失败'; }
+}
+
+// ── Tools ──
+function renderTools() {
+  document.getElementById('toolCount').textContent = '共 ' + siteData.tools.length + ' 个工具';
+  document.getElementById('toolsTable').innerHTML = siteData.tools.map((t,i) => 
+    '<tr><td>' + t.icon + '</td><td><b>' + t.name + '</b></td><td>' + t.cat + '</td><td>' + (t.tags||[]).map(tg=>'<span class="tag tag-'+tg+'">'+tg+'</span>').join(' ') + '</td><td>' + t.views + '</td>' +
+    '<td><button class="btn-sm btn-edit" onclick="editTool('+i+')">编辑</button> <button class="btn-sm btn-del" onclick="deleteTool('+i+')">删除</button></td></tr>'
+  ).join('');
+}
+
+function showToolForm(i) {
+  const t = i !== undefined ? siteData.tools[i] : null;
+  const form = prompt(
+    '工具信息 (用 || 分隔: 名称||URL||描述||分类||图标||颜色||标签用逗号||热度):\n' +
+    (t ? t.name + '||' + t.url + '||' + t.desc + '||' + t.cat + '||' + t.icon + '||' + t.color + '||' + (t.tags||[]).join(',') + '||' + t.views.replace('万','') : '')
+  );
+  if (!form) return;
+  const [name, url, desc, cat, icon, color, tags, views] = form.split('||');
+  const obj = {
+    name, url, desc,
+    cat: cat || 'chat',
+    icon: icon || '🤖',
+    color: color || '#7c6aef',
+    tags: (tags||'free').split(',').map(t=>t.trim()).filter(Boolean),
+    views: (views||'1000') + '万',
+    features: ['AI工具']
+  };
+  if (i !== undefined) siteData.tools[i] = obj;
+  else siteData.tools.push(obj);
+  markChanged('index.html');
+  renderTools();
+}
+
+function deleteTool(i) {
+  if (!confirm('删除 ' + siteData.tools[i].name + '？')) return;
+  siteData.tools.splice(i, 1);
+  markChanged('index.html');
+  renderTools();
+}
+
+// ── Blog ──
+function renderBlog() {
+  document.getElementById('blogCount').textContent = '共 ' + siteData.blog.length + ' 篇文章';
+  document.getElementById('blogTable').innerHTML = siteData.blog.map((a,i) =>
+    '<tr><td><b>' + a.title + '</b></td><td>' + a.tag + '</td><td>' + a.date + '</td>' +
+    '<td><button class="btn-sm btn-edit" onclick="editBlog('+i+')">编辑</button> <button class="btn-sm btn-del" onclick="deleteBlog('+i+')">删除</button></td></tr>'
+  ).join('');
+}
+
+function showBlogForm(i) {
+  const a = i !== undefined ? siteData.blog[i] : null;
+  const form = prompt(
+    '文章信息 (用 || 分隔: slug||标题||标签||日期||摘要||内容HTML):\n' +
+    (a ? a.slug + '||' + a.title + '||' + a.tag + '||' + a.date + '||' + a.excerpt + '||' + (a.content||'').substring(0,100) : '')
+  );
+  if (!form) return;
+  const [slug, title, tag, date, excerpt, content] = form.split('||');
+  const obj = {
+    slug: slug || 'article-' + Date.now(),
+    title, tag: tag || '教程', emoji: '📝', date: date || new Date().toISOString().substring(0,10), readTime: 8,
+    keywords: title, excerpt: excerpt || '', content: content || '<p>内容待补充</p>'
+  };
+  if (i !== undefined) siteData.blog[i] = obj;
+  else siteData.blog.unshift(obj);
+  markChanged('blog.html');
+  renderBlog();
+}
+
+function deleteBlog(i) {
+  if (!confirm('删除「' + siteData.blog[i].title + '」？')) return;
+  siteData.blog.splice(i, 1);
+  markChanged('blog.html');
+  renderBlog();
+}
+
+// ── Daily ──
+function renderDaily() {
+  document.getElementById('dailyCount').textContent = '共 ' + siteData.dailyCards.length + ' 条';
+  document.getElementById('dailyList').innerHTML = siteData.dailyCards.length > 0
+    ? siteData.dailyCards.map((d,i) => '<div class="panel"><span style="color:var(--honey);margin-right:8px">' + d.badge + '</span>' + d.title + ' <button class="btn-sm btn-del" style="float:right" onclick="deleteDaily('+i+')">删除</button></div>').join('')
+    : '<p style="color:var(--text3)">暂无日报条目</p>';
+}
+
+function showDailyForm() {
+  const form = prompt('日报条目 (用 || 分隔: 标题||描述||标签(热点/新品/研究/数据)):');
+  if (!form) return;
+  const [title, desc, tag] = form.split('||');
+  siteData.dailyCards.unshift({ badge: (tag||'新品'), title, desc: desc||'' });
+  markChanged('daily.html');
+  renderDaily();
+}
+
+function deleteDaily(i) {
+  siteData.dailyCards.splice(i, 1);
+  markChanged('daily.html');
+  renderDaily();
+}
+
+// ── Commit ──
+function markChanged(file) {
+  pendingChanges.add(file);
+  document.getElementById('pendingChanges').textContent = pendingChanges.size + ' 个文件待提交: ' + [...pendingChanges].join(', ');
+}
+
+async function commitAll() {
+  if (pendingChanges.size === 0) { toast('没有待提交的更改', 'error'); return; }
+  const msg = prompt('提交信息:', '后台更新: ' + [...pendingChanges].join(', '));
+  if (!msg) return;
+  
+  let success = 0;
+  for (const file of pendingChanges) {
+    let content = '';
+    if (file === 'index.html') {
+      content = await getFile('index.html');
+      const toolsJSON = JSON.stringify(siteData.tools, null, 2);
+      content = content.replace(/<script type="application\/json" id="tools-data">[\s\S]*?<\/script>/, '<script type="application/json" id="tools-data">' + toolsJSON + '\n</script>');
+    }
+    if (await putFile(file, content || file, msg)) success++;
+  }
+  if (success > 0) {
+    pendingChanges.clear();
+    document.getElementById('pendingChanges').textContent = '暂无待提交的更改';
+    toast('✅ 已提交 ' + success + ' 个文件，Vercel 自动部署中', 'success');
+    loadRecentCommits();
+  }
+}
+
+// ── Tab ──
+function switchTab(tab) {
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+  event.target.closest('a').classList.add('active');
+  document.querySelectorAll('[id^="tab-"]').forEach(el => el.style.display = 'none');
+  const el = document.getElementById('tab-' + tab);
+  if (el) el.style.display = 'block';
+  const titles = { dashboard: '📊 仪表盘', tools: '🛠️ 工具管理', blog: '📝 文章管理', daily: '📰 日报管理', deploy: '🚀 部署状态' };
+  document.getElementById('tabTitle').textContent = titles[tab] || '';
+  if (tab === 'tools') renderTools();
+  if (tab === 'blog') renderBlog();
+  if (tab === 'daily') renderDaily();
+  if (tab === 'dashboard') renderDashboard();
+}
+
+function toast(msg, type) {
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2500);
+}
+
+// ── Boot ──
+if (TOKEN) init();
+</script>
+</body>
+</html>
