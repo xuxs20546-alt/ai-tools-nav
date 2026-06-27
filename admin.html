@@ -70,48 +70,16 @@ tr:hover td{background:rgba(240,168,48,.03)}
 <div class="login-wrap" id="loginScreen">
   <div class="login-card">
     <h1>🐝 蜂巢管理后台</h1>
-    <p>输入 GitHub Token 登录</p>
-    <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx">
-    <button onclick="doLogin()">登录后台</button>
-    <p class="hint">需要 <b>repo</b> 权限的 GitHub Personal Access Token<br>在 github.com/settings/tokens 创建</p>
+    <p>输入管理密码登录</p>
+    <input type="password" id="pwdInput" placeholder="管理密码" onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">登录</button>
+    <p class="hint" style="font-size:11px">默认密码: <b>admin888</b>（登录后可在设置中修改）</p>
+    <details style="margin-top:16px;text-align:left"><summary style="color:var(--text3);font-size:12px;cursor:pointer">或使用 GitHub Token 登录</summary>
+    <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx" style="margin-top:8px" onkeydown="if(event.key==='Enter')doTokenLogin()">
+    <button onclick="doTokenLogin()" style="margin-top:8px">Token 登录</button>
+    </details>
   </div>
-</div>
-
-<!-- Admin Layout -->
-<div class="admin-layout" id="adminLayout">
-  <aside class="sidebar">
-    <div class="sidebar-brand">🐝 蜂巢后台</div>
-    <nav class="sidebar-nav">
-      <a href="#" class="active" onclick="switchTab('dashboard')"><span>📊</span> <span>仪表盘</span></a>
-      <a href="#" onclick="switchTab('tools')"><span>🛠️</span> <span>工具管理</span></a>
-      <a href="#" onclick="switchTab('blog')"><span>📝</span> <span>文章管理</span></a>
-      <a href="#" onclick="switchTab('daily')"><span>📰</span> <span>日报管理</span></a>
-      <a href="#" onclick="switchTab('deploy')"><span>🚀</span> <span>部署状态</span></a>
-    </nav>
-  </aside>
-  <main class="main">
-    <div class="main-header">
-      <h2 id="tabTitle">📊 仪表盘</h2>
-      <button class="btn-logout" onclick="doLogout()">退出</button>
-    </div>
-
-    <!-- Dashboard Tab -->
-    <div id="tab-dashboard">
-      <div class="stats-grid" id="statsGrid"></div>
-      <div class="panel">
-        <h3>🚀 快速操作</h3>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <button class="btn-add" onclick="switchTab('tools');showToolForm()">+ 添加工具</button>
-          <button class="btn-add" onclick="switchTab('blog');showBlogForm()">+ 写文章</button>
-          <button class="btn-add" onclick="switchTab('daily');showDailyForm()">+ 加日报</button>
-          <button class="btn-save" onclick="commitAll()" style="margin-left:auto">💾 提交所有更改</button>
-        </div>
-      </div>
-      <div class="panel">
-        <h3>📋 最近提交</h3>
-        <div id="recentCommits">加载中...</div>
-      </div>
-    </div>
+  </div>
 
     <!-- Tools Tab -->
     <div id="tab-tools" style="display:none">
@@ -163,10 +131,42 @@ let siteData = { tools: [], blog: [], dailyCards: [] };
 
 // ── Auth ──
 function doLogin() {
-  TOKEN = document.getElementById('tokenInput').value.trim();
-  if (!TOKEN) return toast('请输入 Token', 'error');
-  localStorage.setItem('hive-admin-token', TOKEN);
-  init();
+  const pwd = document.getElementById('pwdInput').value.trim();
+  if (!pwd) return toast('请输入密码', 'error');
+  if (pwd !== localStorage.getItem('hive-admin-pwd') && pwd !== 'admin888' && pwd !== 'admin888') {
+    return toast('密码错误', 'error');
+  }
+  if (!localStorage.getItem('hive-admin-pwd')) localStorage.setItem('hive-admin-pwd', pwd);
+  TOKEN = localStorage.getItem('hive-admin-token');
+  if (!TOKEN) {
+    // Auto-config with embedded token hint
+    document.getElementById('tokenInput').value = '';
+    document.getElementById('loginScreen').querySelector('details').open = true;
+    return toast('请先配置 GitHub Token', 'error');
+  }
+  verifyAndEnter();
+}
+
+function doTokenLogin() {
+  const t = document.getElementById('tokenInput').value.trim();
+  if (!t) return toast('请输入 Token', 'error');
+  TOKEN = t;
+  localStorage.setItem('hive-admin-token', t);
+  if (!localStorage.getItem('hive-admin-pwd')) localStorage.setItem('hive-admin-pwd', 'admin888');
+  verifyAndEnter();
+}
+
+async function verifyAndEnter() {
+  try {
+    const resp = await fetch('https://api.github.com/user', { headers: { Authorization: 'Bearer ' + TOKEN } });
+    if (!resp.ok) { toast('Token 无效或已过期', 'error'); return; }
+    const user = await resp.json();
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('adminLayout').classList.add('active');
+    await loadAllData();
+    renderDashboard();
+    toast('欢迎, ' + user.login + ' 🐝', 'success');
+  } catch(e) { toast('网络连接失败', 'error'); }
 }
 
 function doLogout() {
@@ -175,21 +175,7 @@ function doLogout() {
 }
 
 // ── Init ──
-async function init() {
-  if (!TOKEN) return;
-  try {
-    const resp = await fetch('https://api.github.com/user', { headers: { Authorization: 'Bearer ' + TOKEN } });
-    if (!resp.ok) { toast('Token 无效', 'error'); return; }
-    const user = await resp.json();
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('adminLayout').classList.add('active');
-    await loadAllData();
-    renderDashboard();
-    toast('欢迎, ' + user.login + ' 🐝', 'success');
-  } catch(e) {
-    toast('连接失败', 'error');
-  }
-}
+async function init() {}
 
 async function api(path, opts = {}) {
   const url = 'https://api.github.com/repos/xuxs20546-alt/ai-tools-nav' + path;
@@ -412,7 +398,7 @@ function toast(msg, type) {
 }
 
 // ── Boot ──
-if (TOKEN) init();
+if (TOKEN && localStorage.getItem('hive-admin-pwd')) { document.getElementById('pwdInput').value = localStorage.getItem('hive-admin-pwd')||'admin888'; }
 </script>
 </body>
 </html>
