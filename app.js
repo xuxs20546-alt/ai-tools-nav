@@ -1,4 +1,4 @@
-// AI工具导航 - app.js
+// 蜂巢 AI - app.js
 const catMap = {
   chat:'💬 AI 对话',writing:'✍️ AI 写作',image:'🎨 AI 绘画',video:'🎬 AI 视频',
   audio:'🎵 AI 音频',code:'💻 AI 编程',design:'🎯 AI 设计',productivity:'⚡ AI 效率',
