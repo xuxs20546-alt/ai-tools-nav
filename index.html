@@ -105,16 +105,27 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .hive-cell{width:180px;margin:4px 2px;position:relative;cursor:pointer;transition:var(--transition)}
 .hive-cell::before{content:'';display:block;padding-top:115.47% /* hex ratio */}
 
-.hive-hex{position:absolute;inset:2px;background:var(--bg2);border:1px solid var(--border);
+.hive-hex{position:absolute;inset:2px;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg3) 100%);border:1px solid var(--border);
   clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-  transition:all .35s cubic-bezier(.4,0,.2,1);overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 12px}
+  transition:all .4s cubic-bezier(.4,0,.2,1);overflow:visible;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 12px;
+  transform-style:preserve-3d;perspective:600px}
 
+/* 3D depth side walls */
+.hive-hex::before{content:'';position:absolute;inset:-3px;
+  background:linear-gradient(180deg,rgba(240,168,48,.15),rgba(184,120,26,.08));
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  z-index:-1;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);
+  transform:translateZ(-4px) scale(.94)}
+
+/* inner glow */
 .hive-hex::after{content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at center,var(--amber-glow) 0%,transparent 70%);
-  opacity:0;transition:opacity .35s}
-.hive-cell:hover .hive-hex{transform:scale(1.08);border-color:var(--honey);
-  box-shadow:0 0 30px var(--amber-glow),0 0 60px rgba(240,168,48,.1);z-index:10}
+  background:radial-gradient(ellipse at center,var(--amber-glow) 0%,transparent 60%);
+  opacity:0;transition:opacity .4s;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
+
+.hive-cell:hover .hive-hex{transform:scale(1.1) translateZ(8px);border-color:var(--honey);
+  box-shadow:0 8px 40px var(--amber-glow),0 0 80px rgba(240,168,48,.08),inset 0 0 30px rgba(240,168,48,.04);z-index:10}
+.hive-cell:hover .hive-hex::before{opacity:1;box-shadow:0 4px 20px rgba(0,0,0,.5)}
 .hive-cell:hover .hive-hex::after{opacity:1}
 
 .hive-icon{font-size:28px;position:relative;z-index:1;margin-bottom:6px;transition:var(--transition)}
@@ -233,6 +244,28 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
   <div class="categories" id="categories"></div>
 </div>
 
+<!-- 🍯 蜂王精选 -->
+<section class="featured-section" style="max-width:1200px;margin:0 auto;padding:0 24px 32px;position:relative;z-index:1">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px"><span style="background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px">👑</span> 蜂王精选</h2>
+    <span style="font-size:12px;color:var(--text3)">人工精选，每周更新</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px" id="featuredGrid"></div>
+</section>
+
+<!-- 📊 蜂巢数据 -->
+<section style="max-width:1000px;margin:0 auto;padding:0 24px 24px;position:relative;z-index:1">
+  <div style="background:linear-gradient(135deg,rgba(240,168,48,.06),rgba(10,8,6,.6));border:1px solid var(--border);border-radius:var(--radius);padding:24px 32px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center">
+    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--honey)">67+</div><div style="font-size:12px;color:var(--text3);margin-top:4px">收录工具</div></div>
+    <div style="width:1px;height:36px;background:var(--border)"></div>
+    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--honey2)">10</div><div style="font-size:12px;color:var(--text3);margin-top:4px">覆盖分类</div></div>
+    <div style="width:1px;height:36px;background:var(--border)"></div>
+    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:#34d399">43</div><div style="font-size:12px;color:var(--text3);margin-top:4px">深度评测</div></div>
+    <div style="width:1px;height:36px;background:var(--border)"></div>
+    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:#f472b6">每日更新</div><div style="font-size:12px;color:var(--text3);margin-top:4px">更新频率</div></div>
+  </div>
+</section>
+
 <div class="toolbar">
   <div class="toolbar-info" id="resultInfo">共 67 个工具</div>
   <div class="toolbar-right">
@@ -271,6 +304,33 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
     <button class="btn btn-primary" onclick="submitTool()">提交审核</button>
   </div>
 </div>
+
+<!-- 🍯 蜂巢快讯 -->
+<section style="max-width:1200px;margin:0 auto;padding:0 24px 40px;position:relative;z-index:1">
+  <h2 style="font-size:20px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px"><span style="background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px">📡</span> 蜂巢快讯</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">用AI写周报：3个提示词模板</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">"请根据以下工作要点，帮我整理一份专业的周报，包含本周成果、数据亮点和下周计划"——这是最实用的AI提效场景之一。</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:var(--honey2);padding:2px 8px;border-radius:6px;font-size:11px">🔧 工具组合</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">ChatGPT + Canva = 营销素材神器</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">先用ChatGPT生成文案和创意方向，再导入Canva AI一键生成海报和社媒素材。从构思到出图不到5分钟。</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI工具使用率年增长240%</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">2026上半年调查显示，中国职场人AI工具使用率达68%，较去年增长240%。AI已从"尝鲜"变成"刚需"。</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手必看</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI入门路线图：从0到会用</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">第一步：ChatGPT/Kimi（对话）→ 第二步：Midjourney/即梦（绘画）→ 第三步：Cursor/Copilot（编程）。每周掌握一个，一个月成AI达人。</p>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="footer-grid">
@@ -1470,6 +1530,7 @@ function init(){
   try{tools=JSON.parse(el.textContent)}catch(e){return}
   filtered=[...tools];
   renderCats();
+  renderFeatured();
   renderTools();
   document.getElementById('statTools').textContent=tools.length;
   document.getElementById('favCount').textContent=favs.length;
@@ -1541,6 +1602,17 @@ function renderTools(){
       +'</div></div>';
   });
   c.innerHTML=h;
+}
+
+function renderFeatured(){
+  const grid=document.getElementById('featuredGrid');
+  if(!grid)return;
+  const picks=tools.sort((a,b)=>(parseInt(b.views)||0)-(parseInt(a.views)||0)).slice(0,4);
+  grid.innerHTML=picks.map(t=>'<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.3s" onmouseover="this.style.borderColor=\'var(--honey)\';this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 8px 30px var(--amber-glow)\';" onmouseout="this.style.borderColor=\'\';this.style.transform=\'\';this.style.boxShadow=\'\';" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')">'
+    +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:28px">'+t.icon+'</span><span style="font-weight:700;font-size:16px">'+t.name+'</span></div>'
+    +'<p style="font-size:13px;color:var(--text2);line-height:1.6">'+t.desc.substring(0,60)+'...</p>'
+    +'<div style="margin-top:12px;display:flex;align-items:center;gap:8px"><span style="color:var(--honey);font-size:12px">⭐ 编辑精选</span><span style="font-size:11px;color:var(--text3);margin-left:auto">'+t.views+'</span></div>'
+    +'</div>').join('');
 }
 
 function openTool(name){
