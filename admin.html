@@ -70,6 +70,86 @@ tr:hover td{background:rgba(240,168,48,.03)}
 <div class="login-wrap" id="loginScreen">
   <div class="login-card">
     <h1>🐝 蜂巢管理后台</h1>
+    <p>输入密码登录</p>
+    <input type="password" id="pwdInput" placeholder="管理密码" onkeydown="if(event.key==='Enter')doLogin()" autofocus>
+    <button onclick="doLogin()">登录</button>
+    <p class="hint">密码: <b>admin888</b></p>
+    <p class="hint" style="margin-top:8px;color:var(--red);display:none" id="loginError"></p>
+  </div>
+</div>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>蜂巢 AI · 管理后台</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0806;--bg2:#120e0a;--bg3:#1a1510;--bg4:#221c14;--text:#faf6f0;--text2:#c4b8a4;--text3:#706858;--honey:#f0a830;--honey2:#f5c060;--green:#34d399;--red:#f87171;--border:#2a2218;--radius:10px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.login-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:420px;width:100%;text-align:center}
+.login-card h1{font-size:24px;font-weight:800;margin-bottom:8px;color:var(--honey)}
+.login-card p{color:var(--text3);font-size:14px;margin-bottom:24px}
+.login-card input{width:100%;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;color:var(--text);font-size:14px;margin-bottom:12px}
+.login-card input:focus{border-color:var(--honey);outline:none}
+.login-card button{width:100%;padding:12px;background:linear-gradient(135deg,var(--honey),#e8942a);color:#1a1000;border:none;border-radius:50px;font-weight:700;font-size:15px;cursor:pointer}
+.login-card .hint{font-size:12px;color:var(--text3);margin-top:16px}
+.admin-layout{display:none;min-height:100vh}
+.admin-layout.active,.login-wrap.hidden{display:none}
+.admin-layout.active{display:flex}
+.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border);padding:20px 0;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:10}
+.sidebar-brand{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:16px;font-size:18px;font-weight:800;color:var(--honey);display:flex;align-items:center;gap:8px}
+.sidebar-nav a,.sidebar-nav button{display:flex;align-items:center;gap:8px;padding:10px 20px;font-size:14px;color:var(--text2);text-decoration:none;background:none;border:none;width:100%;text-align:left;cursor:pointer;transition:.2s}
+.sidebar-nav a:hover,.sidebar-nav button:hover,.sidebar-nav .active{background:var(--bg3);color:var(--honey)}
+.main{flex:1;margin-left:220px;padding:24px 32px}
+.main-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.main-header h2{font-size:22px;font-weight:800}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.stat-card .num{font-size:28px;font-weight:800;color:var(--honey);margin-bottom:4px}
+.stat-card .label{font-size:12px;color:var(--text3)}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.panel h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--text3);font-weight:600;font-size:12px;text-transform:uppercase}
+td{color:var(--text2)}
+tr:hover td{background:rgba(240,168,48,.03)}
+.btn-sm{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:none;transition:.2s}
+.btn-edit{background:rgba(124,106,239,.15);color:#a78bfa}
+.btn-del{background:rgba(248,113,113,.15);color:#f87171}
+.btn-add{background:rgba(52,211,153,.15);color:#34d399;padding:8px 20px;border-radius:50px;font-size:13px}
+.btn-save{background:var(--honey);color:#1a1000;padding:10px 24px;border-radius:50px;font-weight:700;border:none;cursor:pointer}
+.btn-cancel{background:var(--bg3);color:var(--text2);padding:10px 24px;border-radius:50px;border:1px solid var(--border);cursor:pointer}
+.btn-logout{background:transparent;color:var(--text3);border:1px solid var(--border);padding:8px 16px;border-radius:50px;font-size:12px;cursor:pointer}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-size:12px;color:var(--text3);margin-bottom:4px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit}
+.form-group textarea{min-height:80px;resize:vertical}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--honey);outline:none}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
+.tag-hot{background:rgba(248,113,113,.15);color:#f87171}
+.tag-free{background:rgba(52,211,153,.15);color:#34d399}
+.tag-new{background:rgba(124,106,239,.15);color:#a78bfa}
+.toast{position:fixed;top:20px;right:20px;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:600;z-index:999;animation:slideIn .3s ease}
+.toast.success{background:#34d399;color:#0a0806}
+.toast.error{background:#f87171;color:#fff}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@media(max-width:768px){.sidebar{width:60px}.sidebar-brand{font-size:14px;padding:0 10px 20px}.sidebar-nav a,.sidebar-nav button{justify-content:center;padding:10px}.sidebar-nav span{display:none}.main{margin-left:60px;padding:16px}}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-wrap" id="loginScreen">
+  <div class="login-card">
+    <h1>🐝 蜂巢管理后台</h1>
     <p>输入管理密码登录</p>
     <input type="password" id="pwdInput" placeholder="管理密码" onkeydown="if(event.key==='Enter')doLogin()">
     <button onclick="doLogin()">登录</button>
@@ -125,50 +205,30 @@ tr:hover td{background:rgba(240,168,48,.03)}
 
 <script>
 // ── State ──
-let TOKEN = localStorage.getItem('hive-admin-token') || '';
+let TOKEN = localStorage.getItem("hive-admin-token") || "";
 let pendingChanges = new Set();
 let siteData = { tools: [], blog: [], dailyCards: [] };
 
 // ── Auth ──
 function doLogin() {
   const pwd = document.getElementById('pwdInput').value.trim();
-  if (!pwd) return toast('请输入密码', 'error');
-  if (pwd !== localStorage.getItem('hive-admin-pwd') && pwd !== 'admin888' && pwd !== 'admin888') {
-    return toast('密码错误', 'error');
+  const savedPwd = localStorage.getItem('hive-admin-pwd') || 'admin888';
+  if (pwd !== savedPwd && pwd !== 'admin888') {
+    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('loginError').textContent = '密码错误';
+    return;
   }
-  if (!localStorage.getItem('hive-admin-pwd')) localStorage.setItem('hive-admin-pwd', pwd);
-  TOKEN = localStorage.getItem('hive-admin-token');
-  if (!TOKEN) {
-    // Auto-config with embedded token hint
-    document.getElementById('tokenInput').value = '';
-    document.getElementById('loginScreen').querySelector('details').open = true;
-    return toast('请先配置 GitHub Token', 'error');
-  }
-  verifyAndEnter();
+  document.getElementById('loginError').style.display = 'none';
+  localStorage.setItem('hive-admin-pwd', pwd);
+  enterAdmin();
 }
-
-function doTokenLogin() {
-  const t = document.getElementById('tokenInput').value.trim();
-  if (!t) return toast('请输入 Token', 'error');
-  TOKEN = t;
-  localStorage.setItem('hive-admin-token', t);
-  if (!localStorage.getItem('hive-admin-pwd')) localStorage.setItem('hive-admin-pwd', 'admin888');
-  verifyAndEnter();
+async function enterAdmin() {
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('adminLayout').classList.add('active');
+  await loadAllData();
+  renderDashboard();
+  toast('登录成功 🐝', 'success');
 }
-
-async function verifyAndEnter() {
-  try {
-    const resp = await fetch('https://api.github.com/user', { headers: { Authorization: 'Bearer ' + TOKEN } });
-    if (!resp.ok) { toast('Token 无效或已过期', 'error'); return; }
-    const user = await resp.json();
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('adminLayout').classList.add('active');
-    await loadAllData();
-    renderDashboard();
-    toast('欢迎, ' + user.login + ' 🐝', 'success');
-  } catch(e) { toast('网络连接失败', 'error'); }
-}
-
 function doLogout() {
   localStorage.removeItem('hive-admin-token');
   location.reload();
@@ -176,13 +236,6 @@ function doLogout() {
 
 // ── Init ──
 async function init() {}
-
-async function api(path, opts = {}) {
-  const url = 'https://api.github.com/repos/xuxs20546-alt/ai-tools-nav' + path;
-  const res = await fetch(url, { ...opts, headers: { Authorization: 'Bearer ' + TOKEN, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json', ...opts.headers } });
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
-}
 
 async function getFile(path) {
   const data = await api('/contents/' + path);
@@ -398,7 +451,7 @@ function toast(msg, type) {
 }
 
 // ── Boot ──
-if (TOKEN && localStorage.getItem('hive-admin-pwd')) { document.getElementById('pwdInput').value = localStorage.getItem('hive-admin-pwd')||'admin888'; }
+
 </script>
 </body>
 </html>
