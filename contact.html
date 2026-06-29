@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>联系与合作 | 蜂巢 AI</title>
+<meta name="description" content="联系蜂巢 AI - 工具提交、广告合作、友情链接、反馈建议。多渠道联系我们。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script>
+<style>
+.contact-hero{text-align:center;padding:60px 24px 40px;background:linear-gradient(180deg,rgba(240,168,48,.06),transparent)}
+.contact-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}
+.contact-hero p{color:var(--text3);font-size:15px}
+.contact-wrap{max-width:900px;margin:0 auto;padding:0 24px 80px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
+.contact-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:.2s}
+.contact-card:hover{border-color:var(--honey)}
+.contact-card .icon{font-size:36px;margin-bottom:12px}
+.contact-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.contact-card p{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.contact-card .action{display:inline-block;padding:8px 20px;background:var(--honey);color:#1a1000;border-radius:50px;font-weight:600;font-size:13px;text-decoration:none;cursor:pointer;border:none}
+.contact-card .action:hover{transform:translateY(-2px)}
+.submit-form{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:32px}
+.submit-form h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.submit-form .sub{color:var(--text3);font-size:14px;margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;color:var(--text2);margin-bottom:6px;font-weight:600}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:inherit;resize:vertical}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--honey);outline:none}
+.form-submit{width:100%;padding:14px;background:linear-gradient(135deg,var(--honey),#e8942a);color:#1a1000;border:none;border-radius:50px;font-weight:700;font-size:16px;cursor:pointer;transition:.2s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(240,168,48,.3)}
+.success-msg{display:none;text-align:center;padding:40px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);border-radius:var(--radius);margin-top:24px}
+.success-msg .icon{font-size:48px;margin-bottom:12px}
+.success-msg h3{color:#34d399;margin-bottom:8px}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">蜂巢 <span>AI</span></span></a>
+<nav style="margin-left:auto;display:flex;gap:6px">
+<a href="/" class="btn btn-ghost">🏠 首页</a>
+<a href="/daily.html" class="btn btn-ghost">📋 日报</a>
+<a href="/blog.html" class="btn btn-ghost">📰 资讯</a>
+<a href="/contact.html" class="btn btn-primary">📬 联系</a>
+</nav>
+</div></header>
+
+<div class="contact-hero">
+  <h1>📬 联系与合作</h1>
+  <p>工具提交 · 广告合作 · 友情链接 · 反馈建议</p>
+</div>
+
+<div class="contact-wrap">
+
+<div class="contact-grid">
+  <div class="contact-card" onclick="scrollToForm()" style="cursor:pointer">
+    <div class="icon">🛠️</div>
+    <h3>提交 AI 工具</h3>
+    <p>发现了好用的AI工具？提交给我们，审核通过后加入蜂巢，获得曝光。</p>
+    <span class="action">立即提交</span>
+  </div>
+  <div class="contact-card">
+    <div class="icon">📢</div>
+    <h3>广告合作</h3>
+    <p>蜂王精选位、侧边栏广告、深度评测合作。月曝光 10万+，精准 AI 用户群。</p>
+    <span class="action" onclick="scrollToForm()">咨询合作</span>
+  </div>
+  <div class="contact-card">
+    <div class="icon">🔗</div>
+    <h3>友情链接</h3>
+    <p>与优质 AI 站点互换链接，共享流量。要求内容相关、收录良好。</p>
+    <span class="action" onclick="scrollToForm()">申请链接</span>
+  </div>
+  <div class="contact-card">
+    <div class="icon">💬</div>
+    <h3>反馈建议</h3>
+    <p>网站 bug 反馈、功能建议、内容纠错。你的意见让蜂巢更好。</p>
+    <span class="action" onclick="scrollToForm()">提交反馈</span>
+  </div>
+</div>
+
+<div class="submit-form" id="submitForm">
+  <h2>✉️ 提交信息</h2>
+  <p class="sub">所有提交的信息都会被记录并审核，我们会在24小时内回复。</p>
+  
+  <div class="form-row">
+    <div class="form-group">
+      <label>类型 *</label>
+      <select id="ftype">
+        <option value="tool">提交AI工具</option>
+        <option value="ad">广告合作</option>
+        <option value="link">友情链接</option>
+        <option value="feedback">反馈建议</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>你的称呼 *</label>
+      <input type="text" id="fname" placeholder="如何称呼你">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>联系方式 *</label>
+    <input type="text" id="fcontact" placeholder="邮箱、微信或其他联系方式">
+  </div>
+  <div class="form-row" id="toolFields">
+    <div class="form-group">
+      <label>工具名称</label>
+      <input type="text" id="ftool" placeholder="AI工具名称">
+    </div>
+    <div class="form-group">
+      <label>官网地址</label>
+      <input type="text" id="furl" placeholder="https://...">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>详细描述 *</label>
+    <textarea id="fmsg" rows="4" placeholder="请描述工具功能、合作需求或反馈内容..."></textarea>
+  </div>
+  <button class="form-submit" onclick="doSubmit()">📨 提交信息</button>
+  
+  <div class="success-msg" id="successMsg">
+    <div class="icon">✅</div>
+    <h3>提交成功！</h3>
+    <p>我们已收到你的信息，会在24小时内通过你留下的联系方式回复。</p>
+    <p style="font-size:13px;color:var(--text3);margin-top:8px">提交记录已保存，编号: <span id="submitId"></span></p>
+  </div>
+</div>
+
+</div>
+
+<footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/contact.html">联系</a> · <a href="/privacy.html">隐私政策</a></div></footer>
+
+<script>
+document.getElementById('ftype').addEventListener('change', function(){
+  document.getElementById('toolFields').style.display = this.value === 'tool' ? '' : 'none';
+});
+
+function scrollToForm(){
+  document.getElementById('submitForm').scrollIntoView({behavior:'smooth'});
+  if(event && event.target) {
+    const card = event.target.closest('.contact-card');
+    if(card) {
+      const type = card.querySelector('h3').textContent;
+      if(type.includes('工具')) document.getElementById('ftype').value = 'tool';
+      else if(type.includes('广告')) document.getElementById('ftype').value = 'ad';
+      else if(type.includes('链接')) document.getElementById('ftype').value = 'link';
+      else document.getElementById('ftype').value = 'feedback';
+      document.getElementById('toolFields').style.display = document.getElementById('ftype').value === 'tool' ? '' : 'none';
+    }
+  }
+}
+
+function doSubmit(){
+  var name = document.getElementById('fname').value.trim();
+  var contact = document.getElementById('fcontact').value.trim();
+  var msg = document.getElementById('fmsg').value.trim();
+  if(!name || !contact || !msg) { alert('请填写称呼、联系方式和描述'); return; }
+  
+  var submit = {
+    id: 'SUB-' + Date.now().toString(36).toUpperCase(),
+    type: document.getElementById('ftype').value,
+    name: name,
+    contact: contact,
+    tool: document.getElementById('ftool').value.trim(),
+    url: document.getElementById('furl').value.trim(),
+    message: msg,
+    time: new Date().toISOString()
+  };
+  
+  var submissions = JSON.parse(localStorage.getItem('hive-submissions') || '[]');
+  submissions.unshift(submit);
+  localStorage.setItem('hive-submissions', JSON.stringify(submissions));
+  
+  document.getElementById('submitForm').querySelector('.form-submit').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('submitId').textContent = submit.id;
+}
+</script>
+</body>
+</html>
