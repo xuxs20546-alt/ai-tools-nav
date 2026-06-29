@@ -2283,7 +2283,7 @@ var i18n={zh:{site:'蜂巢 AI',subtitle:'AI',home:'首页',daily:'日报',blog:'
 var currentLang=localStorage.getItem('hive-lang')||'zh';
 function t(key){var v=i18n[currentLang][key];if(!v)return key;return v.replace('{n}',filtered.length);}
 function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';localStorage.setItem('hive-lang',currentLang);updateLangUI();renderCats();renderFeatured();renderTools();}
-function updateLangUI(){document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';document.querySelector('.lang-btn').textContent=currentLang==='zh'?' EN':' 中文';document.querySelector('#searchInput').placeholder=t('searchPlaceholder');document.querySelector('#resultInfo').textContent=t('resultText');}
+init();function updateLangUI(){document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';document.querySelector('.lang-btn').textContent=currentLang==='zh'?' EN':' 中文';document.querySelector('#searchInput').placeholder=t('searchPlaceholder');document.querySelector('#resultInfo').textContent=t('resultText');}
 updateLangUI();
 
 function selectUseCase(uc){
