@@ -4000,20 +4000,24 @@ function selectUseCase(uc){
 init();
 
 
+
 // ── Tool Voting ──
 function voteTool(name,dir){
   var votes=JSON.parse(localStorage.getItem('hive-votes')||'{}');
   var key=name+'_'+dir;
   votes[key]=(votes[key]||0)+1;
   localStorage.setItem('hive-votes',JSON.stringify(votes));
-  var total=(votes[name+'_up']||0)+(votes[name+'_down']||0);
-  toast(dir==='up'?'👍 '+name:'👎 '+name);
 }
 
 // ── Random Tool ──
 function randomTool(){
   var t=tools[Math.floor(Math.random()*tools.length)];
-  document.getElementById('randomResult').innerHTML='<div class="random-spin">'+t.icon+'</div><h3>'+t.name+'</h3><p style="color:var(--text2);margin:8px 0">'+t.desc+'</p><a href="/tool-'+t.name.replace(/[^a-zA-Z0-9\\u4e00-\\u9fa5]/g,'-').toLowerCase()+'.html" class="btn btn-primary">🔍 了解详情</a><br><button class="btn btn-ghost" onclick="randomTool()" style="margin-top:12px">🎲 再来一个</button>';
+  document.getElementById('randomResult').innerHTML=
+    '<div class="random-spin">'+t.icon+'</div>'+
+    '<h3>'+t.name+'</h3>'+
+    '<p style="color:var(--text2);margin:8px 0">'+t.desc+'</p>'+
+    '<a href="/tool-'+t.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'-').toLowerCase()+'.html" class="btn btn-primary">🔍 了解详情</a>'+
+    '<br><button class="btn btn-ghost" onclick="randomTool()" style="margin-top:12px">🎲 再来一个</button>';
   document.getElementById('randomModal').classList.add('active');
   addToHistory(t.name);
 }
@@ -4027,12 +4031,15 @@ function newPKBattle(){
   var a=tools[Math.floor(Math.random()*tools.length)];
   var b;do{b=tools[Math.floor(Math.random()*tools.length)]}while(b.name===a.name);
   var va=JSON.parse(localStorage.getItem('hive-votes')||'{}');
-  var scoreA=(va[a.name+'_up']||0)-(va[a.name+'_down']||0);
-  var scoreB=(va[b.name+'_up']||0)-(va[b.name+'_down']||0);
-  document.getElementById('pkBattle').innerHTML=
-    '<div class="pk-card" onclick="pkVote(\\''+a.name+'\\',this)"><div class="icon">'+a.icon+'</div><div class="name">'+a.name+'</div><div class="votes">'+'👍 '+(va[a.name+'_up']||0)+' 👎 '+(va[a.name+'_down']||0)+'</div></div>'+
-    '<div class="pk-vs">VS</div>'+
-    '<div class="pk-card" onclick="pkVote(\\''+b.name+'\\',this)"><div class="icon">'+b.icon+'</div><div class="name">'+b.name+'</div><div class="votes">'+'👍 '+(va[b.name+'_up']||0)+' 👎 '+(va[b.name+'_down']||0)+'</div></div>';
+  var ea=document.createElement('div');ea.className='pk-card';
+  ea.onclick=function(){pkVote(a.name,ea)};
+  ea.innerHTML='<div class="icon">'+a.icon+'</div><div class="name">'+a.name+'</div><div class="votes">👍 '+(va[a.name+'_up']||0)+' 👎 '+(va[a.name+'_down']||0)+'</div>';
+  var eb=document.createElement('div');eb.className='pk-card';
+  eb.onclick=function(){pkVote(b.name,eb)};
+  eb.innerHTML='<div class="icon">'+b.icon+'</div><div class="name">'+b.name+'</div><div class="votes">👍 '+(va[b.name+'_up']||0)+' 👎 '+(va[b.name+'_down']||0)+'</div>';
+  var vs=document.createElement('div');vs.className='pk-vs';vs.textContent='VS';
+  var battle=document.getElementById('pkBattle');battle.innerHTML='';
+  battle.appendChild(ea);battle.appendChild(vs);battle.appendChild(eb);
 }
 function pkVote(name,el){
   var votes=JSON.parse(localStorage.getItem('hive-votes')||'{}');
@@ -4073,7 +4080,7 @@ var triviaQuestions=[
   {q:'Midjourney是什么类型的AI工具？',opts:['对话','编程','绘画','视频'],ans:2},
   {q:'DeepSeek是哪个国家的AI公司？',opts:['美国','日本','中国','韩国'],ans:2},
   {q:'AI绘画中Stable Diffusion的特点是？',opts:['闭源','开源','仅限企业','仅限手机'],ans:1},
-  {q:'Anthropic公司开发的AI助手叫什么？',opts:['ChatGPT','Gemini','Claude','Grok'],ans:2},
+  {q:'Anthropic公司开发的AI助手叫什么？',opts:['ChatGPT','Gemini','Claude','Grok'],ans:2}
 ];
 function showTrivia(){
   var today=new Date().toDateString();
@@ -4093,14 +4100,11 @@ function answerTrivia(idx,ans,el){
     el.classList.add('correct');
     var today=new Date().toDateString();
     localStorage.setItem('hive-trivia-'+today,'1');
-    toast('✅ 回答正确！', 'success');
   }else{
     el.classList.add('wrong');
     all[ans].classList.add('correct');
-    toast('❌ 答错了，正确答案已标出', 'error');
   }
 }
-
 </script>
 
 <!-- 🎮 互动浮层 -->
