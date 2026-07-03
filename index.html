@@ -497,6 +497,7 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
     <div class="footer-col"><h4>帮助</h4><a href="/blog.html">AI资讯</a><a href="/daily.html">AI日报</a><a href="/faq.html">FAQ</a><a href="/privacy.html">隐私政策</a></div>
   </div>
   <div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">AI资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/contact.html">联系与合作</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div>
+  <div style="max-width:1200px;margin:12px auto 0;text-align:center;font-size:11px;color:var(--text3);opacity:.6">💼 部分工具链接为联盟链接，通过本站注册或购买，蜂巢可能获得佣金（不影响你的价格）。这帮助我们持续维护和更新工具库。</div>
 </footer>
 
 <!-- ====== 模态弹窗 ====== -->
@@ -783,6 +784,78 @@ const catMap={chat:'💬 AI 对话',writing:'✍️ AI 写作',image:'🎨 AI �
 let tools=[],filtered=[],currentCat='all',currentSort='default',currentView='grid',
   favs=JSON.parse(localStorage.getItem('hive-favs')||'[]');
 
+/* ═══════════════════════════════════════════════════
+   联盟营销配置 — 将 YOUR_ 替换为你的实际 Affiliate ID
+   支持平台: partnerstack / rewardful / impact / direct
+   ═══════════════════════════════════════════════════ */
+var AFFILIATE={
+  /* AI 对话 */
+  'Notion AI':{platform:'partnerstack',id:'YOUR_NOTION_ID',rate:'50%'},
+  'Perplexity':{platform:'direct',id:'YOUR_PERPLEXITY_ID',rate:'50%',base:'https://perplexity.ai/pro?referral_code='},
+  'Poe':{platform:'direct',id:'YOUR_POE_ID',rate:'$20/user',base:'https://poe.com/'},
+  /* AI 写作 */
+  'Jasper':{platform:'direct',id:'YOUR_JASPER_ID',rate:'30%',base:'https://www.jasper.ai/?fpr='},
+  'Copy.ai':{platform:'direct',id:'YOUR_COPYAI_ID',rate:'45%',base:'https://www.copy.ai/?via='},
+  'Writesonic':{platform:'direct',id:'YOUR_WRITESONIC_ID',rate:'30%',base:'https://writesonic.com/?ref='},
+  'Grammarly':{platform:'impact',id:'YOUR_GRAMMARLY_ID',rate:'$20/upgrade',base:'https://grammarly.go2cloud.org/aff_c?offer_id=YOUR_OFFER&aff_id='},
+  'Wordtune':{platform:'direct',id:'YOUR_WORDTUNE_ID',rate:'25%',base:'https://www.wordtune.com/?ref='},
+  'Quillbot':{platform:'partnerstack',id:'YOUR_QUILLBOT_ID',rate:'20%'},
+  /* AI 绘画 */
+  'Leonardo.ai':{platform:'direct',id:'YOUR_LEONARDO_ID',rate:'60%',base:'https://app.leonardo.ai/?via='},
+  'Ideogram':{platform:'direct',id:'YOUR_IDEOGRAM_ID',rate:'TBD',base:'https://ideogram.ai/'},
+  'Recraft':{platform:'direct',id:'YOUR_RECRAFT_ID',rate:'25%',base:'https://www.recraft.ai/?ref='},
+  /* AI 视频 */
+  'Runway':{platform:'direct',id:'YOUR_RUNWAY_ID',rate:'20%',base:'https://runwayml.com/?ref='},
+  'HeyGen':{platform:'rewardful',id:'YOUR_HEYGEN_ID',rate:'25%'},
+  'Synthesia':{platform:'rewardful',id:'YOUR_SYNTHESIA_ID',rate:'25%'},
+  'Descript':{platform:'partnerstack',id:'YOUR_DESCRIPT_ID',rate:'15%'},
+  'InVideo':{platform:'direct',id:'YOUR_INVIDEO_ID',rate:'50%',base:'https://invideo.io/?ref='},
+  'Opus Clip':{platform:'direct',id:'YOUR_OPUSCLIP_ID',rate:'25%',base:'https://www.opus.pro/?via='},
+  'CapCut':{platform:'direct',id:'YOUR_CAPCUT_ID',rate:'up to $52',base:'https://www.capcut.com/'},
+  '可灵AI':{platform:'direct',id:'YOUR_KLING_ID',rate:'TBD',base:'https://kling.kuaishou.com/'},
+  /* AI 音频 */
+  'ElevenLabs':{platform:'partnerstack',id:'YOUR_ELEVENLABS_ID',rate:'22%'},
+  'Murf.ai':{platform:'direct',id:'YOUR_MURF_ID',rate:'20%',base:'https://murf.ai/?ref='},
+  'AIVA':{platform:'direct',id:'YOUR_AIVA_ID',rate:'20%',base:'https://www.aiva.ai/?ref='},
+  'Suno':{platform:'direct',id:'YOUR_SUNO_ID',rate:'积分',base:'https://suno.com/invite/'},
+  /* AI 编程 */
+  'Cursor':{platform:'direct',id:'YOUR_CURSOR_ID',rate:'20%',base:'https://cursor.com/?ref='},
+  'Replit':{platform:'direct',id:'YOUR_REPLIT_ID',rate:'$20',base:'https://replit.com/?ref='},
+  'Windsurf':{platform:'direct',id:'YOUR_WINDSURF_ID',rate:'TBD',base:'https://windsurf.com/?ref='},
+  'Lovable':{platform:'direct',id:'YOUR_LOVABLE_ID',rate:'30%',base:'https://lovable.dev/?ref='},
+  'Dify':{platform:'partnerstack',id:'YOUR_DIFY_ID',rate:'50%'},
+  /* AI 设计 */
+  'Canva AI':{platform:'impact',id:'YOUR_CANVA_ID',rate:'$36-150',base:'https://canva.7eqqol.net/c/YOUR_ID/'},
+  'Framer AI':{platform:'direct',id:'YOUR_FRAMER_ID',rate:'50%',base:'https://www.framer.com/?via='},
+  'Webflow AI':{platform:'direct',id:'YOUR_WEBFLOW_ID',rate:'50%',base:'https://webflow.com/?aff='},
+  'Kittl':{platform:'direct',id:'YOUR_KITTL_ID',rate:'30%',base:'https://www.kittl.com/?ref='},
+  'Looka':{platform:'flexoffers',id:'YOUR_LOOKA_ID',rate:'35%',base:'https://looka.com/'},
+  'Remove.bg':{platform:'direct',id:'YOUR_REMOVEBG_ID',rate:'15%',base:'https://www.remove.bg/?ref='},
+  /* AI 效率 */
+  'Gamma':{platform:'direct',id:'YOUR_GAMMA_ID',rate:'30%',base:'https://gamma.app/?ref='},
+  'Beautiful.ai':{platform:'direct',id:'YOUR_BEAUTIFULAI_ID',rate:'30%',base:'https://www.beautiful.ai/?ref='},
+  'Taskade':{platform:'direct',id:'YOUR_TASKADE_ID',rate:'20%',base:'https://www.taskade.com/?via='},
+  'Otter.ai':{platform:'direct',id:'YOUR_OTTER_ID',rate:'60%',base:'https://otter.ai/?referral='},
+  'Fireflies.ai':{platform:'rewardful',id:'YOUR_FIREFLIES_ID',rate:'30%'}
+};
+
+/* ── 联盟链接解析（自动判断是否有 affiliate 并构建链接） ── */
+function getAffiliateUrl(name,originalUrl){
+  var a=AFFILIATE[name];
+  if(!a||!a.id||a.id.indexOf('YOUR_')===0)return'https://'+originalUrl;
+  switch(a.platform){
+    case 'partnerstack': return'https://partnerstack.com/partners/'+a.id+'/redirect?to='+encodeURIComponent('https://'+originalUrl);
+    case 'rewardful': return'https://'+a.id+'.gr8.com/';
+    case 'impact': return a.base+a.id;
+    case 'flexoffers': return a.base+'?ref='+a.id;
+    default: return a.base?a.base+a.id:'https://'+originalUrl;
+  }
+}
+function hasAffiliate(name){
+  var a=AFFILIATE[name];
+  return a&&a.id&&a.id.indexOf('YOUR_')!==0;
+}
+
 /* ── 视图切换 ── */
 function setView(view){
   currentView=view;
@@ -830,8 +903,8 @@ function openDrawer(name){
     +'<h4 style="font-size:14px;font-weight:700;margin-bottom:8px;color:var(--text)">功能亮点</h4>'
     +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">'+(t.features||[]).map(function(f){return'<span style="font-size:12px;padding:4px 12px;background:rgba(240,168,48,.08);border-radius:8px;color:var(--honey2)">'+f+'</span>'}).join('')+'</div>'
     +'<div style="display:flex;gap:10px;flex-wrap:wrap">'
-    +'<a href="https://'+t.url+'" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:14px;padding:10px 24px">'
-    +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 访问官网</a>'
+    +'<a href="'+getAffiliateUrl(t.name,t.url)+'" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:14px;padding:10px 24px">'
+    +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 访问官网'+(hasAffiliate(t.name)?' <span style="font-size:10px;opacity:.6">💼</span>':'')+'</a>'
     +'<button class="btn btn-ghost" onclick="toggleFav(\''+t.name.replace(/'/g,"\\'")+'\');openDrawer(\''+t.name.replace(/'/g,"\\'")+'\')" style="font-size:14px;padding:10px 20px">'+(isFav?'⭐ 已收藏':'☆ 收藏')+'</button>'
     +'</div>';
   document.getElementById('detailDrawer').classList.add('active');
@@ -1103,7 +1176,7 @@ function randomTool(){
     '<div class="random-spin">'+t.icon+'</div>'+
     '<h3>'+t.name+'</h3>'+
     '<p style="color:var(--text2);margin:8px 0">'+t.desc+'</p>'+
-    '<a href="https://'+t.url+'" target="_blank" rel="noopener" class="btn btn-primary">🔍 了解详情</a>'+
+    '<a href="'+getAffiliateUrl(t.name,t.url)+'" target="_blank" rel="noopener" class="btn btn-primary">🔍 了解详情'+(hasAffiliate(t.name)?' <span style="font-size:10px;opacity:.6">💼</span>':'')+'</a>'+
     '<br><button class="btn btn-ghost" onclick="randomTool()" style="margin-top:12px">🎲 再来一个</button>';
   document.getElementById('randomModal').classList.add('active');
   addToHistory(t.name);
