@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,11 +17,16 @@
 <meta name="twitter:title" content="蜂巢 AI - 发现最好用的AI人工智能工具">
 <meta name="twitter:description" content="收录69+热门AI产品，蜂巢式布局，帮你快速找到最适合的AI工具。">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNXGE2XXCY"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-PNXGE2XXCY');</script>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?1eb475f4e4544dbb45fa2f787dc87c20";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script>
 <style>
+/* ── CSS Reset & Variables ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0a0806;--bg2:#120e0a;--bg3:#1a1510;--bg4:#221c14;--bg5:#2a2218;
@@ -31,10 +36,19 @@
   --accent:#7c6aef;--accent2:#a78bfa;
   --border:#2a2218;--border2:#3a3024;
   --radius:14px;--radius-sm:8px;
-  --font-display:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;
+  --font-display:'Space Grotesk','Noto Sans SC',-apple-system,sans-serif;
   --font-body:"Noto Sans SC",-apple-system,sans-serif;
   --transition:all .3s cubic-bezier(.4,0,.2,1);
+  --glass-bg:rgba(18,14,10,.6);--glass-border:rgba(240,168,48,.08);
 }
+/* 亮色模式 */
+[data-theme="light"]{
+  --bg:#faf8f4;--bg2:#f0ece4;--bg3:#e8e2d8;--bg4:#ddd5c8;--bg5:#d4cbb8;
+  --text:#1a1510;--text2:#4a4030;--text3:#8a7a60;
+  --border:#d4cbb8;--border2:#c4b8a4;
+  --glass-bg:rgba(255,255,255,.6);--glass-border:rgba(240,168,48,.15);
+}
+
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -46,64 +60,105 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 
 /* ── Header ── */
 .header{position:sticky;top:0;z-index:100;background:rgba(10,8,6,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.header-inner{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+[data-theme="light"] .header{background:rgba(250,248,244,.85)}
+.header-inner{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:12px}
 .logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .logo-icon{width:42px;height:42px;position:relative;display:flex;align-items:center;justify-content:center}
 .logo-hex{position:absolute;inset:0;background:linear-gradient(135deg,var(--honey),var(--honey-dark));clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);transition:var(--transition)}
-.logo-bee{position:relative;z-index:1;font-size:22px;transition:var(--transition)}
 .logo-text{font-family:var(--font-display);font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--honey2),var(--honey));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
 .logo-text span{font-size:13px;font-weight:400;-webkit-text-fill-color:var(--text3);margin-left:2px}
 
-.search-box{flex:1;max-width:400px;position:relative}
-.search-box input{width:100%;padding:11px 40px 11px 18px;background:var(--bg3);border:1px solid var(--border2);border-radius:50px;color:var(--text);font-size:14px;transition:var(--transition)}
-.search-box input:focus{border-color:var(--honey);box-shadow:0 0 0 3px var(--amber-glow);background:var(--bg4)}
-.search-box input::placeholder{color:var(--text3)}
-.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none}
-.search-clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text3);font-size:14px;display:none}
-
-.header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.btn{padding:9px 18px;border-radius:50px;font-size:13px;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px}
-.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2)}
-.btn-ghost:hover{color:var(--text);border-color:var(--honey);background:var(--amber-glow)}
-.btn-primary{background:linear-gradient(135deg,var(--honey),var(--amber));color:#1a1000;border:none;font-weight:700;box-shadow:0 2px 12px var(--amber-glow)}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--amber-glow)}
-.fav-count{background:var(--accent);color:#fff;font-size:10px;padding:1px 6px;border-radius:10px;font-weight:700}
+/* Header右区：精简为图标按钮 */
+.header-actions{display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:auto}
+.hdr-btn{width:38px;height:38px;border-radius:10px;background:transparent;color:var(--text2);border:1px solid transparent;transition:var(--transition);display:inline-flex;align-items:center;justify-content:center;font-size:14px;position:relative}
+.hdr-btn:hover{color:var(--text);border-color:var(--border2);background:var(--bg3)}
+.hdr-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fav-count{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#fff;font-size:9px;padding:1px 5px;border-radius:10px;font-weight:700;min-width:16px;text-align:center}
 
 /* ── Hero ── */
-.hero{position:relative;padding:70px 24px 50px;text-align:center;overflow:hidden;z-index:1}
-.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,var(--amber-glow),transparent 70%);pointer-events:none}
-.hero-content{position:relative;z-index:1;max-width:680px;margin:0 auto}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--amber-glow);border:1px solid rgba(240,168,48,.25);border-radius:50px;font-size:13px;color:var(--honey2);margin-bottom:20px}
-.hero h1{font-family:var(--font-display);font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.15;margin-bottom:12px;color:var(--text)}
+.hero{position:relative;padding:80px 24px 60px;text-align:center;overflow:hidden;z-index:1}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,var(--amber-glow),transparent 70%);pointer-events:none}
+
+/* Hero 蜂巢浮动动画 */
+.hero-hex-bg{position:absolute;inset:0;pointer-events:none;z-index:1}
+.hero-hex-floating{position:absolute;opacity:.06;animation:hexFloat 12s ease-in-out infinite}
+.hero-hex-floating:nth-child(1){left:10%;top:20%;animation-delay:0s;width:80px;height:92px}
+.hero-hex-floating:nth-child(2){left:80%;top:10%;animation-delay:-3s;width:100px;height:115px}
+.hero-hex-floating:nth-child(3){left:50%;top:70%;animation-delay:-6s;width:70px;height:80px}
+.hero-hex-floating:nth-child(4){left:20%;top:60%;animation-delay:-9s;width:90px;height:104px}
+.hero-hex-floating:nth-child(5){left:70%;top:50%;animation-delay:-4s;width:60px;height:69px}
+@keyframes hexFloat{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  33%{transform:translateY(-15px) rotate(3deg);}
+  66%{transform:translateY(8px) rotate(-2deg);}
+}
+
+.hero-content{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--amber-glow);border:1px solid rgba(240,168,48,.25);border-radius:50px;font-size:13px;color:var(--honey2);margin-bottom:24px}
+.hero h1{font-family:var(--font-display);font-size:clamp(42px,7vw,64px);font-weight:900;line-height:1.15;margin-bottom:16px;color:var(--text);letter-spacing:-1px}
 .hero h1 .gradient{background:linear-gradient(135deg,var(--honey),var(--honey3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{font-size:16px;color:var(--text2);max-width:500px;margin:0 auto 32px;line-height:1.8}
-.hero-stats{display:flex;justify-content:center;gap:60px}
-.hero-stat{text-align:center}
-.hero-stat .num{font-family:var(--font-display);font-size:36px;font-weight:800;color:var(--honey)}
-.hero-stat .label{font-size:13px;color:var(--text3);margin-top:4px}
 
-/* ── Categories ── */
-.categories-wrap{max-width:1400px;margin:0 auto;padding:0 24px 20px;position:relative;z-index:1}
-.categories{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;justify-content:center;flex-wrap:wrap}
-.cat-btn{padding:10px 20px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:var(--transition);white-space:nowrap;user-select:none}
+/* Hero 搜索框 - 加大尺寸居中 */
+.hero-search{position:relative;z-index:2;max-width:560px;margin:0 auto 12px}
+.hero-search input{width:100%;height:52px;padding:0 48px 0 22px;background:var(--bg3);border:2px solid var(--border2);border-radius:50px;color:var(--text);font-size:16px;transition:all .3s cubic-bezier(.4,0,.2,1);font-family:var(--font-body);letter-spacing:.3px}
+.hero-search input:focus{outline:none;border-color:var(--honey);box-shadow:0 0 0 8px var(--amber-glow);background:var(--bg4)}
+.hero-search input::placeholder{color:var(--text3);font-size:15px}
+.hero-search input:focus{animation:pulseRing 1.5s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes pulseRing{
+  0%,100%{box-shadow:0 0 0 0px var(--amber-glow);}
+  50%{box-shadow:0 0 0 12px rgba(240,168,48,.05);}
+}
+.hero-search-icon{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none}
+.hero-search-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.5}
+.hero-search-clear{position:absolute;right:16px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text3);font-size:16px;display:none;width:28px;height:28px;border-radius:50%;border:none;background:var(--bg4);align-items:center;justify-content:center}
+
+/* Hero 空状态提示 */
+.search-empty-hint{text-align:center;color:var(--text3);font-size:13px;margin-top:8px;display:none}
+
+/* Hero 统计数据 - 玻璃态 */
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:36px;flex-wrap:wrap}
+.hero-stat{w:125px;text-align:center;padding:16px 20px;background:var(--glass-bg);backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:var(--radius-sm);transition:var(--transition)}
+.hero-stat:hover{border-color:var(--honey);transform:translateY(-2px)}
+.hero-stat.num{font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--honey)}
+.hero-stat.label{font-size:12px;color:var(--text3);margin-top:4px}
+
+/* ── 蜂王精选 ── */
+.picks-section{max-width:1200px;margin:0 auto;padding:0 24px 40px;position:relative;z-index:1}
+.picks-section h2{font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.picks-section h2 .icon-box{background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:15px}
+.picks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+
+/* ── 场景快速入口 ── */
+.scene-wrap{max-width:900px;margin:0 auto;padding:0 24px 24px;position:relative;z-index:1;text-align:center}
+.scene-btns{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.scene-hint{font-size:12px;color:var(--text3);margin-top:10px}
+
+/* ── 工具网格工具栏 ── */
+.tools-toolbar{max-width:1200px;margin:0 auto;padding:0 24px 16px;position:relative;z-index:1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+/* 分类筛选栏 */
+.cat-filter{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;flex:1;min-width:0}
+.cat-btn{padding:8px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:var(--transition);white-space:nowrap;user-select:none;display:inline-flex;align-items:center;gap:4px}
 .cat-btn:hover{color:var(--text);border-color:var(--honey);background:var(--bg4)}
 .cat-btn.active{background:linear-gradient(135deg,rgba(240,168,48,.15),rgba(184,120,26,.1));border-color:var(--honey);color:var(--honey2)}
-
-/* ── Toolbar ── */
-.toolbar{max-width:1400px;margin:0 auto;padding:0 24px 16px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
-.toolbar-info{font-size:14px;color:var(--text3)}
-.toolbar-right{display:flex;gap:6px}
-.sort-btn{padding:7px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;transition:var(--transition)}
+/* 排序 */
+.sort-group{display:flex;gap:4px;flex-shrink:0}
+.sort-btn{padding:7px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;transition:var(--transition)}
 .sort-btn:hover{color:var(--text2);border-color:var(--border2)}
 .sort-btn.active{background:var(--bg4);color:var(--honey2);border-color:var(--honey)}
+/* 视图切换 */
+.view-toggle{display:flex;gap:2px;background:var(--bg3);border-radius:10px;padding:3px;flex-shrink:0;border:1px solid var(--border)}
+.view-btn{width:34px;height:32px;border-radius:8px;background:transparent;color:var(--text3);cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:center}
+.view-btn:hover{color:var(--text2)}
+.view-btn.active{background:var(--bg4);color:var(--honey2)}
+.view-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.toolbar-info{font-size:13px;color:var(--text3);flex-shrink:0}
 
 /* ── HONEYCOMB GRID ── */
 .hive-wrap{max-width:1400px;margin:0 auto;padding:0 24px 80px;position:relative;z-index:1}
-.hive-grid{display:flex;flex-wrap:wrap;justify-content:center;
-  /* honeycomb math: cell width + margin creates interlocking pattern */
-  max-width:1200px;margin:0 auto}
+.hive-grid{display:flex;flex-wrap:wrap;justify-content:center;max-width:1200px;margin:0 auto}
 .hive-cell{width:180px;margin:4px 2px;position:relative;cursor:pointer;transition:var(--transition)}
-.hive-cell::before{content:'';display:block;padding-top:115.47% /* hex ratio */}
+.hive-cell::before{content:'';display:block;padding-top:115.47%}
 
 .hive-hex{position:absolute;inset:2px;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg3) 100%);border:1px solid var(--border);
   clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
@@ -111,14 +166,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
   display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 12px;
   transform-style:preserve-3d;perspective:600px}
 
-/* 3D depth side walls */
 .hive-hex::before{content:'';position:absolute;inset:-3px;
   background:linear-gradient(180deg,rgba(240,168,48,.15),rgba(184,120,26,.08));
   clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
   z-index:-1;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);
   transform:translateZ(-4px) scale(.94)}
 
-/* inner glow */
 .hive-hex::after{content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse at center,var(--amber-glow) 0%,transparent 60%);
   opacity:0;transition:opacity .4s;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
@@ -128,29 +181,60 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .hive-cell:hover .hive-hex::before{opacity:1;box-shadow:0 4px 20px rgba(0,0,0,.5)}
 .hive-cell:hover .hive-hex::after{opacity:1}
 
-.hive-icon{font-size:28px;position:relative;z-index:1;margin-bottom:6px;transition:var(--transition)}
-.hive-cell:hover .hive-icon{transform:scale(1.1)}
+/* 相邻格子变暗 - 用JS实现为主，CSS:has()作为补充 */
+@supports(selector(:has(*))){
+  .hive-grid:has(.hive-cell:hover) .hive-cell:not(:hover) .hive-hex{opacity:.55}
+}
+
+/* 品牌首字母色块 - 替换emoji */
+.hive-avatar{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px;font-weight:800;color:#fff;position:relative;z-index:1;margin-bottom:8px;transition:var(--transition);letter-spacing:-.5px;text-transform:uppercase}
+.hive-cell:hover .hive-avatar{transform:scale(1.1)}
 .hive-name{font-family:var(--font-display);font-size:13px;font-weight:700;text-align:center;position:relative;z-index:1;
   line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .hive-cat{font-size:10px;color:var(--text3);position:relative;z-index:1;margin-top:4px}
 .hive-tag{position:absolute;top:8px;right:12px;font-size:10px;padding:1px 5px;border-radius:6px;z-index:2;
   background:var(--honey);color:#1a1000;font-weight:700}
 
-/* Featured cell (larger) */
 .hive-cell.featured{width:260px}
-.hive-cell.featured .hive-icon{font-size:38px}
+.hive-cell.featured .hive-avatar{width:52px;height:52px;font-size:22px}
 .hive-cell.featured .hive-name{font-size:15px}
 .hive-cell.featured .hive-hex{background:linear-gradient(135deg,rgba(240,168,48,.08),rgba(10,8,6,.8));border-color:rgba(240,168,48,.3)}
 
-/* Even row offset for honeycomb pattern */
+/* ── 列表视图 ── */
+.hive-wrap.list-view .hive-grid{display:block;max-width:900px}
+.hive-wrap.list-view .hive-cell{width:100%;margin:0 0 8px 0}
+.hive-wrap.list-view .hive-cell::before{display:none}
+.hive-wrap.list-view .hive-hex{position:relative;inset:auto;clip-path:none;flex-direction:row;padding:14px 18px;border-radius:var(--radius);gap:14px;justify-content:flex-start;background:var(--bg2);border:1px solid var(--border);transition:all .25s}
+.hive-wrap.list-view .hive-hex::before,.hive-wrap.list-view .hive-hex::after{display:none}
+.hive-wrap.list-view .hive-cell:hover .hive-hex{transform:none;border-color:var(--honey);box-shadow:0 4px 16px var(--amber-glow)}
+.hive-wrap.list-view .hive-avatar{width:44px;height:44px;border-radius:12px;font-size:18px;flex-shrink:0;margin-bottom:0}
+.hive-wrap.list-view .hive-name{text-align:left;font-size:15px;-webkit-line-clamp:1;margin-bottom:0}
+.hive-wrap.list-view .hive-desc{font-size:12px;color:var(--text2);line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;flex:1;min-width:0}
+.hive-wrap.list-view .hive-meta{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hive-wrap.list-view .hive-cat{font-size:11px;color:var(--text3);padding:2px 8px;background:var(--bg3);border-radius:6px;margin:0;white-space:nowrap}
+.hive-wrap.list-view .hive-pricing{font-size:11px;color:var(--honey2);white-space:nowrap}
+.hive-wrap.list-view .hive-tag{position:static;font-size:10px}
+.hive-wrap.list-view .hive-cell.featured{width:100%}
+
 @media(min-width:769px){
   .hive-cell{margin-bottom:-26px}
-  .hive-cell:nth-child(odd){margin-top:0}
 }
 
-/* ── We need honeycomb row logic via JS columns ── */
+/* ── 今日蜂报 ── */
+.news-section{max-width:1200px;margin:0 auto;padding:0 24px 48px;position:relative;z-index:1}
+.news-section h2{font-size:22px;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.news-section h2 .icon-box{background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:15px}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
 
-/* ── Modal ── */
+/* ── 侧边抽屉（替换原居中模态弹窗） ── */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;opacity:0;pointer-events:none;transition:opacity .35s}
+.drawer-overlay.active{opacity:1;pointer-events:auto}
+.drawer-panel{position:fixed;top:0;right:0;width:460px;max-width:92vw;height:100vh;background:var(--bg2);border-left:1px solid var(--border);z-index:201;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:32px 28px}
+.drawer-overlay.active .drawer-panel{transform:translateX(0)}
+.drawer-close{position:absolute;top:16px;right:20px;width:36px;height:36px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:var(--transition)}
+.drawer-close:hover{color:var(--text);border-color:var(--honey);background:var(--bg4)}
+
+/* ── 模态弹窗（PK/成就/挑战等继续使用） ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center}
 .modal-overlay.active{display:flex}
 .modal-content{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:32px;max-width:500px;width:90%;position:relative;max-height:85vh;overflow-y:auto}
@@ -169,38 +253,19 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .footer-bottom a{color:var(--text2);margin:0 8px}
 .footer-bottom a:hover{color:var(--honey)}
 
-/* ── Responsive ── */
-@media(max-width:768px){
-  .hive-cell{width:120px}
-  .hive-cell.featured{width:160px}
-  .hive-hex{padding:10px 8px}
-  .hive-icon{font-size:22px}
-  .hive-name{font-size:11px}
-  .hero{padding:50px 16px 36px}
-  .hero-stats{gap:40px}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .header-inner{flex-wrap:wrap}
-  .search-box{order:3;flex:100%;max-width:100%}
-  .cat-btn{font-size:12px;padding:8px 14px}
-}
-@media(max-width:480px){
-  .hive-cell{width:90px;margin:3px 1px}
-  .hive-cell.featured{width:120px}
-  .hive-icon{font-size:18px}
-  .hive-name{font-size:10px}
-  .hive-cat{font-size:9px}
-}
-
-/* 🎮 Float Bar */
+/* ── Float Bar ── */
 .float-bar{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:8px}
 .float-btn{width:48px;height:48px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;cursor:pointer;transition:all .3s;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .float-btn:hover{width:64px;transform:translateX(-8px);border-color:var(--honey);box-shadow:0 0 20px var(--amber-glow)}
-.float-icon{font-size:18px;transition:.3s}
+.float-icon{display:flex;align-items:center;justify-content:center;transition:.3s}
+.float-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2}
 .float-label{font-size:9px;color:var(--text3);margin-top:1px;opacity:0;transition:.3s;position:absolute;bottom:4px}
-.float-btn:hover .float-icon{font-size:16px;transform:translateY(-4px)}
+.float-btn:hover .float-icon{transform:translateY(-4px)}
+.float-btn:hover .float-icon svg{width:17px;height:17px}
 .float-btn:hover .float-label{opacity:1}
 .float-btn:active{transform:scale(.9)}
-/* PK animation */
+
+/* ── 其他组件保持不变 ── */
 .pk-card{background:var(--bg2);border:2px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:.3s;position:relative}
 .pk-card:hover{border-color:var(--honey);transform:translateY(-3px);box-shadow:0 8px 30px rgba(240,168,48,.15)}
 .pk-card .icon{font-size:48px;margin-bottom:8px}
@@ -208,13 +273,11 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .pk-card .votes{font-size:13px;color:var(--text3);margin-top:8px}
 .pk-vs{font-size:28px;font-weight:900;color:var(--honey);display:flex;align-items:center}
 .pk-voted{border-color:var(--honey)!important;background:rgba(240,168,48,.08)!important}
-/* Achievement */
 .ach-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
 .ach-icon{font-size:28px;width:40px;text-align:center}
 .ach-info h4{font-size:14px;font-weight:600;margin-bottom:2px}
 .ach-info p{font-size:12px;color:var(--text3)}
 .ach-locked{opacity:.3;filter:grayscale(1)}
-/* Trivia */
 .trivia-q{font-size:16px;font-weight:600;margin-bottom:16px;line-height:1.5}
 .trivia-opt{display:block;width:100%;padding:12px 16px;margin-bottom:8px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;cursor:pointer;text-align:left;transition:.2s}
 .trivia-opt:hover{border-color:var(--honey);background:var(--bg4)}
@@ -222,10 +285,44 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .trivia-opt.wrong{border-color:#f87171;background:rgba(248,113,113,.1)}
 .trivia-done{text-align:center;padding:20px}
 .trivia-done .result{font-size:24px;margin-bottom:8px}
-/* Random spinner */
 @keyframes spin{0%{transform:rotateY(0)}100%{transform:rotateY(720deg)}}
 .random-spin{animation:spin 1.5s ease-out;font-size:64px;margin-bottom:16px;display:inline-block}
 
+/* ── 响应式 ── */
+@media(max-width:768px){
+  .hive-cell{width:120px}
+  .hive-cell.featured{width:160px}
+  .hive-avatar{width:32px;height:32px;font-size:14px;border-radius:10px}
+  .hive-cell.featured .hive-avatar{width:38px;height:38px;font-size:16px}
+  .hive-hex{padding:10px 8px}
+  .hive-name{font-size:11px}
+  .hero{padding:60px 16px 40px}
+  .hero-search{max-width:100%}
+  .hero-stats{gap:20px}
+  .hero-stat{min-width:80px;padding:12px 14px}
+  .hero-stat .num{font-size:24px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .header-inner{flex-wrap:wrap}
+  .tools-toolbar{flex-wrap:wrap}
+  .cat-filter{order:1;flex:100%}
+  .sort-group,.view-toggle,.toolbar-info{order:2}
+  .drawer-panel{width:92vw}
+}
+@media(max-width:480px){
+  .hive-cell{width:90px;margin:3px 1px}
+  .hive-cell.featured{width:120px}
+  .hive-avatar{width:28px;height:28px;font-size:12px;border-radius:8px}
+  .hive-name{font-size:10px}
+  .hive-cat{font-size:9px}
+  .hero h1{font-size:clamp(30px,8vw,42px)}
+}
+
+/* ── 通用按钮 ── */
+.btn{padding:9px 18px;border-radius:50px;font-size:13px;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2)}
+.btn-ghost:hover{color:var(--text);border-color:var(--honey);background:var(--amber-glow)}
+.btn-primary{background:linear-gradient(135deg,var(--honey),var(--amber));color:#1a1000;border:none;font-weight:700;box-shadow:0 2px 12px var(--amber-glow)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--amber-glow)}
 </style>
 <link rel="alternate" hreflang="zh-CN" href="https://www.ai-nav-build.com/">
 <link rel="alternate" hreflang="en" href="https://www.ai-nav-build.com/en/">
@@ -233,7 +330,7 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 </head>
 <body>
 
-<!-- Background hex pattern -->
+<!-- 背景蜂巢图案 -->
 <div class="bg-honeycomb">
   <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
     <defs><pattern id="hex" width="60" height="104" patternUnits="userSpaceOnUse" patternTransform="scale(.6)">
@@ -244,36 +341,73 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
   </svg>
 </div>
 
+<!-- ====== Header ====== -->
 <header class="header">
   <div class="header-inner">
     <a href="/" class="logo">
       <div class="logo-icon">
         <div class="logo-hex"></div>
-        <span class="logo-bee">🐝</span>
       </div>
       <span class="logo-text">蜂巢 <span>AI</span></span>
     </a>
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="搜索AI工具..." oninput="doSearch()">
-      <span class="search-clear" id="searchClear" onclick="clearSearch()">✕</span>
-    </div>
     <div class="header-actions">
-      <a href="/daily.html" class="btn btn-ghost" style="font-size:12px">📋 日报</a>
-      <a href="/contact.html" class="btn btn-ghost" style="font-size:12px">📬 联系</a>
-      <a href="/blog.html" class="btn btn-ghost" style="font-size:12px">📰 资讯</a>
-      <button class="btn btn-ghost lang-btn" onclick="toggleLang()" style="font-size:12px">🌐 EN</button>
-      <button class="btn btn-ghost" onclick="showHistory()" style="font-size:12px">🕐</button>
-      <button class="btn btn-ghost" onclick="showFavorites()">⭐ <span class="fav-count" id="favCount">0</span></button>
+      <!-- 亮暗模式切换 -->
+      <button class="hdr-btn" onclick="toggleTheme()" title="切换亮暗模式" aria-label="切换亮暗模式">
+        <svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <!-- 日报 -->
+      <a href="/daily.html" class="hdr-btn" title="日报">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+      </a>
+      <!-- 联系 -->
+      <a href="/contact.html" class="hdr-btn" title="联系">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+      <!-- 资讯 -->
+      <a href="/blog.html" class="hdr-btn" title="资讯">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </a>
+      <!-- 语言切换 -->
+      <button class="hdr-btn" onclick="toggleLang()" title="切换语言" style="font-size:11px;font-weight:700">EN</button>
+      <!-- 历史 -->
+      <button class="hdr-btn" onclick="showHistory()" title="浏览历史">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </button>
+      <!-- 收藏 -->
+      <button class="hdr-btn" onclick="showFavorites()" title="收藏">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span class="fav-count" id="favCount">0</span>
+      </button>
     </div>
   </div>
 </header>
 
+<!-- ====== Hero ====== -->
 <section class="hero">
+  <!-- 浮动六边形动画 -->
+  <div class="hero-hex-bg">
+    <svg class="hero-hex-floating" viewBox="0 0 100 115"><polygon points="50,0 100,28.75 100,86.25 50,115 0,86.25 0,28.75" fill="var(--honey)" opacity="0.3"/></svg>
+    <svg class="hero-hex-floating" viewBox="0 0 100 115"><polygon points="50,0 100,28.75 100,86.25 50,115 0,86.25 0,28.75" fill="var(--honey2)" opacity="0.25"/></svg>
+    <svg class="hero-hex-floating" viewBox="0 0 100 115"><polygon points="50,0 100,28.75 100,86.25 50,115 0,86.25 0,28.75" fill="var(--honey)" opacity="0.2"/></svg>
+    <svg class="hero-hex-floating" viewBox="0 0 100 115"><polygon points="50,0 100,28.75 100,86.25 50,115 0,86.25 0,28.75" fill="var(--honey3)" opacity="0.2"/></svg>
+    <svg class="hero-hex-floating" viewBox="0 0 100 115"><polygon points="50,0 100,28.75 100,86.25 50,115 0,86.25 0,28.75" fill="var(--honey)" opacity="0.15"/></svg>
+  </div>
+
   <div class="hero-content">
     <div class="hero-badge">🐝 全网首个蜂巢式AI导航</div>
     <h1>每一格<span class="gradient">蜂巢</span><br>都是一款<span class="gradient">AI神器</span></h1>
     <p>像蜜蜂采集花蜜一样，我们为你采集全球最优质的AI工具，汇聚成这座不断生长的数字蜂巢。</p>
+
+    <!-- 搜索框从Header移到Hero中央 -->
+    <div class="hero-search">
+      <span class="hero-search-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" id="searchInput" placeholder="试试搜索 ChatGPT、Midjourney、Cursor..." oninput="doSearch()">
+      <span class="hero-search-clear" id="searchClear" onclick="clearSearch()" style="display:none">✕</span>
+    </div>
+    <p class="search-empty-hint" id="searchEmptyHint">🍯 蜂巢里还没找到这个工具，换个关键词试试？</p>
+
     <div class="hero-stats">
       <div class="hero-stat"><div class="num" id="statTools">69</div><div class="label">AI 工具</div></div>
       <div class="hero-stat"><div class="num">10</div><div class="label">分类</div></div>
@@ -283,9 +417,15 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
   </div>
 </section>
 
-<!-- 🎯 快速场景入口 -->
-<div style="max-width:900px;margin:0 auto;padding:0 24px 20px;position:relative;z-index:1;text-align:center">
-  <div style="display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center">
+<!-- ====== 蜂王精选（4张卡） ====== -->
+<section class="picks-section">
+  <h2><span class="icon-box">👑</span> 蜂王精选 <span style="font-size:13px;font-weight:400;color:var(--text3);margin-left:4px">人工精选 · 每周更新</span></h2>
+  <div class="picks-grid" id="featuredGrid"></div>
+</section>
+
+<!-- ====== 场景快速入口 ====== -->
+<div class="scene-wrap">
+  <div class="scene-btns">
     <button class="cat-btn uc-btn" onclick="selectUseCase('写作')" style="border-color:rgba(167,139,250,.3);color:#a78bfa">✍️ 写作</button>
     <button class="cat-btn uc-btn" onclick="selectUseCase('编码')" style="border-color:rgba(52,211,153,.3);color:#34d399">💻 编码</button>
     <button class="cat-btn uc-btn" onclick="selectUseCase('设计')" style="border-color:rgba(244,114,182,.3);color:#f472b6">🎨 设计</button>
@@ -295,72 +435,71 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
     <button class="cat-btn uc-btn" onclick="selectUseCase('研究')" style="border-color:rgba(240,168,48,.3);color:#f5c060">🔬 研究</button>
     <button class="cat-btn uc-btn" onclick="selectUseCase('学习')" style="border-color:rgba(52,211,153,.3);color:#34d399">📚 学习</button>
   </div>
-  <p style="font-size:12px;color:var(--text3);margin-top:8px">点击场景，快速找到该用途的AI工具</p>
+  <p class="scene-hint">点击场景，快速找到该用途的AI工具</p>
 </div>
 
-<div class="categories-wrap">
-  <div class="categories" id="categories"></div>
-</div>
-
-<!-- 🍯 蜂王精选 -->
-<section class="featured-section" style="max-width:1200px;margin:0 auto;padding:0 24px 32px;position:relative;z-index:1">
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-    <h2 style="font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px"><span style="background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px">👑</span> 蜂王精选</h2>
-    <span style="font-size:12px;color:var(--text3)">人工精选，每周更新</span>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px" id="featuredGrid"></div>
-
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">o3推理模型使用技巧</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">在问题前加「请仔细推理」，o3会展示完整推理链，正确率提升30%。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:#f5c060;padding:2px 8px;border-radius:6px;font-size:11px">🔧 组合</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Claude 4 Sonnet + Cursor = 最优编程</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Sonnet的代码能力+Cursor的编辑器集成，是目前最流畅的AI编程体验。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI教育的个性化学习效率提升40%</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Khanmigo等AI导师使学生的个性化学习效率提升40%，学习效果显著改善。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI工具学习的月度规划</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">第1周对话→第2周绘画→第3周编程→第4周视频。一个月掌握AI四大技能。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Perplexity深度研究模式</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">开启Pro模式后，AI会自动搜索20+来源并生成带引用的研究报告。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:#f5c060;padding:2px 8px;border-radius:6px;font-size:11px">🔧 组合</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Framer AI + Canva = 品牌站+素材</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Framer AI生成网站，Canva AI生成配套素材，品牌一站搞定。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI网站建设工具使用率增长300%</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Framer和Webflow的AI功能使网站建设效率提升5倍，使用率同比增长300%。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">选择AI工具的三个原则</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">1.先免费后付费 2.先单一后组合 3.先简单后复杂。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Suno AI音乐创作技巧</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">使用「风格+情绪+乐器」的提示词格式，生成的音乐质量更高。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:#f5c060;padding:2px 8px;border-radius:6px;font-size:11px">🔧 组合</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Mistral Large 2 + DeepSeek = 多语言</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Mistral处理多语言任务，DeepSeek处理中文推理，双模型互补。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI视频生成工具半年增长500%</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">2026上半年AI视频生成赛道融资超200亿美元，用户增长500%。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI绘画提示词入门</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">遵循「主体+场景+风格+参数」四要素格式，出图质量提升明显。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">GitHub Copilot快捷键</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Tab接受建议、Alt+]下一个、Ctrl+Enter打开Copilot Chat面板。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:#f5c060;padding:2px 8px;border-radius:6px;font-size:11px">🔧 组合</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Notion AI + Google Calendar = 智能日程</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Notion AI管理任务，Cal AI管理日程，AI自动同步和提醒。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">全球AI应用下载量突破100亿</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">2026年全球AI应用总下载量突破100亿次，ChatGPT、豆包、Kimi位列前三。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI安全使用注意事项</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">不输入密码/银行卡/身份证等敏感信息，商业场景优先本地部署。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Descript AI视频编辑提速技巧</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">先导入音频自动生成字幕，再基于字幕剪切视频，效率提升10倍。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:#f5c060;padding:2px 8px;border-radius:6px;font-size:11px">🔧 组合</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Stable Audio + iMovie = 视频配乐</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">Stable Audio生成原创配乐，导入iMovie/剪映，不再担心版权问题。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI代码审查工具减少bug率35%</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">使用AI代码审查的企业，生产环境bug率平均下降35%。</p></div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手</span></div><h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI工具免费替代方案总览</h4><p style="font-size:13px;color:var(--text2);line-height:1.6">付费工具都有免费替代：ChatGPT→DeepSeek、Midjourney→即梦、Copilot→Codeium。</p></div>
-  </div>
-</section>
-on>
-
-<!-- 📊 蜂巢数据 -->
-<section style="max-width:1000px;margin:0 auto;padding:0 24px 24px;position:relative;z-index:1">
-  <div style="background:linear-gradient(135deg,rgba(240,168,48,.06),rgba(10,8,6,.6));border:1px solid var(--border);border-radius:var(--radius);padding:24px 32px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center">
-    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--honey)">69+</div><div style="font-size:12px;color:var(--text3);margin-top:4px">收录工具</div></div>
-    <div style="width:1px;height:36px;background:var(--border)"></div>
-    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--honey2)">10</div><div style="font-size:12px;color:var(--text3);margin-top:4px">覆盖分类</div></div>
-    <div style="width:1px;height:36px;background:var(--border)"></div>
-    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:#34d399">43</div><div style="font-size:12px;color:var(--text3);margin-top:4px">深度评测</div></div>
-    <div style="width:1px;height:36px;background:var(--border)"></div>
-    <div style="text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:#f472b6">每日更新</div><div style="font-size:12px;color:var(--text3);margin-top:4px">更新频率</div></div>
-  </div>
-</section>
-
-<div class="toolbar">
-  <div class="toolbar-info" id="resultInfo">共 69 个工具</div>
-  <div class="toolbar-right">
+<!-- ====== 工具网格区（分类筛选栏 + 排序 + 视图切换 + 网格） ====== -->
+<div class="tools-toolbar">
+  <div class="cat-filter" id="catFilter"></div>
+  <div class="sort-group">
     <span class="sort-btn active" data-sort="default" onclick="setSort('default')">综合</span>
     <span class="sort-btn" data-sort="hot" onclick="setSort('hot')">最热</span>
     <span class="sort-btn" data-sort="new" onclick="setSort('new')">最新</span>
   </div>
+  <div class="view-toggle">
+    <button class="view-btn active" data-view="grid" onclick="setView('grid')" title="蜂巢视图">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    </button>
+    <button class="view-btn" data-view="list" onclick="setView('list')" title="列表视图">
+      <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    </button>
+  </div>
+  <span class="toolbar-info" id="resultInfo">共 69 个工具</span>
 </div>
 
-<div class="hive-wrap">
+<div class="hive-wrap" id="hiveWrap">
   <div class="hive-grid" id="content"></div>
 </div>
 
+<!-- ====== 今日蜂报（4条：技巧/组合/数据/新手各1条） ====== -->
+<section class="news-section">
+  <h2><span class="icon-box">📡</span> 今日蜂报</h2>
+  <div class="news-grid">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">用AI写周报：3个提示词模板</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">"请根据以下工作要点，帮我整理一份专业的周报，包含本周成果、数据亮点和下周计划"——这是最实用的AI提效场景之一。</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:var(--honey2);padding:2px 8px;border-radius:6px;font-size:11px">🔧 组合</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">ChatGPT + Canva = 营销素材神器</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">先用ChatGPT生成文案和创意方向，再导入Canva AI一键生成海报和社媒素材。从构思到出图不到5分钟。</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI工具使用率年增长240%</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">2026上半年调查显示，中国职场人AI工具使用率达68%，较去年增长240%。AI已从"尝鲜"变成"刚需"。</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手</span></div>
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI入门路线图：从0到会用</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">第一步：ChatGPT/Kimi（对话）→ 第二步：Midjourney/即梦（绘画）→ 第三步：Cursor/Copilot（编程）。每周掌握一个，一个月成AI达人。</p>
+    </div>
+  </div>
+</section>
 
+<!-- ====== Footer ====== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>🐝 蜂巢 AI</h3><p>全网首个蜂巢式AI工具导航。像蜜蜂采集花蜜，我们采集全球优质AI工具，汇聚成不断生长的数字蜂巢。每日更新，永久免费。</p></div>
+    <div class="footer-col"><h4>热门分类</h4><a href="#" onclick="selectCat('chat')">AI 对话</a><a href="#" onclick="selectCat('image')">AI 绘画</a><a href="#" onclick="selectCat('video')">AI 视频</a><a href="#" onclick="selectCat('code')">AI 编程</a></div>
+    <div class="footer-col"><h4>关于</h4><a href="/about.html">关于蜂巢</a><a href="/contact.html">联系我们</a><a href="/contact.html">广告合作</a><a href="/contact.html">友情链接</a></div>
+    <div class="footer-col"><h4>帮助</h4><a href="/blog.html">AI资讯</a><a href="/daily.html">AI日报</a><a href="/faq.html">FAQ</a><a href="/privacy.html">隐私政策</a></div>
+  </div>
+  <div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">AI资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/contact.html">联系与合作</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div>
+</footer>
+
+<!-- ====== 模态弹窗 ====== -->
 <div class="modal-overlay" id="leaderboardModal" onclick="closeModal('leaderboardModal')">
   <div class="modal-content" onclick="event.stopPropagation()" style="max-width:600px">
     <span class="modal-close" onclick="closeModal('leaderboardModal')">✕</span>
@@ -368,7 +507,6 @@ on>
     <div id="leaderboardContent"></div>
   </div>
 </div>
-
 
 <div class="modal-overlay" id="pkModal" onclick="closeModal('pkModal')">
   <div class="modal-content" onclick="event.stopPropagation()" style="max-width:700px">
@@ -404,13 +542,6 @@ on>
   </div>
 </div>
 
-<div class="modal-overlay" id="detailModal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <span class="modal-close" onclick="closeModal()">✕</span>
-    <div id="detailContent"></div>
-  </div>
-</div>
-
 <div class="modal-overlay" id="favModal" onclick="closeModal('favModal')">
   <div class="modal-content" onclick="event.stopPropagation()">
     <span class="modal-close" onclick="closeModal('favModal')">✕</span>
@@ -431,4103 +562,317 @@ on>
   </div>
 </div>
 
-<!-- 🍯 蜂巢快讯 -->
-<section style="max-width:1200px;margin:0 auto;padding:0 24px 40px;position:relative;z-index:1">
-  <h2 style="font-size:20px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px"><span style="background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px">📡</span> 蜂巢快讯</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(52,211,153,.15);color:#34d399;padding:2px 8px;border-radius:6px;font-size:11px">💡 技巧</span></div>
-      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">用AI写周报：3个提示词模板</h4>
-      <p style="font-size:13px;color:var(--text2);line-height:1.6">"请根据以下工作要点，帮我整理一份专业的周报，包含本周成果、数据亮点和下周计划"——这是最实用的AI提效场景之一。</p>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(240,168,48,.15);color:var(--honey2);padding:2px 8px;border-radius:6px;font-size:11px">🔧 工具组合</span></div>
-      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">ChatGPT + Canva = 营销素材神器</h4>
-      <p style="font-size:13px;color:var(--text2);line-height:1.6">先用ChatGPT生成文案和创意方向，再导入Canva AI一键生成海报和社媒素材。从构思到出图不到5分钟。</p>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(167,139,250,.15);color:#a78bfa;padding:2px 8px;border-radius:6px;font-size:11px">📊 数据</span></div>
-      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI工具使用率年增长240%</h4>
-      <p style="font-size:13px;color:var(--text2);line-height:1.6">2026上半年调查显示，中国职场人AI工具使用率达68%，较去年增长240%。AI已从"尝鲜"变成"刚需"。</p>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="background:rgba(244,114,182,.15);color:#f472b6;padding:2px 8px;border-radius:6px;font-size:11px">🎯 新手必看</span></div>
-      <h4 style="font-size:15px;font-weight:700;margin-bottom:6px">AI入门路线图：从0到会用</h4>
-      <p style="font-size:13px;color:var(--text2);line-height:1.6">第一步：ChatGPT/Kimi（对话）→ 第二步：Midjourney/即梦（绘画）→ 第三步：Cursor/Copilot（编程）。每周掌握一个，一个月成AI达人。</p>
-    </div>
+<!-- ====== 侧边抽屉（替换原detailModal） ====== -->
+<div class="drawer-overlay" id="detailDrawer" onclick="closeDrawer()">
+  <div class="drawer-panel" onclick="event.stopPropagation()">
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    <div id="drawerContent"></div>
   </div>
-</section>
+</div>
 
-<footer class="footer">
-  <div class="footer-grid">
-    <div class="footer-brand"><h3>🐝 蜂巢 AI</h3><p>全网首个蜂巢式AI工具导航。像蜜蜂采集花蜜，我们采集全球优质AI工具，汇聚成不断生长的数字蜂巢。每日更新，永久免费。</p></div>
-    <div class="footer-col"><h4>热门分类</h4><a href="#" onclick="selectCat('chat')">AI 对话</a><a href="#" onclick="selectCat('image')">AI 绘画</a><a href="#" onclick="selectCat('video')">AI 视频</a><a href="#" onclick="selectCat('code')">AI 编程</a></div>
-    <div class="footer-col"><h4>关于</h4><a href="/about.html">关于蜂巢</a><a href="/contact.html">联系我们</a><a href="/contact.html">广告合作</a><a href="/contact.html">友情链接</a></div>
-    <div class="footer-col"><h4>帮助</h4><a href="/blog.html">AI资讯</a><a href="/daily.html">AI日报</a><a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a><a href="/about.html">关于蜂巢</a></div>
-  </div>
-  <div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">AI资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/contact.html">联系与合作</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div>
-</footer>
+<!-- ====== 浮动操作栏 ====== -->
+<div class="float-bar" id="floatBar">
+  <button class="float-btn" onclick="randomTool()" title="随机探索">
+    <span class="float-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="15.5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="8.5" cy="15.5" r="1.5"/><circle cx="15.5" cy="8.5" r="1.5"/></svg></span>
+    <span class="float-label">探索</span>
+  </button>
+  <button class="float-btn" onclick="showPK()" title="工具PK">
+    <span class="float-icon"><svg viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"/><path d="M13 19l6-6"/><path d="M16 22l4.5-4.5"/><circle cx="6.5" cy="17.5" r="2"/></svg></span>
+    <span class="float-label">PK</span>
+  </button>
+  <button class="float-btn" onclick="showAchievements()" title="成就">
+    <span class="float-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+    <span class="float-label">成就</span>
+  </button>
+  <button class="float-btn" onclick="showTrivia()" title="每日挑战">
+    <span class="float-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
+    <span class="float-label">挑战</span>
+  </button>
+</div>
 
+<!-- ====== 工具数据 ====== -->
 <script type="application/json" id="tools-data">
 [
-  {
-    "name": "ChatGPT",
-    "url": "chat.openai.com",
-    "desc": "OpenAI 旗舰 AI 助手，支持 GPT-4o 多模态对话、文件分析、代码生成",
-    "cat": "chat",
-    "icon": "🧠",
-    "color": "#10a37f",
-    "tags": [
-      "hot",
-      "free",
-      "verified"
-    ],
-    "views": "21000万",
-    "features": [
-      "多模态对话",
-      "文件分析",
-      "代码生成",
-      "插件生态"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Claude",
-    "url": "claude.ai",
-    "desc": "Anthropic 出品，安全性和超长文本著称，200K 上下文窗口",
-    "cat": "chat",
-    "icon": "🟣",
-    "color": "#d4a574",
-    "tags": [
-      "hot",
-      "verified"
-    ],
-    "views": "8600万",
-    "features": [
-      "超长上下文",
-      "学术论文",
-      "安全对齐",
-      "代码编写"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Gemini",
-    "url": "gemini.google.com",
-    "desc": "Google AI 助手，原生接入搜索、Gmail、Docs 全家桶",
-    "cat": "chat",
-    "icon": "💎",
-    "color": "#4285f4",
-    "tags": [
-      "hot",
-      "new",
-      "verified"
-    ],
-    "views": "7200万",
-    "features": [
-      "Google 生态",
-      "实时搜索",
-      "多模态",
-      "免费"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "DeepSeek",
-    "url": "deepseek.com",
-    "desc": "深度求索开源模型，推理编程能力媲美 GPT-4",
-    "cat": "chat",
-    "icon": "🐬",
-    "color": "#5b6cf9",
-    "tags": [
-      "hot",
-      "new",
-      "free",
-      "verified"
-    ],
-    "views": "6700万",
-    "features": [
-      "深度推理",
-      "开源",
-      "编程强",
-      "R1"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Kimi",
-    "url": "kimi.moonshot.cn",
-    "desc": "月之暗面，200万字超长上下文，中文长文档第一",
-    "cat": "chat",
-    "icon": "🌙",
-    "color": "#1e88e5",
-    "tags": [
-      "hot",
-      "cn",
-      "verified"
-    ],
-    "views": "5100万",
-    "features": [
-      "超长上下文",
-      "中文优化",
-      "文档阅读",
-      "联网搜索"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "智谱清言",
-    "url": "chatglm.cn",
-    "desc": "智谱AI基于GLM模型，深度理解中文，数据分析强",
-    "cat": "chat",
-    "icon": "💬",
-    "color": "#1a73e8",
-    "tags": [
-      "cn"
-    ],
-    "views": "4500万",
-    "features": [
-      "中文原生",
-      "数据分析",
-      "图像生成",
-      "智能体"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "豆包",
-    "url": "doubao.com",
-    "desc": "字节跳动多模态AI助手，集成抖音生态",
-    "cat": "chat",
-    "icon": "🫘",
-    "color": "#ff6a00",
-    "tags": [
-      "new",
-      "cn"
-    ],
-    "views": "3800万",
-    "features": [
-      "语音对话",
-      "多模态",
-      "角色扮演"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "文心一言",
-    "url": "yiyan.baidu.com",
-    "desc": "百度AI助手，深度整合百度搜索和文库",
-    "cat": "chat",
-    "icon": "📝",
-    "color": "#2932e1",
-    "tags": [
-      "cn"
-    ],
-    "views": "3200万",
-    "features": [
-      "百度搜索",
-      "文库整合",
-      "插件市场"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "通义千问",
-    "url": "tongyi.aliyun.com",
-    "desc": "阿里云AI助手，擅长文档理解和企业应用",
-    "cat": "chat",
-    "icon": "☁️",
-    "color": "#ff6a00",
-    "tags": [
-      "cn"
-    ],
-    "views": "2800万",
-    "features": [
-      "文档理解",
-      "数据处理",
-      "企业应用"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Llama",
-    "url": "llama.meta.com",
-    "desc": "Meta开源大模型，支持本地部署",
-    "cat": "chat",
-    "icon": "🦙",
-    "color": "#0668e1",
-    "tags": [
-      "free"
-    ],
-    "views": "1900万",
-    "features": [
-      "开源免费",
-      "本地部署",
-      "社区生态"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Mistral",
-    "url": "mistral.ai",
-    "desc": "欧洲开源大模型领导者，高效强大",
-    "cat": "chat",
-    "icon": "🌀",
-    "color": "#ff7000",
-    "tags": [
-      "new",
-      "free"
-    ],
-    "views": "980万",
-    "features": [
-      "欧洲开源",
-      "高效推理",
-      "多语言"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Jasper",
-    "url": "jasper.ai",
-    "desc": "AI营销写作，广告文案博客社媒内容",
-    "cat": "writing",
-    "icon": "✨",
-    "color": "#f43f5e",
-    "tags": [
-      "free"
-    ],
-    "views": "1200万",
-    "features": [
-      "营销文案",
-      "博客生成",
-      "SEO优化"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "写作",
-      "营销",
-      "文案"
-    ]
-  },
-  {
-    "name": "Copy.ai",
-    "url": "copy.ai",
-    "desc": "AI文案生成，快速创建高质量营销内容",
-    "cat": "writing",
-    "icon": "📋",
-    "color": "#7c3aed",
-    "tags": [
-      "free"
-    ],
-    "views": "980万",
-    "features": [
-      "文案生成",
-      "营销工具",
-      "工作流"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "写作",
-      "营销",
-      "文案"
-    ]
-  },
-  {
-    "name": "Notion AI",
-    "url": "notion.so",
-    "desc": "Notion内置AI写作助手，写作总结翻译",
-    "cat": "writing",
-    "icon": "📓",
-    "color": "#fff",
-    "tags": [
-      "hot",
-      "verified"
-    ],
-    "views": "2400万",
-    "features": [
-      "智能写作",
-      "文档总结",
-      "翻译",
-      "知识库"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "写作",
-      "营销",
-      "文案"
-    ]
-  },
-  {
-    "name": "Writesonic",
-    "url": "writesonic.com",
-    "desc": "AI写作和SEO优化工具",
-    "cat": "writing",
-    "icon": "🖊️",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "650万",
-    "features": [
-      "SEO优化",
-      "文章生成",
-      "多语言"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "写作",
-      "营销",
-      "文案"
-    ]
-  },
-  {
-    "name": "秘塔写作猫",
-    "url": "xiezuocat.com",
-    "desc": "中文AI写作助手，润色续写改写纠错",
-    "cat": "writing",
-    "icon": "🐱",
-    "color": "#ff8c42",
-    "tags": [
-      "cn"
-    ],
-    "views": "860万",
-    "features": [
-      "中文润色",
-      "纠错改写",
-      "学术写作"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "写作",
-      "营销",
-      "文案"
-    ]
-  },
-  {
-    "name": "Midjourney",
-    "url": "midjourney.com",
-    "desc": "顶级AI绘画，艺术风格图像业界标杆",
-    "cat": "image",
-    "icon": "🎨",
-    "color": "#1a1a1a",
-    "tags": [
-      "hot",
-      "verified"
-    ],
-    "views": "3800万",
-    "features": [
-      "艺术风格",
-      "高质量",
-      "V6",
-      "社区活跃"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "DALL-E 3",
-    "url": "openai.com/dall-e-3",
-    "desc": "OpenAI图像生成，文本精准与ChatGPT集成",
-    "cat": "image",
-    "icon": "🖼️",
-    "color": "#10a37f",
-    "tags": [
-      "hot"
-    ],
-    "views": "2900万",
-    "features": [
-      "文本精准",
-      "ChatGPT集成",
-      "API"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "Stable Diffusion",
-    "url": "stability.ai",
-    "desc": "开源图像生成，本地部署高度自定义",
-    "cat": "image",
-    "icon": "🌀",
-    "color": "#a855f7",
-    "tags": [
-      "free",
-      "verified"
-    ],
-    "views": "2100万",
-    "features": [
-      "开源免费",
-      "本地部署",
-      "ControlNet",
-      "LoRA"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "Ideogram",
-    "url": "ideogram.ai",
-    "desc": "擅长图片中生成文字的AI绘图工具",
-    "cat": "image",
-    "icon": "💡",
-    "color": "#f59e0b",
-    "tags": [
-      "new"
-    ],
-    "views": "980万",
-    "features": [
-      "文字生成",
-      "高质量",
-      "海报设计"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "Flux",
-    "url": "flux1.ai",
-    "desc": "新一代开源图像生成，质量媲美闭源",
-    "cat": "image",
-    "icon": "⚡",
-    "color": "#3b82f6",
-    "tags": [
-      "new",
-      "free"
-    ],
-    "views": "1400万",
-    "features": [
-      "开源免费",
-      "高质量",
-      "快速"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "Leonardo.ai",
-    "url": "leonardo.ai",
-    "desc": "AI图像和游戏素材生成平台",
-    "cat": "image",
-    "icon": "🎭",
-    "color": "#7c3aed",
-    "tags": [
-      "new"
-    ],
-    "views": "1100万",
-    "features": [
-      "角色设计",
-      "游戏素材",
-      "一致性"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "通义万相",
-    "url": "wanx.aliyun.com",
-    "desc": "阿里AI绘画，文生图图生图风格迁移",
-    "cat": "image",
-    "icon": "🖼️",
-    "color": "#ff6a00",
-    "tags": [
-      "cn"
-    ],
-    "views": "1600万",
-    "features": [
-      "文生图",
-      "图生图",
-      "中文友好"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "即梦",
-    "url": "jimeng.jianying.com",
-    "desc": "字节AI绘画，免费中文提示词效果好",
-    "cat": "image",
-    "icon": "💫",
-    "color": "#ff4500",
-    "tags": [
-      "cn",
-      "free"
-    ],
-    "views": "1300万",
-    "features": [
-      "免费使用",
-      "中文提示词",
-      "图生视频"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计",
-      "创意",
-      "营销"
-    ]
-  },
-  {
-    "name": "Runway",
-    "url": "runway.ml",
-    "desc": "AI视频生成编辑，Gen-3引领行业",
-    "cat": "video",
-    "icon": "🎬",
-    "color": "#fff",
-    "tags": [
-      "hot",
-      "verified"
-    ],
-    "views": "1800万",
-    "features": [
-      "文生视频",
-      "Gen-3",
-      "绿幕移除"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "Pika",
-    "url": "pika.art",
-    "desc": "AI视频生成，简单易用多风格",
-    "cat": "video",
-    "icon": "📹",
-    "color": "#f43f5e",
-    "tags": [
-      "hot"
-    ],
-    "views": "1600万",
-    "features": [
-      "简单易用",
-      "多风格",
-      "局部编辑"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "Sora",
-    "url": "openai.com/sora",
-    "desc": "OpenAI文生视频，1分钟连贯视频",
-    "cat": "video",
-    "icon": "🌐",
-    "color": "#10a37f",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "2200万",
-    "features": [
-      "长视频",
-      "高质量",
-      "物理理解"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "可灵AI",
-    "url": "kling.kuaishou.com",
-    "desc": "快手AI视频，中文场景1080P",
-    "cat": "video",
-    "icon": "🎥",
-    "color": "#ff4500",
-    "tags": [
-      "new",
-      "cn"
-    ],
-    "views": "1300万",
-    "features": [
-      "中文场景",
-      "1080P",
-      "运动控制"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "HeyGen",
-    "url": "heygen.com",
-    "desc": "AI数字人视频，多语言口播",
-    "cat": "video",
-    "icon": "🎙️",
-    "color": "#2563eb",
-    "tags": [
-      "free"
-    ],
-    "views": "920万",
-    "features": [
-      "数字人",
-      "多语言",
-      "口播视频"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "CapCut",
-    "url": "capcut.com",
-    "desc": "剪映海外版，AI智能剪辑",
-    "cat": "video",
-    "icon": "✂️",
-    "color": "#000",
-    "tags": [
-      "free"
-    ],
-    "views": "2800万",
-    "features": [
-      "免费剪辑",
-      "AI字幕",
-      "特效",
-      "模板"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "ElevenLabs",
-    "url": "elevenlabs.io",
-    "desc": "领先AI语音合成，逼真语音克隆",
-    "cat": "audio",
-    "icon": "🔊",
-    "color": "#1e293b",
-    "tags": [
-      "hot",
-      "verified"
-    ],
-    "views": "1100万",
-    "features": [
-      "语音克隆",
-      "多语言",
-      "情感控制"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "音频",
-      "音乐",
-      "配音"
-    ]
-  },
-  {
-    "name": "Suno",
-    "url": "suno.ai",
-    "desc": "AI音乐生成，文字变完整歌曲",
-    "cat": "audio",
-    "icon": "🎵",
-    "color": "#000",
-    "tags": [
-      "hot",
-      "new",
-      "verified"
-    ],
-    "views": "1900万",
-    "features": [
-      "完整歌曲",
-      "多风格",
-      "歌词生成"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "音频",
-      "音乐",
-      "配音"
-    ]
-  },
-  {
-    "name": "Udio",
-    "url": "udio.com",
-    "desc": "AI音乐创作，多风格高质量",
-    "cat": "audio",
-    "icon": "🎶",
-    "color": "#7c3aed",
-    "tags": [
-      "new"
-    ],
-    "views": "860万",
-    "features": [
-      "高质量",
-      "多风格",
-      "remix"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "音频",
-      "音乐",
-      "配音"
-    ]
-  },
-  {
-    "name": "Whisper",
-    "url": "openai.com/whisper",
-    "desc": "开源语音识别，多语言高精度",
-    "cat": "audio",
-    "icon": "🗣️",
-    "color": "#10a37f",
-    "tags": [
-      "free"
-    ],
-    "views": "1500万",
-    "features": [
-      "开源免费",
-      "多语言",
-      "实时转写"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "音频",
-      "音乐",
-      "配音"
-    ]
-  },
-  {
-    "name": "GitHub Copilot",
-    "url": "github.com/features/copilot",
-    "desc": "AI编程助手，实时代码补全",
-    "cat": "code",
-    "icon": "🐙",
-    "color": "#6e40c9",
-    "tags": [
-      "hot",
-      "verified"
-    ],
-    "views": "2600万",
-    "features": [
-      "代码补全",
-      "多语言",
-      "IDE集成"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "Cursor",
-    "url": "cursor.sh",
-    "desc": "AI驱动代码编辑器，对话式编程",
-    "cat": "code",
-    "icon": "🖱️",
-    "color": "#000",
-    "tags": [
-      "hot",
-      "new",
-      "verified"
-    ],
-    "views": "1800万",
-    "features": [
-      "AI编辑器",
-      "对话编程",
-      "多模型"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "Replit",
-    "url": "replit.com",
-    "desc": "在线编程平台，内置AI助手",
-    "cat": "code",
-    "icon": "⚡",
-    "color": "#f26522",
-    "tags": [
-      "free"
-    ],
-    "views": "1400万",
-    "features": [
-      "在线IDE",
-      "AI编程",
-      "一键部署"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "Codeium",
-    "url": "codeium.com",
-    "desc": "免费AI代码补全，多编辑器支持",
-    "cat": "code",
-    "icon": "🔧",
-    "color": "#09b6a9",
-    "tags": [
-      "free"
-    ],
-    "views": "780万",
-    "features": [
-      "免费",
-      "多编辑器",
-      "代码搜索"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "Windsurf",
-    "url": "codeium.com/windsurf",
-    "desc": "AI原生IDE，Cascade体验出色",
-    "cat": "code",
-    "icon": "🏄",
-    "color": "#09b6a9",
-    "tags": [
-      "new"
-    ],
-    "views": "620万",
-    "features": [
-      "AI原生",
-      "Cascade",
-      "免费额度"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "Figma AI",
-    "url": "figma.com",
-    "desc": "设计工具集成AI，自动生成方案",
-    "cat": "design",
-    "icon": "🎯",
-    "color": "#f24e1e",
-    "tags": [
-      "hot"
-    ],
-    "views": "1600万",
-    "features": [
-      "AI设计",
-      "自动布局",
-      "组件生成"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "UI",
-      "品牌"
-    ]
-  },
-  {
-    "name": "Canva AI",
-    "url": "canva.com",
-    "desc": "AI设计工具，一键生成海报PPT",
-    "cat": "design",
-    "icon": "📐",
-    "color": "#00c4cc",
-    "tags": [
-      "free",
-      "verified"
-    ],
-    "views": "2100万",
-    "features": [
-      "海报生成",
-      "PPT设计",
-      "Magic Write"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "UI",
-      "品牌"
-    ]
-  },
-  {
-    "name": "Looka",
-    "url": "looka.com",
-    "desc": "AI Logo设计，输入品牌名生成方案",
-    "cat": "design",
-    "icon": "🏷️",
-    "color": "#5b5fc7",
-    "tags": [
-      "free"
-    ],
-    "views": "680万",
-    "features": [
-      "Logo设计",
-      "品牌套件",
-      "多方案"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "设计",
-      "UI",
-      "品牌"
-    ]
-  },
-  {
-    "name": "Remove.bg",
-    "url": "remove.bg",
-    "desc": "AI一键抠图，5秒去除背景",
-    "cat": "design",
-    "icon": "✂️",
-    "color": "#2196f3",
-    "tags": [
-      "free"
-    ],
-    "views": "1100万",
-    "features": [
-      "一键抠图",
-      "批量处理",
-      "API"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "UI",
-      "品牌"
-    ]
-  },
-  {
-    "name": "Gamma",
-    "url": "gamma.app",
-    "desc": "AI演示文稿生成，一键精美PPT",
-    "cat": "productivity",
-    "icon": "📊",
-    "color": "#8b5cf6",
-    "tags": [
-      "hot"
-    ],
-    "views": "1400万",
-    "features": [
-      "PPT生成",
-      "自动排版",
-      "模板丰富"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "效率",
-      "办公",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Otter.ai",
-    "url": "otter.ai",
-    "desc": "AI会议记录转写，实时会议纪要",
-    "cat": "productivity",
-    "icon": "🦦",
-    "color": "#337ab7",
-    "tags": [
-      "free"
-    ],
-    "views": "780万",
-    "features": [
-      "会议记录",
-      "实时转写",
-      "协作"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "效率",
-      "办公",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Tome",
-    "url": "tome.app",
-    "desc": "AI演示和故事叙述工具",
-    "cat": "productivity",
-    "icon": "📖",
-    "color": "#6c5ce7",
-    "tags": [
-      "free"
-    ],
-    "views": "560万",
-    "features": [
-      "演示生成",
-      "故事叙述",
-      "AI排版"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "效率",
-      "办公",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Beautiful.ai",
-    "url": "beautiful.ai",
-    "desc": "AI驱动智能PPT设计",
-    "cat": "productivity",
-    "icon": "✨",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "480万",
-    "features": [
-      "智能PPT",
-      "自动设计",
-      "模板"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "效率",
-      "办公",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Perplexity",
-    "url": "perplexity.ai",
-    "desc": "AI搜索引擎，带引用的精准答案",
-    "cat": "research",
-    "icon": "🔮",
-    "color": "#1a7f64",
-    "tags": [
-      "hot",
-      "verified"
-    ],
-    "views": "2200万",
-    "features": [
-      "带引用",
-      "精准答案",
-      "实时搜索"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "搜索",
-      "研究",
-      "分析"
-    ]
-  },
-  {
-    "name": "秘塔搜索",
-    "url": "metaso.cn",
-    "desc": "无广告AI搜索引擎，结构化答案",
-    "cat": "research",
-    "icon": "🔑",
-    "color": "#4f46e5",
-    "tags": [
-      "cn"
-    ],
-    "views": "1100万",
-    "features": [
-      "无广告",
-      "结构化",
-      "学术搜索"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "搜索",
-      "研究",
-      "分析"
-    ]
-  },
-  {
-    "name": "Consensus",
-    "url": "consensus.app",
-    "desc": "AI学术论文搜索引擎",
-    "cat": "research",
-    "icon": "📄",
-    "color": "#2563eb",
-    "tags": [
-      "free"
-    ],
-    "views": "320万",
-    "features": [
-      "学术论文",
-      "研究共识",
-      "科学检索"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "搜索",
-      "研究",
-      "分析"
-    ]
-  },
-  {
-    "name": "Devv.ai",
-    "url": "devv.ai",
-    "desc": "开发者AI搜索引擎",
-    "cat": "research",
-    "icon": "🛠️",
-    "color": "#0ea5e9",
-    "tags": [
-      "new"
-    ],
-    "views": "450万",
-    "features": [
-      "技术搜索",
-      "代码优先",
-      "开发者"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "搜索",
-      "研究",
-      "分析"
-    ]
-  },
-  {
-    "name": "Khan Academy",
-    "url": "khanacademy.org",
-    "desc": "Khan Academy AI辅导个性化学习",
-    "cat": "education",
-    "icon": "🎓",
-    "color": "#14bf96",
-    "tags": [
-      "free"
-    ],
-    "views": "960万",
-    "features": [
-      "AI辅导",
-      "个性化",
-      "免费教育"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "学习",
-      "教育",
-      "课程"
-    ]
-  },
-  {
-    "name": "Duolingo",
-    "url": "duolingo.com",
-    "desc": "AI驱动语言学习，个性化路径",
-    "cat": "education",
-    "icon": "🦉",
-    "color": "#58cc02",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "语言学习",
-      "个性化",
-      "游戏化"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "学习",
-      "教育",
-      "课程"
-    ]
-  },
-  {
-    "name": "Coursera",
-    "url": "coursera.org",
-    "desc": "AI课程推荐和智能学习助手",
-    "cat": "education",
-    "icon": "📚",
-    "color": "#0056d2",
-    "tags": [
-      "free"
-    ],
-    "views": "1500万",
-    "features": [
-      "在线课程",
-      "AI推荐",
-      "证书"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "学习",
-      "教育",
-      "课程"
-    ]
-  },
-  {
-    "name": "Quizlet",
-    "url": "quizlet.com",
-    "desc": "AI闪卡和测试生成，智能学习",
-    "cat": "education",
-    "icon": "🃏",
-    "color": "#4255ff",
-    "tags": [
-      "free"
-    ],
-    "views": "880万",
-    "features": [
-      "闪卡生成",
-      "AI测试",
-      "智能复习"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "学习",
-      "教育",
-      "课程"
-    ]
-  },
-  {
-    "name": "Grok",
-    "url": "grok.com",
-    "desc": "xAI 推出的 AI 助手，实时联网搜索，支持多模态和深度推理",
-    "cat": "chat",
-    "icon": "🚀",
-    "color": "#1da1f2",
-    "tags": [
-      "free"
-    ],
-    "views": "8500万",
-    "features": [
-      "实时搜索",
-      "多模态",
-      "幽默风格"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Synthesia",
-    "url": "synthesia.io",
-    "desc": "AI 数字人视频生成平台，140+ 数字人形象、120+ 语言",
-    "cat": "video",
-    "icon": "🎭",
-    "color": "#2563eb",
-    "tags": [
-      "hot"
-    ],
-    "views": "3200万",
-    "features": [
-      "数字人",
-      "多语言",
-      "模板库"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "Claude Code",
-    "url": "claude.ai",
-    "desc": "Anthropic 推出的 AI 编程工具，终端内直接生成和修改代码",
-    "cat": "code",
-    "icon": "⚡",
-    "color": "#d4a574",
-    "tags": [
-      "hot"
-    ],
-    "views": "5600万",
-    "features": [
-      "终端编程",
-      "多文件编辑",
-      "Git集成"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "Pinokio",
-    "url": "pinokio.computer",
-    "desc": "一键安装运行各种开源 AI 应用的浏览器，无需编程基础",
-    "cat": "productivity",
-    "icon": "📦",
-    "color": "#a855f7",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "一键安装",
-      "开源AI",
-      "图形界面"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "效率",
-      "办公",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Napkin AI",
-    "url": "napkin.ai",
-    "desc": "AI 图表生成工具，从文字自动生成专业图表和可视化内容",
-    "cat": "design",
-    "icon": "📊",
-    "color": "#f59e0b",
-    "tags": [
-      "new"
-    ],
-    "views": "950万",
-    "features": [
-      "图表生成",
-      "文字转图示",
-      "PPT导出"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计",
-      "UI",
-      "品牌"
-    ]
-  },
-  {
-    "name": "Manus",
-    "url": "manus.im",
-    "desc": "国产 AI Agent 平台，可自主完成复杂任务的通用智能体",
-    "cat": "productivity",
-    "icon": "🤖",
-    "color": "#06b6d4",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "4200万",
-    "features": [
-      "自主任务",
-      "多步骤",
-      "浏览器操作"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "效率",
-      "办公",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Tripo AI",
-    "url": "tripo3d.ai",
-    "desc": "AI 3D 模型生成工具，文字/图片秒变3D模型，支持多格式导出",
-    "cat": "design",
-    "icon": "🧊",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "760万",
-    "features": [
-      "文字转3D",
-      "图片转3D",
-      "多格式"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "UI",
-      "品牌"
-    ]
-  },
-  {
-    "name": "Trae",
-    "url": "trae.cn",
-    "desc": "字节跳动 AI 原生 IDE，支持中文编程、项目级代码生成，累计600万+开发者",
-    "cat": "code",
-    "icon": "🛠️",
-    "color": "#6366f1",
-    "tags": [
-      "hot",
-      "free"
-    ],
-    "views": "960万",
-    "features": [
-      "AI原生IDE",
-      "中文编程",
-      "全栈开发",
-      "永久免费"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "腾讯元宝",
-    "url": "yuanbao.tencent.com",
-    "desc": "腾讯 AI 助手，接入 DeepSeek + 混元双模型，支持微信生态深度集成",
-    "cat": "chat",
-    "icon": "🐧",
-    "color": "#00c4ff",
-    "tags": [
-      "free"
-    ],
-    "views": "8200万",
-    "features": [
-      "双模型切换",
-      "微信生态",
-      "长文档处理",
-      "AI录音笔"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "海螺AI",
-    "url": "hailuoai.com",
-    "desc": "MiniMax 旗下 AI 视频生成平台，海螺2.0支持1080P、极端物理模拟",
-    "cat": "video",
-    "icon": "🐚",
-    "color": "#f97316",
-    "tags": [
-      "new",
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "文生视频",
-      "物理模拟",
-      "1080P高清",
-      "海螺语音"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "视频",
-      "营销",
-      "教育"
-    ]
-  },
-  {
-    "name": "天工AI",
-    "url": "tiangong.cn",
-    "desc": "昆仑万维出品，国内首款AI搜索引擎，支持多模态搜索与深度研究",
-    "cat": "research",
-    "icon": "🔮",
-    "color": "#7c3aed",
-    "tags": [
-      "free"
-    ],
-    "views": "4300万",
-    "features": [
-      "AI搜索",
-      "深度研究",
-      "多模态",
-      "免费使用"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "搜索",
-      "研究",
-      "分析"
-    ]
-  },
-  {
-    "name": "Coze 扣子",
-    "url": "coze.cn",
-    "desc": "字节跳动 AI Bot 构建平台，零代码搭建智能体，集成飞书/微信/抖音",
-    "cat": "productivity",
-    "icon": "🧩",
-    "color": "#ec4899",
-    "tags": [
-      "new",
-      "free"
-    ],
-    "views": "2100万",
-    "features": [
-      "零代码",
-      "插件市场",
-      "知识库",
-      "多渠道发布"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "效率",
-      "办公",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Copilot Pro",
-    "url": "copilot.microsoft.com",
-    "desc": "微软AI编程助手专业版，集成IDE深度代码理解、多文件重构、AI代码审查",
-    "cat": "code",
-    "icon": "💎",
-    "color": "#6366f1",
-    "tags": [
-      "hot"
-    ],
-    "views": "7200万",
-    "features": [
-      "代码审查",
-      "多文件重构",
-      "IDE集成"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "商汤日日新",
-    "url": "platform.sensetime.com",
-    "desc": "商汤科技大模型平台，视觉理解能力行业领先，支持图像/视频/3D多模态",
-    "cat": "chat",
-    "icon": "🔮",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "3800万",
-    "features": [
-      "视觉理解",
-      "3D多模态",
-      "行业定制"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "写作",
-      "编码",
-      "研究"
-    ]
-  },
-  {
-    "name": "Dify",
-    "url": "dify.ai",
-    "desc": "开源AI应用开发平台，可视化编排LLM工作流，支持RAG和Agent",
-    "cat": "productivity",
-    "icon": "🔧",
-    "color": "#1677ff",
-    "tags": [
-      "new",
-      "free"
-    ],
-    "views": "2100万",
-    "features": [
-      "可视化工作流",
-      "RAG管道",
-      "Agent编排",
-      "开源自部署"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "自动化",
-      "写作",
-      "编码"
-    ]
-  },
-  {
-    "name": "v0",
-    "url": "v0.dev",
-    "desc": "Vercel出品AI UI生成器，自然语言描述即可生成前端界面代码",
-    "cat": "code",
-    "icon": "🖼️",
-    "color": "#000",
-    "tags": [
-      "new",
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "文本生成UI",
-      "React组件",
-      "即时预览",
-      "代码导出"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "编码"
-    ]
-  },
-  {
-    "name": "Cline",
-    "url": "cline.bot",
-    "desc": "VS Code AI编程插件，支持多种模型，自动读写文件、执行终端命令",
-    "cat": "code",
-    "icon": "🤖",
-    "color": "#2563eb",
-    "tags": [
-      "hot",
-      "free"
-    ],
-    "views": "5600万",
-    "features": [
-      "文件操作",
-      "终端命令",
-      "多模型"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码",
-      "开发",
-      "调试"
-    ]
-  },
-  {
-    "name": "Recraft",
-    "url": "recraft.ai",
-    "desc": "专业级AI设计工具，支持矢量图/插画/图标生成，设计系统自动保持一致风格",
-    "cat": "design",
-    "icon": "🎨",
-    "color": "#ec4899",
-    "tags": [
-      "new"
-    ],
-    "views": "2100万",
-    "features": [
-      "矢量图",
-      "风格一致",
-      "品牌设计"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "品牌",
-      "UI"
-    ]
-  },
-  {
-    "name": "Lovable",
-    "url": "lovable.dev",
-    "desc": "AI全栈应用生成器，用自然语言描述即可生成完整Web应用，支持一键部署",
-    "cat": "code",
-    "icon": "❤️",
-    "color": "#ef4444",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "4800万",
-    "features": [
-      "全栈生成",
-      "一键部署",
-      "实时预览"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码",
-      "开发",
-      "原型"
-    ]
-  },
-  {
-    "name": "Poe",
-    "url": "poe.com",
-    "desc": "Quora出品多模型聚合平台，一个界面使用ChatGPT/Claude/Gemini等",
-    "cat": "chat",
-    "icon": "🗨️",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "6200万",
-    "features": [
-      "多模型",
-      "聚合平台",
-      "对比"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "编码",
-      "写作"
-    ]
-  },
-  {
-    "name": "Character.AI",
-    "url": "character.ai",
-    "desc": "AI角色扮演平台，创建和对话虚拟角色，支持多语言",
-    "cat": "chat",
-    "icon": "🎭",
-    "color": "#ec4899",
-    "tags": [
-      "hot",
-      "free"
-    ],
-    "views": "8900万",
-    "features": [
-      "角色扮演",
-      "虚拟角色",
-      "多语言"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "娱乐",
-      "创作"
-    ]
-  },
-  {
-    "name": "HuggingChat",
-    "url": "huggingface.co/chat",
-    "desc": "HuggingFace官方聊天助手，基于开源模型，支持多种AI模型切换",
-    "cat": "chat",
-    "icon": "🤗",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "4100万",
-    "features": [
-      "开源模型",
-      "模型切换",
-      "免费"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "编码"
-    ]
-  },
-  {
-    "name": "Pi",
-    "url": "pi.ai",
-    "desc": "Inflection AI出品的情感化聊天助手，以温暖自然对话著称",
-    "cat": "chat",
-    "icon": "π",
-    "color": "#10b981",
-    "tags": [
-      "free"
-    ],
-    "views": "3500万",
-    "features": [
-      "情感对话",
-      "自然交互",
-      "个性化"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "情感支持"
-    ]
-  },
-  {
-    "name": "YouChat",
-    "url": "you.com",
-    "desc": "AI搜索引擎内置对话助手，实时联网获取最新信息",
-    "cat": "chat",
-    "icon": "🔎",
-    "color": "#8b5cf6",
-    "tags": [
-      "free"
-    ],
-    "views": "2800万",
-    "features": [
-      "实时搜索",
-      "联网",
-      "AI对话"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "搜索",
-      "研究"
-    ]
-  },
-  {
-    "name": "Phind",
-    "url": "phind.com",
-    "desc": "面向开发者的AI搜索引擎，精准回答编程和技术问题",
-    "cat": "chat",
-    "icon": "🔧",
-    "color": "#2563eb",
-    "tags": [
-      "free"
-    ],
-    "views": "1900万",
-    "features": [
-      "编程搜索",
-      "技术问答",
-      "开发者"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码",
-      "搜索"
-    ]
-  },
-  {
-    "name": "Jasper Chat",
-    "url": "jasper.ai/chat",
-    "desc": "Jasper AI内置对话功能，专注营销和商业场景",
-    "cat": "chat",
-    "icon": "💼",
-    "color": "#f97316",
-    "tags": [
-      "hot"
-    ],
-    "views": "2400万",
-    "features": [
-      "营销对话",
-      "商业",
-      "内容生成"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "对话",
-      "营销"
-    ]
-  },
-  {
-    "name": "Bard",
-    "url": "bard.google.com",
-    "desc": "Google AI实验性聊天工具，集成Google搜索生态",
-    "cat": "chat",
-    "icon": "🎵",
-    "color": "#ef4444",
-    "tags": [
-      "free"
-    ],
-    "views": "5500万",
-    "features": [
-      "Google集成",
-      "搜索",
-      "免费"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "搜索"
-    ]
-  },
-  {
-    "name": "百川智能",
-    "url": "baichuan-ai.com",
-    "desc": "百川大模型对话平台，中文理解能力优秀，支持长文本",
-    "cat": "chat",
-    "icon": "🌊",
-    "color": "#06b6d4",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "中文优化",
-      "长文本",
-      "大模型"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "写作"
-    ]
-  },
-  {
-    "name": "讯飞星火",
-    "url": "xinghuo.xfyun.cn",
-    "desc": "科大讯飞大模型，语音交互能力行业领先",
-    "cat": "chat",
-    "icon": "✨",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "3200万",
-    "features": [
-      "语音交互",
-      "多模态",
-      "中文"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "语音"
-    ]
-  },
-  {
-    "name": "零一万物",
-    "url": "01.ai",
-    "desc": "李开复创办，Yi系列大模型，开源社区活跃",
-    "cat": "chat",
-    "icon": "🔮",
-    "color": "#a855f7",
-    "tags": [
-      "free"
-    ],
-    "views": "1600万",
-    "features": [
-      "开源",
-      "大模型",
-      "国际化"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "编码"
-    ]
-  },
-  {
-    "name": "Minimax",
-    "url": "minimax.io",
-    "desc": "海螺AI母公司出品，多模态大模型，视频生成能力强",
-    "cat": "chat",
-    "icon": "🐚",
-    "color": "#f472b6",
-    "tags": [
-      "free"
-    ],
-    "views": "1400万",
-    "features": [
-      "多模态",
-      "视频生成",
-      "对话"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话",
-      "视频"
-    ]
-  },
-  {
-    "name": "GigaChat",
-    "url": "developers.sber.ru",
-    "desc": "俄罗斯Sberbank开发的大模型，俄语和多语言支持",
-    "cat": "chat",
-    "icon": "🇷🇺",
-    "color": "#22c55e",
-    "tags": [],
-    "views": "900万",
-    "features": [
-      "多语言",
-      "俄语",
-      "大模型"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "对话"
-    ]
-  },
-  {
-    "name": "Amazon Q",
-    "url": "aws.amazon.com/q",
-    "desc": "AWS企业级AI助手，深度集成云服务，适合开发者",
-    "cat": "chat",
-    "icon": "☁️",
-    "color": "#f97316",
-    "tags": [
-      "hot"
-    ],
-    "views": "2100万",
-    "features": [
-      "AWS集成",
-      "企业级",
-      "开发者"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "编码",
-      "开发"
-    ]
-  },
-  {
-    "name": "Tabnine",
-    "url": "tabnine.com",
-    "desc": "AI代码补全工具，支持本地模型部署，隐私友好",
-    "cat": "code",
-    "icon": "⌨️",
-    "color": "#06b6d4",
-    "tags": [
-      "free"
-    ],
-    "views": "1700万",
-    "features": [
-      "代码补全",
-      "本地部署",
-      "隐私"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Artbreeder",
-    "url": "artbreeder.com",
-    "desc": "AI图像混合和变异工具，创造独特风格的艺术作品",
-    "cat": "image",
-    "icon": "🧬",
-    "color": "#ec4899",
-    "tags": [
-      "free"
-    ],
-    "views": "1100万",
-    "features": [
-      "图像混合",
-      "风格变异",
-      "创意"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计",
-      "创意"
-    ]
-  },
-  {
-    "name": "DreamStudio",
-    "url": "dreamstudio.ai",
-    "desc": "Stability AI官方平台，Stable Diffusion在线版",
-    "cat": "image",
-    "icon": "💭",
-    "color": "#8b5cf6",
-    "tags": [
-      "free"
-    ],
-    "views": "2300万",
-    "features": [
-      "Stable Diffusion",
-      "在线版",
-      "图像生成"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "DeepAI",
-    "url": "deepai.org",
-    "desc": "多功能AI图像工具集，支持风格迁移、超分辨率等",
-    "cat": "image",
-    "icon": "🖼️",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "1500万",
-    "features": [
-      "风格迁移",
-      "超分辨率",
-      "工具集"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Clipdrop",
-    "url": "clipdrop.co",
-    "desc": "AI图像编辑工具，背景移除、物体擦除、光线调整",
-    "cat": "image",
-    "icon": "✂️",
-    "color": "#10b981",
-    "tags": [
-      "free"
-    ],
-    "views": "1300万",
-    "features": [
-      "背景移除",
-      "图像编辑",
-      "光线"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Wombo Dream",
-    "url": "wombo.ai",
-    "desc": "AI艺术生成App，输入提示词即可生成超现实艺术作品",
-    "cat": "image",
-    "icon": "🌈",
-    "color": "#ef4444",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "艺术生成",
-      "超现实",
-      "App"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "创意"
-    ]
-  },
-  {
-    "name": "Playground",
-    "url": "playground.com",
-    "desc": "免费AI图像生成和编辑平台，社区活跃，模板丰富",
-    "cat": "image",
-    "icon": "🎪",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "1600万",
-    "features": [
-      "免费",
-      "模板",
-      "社区"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Getimg.ai",
-    "url": "getimg.ai",
-    "desc": "一站式AI图像平台，文字转图、图片编辑、视频生成",
-    "cat": "image",
-    "icon": "🖌️",
-    "color": "#a855f7",
-    "tags": [
-      "free"
-    ],
-    "views": "950万",
-    "features": [
-      "一站式",
-      "视频生成",
-      "编辑"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "视频"
-    ]
-  },
-  {
-    "name": "Lexica",
-    "url": "lexica.art",
-    "desc": "AI图像搜索引擎+生成器，百万级提示词库可参考",
-    "cat": "image",
-    "icon": "🔍",
-    "color": "#22c55e",
-    "tags": [
-      "free"
-    ],
-    "views": "1200万",
-    "features": [
-      "搜索",
-      "提示词库",
-      "生成"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "NightCafe",
-    "url": "nightcafe.studio",
-    "desc": "多算法AI艺术生成社区，支持多种AI绘画模型",
-    "cat": "image",
-    "icon": "🌃",
-    "color": "#f97316",
-    "tags": [
-      "free"
-    ],
-    "views": "1400万",
-    "features": [
-      "多算法",
-      "社区",
-      "多种模型"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计",
-      "创意"
-    ]
-  },
-  {
-    "name": "Descript",
-    "url": "descript.com",
-    "desc": "AI视频/播客编辑工具，文字编辑视频，自动字幕",
-    "cat": "video",
-    "icon": "🎙️",
-    "color": "#ef4444",
-    "tags": [
-      "hot"
-    ],
-    "views": "2800万",
-    "features": [
-      "文字编辑视频",
-      "自动字幕",
-      "播客"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频",
-      "音频"
-    ]
-  },
-  {
-    "name": "Fliki",
-    "url": "fliki.ai",
-    "desc": "文字转视频和语音工具，支持700+AI语音和多种风格",
-    "cat": "video",
-    "icon": "📖",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "1600万",
-    "features": [
-      "文字转视频",
-      "AI语音",
-      "多语言"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "视频",
-      "营销"
-    ]
-  },
-  {
-    "name": "InVideo",
-    "url": "invideo.io",
-    "desc": "在线视频编辑平台，5000+模板，AI辅助剪辑",
-    "cat": "video",
-    "icon": "🎞️",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "2200万",
-    "features": [
-      "模板",
-      "AI剪辑",
-      "在线编辑"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "视频",
-      "营销"
-    ]
-  },
-  {
-    "name": "Pictory",
-    "url": "pictory.ai",
-    "desc": "AI长视频转短视频，自动提取精彩片段加字幕",
-    "cat": "video",
-    "icon": "✂️",
-    "color": "#10b981",
-    "tags": [],
-    "views": "1300万",
-    "features": [
-      "长视频剪辑",
-      "自动字幕",
-      "片段提取"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Veed.io",
-    "url": "veed.io",
-    "desc": "浏览器端AI视频编辑器，自动字幕、翻译、去背景",
-    "cat": "video",
-    "icon": "🎬",
-    "color": "#8b5cf6",
-    "tags": [
-      "free"
-    ],
-    "views": "1900万",
-    "features": [
-      "在线编辑",
-      "自动字幕",
-      "翻译"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Opus Clip",
-    "url": "opus.pro",
-    "desc": "AI短视频生成器，自动从长视频中剪出爆款短视频",
-    "cat": "video",
-    "icon": "🎯",
-    "color": "#ec4899",
-    "tags": [
-      "hot"
-    ],
-    "views": "1500万",
-    "features": [
-      "短视频",
-      "自动剪辑",
-      "爆款"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频",
-      "营销"
-    ]
-  },
-  {
-    "name": "Kaiber",
-    "url": "kaiber.ai",
-    "desc": "AI视频生成和动画工具，音乐可视化效果出众",
-    "cat": "video",
-    "icon": "🎵",
-    "color": "#06b6d4",
-    "tags": [],
-    "views": "900万",
-    "features": [
-      "视频生成",
-      "音乐可视化",
-      "动画"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频",
-      "音频"
-    ]
-  },
-  {
-    "name": "DeepBrain AI",
-    "url": "deepbrain.io",
-    "desc": "AI数字人视频平台，支持多语言口播视频生成",
-    "cat": "video",
-    "icon": "🤖",
-    "color": "#2563eb",
-    "tags": [],
-    "views": "1100万",
-    "features": [
-      "数字人",
-      "口播",
-      "多语言"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Sourcegraph Cody",
-    "url": "sourcegraph.com/cody",
-    "desc": "代码理解AI助手，理解海量代码库，智能搜索和解释",
-    "cat": "code",
-    "icon": "🔍",
-    "color": "#f97316",
-    "tags": [
-      "free"
-    ],
-    "views": "1400万",
-    "features": [
-      "代码理解",
-      "搜索",
-      "解释"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "v0.dev",
-    "url": "v0.dev",
-    "desc": "Vercel出品，自然语言描述生成React/Next.js组件",
-    "cat": "code",
-    "icon": "▲",
-    "color": "#6366f1",
-    "tags": [
-      "hot"
-    ],
-    "views": "3200万",
-    "features": [
-      "组件生成",
-      "React",
-      "Next.js"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码",
-      "开发"
-    ]
-  },
-  {
-    "name": "Bolt.new",
-    "url": "bolt.new",
-    "desc": "浏览器内AI全栈开发，Prompt即可生成完整Web应用",
-    "cat": "code",
-    "icon": "⚡",
-    "color": "#22c55e",
-    "tags": [
-      "hot"
-    ],
-    "views": "2600万",
-    "features": [
-      "全栈开发",
-      "浏览器",
-      "即时部署"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Replit Agent",
-    "url": "replit.com",
-    "desc": "Replit内置AI开发助手，自动生成和修复代码",
-    "cat": "code",
-    "icon": "🔄",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "AI开发",
-      "在线IDE",
-      "代码修复"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Amazon CodeWhisperer",
-    "url": "aws.amazon.com/codewhisperer",
-    "desc": "AWS免费AI编程助手，支持15+语言和AWS服务",
-    "cat": "code",
-    "icon": "☁️",
-    "color": "#f97316",
-    "tags": [
-      "free"
-    ],
-    "views": "1200万",
-    "features": [
-      "AWS集成",
-      "免费",
-      "多语言"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Devin",
-    "url": "cognition.ai",
-    "desc": "首个AI软件工程师，可独立完成完整的开发任务",
-    "cat": "code",
-    "icon": "👨‍💻",
-    "color": "#ef4444",
-    "tags": [
-      "hot"
-    ],
-    "views": "4100万",
-    "features": [
-      "全自主开发",
-      "软件工程",
-      "任务完成"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Continue",
-    "url": "continue.dev",
-    "desc": "开源AI编程助手，支持VS Code/JetBrains，多模型",
-    "cat": "code",
-    "icon": "▶",
-    "color": "#10b981",
-    "tags": [
-      "free"
-    ],
-    "views": "950万",
-    "features": [
-      "开源",
-      "多IDE",
-      "多模型"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "GitHub Spark",
-    "url": "github.com/features/spark",
-    "desc": "GitHub AI微应用生成器，自然语言创建小工具",
-    "cat": "code",
-    "icon": "✨",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "1100万",
-    "features": [
-      "微应用",
-      "自然语言",
-      "GitHub集成"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Murf.ai",
-    "url": "murf.ai",
-    "desc": "专业AI配音工具，120+语音风格，适合视频/播客/广告",
-    "cat": "audio",
-    "icon": "🎤",
-    "color": "#8b5cf6",
-    "tags": [],
-    "views": "1500万",
-    "features": [
-      "AI配音",
-      "多语音",
-      "专业"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "音频",
-      "视频"
-    ]
-  },
-  {
-    "name": "Resemble AI",
-    "url": "resemble.ai",
-    "desc": "AI语音克隆和合成平台，可克隆任何人的声音",
-    "cat": "audio",
-    "icon": "🗣️",
-    "color": "#ec4899",
-    "tags": [],
-    "views": "900万",
-    "features": [
-      "语音克隆",
-      "合成",
-      "个性化"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "AIVA",
-    "url": "aiva.ai",
-    "desc": "AI古典音乐作曲工具，生成电影级原声音乐",
-    "cat": "audio",
-    "icon": "🎼",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "800万",
-    "features": [
-      "古典音乐",
-      "作曲",
-      "电影配乐"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "Beatoven",
-    "url": "beatoven.ai",
-    "desc": "AI背景音乐生成器，适合创作者和视频制作者",
-    "cat": "audio",
-    "icon": "🥁",
-    "color": "#ef4444",
-    "tags": [
-      "free"
-    ],
-    "views": "700万",
-    "features": [
-      "背景音乐",
-      "创作者",
-      "视频"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "Jukebox",
-    "url": "openai.com/research/jukebox",
-    "desc": "OpenAI音乐生成模型，可生成带歌词的完整歌曲",
-    "cat": "audio",
-    "icon": "🎵",
-    "color": "#10b981",
-    "tags": [],
-    "views": "1200万",
-    "features": [
-      "音乐生成",
-      "歌词",
-      "歌曲"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "Krisp",
-    "url": "krisp.ai",
-    "desc": "AI降噪工具，实时消除背景噪音，支持所有会议软件",
-    "cat": "audio",
-    "icon": "🔇",
-    "color": "#06b6d4",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "降噪",
-      "实时",
-      "会议"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "音频",
-      "办公"
-    ]
-  },
-  {
-    "name": "Rytr",
-    "url": "rytr.me",
-    "desc": "性价比最高的AI写作助手，支持40+语言和多种模板",
-    "cat": "writing",
-    "icon": "📝",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "多语言",
-      "模板",
-      "高性价比"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "写作",
-      "营销"
-    ]
-  },
-  {
-    "name": "Wordtune",
-    "url": "wordtune.com",
-    "desc": "AI写作润色和改写工具，增强句子表达的清晰度",
-    "cat": "writing",
-    "icon": "✨",
-    "color": "#8b5cf6",
-    "tags": [
-      "free"
-    ],
-    "views": "1400万",
-    "features": [
-      "润色",
-      "改写",
-      "清晰度"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "写作"
-    ]
-  },
-  {
-    "name": "Grammarly",
-    "url": "grammarly.com",
-    "desc": "全球最流行的英语写作助手，AI语法检查和风格优化",
-    "cat": "writing",
-    "icon": "✅",
-    "color": "#22c55e",
-    "tags": [
-      "free"
-    ],
-    "views": "7800万",
-    "features": [
-      "语法检查",
-      "风格优化",
-      "英语写作"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "写作"
-    ]
-  },
-  {
-    "name": "Quillbot",
-    "url": "quillbot.com",
-    "desc": "AI改写和摘要工具，最适合学术写作和避免抄袭",
-    "cat": "writing",
-    "icon": "🔄",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "3500万",
-    "features": [
-      "改写",
-      "摘要",
-      "学术"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "写作"
-    ]
-  },
-  {
-    "name": "Anyword",
-    "url": "anyword.com",
-    "desc": "AI营销文案平台，数据驱动的内容优化和转化预测",
-    "cat": "writing",
-    "icon": "📊",
-    "color": "#ef4444",
-    "tags": [],
-    "views": "950万",
-    "features": [
-      "营销",
-      "数据驱动",
-      "转化预测"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "写作",
-      "营销"
-    ]
-  },
-  {
-    "name": "Mem",
-    "url": "mem.ai",
-    "desc": "AI自动整理笔记，无需手动分类，智能搜索和关联",
-    "cat": "productivity",
-    "icon": "🧠",
-    "color": "#8b5cf6",
-    "tags": [
-      "free"
-    ],
-    "views": "1100万",
-    "features": [
-      "自动整理",
-      "笔记",
-      "智能搜索"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Taskade",
-    "url": "taskade.com",
-    "desc": "AI项目管理+思维导图，团队协作和自动化工作流",
-    "cat": "productivity",
-    "icon": "📋",
-    "color": "#22c55e",
-    "tags": [
-      "free"
-    ],
-    "views": "900万",
-    "features": [
-      "项目管理",
-      "思维导图",
-      "自动化"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Fireflies.ai",
-    "url": "fireflies.ai",
-    "desc": "AI会议助手，自动记录、转录和总结会议内容",
-    "cat": "productivity",
-    "icon": "🔥",
-    "color": "#f97316",
-    "tags": [
-      "free"
-    ],
-    "views": "1500万",
-    "features": [
-      "会议记录",
-      "转录",
-      "总结"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Motion",
-    "url": "usemotion.com",
-    "desc": "AI日程管理，自动规划任务优先级和时间安排",
-    "cat": "productivity",
-    "icon": "📅",
-    "color": "#6366f1",
-    "tags": [],
-    "views": "1200万",
-    "features": [
-      "日程管理",
-      "自动规划",
-      "优先级"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Rewind",
-    "url": "rewind.ai",
-    "desc": "AI个人记忆助手，记录和搜索你在电脑上看到的一切",
-    "cat": "productivity",
-    "icon": "⏪",
-    "color": "#ec4899",
-    "tags": [],
-    "views": "800万",
-    "features": [
-      "记忆搜索",
-      "回溯",
-      "隐私"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Rows",
-    "url": "rows.com",
-    "desc": "AI电子表格，自然语言查询和分析数据",
-    "cat": "productivity",
-    "icon": "📊",
-    "color": "#06b6d4",
-    "tags": [
-      "free"
-    ],
-    "views": "750万",
-    "features": [
-      "电子表格",
-      "AI分析",
-      "自然语言"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Hints",
-    "url": "hints.so",
-    "desc": "AI个人助手，集成日历/邮件/任务，语音控制",
-    "cat": "productivity",
-    "icon": "💡",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "650万",
-    "features": [
-      "个人助手",
-      "集成",
-      "语音"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Uizard",
-    "url": "uizard.io",
-    "desc": "AI原型设计工具，手绘草图秒变可交互界面",
-    "cat": "design",
-    "icon": "✏️",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "1200万",
-    "features": [
-      "原型设计",
-      "草图转UI",
-      "交互"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Kittl",
-    "url": "kittl.com",
-    "desc": "AI矢量设计平台，专业级插画和Logo设计",
-    "cat": "design",
-    "icon": "🖋️",
-    "color": "#f97316",
-    "tags": [
-      "free"
-    ],
-    "views": "900万",
-    "features": [
-      "矢量设计",
-      "Logo",
-      "插画"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Galileo AI",
-    "url": "usegalileo.ai",
-    "desc": "AI UI设计生成器，文字描述自动生成移动端界面",
-    "cat": "design",
-    "icon": "🔭",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "700万",
-    "features": [
-      "UI设计",
-      "移动端",
-      "文字转设计"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Autodraw",
-    "url": "autodraw.com",
-    "desc": "Google出品的AI画图工具，草稿自动识别并美化",
-    "cat": "design",
-    "icon": "🤖",
-    "color": "#22c55e",
-    "tags": [
-      "free"
-    ],
-    "views": "1400万",
-    "features": [
-      "草稿识别",
-      "自动美化",
-      "Google"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Andi",
-    "url": "andisearch.com",
-    "desc": "无广告AI搜索引擎，直接给答案而非链接列表",
-    "cat": "research",
-    "icon": "🔎",
-    "color": "#06b6d4",
-    "tags": [
-      "free"
-    ],
-    "views": "950万",
-    "features": [
-      "无广告",
-      "直接答案",
-      "搜索"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "搜索",
-      "研究"
-    ]
-  },
-  {
-    "name": "Elicit",
-    "url": "elicit.com",
-    "desc": "AI学术研究助手，自动搜索和分析学术论文",
-    "cat": "research",
-    "icon": "📚",
-    "color": "#8b5cf6",
-    "tags": [
-      "free"
-    ],
-    "views": "1200万",
-    "features": [
-      "学术",
-      "论文分析",
-      "研究"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "研究"
-    ]
-  },
-  {
-    "name": "SciSpace",
-    "url": "typeset.io",
-    "desc": "AI论文阅读平台，自动解释和翻译学术论文",
-    "cat": "research",
-    "icon": "🔬",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "1100万",
-    "features": [
-      "论文阅读",
-      "翻译",
-      "解释"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "研究"
-    ]
-  },
-  {
-    "name": "Metaphor",
-    "url": "metaphor.systems",
-    "desc": "AI知识搜索引擎，理解语义搜索深层关联内容",
-    "cat": "research",
-    "icon": "🕸️",
-    "color": "#f59e0b",
-    "tags": [],
-    "views": "700万",
-    "features": [
-      "语义搜索",
-      "深层关联",
-      "知识"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "搜索",
-      "研究"
-    ]
-  },
-  {
-    "name": "Socratic",
-    "url": "socratic.org",
-    "desc": "Google AI教育应用，拍照解题并逐步讲解",
-    "cat": "education",
-    "icon": "📸",
-    "color": "#22c55e",
-    "tags": [
-      "free"
-    ],
-    "views": "2200万",
-    "features": [
-      "拍照解题",
-      "讲解",
-      "学科覆盖"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "Synthesia EDU",
-    "url": "synthesia.io/education",
-    "desc": "AI教育视频制作，数字人讲师的课程视频生成",
-    "cat": "education",
-    "icon": "👨‍🏫",
-    "color": "#6366f1",
-    "tags": [],
-    "views": "800万",
-    "features": [
-      "教育视频",
-      "数字人",
-      "课程"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "CheggMate",
-    "url": "chegg.com",
-    "desc": "Chegg AI学习平台，个性化辅导和作业帮助",
-    "cat": "education",
-    "icon": "📖",
-    "color": "#ef4444",
-    "tags": [],
-    "views": "1500万",
-    "features": [
-      "个性化辅导",
-      "作业",
-      "学习"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "EdX AI",
-    "url": "edx.org",
-    "desc": "edX AI学习助手，个性化课程推荐和学习路径",
-    "cat": "education",
-    "icon": "🎓",
-    "color": "#f97316",
-    "tags": [
-      "free"
-    ],
-    "views": "900万",
-    "features": [
-      "课程推荐",
-      "学习路径",
-      "个性化"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "Speak",
-    "url": "speak.com",
-    "desc": "AI英语口语练习App，实时语音识别和纠错反馈",
-    "cat": "education",
-    "icon": "🗣️",
-    "color": "#06b6d4",
-    "tags": [
-      "free"
-    ],
-    "views": "1100万",
-    "features": [
-      "口语练习",
-      "语音识别",
-      "纠错"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "Synthesis",
-    "url": "synthesis.com",
-    "desc": "AI儿童教育平台，游戏化培养批判性思维",
-    "cat": "education",
-    "icon": "🎮",
-    "color": "#8b5cf6",
-    "tags": [],
-    "views": "700万",
-    "features": [
-      "儿童教育",
-      "游戏化",
-      "思维"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "OpenClaw",
-    "url": "openclaw.ai",
-    "desc": "本地优先AI Agent平台，iOS/安卓原生应用，可随身操控AI Agent完成复杂任务",
-    "cat": "productivity",
-    "icon": "🦞",
-    "color": "#7c6aef",
-    "tags": [
-      "new"
-    ],
-    "views": "1200万",
-    "features": [
-      "AI Agent",
-      "移动端",
-      "本地优先",
-      "多Agent协作"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "开发",
-      "自动化"
-    ]
-  },
-  {
-    "name": "Gemini 2.0",
-    "url": "gemini.google.com",
-    "desc": "Google最新旗舰模型，100万token上下文，多模态理解",
-    "cat": "chat",
-    "icon": "🌟",
-    "color": "#4285f4",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "8500万",
-    "features": [
-      "100万上下文",
-      "多模态",
-      "推理"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "研究",
-      "编码"
-    ]
-  },
-  {
-    "name": "Seaweed",
-    "url": "seaweed.capcut.cn",
-    "desc": "字节跳动AI视频模型，60秒连贯视频生成，人物一致性突出",
-    "cat": "video",
-    "icon": "🌊",
-    "color": "#06b6d4",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "6200万",
-    "features": [
-      "60秒视频",
-      "人物一致性",
-      "长视频"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "视频",
-      "创作"
-    ]
-  },
-  {
-    "name": "Veo 2",
-    "url": "deepmind.google/veo",
-    "desc": "Google DeepMind视频生成，4K电影级画质",
-    "cat": "video",
-    "icon": "🎥",
-    "color": "#ea4335",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "7800万",
-    "features": [
-      "4K",
-      "电影级"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Midjourney V7",
-    "url": "midjourney.com",
-    "desc": "Midjourney最新版，风格参考和角色一致性升级",
-    "cat": "image",
-    "icon": "🖼️",
-    "color": "#6366f1",
-    "tags": [
-      "hot"
-    ],
-    "views": "9200万",
-    "features": [
-      "风格参考",
-      "角色一致"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Suno V4",
-    "url": "suno.ai",
-    "desc": "AI音乐生成V4，4分钟长歌曲多风格",
-    "cat": "audio",
-    "icon": "🎶",
-    "color": "#8b5cf6",
-    "tags": [
-      "hot"
-    ],
-    "views": "5600万",
-    "features": [
-      "长歌曲",
-      "多风格"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "Warp",
-    "url": "warp.dev",
-    "desc": "AI终端工具，自然语言命令和智能补全",
-    "cat": "code",
-    "icon": "⚡",
-    "color": "#6366f1",
-    "tags": [
-      "new"
-    ],
-    "views": "2800万",
-    "features": [
-      "AI终端",
-      "自然语言"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "HeyGen 3.0",
-    "url": "heygen.com",
-    "desc": "数字人3.0，实时互动和多人对话",
-    "cat": "video",
-    "icon": "👤",
-    "color": "#06b6d4",
-    "tags": [
-      "new"
-    ],
-    "views": "3400万",
-    "features": [
-      "实时互动",
-      "多人"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Civitai",
-    "url": "civitai.com",
-    "desc": "AI模型分享社区，海量SD模型和LoRA",
-    "cat": "image",
-    "icon": "🏛️",
-    "color": "#ec4899",
-    "tags": [
-      "free"
-    ],
-    "views": "4500万",
-    "features": [
-      "模型分享",
-      "社区"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Hugging Face",
-    "url": "huggingface.co",
-    "desc": "全球最大AI模型开源平台，数十万模型",
-    "cat": "code",
-    "icon": "🤗",
-    "color": "#f59e0b",
-    "tags": [
-      "free"
-    ],
-    "views": "8500万",
-    "features": [
-      "开源",
-      "数据集"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Oasis",
-    "url": "oasis.ai",
-    "desc": "AI语音社交平台，虚拟角色实时语音聊天",
-    "cat": "chat",
-    "icon": "🗣️",
-    "color": "#10b981",
-    "tags": [
-      "new"
-    ],
-    "views": "1800万",
-    "features": [
-      "语音社交",
-      "虚拟角色"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话"
-    ]
-  },
-  {
-    "name": "Tome 2.0",
-    "url": "tome.app",
-    "desc": "AI演示文稿2.0，自动排版和数据分析嵌入",
-    "cat": "productivity",
-    "icon": "📊",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "2200万",
-    "features": [
-      "AI排版",
-      "数据分析"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Luma Dream Machine",
-    "url": "lumalabs.ai",
-    "desc": "Luma AI视频生成，手机端3D扫描",
-    "cat": "video",
-    "icon": "📱",
-    "color": "#f97316",
-    "tags": [
-      "hot"
-    ],
-    "views": "5100万",
-    "features": [
-      "3D扫描",
-      "手机端"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Stable Video 4D",
-    "url": "stability.ai",
-    "desc": "Stability AI 4D视频生成，单图生成360度环绕3D视频",
-    "cat": "video",
-    "icon": "🔄",
-    "color": "#8b5cf6",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "4100万",
-    "features": [
-      "360度",
-      "3D",
-      "单图生成"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "视频",
-      "3D"
-    ]
-  },
-  {
-    "name": "Seedance",
-    "url": "seedance.ai",
-    "desc": "字节跳动AI视频生成模型，60秒电影级视频，原生音画同步",
-    "cat": "video",
-    "icon": "🎬",
-    "color": "#3b82f6",
-    "tags": [
-      "hot",
-      "new"
-    ],
-    "views": "3800万",
-    "features": [
-      "60秒视频",
-      "音画同步",
-      "多镜头叙事",
-      "电影级"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "视频",
-      "影视"
-    ]
-  },
-  {
-    "name": "Stability Audio",
-    "url": "stability.ai/audio",
-    "desc": "Stability AI音频生成，文字转音乐和音效",
-    "cat": "audio",
-    "icon": "🎵",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "3200万",
-    "features": [
-      "音频生成",
-      "音效",
-      "文字转音乐"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "Recraft V3",
-    "url": "recraft.ai",
-    "desc": "Recraft V3矢量设计，品牌风格一致性和设计系统",
-    "cat": "design",
-    "icon": "🎨",
-    "color": "#ec4899",
-    "tags": [
-      "new"
-    ],
-    "views": "1800万",
-    "features": [
-      "矢量",
-      "品牌",
-      "设计系统"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Claude 4 Sonnet",
-    "url": "claude.ai",
-    "desc": "Anthropic最新模型，性价比最高的推理AI",
-    "cat": "chat",
-    "icon": "🟣",
-    "color": "#d4a574",
-    "tags": [
-      "hot"
-    ],
-    "views": "6700万",
-    "features": [
-      "推理",
-      "性价比",
-      "200K"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话",
-      "编码"
-    ]
-  },
-  {
-    "name": "OpenAI o3",
-    "url": "openai.com",
-    "desc": "OpenAI最新推理模型，数学和编程能力大幅提升",
-    "cat": "chat",
-    "icon": "🧮",
-    "color": "#10a37f",
-    "tags": [
-      "hot"
-    ],
-    "views": "9100万",
-    "features": [
-      "推理",
-      "数学",
-      "编程"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "对话",
-      "编码"
-    ]
-  },
-  {
-    "name": "Perplexity Pro",
-    "url": "perplexity.ai",
-    "desc": "AI搜索引擎Pro版，深度研究模式和文件分析",
-    "cat": "research",
-    "icon": "🔍",
-    "color": "#6366f1",
-    "tags": [
-      "hot"
-    ],
-    "views": "4800万",
-    "features": [
-      "深度研究",
-      "文件分析",
-      "Pro"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "搜索",
-      "研究"
-    ]
-  },
-  {
-    "name": "Anthropic Console",
-    "url": "console.anthropic.com",
-    "desc": "Anthropic开发者平台，Workbench和API管理",
-    "cat": "code",
-    "icon": "⚙️",
-    "color": "#d4a574",
-    "tags": [
-      "new"
-    ],
-    "views": "1500万",
-    "features": [
-      "API",
-      "Workbench",
-      "开发者"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Suno Mobile",
-    "url": "suno.ai",
-    "desc": "Suno手机App，随时随地AI音乐创作",
-    "cat": "audio",
-    "icon": "📱",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "2500万",
-    "features": [
-      "手机端",
-      "AI音乐",
-      "创作"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "Framer AI",
-    "url": "framer.com",
-    "desc": "AI网站设计工具，自然语言生成网站和组件",
-    "cat": "design",
-    "icon": "🏗️",
-    "color": "#2563eb",
-    "tags": [
-      "hot"
-    ],
-    "views": "3600万",
-    "features": [
-      "网站生成",
-      "组件",
-      "自然语言"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Mistral Large 2",
-    "url": "mistral.ai",
-    "desc": "Mistral最新旗舰模型，多语言和推理能力突出",
-    "cat": "chat",
-    "icon": "🇫🇷",
-    "color": "#f97316",
-    "tags": [
-      "new"
-    ],
-    "views": "2900万",
-    "features": [
-      "多语言",
-      "推理",
-      "旗舰"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "对话"
-    ]
-  },
-  {
-    "name": "Gemini Code Assist",
-    "url": "cloud.google.com",
-    "desc": "Google AI编程助手，深度集成Google Cloud",
-    "cat": "code",
-    "icon": "💎",
-    "color": "#4285f4",
-    "tags": [
-      "new"
-    ],
-    "views": "2200万",
-    "features": [
-      "Google Cloud",
-      "编程",
-      "集成"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "编码"
-    ]
-  },
-  {
-    "name": "Stable Audio 2.0",
-    "url": "stability.ai",
-    "desc": "长音频生成，支持3分钟音乐和音效",
-    "cat": "audio",
-    "icon": "🎼",
-    "color": "#8b5cf6",
-    "tags": [
-      "new"
-    ],
-    "views": "1600万",
-    "features": [
-      "长音频",
-      "3分钟",
-      "音效"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "音频"
-    ]
-  },
-  {
-    "name": "Webflow AI",
-    "url": "webflow.com",
-    "desc": "Webflow AI网站建设，AI自动布局和响应式设计",
-    "cat": "design",
-    "icon": "🌐",
-    "color": "#6366f1",
-    "tags": [
-      "hot"
-    ],
-    "views": "3100万",
-    "features": [
-      "AI布局",
-      "响应式",
-      "网站建设"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "设计"
-    ]
-  },
-  {
-    "name": "Descript AI",
-    "url": "descript.com",
-    "desc": "AI视频编辑，文字编辑视频和AI配音",
-    "cat": "video",
-    "icon": "✂️",
-    "color": "#ef4444",
-    "tags": [
-      "hot"
-    ],
-    "views": "2800万",
-    "features": [
-      "视频编辑",
-      "AI配音",
-      "文字编辑"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Typeform AI",
-    "url": "typeform.com",
-    "desc": "AI表单和调查工具，智能问题生成和分析",
-    "cat": "productivity",
-    "icon": "📋",
-    "color": "#f59e0b",
-    "tags": [
-      "new"
-    ],
-    "views": "1400万",
-    "features": [
-      "表单",
-      "调查",
-      "AI分析"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Cal AI",
-    "url": "cal.com",
-    "desc": "AI日程管理，自动安排会议和智能时间建议",
-    "cat": "productivity",
-    "icon": "📅",
-    "color": "#22c55e",
-    "tags": [
-      "new"
-    ],
-    "views": "1200万",
-    "features": [
-      "日程管理",
-      "AI建议",
-      "自动安排"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Durable AI",
-    "url": "durable.co",
-    "desc": "AI网站和小企业工具，30秒生成完整商业网站",
-    "cat": "productivity",
-    "icon": "🏪",
-    "color": "#06b6d4",
-    "tags": [
-      "new"
-    ],
-    "views": "1900万",
-    "features": [
-      "网站生成",
-      "30秒",
-      "小企业"
-    ],
-    "pricing": "paid",
-    "useCases": [
-      "办公"
-    ]
-  },
-  {
-    "name": "Wondershare Filmora",
-    "url": "filmora.wondershare.com",
-    "desc": "AI视频编辑软件，模板丰富操作简单",
-    "cat": "video",
-    "icon": "🎞️",
-    "color": "#6366f1",
-    "tags": [
-      "free"
-    ],
-    "views": "5400万",
-    "features": [
-      "视频编辑",
-      "模板",
-      "简单"
-    ],
-    "pricing": "free+paid",
-    "useCases": [
-      "视频"
-    ]
-  },
-  {
-    "name": "Socratic by Google",
-    "url": "socratic.org",
-    "desc": "Google AI学习助手，拍照解题和知识点讲解",
-    "cat": "education",
-    "icon": "📸",
-    "color": "#4285f4",
-    "tags": [
-      "free"
-    ],
-    "views": "2200万",
-    "features": [
-      "拍照解题",
-      "讲解",
-      "AI学习"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "Khanmigo",
-    "url": "khanacademy.org",
-    "desc": "可汗学院AI导师，个性化学习辅导和答疑",
-    "cat": "education",
-    "icon": "🎓",
-    "color": "#22c55e",
-    "tags": [
-      "free"
-    ],
-    "views": "1800万",
-    "features": [
-      "AI导师",
-      "个性化",
-      "辅导"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "学习"
-    ]
-  },
-  {
-    "name": "MathGPT",
-    "url": "mathgpt.com",
-    "desc": "AI数学解题工具，拍照识别并逐步讲解",
-    "cat": "education",
-    "icon": "🧮",
-    "color": "#8b5cf6",
-    "tags": [
-      "free"
-    ],
-    "views": "1500万",
-    "features": [
-      "数学解题",
-      "拍照",
-      "逐步讲解"
-    ],
-    "pricing": "free",
-    "useCases": [
-      "学习"
-    ]
-  }
+  {"name":"ChatGPT","url":"chat.openai.com","desc":"OpenAI 旗舰 AI 助手，支持 GPT-4o 多模态对话、文件分析、代码生成","cat":"chat","icon":"🧠","color":"#10a37f","tags":["hot","free","verified"],"views":"21000万","features":["多模态对话","文件分析","代码生成","插件生态"],"pricing":"free+paid","useCases":["对话","写作","编码","研究"]},
+  {"name":"Claude","url":"claude.ai","desc":"Anthropic 出品，安全性和超长文本著称，200K 上下文窗口","cat":"chat","icon":"🟣","color":"#d4a574","tags":["hot","verified"],"views":"8600万","features":["超长上下文","学术论文","安全对齐","代码编写"],"pricing":"free+paid","useCases":["对话","写作","编码","研究"]},
+  {"name":"Gemini","url":"gemini.google.com","desc":"Google AI 助手，原生接入搜索、Gmail、Docs 全家桶","cat":"chat","icon":"💎","color":"#4285f4","tags":["hot","new","verified"],"views":"7200万","features":["Google 生态","实时搜索","多模态","免费"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"DeepSeek","url":"deepseek.com","desc":"深度求索开源模型，推理编程能力媲美 GPT-4","cat":"chat","icon":"🐬","color":"#5b6cf9","tags":["hot","new","free","verified"],"views":"6700万","features":["深度推理","开源","编程强","R1"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"Kimi","url":"kimi.moonshot.cn","desc":"月之暗面，200万字超长上下文，中文长文档第一","cat":"chat","icon":"🌙","color":"#1e88e5","tags":["hot","cn","verified"],"views":"5100万","features":["超长上下文","中文优化","文档阅读","联网搜索"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"智谱清言","url":"chatglm.cn","desc":"智谱AI基于GLM模型，深度理解中文，数据分析强","cat":"chat","icon":"💬","color":"#1a73e8","tags":["cn"],"views":"4500万","features":["中文原生","数据分析","图像生成","智能体"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"豆包","url":"doubao.com","desc":"字节跳动多模态AI助手，集成抖音生态","cat":"chat","icon":"🫘","color":"#ff6a00","tags":["new","cn"],"views":"3800万","features":["语音对话","多模态","角色扮演"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"文心一言","url":"yiyan.baidu.com","desc":"百度AI助手，深度整合百度搜索和文库","cat":"chat","icon":"📝","color":"#2932e1","tags":["cn"],"views":"3200万","features":["百度搜索","文库整合","插件市场"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"通义千问","url":"tongyi.aliyun.com","desc":"阿里云AI助手，擅长文档理解和企业应用","cat":"chat","icon":"☁️","color":"#ff6a00","tags":["cn"],"views":"2800万","features":["文档理解","数据处理","企业应用"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"Llama","url":"llama.meta.com","desc":"Meta开源大模型，支持本地部署","cat":"chat","icon":"🦙","color":"#0668e1","tags":["free"],"views":"1900万","features":["开源免费","本地部署","社区生态"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"Mistral","url":"mistral.ai","desc":"欧洲开源大模型领导者，高效强大","cat":"chat","icon":"🌀","color":"#ff7000","tags":["new","free"],"views":"980万","features":["欧洲开源","高效推理","多语言"],"pricing":"free+paid","useCases":["对话","写作","编码","研究"]},
+  {"name":"Jasper","url":"jasper.ai","desc":"AI营销写作，广告文案博客社媒内容","cat":"writing","icon":"✨","color":"#f43f5e","tags":["free"],"views":"1200万","features":["营销文案","博客生成","SEO优化"],"pricing":"paid","useCases":["写作","营销","文案"]},
+  {"name":"Copy.ai","url":"copy.ai","desc":"AI文案生成，快速创建高质量营销内容","cat":"writing","icon":"📋","color":"#7c3aed","tags":["free"],"views":"980万","features":["文案生成","营销工具","工作流"],"pricing":"free+paid","useCases":["写作","营销","文案"]},
+  {"name":"Notion AI","url":"notion.so","desc":"Notion内置AI写作助手，写作总结翻译","cat":"writing","icon":"📓","color":"#fff","tags":["hot","verified"],"views":"2400万","features":["智能写作","文档总结","翻译","知识库"],"pricing":"free+paid","useCases":["写作","营销","文案"]},
+  {"name":"Writesonic","url":"writesonic.com","desc":"AI写作和SEO优化工具","cat":"writing","icon":"🖊️","color":"#6366f1","tags":["free"],"views":"650万","features":["SEO优化","文章生成","多语言"],"pricing":"free+paid","useCases":["写作","营销","文案"]},
+  {"name":"秘塔写作猫","url":"xiezuocat.com","desc":"中文AI写作助手，润色续写改写纠错","cat":"writing","icon":"🐱","color":"#ff8c42","tags":["cn"],"views":"860万","features":["中文润色","纠错改写","学术写作"],"pricing":"free","useCases":["写作","营销","文案"]},
+  {"name":"Midjourney","url":"midjourney.com","desc":"顶级AI绘画，艺术风格图像业界标杆","cat":"image","icon":"🎨","color":"#1a1a1a","tags":["hot","verified"],"views":"3800万","features":["艺术风格","高质量","V6","社区活跃"],"pricing":"paid","useCases":["设计","创意","营销"]},
+  {"name":"DALL-E 3","url":"openai.com/dall-e-3","desc":"OpenAI图像生成，文本精准与ChatGPT集成","cat":"image","icon":"🖼️","color":"#10a37f","tags":["hot"],"views":"2900万","features":["文本精准","ChatGPT集成","API"],"pricing":"free+paid","useCases":["设计","创意","营销"]},
+  {"name":"Stable Diffusion","url":"stability.ai","desc":"开源图像生成，本地部署高度自定义","cat":"image","icon":"🌀","color":"#a855f7","tags":["free","verified"],"views":"2100万","features":["开源免费","本地部署","ControlNet","LoRA"],"pricing":"free","useCases":["设计","创意","营销"]},
+  {"name":"Ideogram","url":"ideogram.ai","desc":"擅长图片中生成文字的AI绘图工具","cat":"image","icon":"💡","color":"#f59e0b","tags":["new"],"views":"980万","features":["文字生成","高质量","海报设计"],"pricing":"free+paid","useCases":["设计","创意","营销"]},
+  {"name":"Flux","url":"flux1.ai","desc":"新一代开源图像生成，质量媲美闭源","cat":"image","icon":"⚡","color":"#3b82f6","tags":["new","free"],"views":"1400万","features":["开源免费","高质量","快速"],"pricing":"free","useCases":["设计","创意","营销"]},
+  {"name":"Leonardo.ai","url":"leonardo.ai","desc":"AI图像和游戏素材生成平台","cat":"image","icon":"🎭","color":"#7c3aed","tags":["new"],"views":"1100万","features":["角色设计","游戏素材","一致性"],"pricing":"free+paid","useCases":["设计","创意","营销"]},
+  {"name":"通义万相","url":"wanx.aliyun.com","desc":"阿里AI绘画，文生图图生图风格迁移","cat":"image","icon":"🖼️","color":"#ff6a00","tags":["cn"],"views":"1600万","features":["文生图","图生图","中文友好"],"pricing":"free","useCases":["设计","创意","营销"]},
+  {"name":"即梦","url":"jimeng.jianying.com","desc":"字节AI绘画，免费中文提示词效果好","cat":"image","icon":"💫","color":"#ff4500","tags":["cn","free"],"views":"1300万","features":["免费使用","中文提示词","图生视频"],"pricing":"free","useCases":["设计","创意","营销"]},
+  {"name":"Runway","url":"runway.ml","desc":"AI视频生成编辑，Gen-3引领行业","cat":"video","icon":"🎬","color":"#fff","tags":["hot","verified"],"views":"1800万","features":["文生视频","Gen-3","绿幕移除"],"pricing":"paid","useCases":["视频","营销","教育"]},
+  {"name":"Pika","url":"pika.art","desc":"AI视频生成，简单易用多风格","cat":"video","icon":"📹","color":"#f43f5e","tags":["hot"],"views":"1600万","features":["简单易用","多风格","局部编辑"],"pricing":"free+paid","useCases":["视频","营销","教育"]},
+  {"name":"Sora","url":"openai.com/sora","desc":"OpenAI文生视频，1分钟连贯视频","cat":"video","icon":"🌐","color":"#10a37f","tags":["hot","new"],"views":"2200万","features":["长视频","高质量","物理理解"],"pricing":"paid","useCases":["视频","营销","教育"]},
+  {"name":"可灵AI","url":"kling.kuaishou.com","desc":"快手AI视频，中文场景1080P","cat":"video","icon":"🎥","color":"#ff4500","tags":["new","cn"],"views":"1300万","features":["中文场景","1080P","运动控制"],"pricing":"free","useCases":["视频","营销","教育"]},
+  {"name":"HeyGen","url":"heygen.com","desc":"AI数字人视频，多语言口播","cat":"video","icon":"🎙️","color":"#2563eb","tags":["free"],"views":"920万","features":["数字人","多语言","口播视频"],"pricing":"paid","useCases":["视频","营销","教育"]},
+  {"name":"CapCut","url":"capcut.com","desc":"剪映海外版，AI智能剪辑","cat":"video","icon":"✂️","color":"#000","tags":["free"],"views":"2800万","features":["免费剪辑","AI字幕","特效","模板"],"pricing":"free","useCases":["视频","营销","教育"]},
+  {"name":"ElevenLabs","url":"elevenlabs.io","desc":"领先AI语音合成，逼真语音克隆","cat":"audio","icon":"🔊","color":"#1e293b","tags":["hot","verified"],"views":"1100万","features":["语音克隆","多语言","情感控制"],"pricing":"free+paid","useCases":["音频","音乐","配音"]},
+  {"name":"Suno","url":"suno.ai","desc":"AI音乐生成，文字变完整歌曲","cat":"audio","icon":"🎵","color":"#000","tags":["hot","new","verified"],"views":"1900万","features":["完整歌曲","多风格","歌词生成"],"pricing":"free+paid","useCases":["音频","音乐","配音"]},
+  {"name":"Udio","url":"udio.com","desc":"AI音乐创作，多风格高质量","cat":"audio","icon":"🎶","color":"#7c3aed","tags":["new"],"views":"860万","features":["高质量","多风格","remix"],"pricing":"free","useCases":["音频","音乐","配音"]},
+  {"name":"Whisper","url":"openai.com/whisper","desc":"开源语音识别，多语言高精度","cat":"audio","icon":"🗣️","color":"#10a37f","tags":["free"],"views":"1500万","features":["开源免费","多语言","实时转写"],"pricing":"free","useCases":["音频","音乐","配音"]},
+  {"name":"GitHub Copilot","url":"github.com/features/copilot","desc":"AI编程助手，实时代码补全","cat":"code","icon":"🐙","color":"#6e40c9","tags":["hot","verified"],"views":"2600万","features":["代码补全","多语言","IDE集成"],"pricing":"paid","useCases":["编码","开发","调试"]},
+  {"name":"Cursor","url":"cursor.sh","desc":"AI驱动代码编辑器，对话式编程","cat":"code","icon":"🖱️","color":"#000","tags":["hot","new","verified"],"views":"1800万","features":["AI编辑器","对话编程","多模型"],"pricing":"free+paid","useCases":["编码","开发","调试"]},
+  {"name":"Replit","url":"replit.com","desc":"在线编程平台，内置AI助手","cat":"code","icon":"⚡","color":"#f26522","tags":["free"],"views":"1400万","features":["在线IDE","AI编程","一键部署"],"pricing":"free+paid","useCases":["编码","开发","调试"]},
+  {"name":"Codeium","url":"codeium.com","desc":"免费AI代码补全，多编辑器支持","cat":"code","icon":"🔧","color":"#09b6a9","tags":["free"],"views":"780万","features":["免费","多编辑器","代码搜索"],"pricing":"free","useCases":["编码","开发","调试"]},
+  {"name":"Windsurf","url":"codeium.com/windsurf","desc":"AI原生IDE，Cascade体验出色","cat":"code","icon":"🏄","color":"#09b6a9","tags":["new"],"views":"620万","features":["AI原生","Cascade","免费额度"],"pricing":"free+paid","useCases":["编码","开发","调试"]},
+  {"name":"Figma AI","url":"figma.com","desc":"设计工具集成AI，自动生成方案","cat":"design","icon":"🎯","color":"#f24e1e","tags":["hot"],"views":"1600万","features":["AI设计","自动布局","组件生成"],"pricing":"free+paid","useCases":["设计","UI","品牌"]},
+  {"name":"Canva AI","url":"canva.com","desc":"AI设计工具，一键生成海报PPT","cat":"design","icon":"📐","color":"#00c4cc","tags":["free","verified"],"views":"2100万","features":["海报生成","PPT设计","Magic Write"],"pricing":"free+paid","useCases":["设计","UI","品牌"]},
+  {"name":"Looka","url":"looka.com","desc":"AI Logo设计，输入品牌名生成方案","cat":"design","icon":"🏷️","color":"#5b5fc7","tags":["free"],"views":"680万","features":["Logo设计","品牌套件","多方案"],"pricing":"paid","useCases":["设计","UI","品牌"]},
+  {"name":"Remove.bg","url":"remove.bg","desc":"AI一键抠图，5秒去除背景","cat":"design","icon":"✂️","color":"#2196f3","tags":["free"],"views":"1100万","features":["一键抠图","批量处理","API"],"pricing":"free+paid","useCases":["设计","UI","品牌"]},
+  {"name":"Gamma","url":"gamma.app","desc":"AI演示文稿生成，一键精美PPT","cat":"productivity","icon":"📊","color":"#8b5cf6","tags":["hot"],"views":"1400万","features":["PPT生成","自动排版","模板丰富"],"pricing":"free+paid","useCases":["效率","办公","自动化"]},
+  {"name":"Otter.ai","url":"otter.ai","desc":"AI会议记录转写，实时会议纪要","cat":"productivity","icon":"🦦","color":"#337ab7","tags":["free"],"views":"780万","features":["会议记录","实时转写","协作"],"pricing":"free+paid","useCases":["效率","办公","自动化"]},
+  {"name":"Tome","url":"tome.app","desc":"AI演示和故事叙述工具","cat":"productivity","icon":"📖","color":"#6c5ce7","tags":["free"],"views":"560万","features":["演示生成","故事叙述","AI排版"],"pricing":"free+paid","useCases":["效率","办公","自动化"]},
+  {"name":"Beautiful.ai","url":"beautiful.ai","desc":"AI驱动智能PPT设计","cat":"productivity","icon":"✨","color":"#6366f1","tags":["free"],"views":"480万","features":["智能PPT","自动设计","模板"],"pricing":"paid","useCases":["效率","办公","自动化"]},
+  {"name":"Perplexity","url":"perplexity.ai","desc":"AI搜索引擎，带引用的精准答案","cat":"research","icon":"🔮","color":"#1a7f64","tags":["hot","verified"],"views":"2200万","features":["带引用","精准答案","实时搜索"],"pricing":"free+paid","useCases":["搜索","研究","分析"]},
+  {"name":"秘塔搜索","url":"metaso.cn","desc":"无广告AI搜索引擎，结构化答案","cat":"research","icon":"🔑","color":"#4f46e5","tags":["cn"],"views":"1100万","features":["无广告","结构化","学术搜索"],"pricing":"free","useCases":["搜索","研究","分析"]},
+  {"name":"Consensus","url":"consensus.app","desc":"AI学术论文搜索引擎","cat":"research","icon":"📄","color":"#2563eb","tags":["free"],"views":"320万","features":["学术论文","研究共识","科学检索"],"pricing":"free","useCases":["搜索","研究","分析"]},
+  {"name":"Devv.ai","url":"devv.ai","desc":"开发者AI搜索引擎","cat":"research","icon":"🛠️","color":"#0ea5e9","tags":["new"],"views":"450万","features":["技术搜索","代码优先","开发者"],"pricing":"free","useCases":["搜索","研究","分析"]},
+  {"name":"Khan Academy","url":"khanacademy.org","desc":"Khan Academy AI辅导个性化学习","cat":"education","icon":"🎓","color":"#14bf96","tags":["free"],"views":"960万","features":["AI辅导","个性化","免费教育"],"pricing":"free","useCases":["学习","教育","课程"]},
+  {"name":"Duolingo","url":"duolingo.com","desc":"AI驱动语言学习，个性化路径","cat":"education","icon":"🦉","color":"#58cc02","tags":["free"],"views":"1800万","features":["语言学习","个性化","游戏化"],"pricing":"free","useCases":["学习","教育","课程"]},
+  {"name":"Coursera","url":"coursera.org","desc":"AI课程推荐和智能学习助手","cat":"education","icon":"📚","color":"#0056d2","tags":["free"],"views":"1500万","features":["在线课程","AI推荐","证书"],"pricing":"free+paid","useCases":["学习","教育","课程"]},
+  {"name":"Quizlet","url":"quizlet.com","desc":"AI闪卡和测试生成，智能学习","cat":"education","icon":"🃏","color":"#4255ff","tags":["free"],"views":"880万","features":["闪卡生成","AI测试","智能复习"],"pricing":"free+paid","useCases":["学习","教育","课程"]},
+  {"name":"Grok","url":"grok.com","desc":"xAI 推出的 AI 助手，实时联网搜索，支持多模态和深度推理","cat":"chat","icon":"🚀","color":"#1da1f2","tags":["free"],"views":"8500万","features":["实时搜索","多模态","幽默风格"],"pricing":"free+paid","useCases":["对话","写作","编码","研究"]},
+  {"name":"Synthesia","url":"synthesia.io","desc":"AI 数字人视频生成平台，140+ 数字人形象、120+ 语言","cat":"video","icon":"🎭","color":"#2563eb","tags":["hot"],"views":"3200万","features":["数字人","多语言","模板库"],"pricing":"paid","useCases":["视频","营销","教育"]},
+  {"name":"Claude Code","url":"claude.ai","desc":"Anthropic 推出的 AI 编程工具，终端内直接生成和修改代码","cat":"code","icon":"⚡","color":"#d4a574","tags":["hot"],"views":"5600万","features":["终端编程","多文件编辑","Git集成"],"pricing":"paid","useCases":["编码","开发","调试"]},
+  {"name":"Pinokio","url":"pinokio.computer","desc":"一键安装运行各种开源 AI 应用的浏览器，无需编程基础","cat":"productivity","icon":"📦","color":"#a855f7","tags":["free"],"views":"1800万","features":["一键安装","开源AI","图形界面"],"pricing":"free","useCases":["效率","办公","自动化"]},
+  {"name":"Napkin AI","url":"napkin.ai","desc":"AI 图表生成工具，从文字自动生成专业图表和可视化内容","cat":"design","icon":"📊","color":"#f59e0b","tags":["new"],"views":"950万","features":["图表生成","文字转图示","PPT导出"],"pricing":"free","useCases":["设计","UI","品牌"]},
+  {"name":"Manus","url":"manus.im","desc":"国产 AI Agent 平台，可自主完成复杂任务的通用智能体","cat":"productivity","icon":"🤖","color":"#06b6d4","tags":["hot","new"],"views":"4200万","features":["自主任务","多步骤","浏览器操作"],"pricing":"paid","useCases":["效率","办公","自动化"]},
+  {"name":"Tripo AI","url":"tripo3d.ai","desc":"AI 3D 模型生成工具，文字/图片秒变3D模型，支持多格式导出","cat":"design","icon":"🧊","color":"#8b5cf6","tags":["new"],"views":"760万","features":["文字转3D","图片转3D","多格式"],"pricing":"free+paid","useCases":["设计","UI","品牌"]},
+  {"name":"Trae","url":"trae.cn","desc":"字节跳动 AI 原生 IDE，支持中文编程、项目级代码生成，累计600万+开发者","cat":"code","icon":"🛠️","color":"#6366f1","tags":["hot","free"],"views":"960万","features":["AI原生IDE","中文编程","全栈开发","永久免费"],"pricing":"free","useCases":["编码","开发","调试"]},
+  {"name":"腾讯元宝","url":"yuanbao.tencent.com","desc":"腾讯 AI 助手，接入 DeepSeek + 混元双模型，支持微信生态深度集成","cat":"chat","icon":"🐧","color":"#00c4ff","tags":["free"],"views":"8200万","features":["双模型切换","微信生态","长文档处理","AI录音笔"],"pricing":"free","useCases":["对话","写作","编码","研究"]},
+  {"name":"海螺AI","url":"hailuoai.com","desc":"MiniMax 旗下 AI 视频生成平台，海螺2.0支持1080P、极端物理模拟","cat":"video","icon":"🐚","color":"#f97316","tags":["new","free"],"views":"1800万","features":["文生视频","物理模拟","1080P高清","海螺语音"],"pricing":"free","useCases":["视频","营销","教育"]},
+  {"name":"天工AI","url":"tiangong.cn","desc":"昆仑万维出品，国内首款AI搜索引擎，支持多模态搜索与深度研究","cat":"research","icon":"🔮","color":"#7c3aed","tags":["free"],"views":"4300万","features":["AI搜索","深度研究","多模态","免费使用"],"pricing":"free","useCases":["搜索","研究","分析"]},
+  {"name":"Coze 扣子","url":"coze.cn","desc":"字节跳动 AI Bot 构建平台，零代码搭建智能体，集成飞书/微信/抖音","cat":"productivity","icon":"🧩","color":"#ec4899","tags":["new","free"],"views":"2100万","features":["零代码","插件市场","知识库","多渠道发布"],"pricing":"free","useCases":["效率","办公","自动化"]},
+  {"name":"Copilot Pro","url":"copilot.microsoft.com","desc":"微软AI编程助手专业版，集成IDE深度代码理解、多文件重构、AI代码审查","cat":"code","icon":"💎","color":"#6366f1","tags":["hot"],"views":"7200万","features":["代码审查","多文件重构","IDE集成"],"pricing":"paid","useCases":["编码","开发","调试"]},
+  {"name":"商汤日日新","url":"platform.sensetime.com","desc":"商汤科技大模型平台，视觉理解能力行业领先，支持图像/视频/3D多模态","cat":"chat","icon":"🔮","color":"#8b5cf6","tags":["new"],"views":"3800万","features":["视觉理解","3D多模态","行业定制"],"pricing":"free+paid","useCases":["对话","写作","编码","研究"]},
+  {"name":"Dify","url":"dify.ai","desc":"开源AI应用开发平台，可视化编排LLM工作流，支持RAG和Agent","cat":"productivity","icon":"🔧","color":"#1677ff","tags":["new","free"],"views":"2100万","features":["可视化工作流","RAG管道","Agent编排","开源自部署"],"pricing":"free+paid","useCases":["自动化","写作","编码"]},
+  {"name":"v0","url":"v0.dev","desc":"Vercel出品AI UI生成器，自然语言描述即可生成前端界面代码","cat":"code","icon":"🖼️","color":"#000","tags":["new","free"],"views":"1800万","features":["文本生成UI","React组件","即时预览","代码导出"],"pricing":"free+paid","useCases":["设计","编码"]},
+  {"name":"Cline","url":"cline.bot","desc":"VS Code AI编程插件，支持多种模型，自动读写文件、执行终端命令","cat":"code","icon":"🤖","color":"#2563eb","tags":["hot","free"],"views":"5600万","features":["文件操作","终端命令","多模型"],"pricing":"free","useCases":["编码","开发","调试"]},
+  {"name":"Recraft","url":"recraft.ai","desc":"专业级AI设计工具，支持矢量图/插画/图标生成，设计系统自动保持一致风格","cat":"design","icon":"🎨","color":"#ec4899","tags":["new"],"views":"2100万","features":["矢量图","风格一致","品牌设计"],"pricing":"free+paid","useCases":["设计","品牌","UI"]},
+  {"name":"Lovable","url":"lovable.dev","desc":"AI全栈应用生成器，用自然语言描述即可生成完整Web应用，支持一键部署","cat":"code","icon":"❤️","color":"#ef4444","tags":["hot","new"],"views":"4800万","features":["全栈生成","一键部署","实时预览"],"pricing":"free+paid","useCases":["编码","开发","原型"]},
+  {"name":"Poe","url":"poe.com","desc":"Quora出品多模型聚合平台，一个界面使用ChatGPT/Claude/Gemini等","cat":"chat","icon":"🗨️","color":"#6366f1","tags":["free"],"views":"6200万","features":["多模型","聚合平台","对比"],"pricing":"free+paid","useCases":["对话","编码","写作"]},
+  {"name":"Character.AI","url":"character.ai","desc":"AI角色扮演平台，创建和对话虚拟角色，支持多语言","cat":"chat","icon":"🎭","color":"#ec4899","tags":["hot","free"],"views":"8900万","features":["角色扮演","虚拟角色","多语言"],"pricing":"free","useCases":["对话","娱乐","创作"]},
+  {"name":"HuggingChat","url":"huggingface.co/chat","desc":"HuggingFace官方聊天助手，基于开源模型，支持多种AI模型切换","cat":"chat","icon":"🤗","color":"#f59e0b","tags":["free"],"views":"4100万","features":["开源模型","模型切换","免费"],"pricing":"free","useCases":["对话","编码"]},
+  {"name":"Pi","url":"pi.ai","desc":"Inflection AI出品的情感化聊天助手，以温暖自然对话著称","cat":"chat","icon":"π","color":"#10b981","tags":["free"],"views":"3500万","features":["情感对话","自然交互","个性化"],"pricing":"free","useCases":["对话","情感支持"]},
+  {"name":"YouChat","url":"you.com","desc":"AI搜索引擎内置对话助手，实时联网获取最新信息","cat":"chat","icon":"🔎","color":"#8b5cf6","tags":["free"],"views":"2800万","features":["实时搜索","联网","AI对话"],"pricing":"free","useCases":["对话","搜索","研究"]},
+  {"name":"Phind","url":"phind.com","desc":"面向开发者的AI搜索引擎，精准回答编程和技术问题","cat":"chat","icon":"🔧","color":"#2563eb","tags":["free"],"views":"1900万","features":["编程搜索","技术问答","开发者"],"pricing":"free","useCases":["编码","搜索"]},
+  {"name":"Jasper Chat","url":"jasper.ai/chat","desc":"Jasper AI内置对话功能，专注营销和商业场景","cat":"chat","icon":"💼","color":"#f97316","tags":["hot"],"views":"2400万","features":["营销对话","商业","内容生成"],"pricing":"paid","useCases":["对话","营销"]},
+  {"name":"Bard","url":"bard.google.com","desc":"Google AI实验性聊天工具，集成Google搜索生态","cat":"chat","icon":"🎵","color":"#ef4444","tags":["free"],"views":"5500万","features":["Google集成","搜索","免费"],"pricing":"free","useCases":["对话","搜索"]},
+  {"name":"百川智能","url":"baichuan-ai.com","desc":"百川大模型对话平台，中文理解能力优秀，支持长文本","cat":"chat","icon":"🌊","color":"#06b6d4","tags":["free"],"views":"1800万","features":["中文优化","长文本","大模型"],"pricing":"free","useCases":["对话","写作"]},
+  {"name":"讯飞星火","url":"xinghuo.xfyun.cn","desc":"科大讯飞大模型，语音交互能力行业领先","cat":"chat","icon":"✨","color":"#6366f1","tags":["free"],"views":"3200万","features":["语音交互","多模态","中文"],"pricing":"free","useCases":["对话","语音"]},
+  {"name":"零一万物","url":"01.ai","desc":"李开复创办，Yi系列大模型，开源社区活跃","cat":"chat","icon":"🔮","color":"#a855f7","tags":["free"],"views":"1600万","features":["开源","大模型","国际化"],"pricing":"free","useCases":["对话","编码"]},
+  {"name":"Minimax","url":"minimax.io","desc":"海螺AI母公司出品，多模态大模型，视频生成能力强","cat":"chat","icon":"🐚","color":"#f472b6","tags":["free"],"views":"1400万","features":["多模态","视频生成","对话"],"pricing":"free","useCases":["对话","视频"]},
+  {"name":"GigaChat","url":"developers.sber.ru","desc":"俄罗斯Sberbank开发的大模型，俄语和多语言支持","cat":"chat","icon":"🇷🇺","color":"#22c55e","tags":[],"views":"900万","features":["多语言","俄语","大模型"],"pricing":"free","useCases":["对话"]},
+  {"name":"Amazon Q","url":"aws.amazon.com/q","desc":"AWS企业级AI助手，深度集成云服务，适合开发者","cat":"chat","icon":"☁️","color":"#f97316","tags":["hot"],"views":"2100万","features":["AWS集成","企业级","开发者"],"pricing":"paid","useCases":["编码","开发"]},
+  {"name":"Tabnine","url":"tabnine.com","desc":"AI代码补全工具，支持本地模型部署，隐私友好","cat":"code","icon":"⌨️","color":"#06b6d4","tags":["free"],"views":"1700万","features":["代码补全","本地部署","隐私"],"pricing":"free+paid","useCases":["编码"]},
+  {"name":"Artbreeder","url":"artbreeder.com","desc":"AI图像混合和变异工具，创造独特风格的艺术作品","cat":"image","icon":"🧬","color":"#ec4899","tags":["free"],"views":"1100万","features":["图像混合","风格变异","创意"],"pricing":"free","useCases":["设计","创意"]},
+  {"name":"DreamStudio","url":"dreamstudio.ai","desc":"Stability AI官方平台，Stable Diffusion在线版","cat":"image","icon":"💭","color":"#8b5cf6","tags":["free"],"views":"2300万","features":["Stable Diffusion","在线版","图像生成"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"DeepAI","url":"deepai.org","desc":"多功能AI图像工具集，支持风格迁移、超分辨率等","cat":"image","icon":"🖼️","color":"#f59e0b","tags":["free"],"views":"1500万","features":["风格迁移","超分辨率","工具集"],"pricing":"free","useCases":["设计"]},
+  {"name":"Clipdrop","url":"clipdrop.co","desc":"AI图像编辑工具，背景移除、物体擦除、光线调整","cat":"image","icon":"✂️","color":"#10b981","tags":["free"],"views":"1300万","features":["背景移除","图像编辑","光线"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"Wombo Dream","url":"wombo.ai","desc":"AI艺术生成App，输入提示词即可生成超现实艺术作品","cat":"image","icon":"🌈","color":"#ef4444","tags":["free"],"views":"1800万","features":["艺术生成","超现实","App"],"pricing":"free+paid","useCases":["设计","创意"]},
+  {"name":"Playground","url":"playground.com","desc":"免费AI图像生成和编辑平台，社区活跃，模板丰富","cat":"image","icon":"🎪","color":"#6366f1","tags":["free"],"views":"1600万","features":["免费","模板","社区"],"pricing":"free","useCases":["设计"]},
+  {"name":"Getimg.ai","url":"getimg.ai","desc":"一站式AI图像平台，文字转图、图片编辑、视频生成","cat":"image","icon":"🖌️","color":"#a855f7","tags":["free"],"views":"950万","features":["一站式","视频生成","编辑"],"pricing":"free+paid","useCases":["设计","视频"]},
+  {"name":"Lexica","url":"lexica.art","desc":"AI图像搜索引擎+生成器，百万级提示词库可参考","cat":"image","icon":"🔍","color":"#22c55e","tags":["free"],"views":"1200万","features":["搜索","提示词库","生成"],"pricing":"free","useCases":["设计"]},
+  {"name":"NightCafe","url":"nightcafe.studio","desc":"多算法AI艺术生成社区，支持多种AI绘画模型","cat":"image","icon":"🌃","color":"#f97316","tags":["free"],"views":"1400万","features":["多算法","社区","多种模型"],"pricing":"free+paid","useCases":["设计","创意"]},
+  {"name":"Descript","url":"descript.com","desc":"AI视频/播客编辑工具，文字编辑视频，自动字幕","cat":"video","icon":"🎙️","color":"#ef4444","tags":["hot"],"views":"2800万","features":["文字编辑视频","自动字幕","播客"],"pricing":"paid","useCases":["视频","音频"]},
+  {"name":"Fliki","url":"fliki.ai","desc":"文字转视频和语音工具，支持700+AI语音和多种风格","cat":"video","icon":"📖","color":"#6366f1","tags":["free"],"views":"1600万","features":["文字转视频","AI语音","多语言"],"pricing":"free+paid","useCases":["视频","营销"]},
+  {"name":"InVideo","url":"invideo.io","desc":"在线视频编辑平台，5000+模板，AI辅助剪辑","cat":"video","icon":"🎞️","color":"#f59e0b","tags":["free"],"views":"2200万","features":["模板","AI剪辑","在线编辑"],"pricing":"free+paid","useCases":["视频","营销"]},
+  {"name":"Pictory","url":"pictory.ai","desc":"AI长视频转短视频，自动提取精彩片段加字幕","cat":"video","icon":"✂️","color":"#10b981","tags":[],"views":"1300万","features":["长视频剪辑","自动字幕","片段提取"],"pricing":"paid","useCases":["视频"]},
+  {"name":"Veed.io","url":"veed.io","desc":"浏览器端AI视频编辑器，自动字幕、翻译、去背景","cat":"video","icon":"🎬","color":"#8b5cf6","tags":["free"],"views":"1900万","features":["在线编辑","自动字幕","翻译"],"pricing":"free+paid","useCases":["视频"]},
+  {"name":"Opus Clip","url":"opus.pro","desc":"AI短视频生成器，自动从长视频中剪出爆款短视频","cat":"video","icon":"🎯","color":"#ec4899","tags":["hot"],"views":"1500万","features":["短视频","自动剪辑","爆款"],"pricing":"paid","useCases":["视频","营销"]},
+  {"name":"Kaiber","url":"kaiber.ai","desc":"AI视频生成和动画工具，音乐可视化效果出众","cat":"video","icon":"🎵","color":"#06b6d4","tags":[],"views":"900万","features":["视频生成","音乐可视化","动画"],"pricing":"paid","useCases":["视频","音频"]},
+  {"name":"DeepBrain AI","url":"deepbrain.io","desc":"AI数字人视频平台，支持多语言口播视频生成","cat":"video","icon":"🤖","color":"#2563eb","tags":[],"views":"1100万","features":["数字人","口播","多语言"],"pricing":"paid","useCases":["视频"]},
+  {"name":"Sourcegraph Cody","url":"sourcegraph.com/cody","desc":"代码理解AI助手，理解海量代码库，智能搜索和解释","cat":"code","icon":"🔍","color":"#f97316","tags":["free"],"views":"1400万","features":["代码理解","搜索","解释"],"pricing":"free+paid","useCases":["编码"]},
+  {"name":"v0.dev","url":"v0.dev","desc":"Vercel出品，自然语言描述生成React/Next.js组件","cat":"code","icon":"▲","color":"#6366f1","tags":["hot"],"views":"3200万","features":["组件生成","React","Next.js"],"pricing":"free","useCases":["编码","开发"]},
+  {"name":"Bolt.new","url":"bolt.new","desc":"浏览器内AI全栈开发，Prompt即可生成完整Web应用","cat":"code","icon":"⚡","color":"#22c55e","tags":["hot"],"views":"2600万","features":["全栈开发","浏览器","即时部署"],"pricing":"free+paid","useCases":["编码"]},
+  {"name":"Replit Agent","url":"replit.com","desc":"Replit内置AI开发助手，自动生成和修复代码","cat":"code","icon":"🔄","color":"#f59e0b","tags":["free"],"views":"1800万","features":["AI开发","在线IDE","代码修复"],"pricing":"free+paid","useCases":["编码"]},
+  {"name":"Amazon CodeWhisperer","url":"aws.amazon.com/codewhisperer","desc":"AWS免费AI编程助手，支持15+语言和AWS服务","cat":"code","icon":"☁️","color":"#f97316","tags":["free"],"views":"1200万","features":["AWS集成","免费","多语言"],"pricing":"free","useCases":["编码"]},
+  {"name":"Devin","url":"cognition.ai","desc":"首个AI软件工程师，可独立完成完整的开发任务","cat":"code","icon":"👨‍💻","color":"#ef4444","tags":["hot"],"views":"4100万","features":["全自主开发","软件工程","任务完成"],"pricing":"paid","useCases":["编码"]},
+  {"name":"Continue","url":"continue.dev","desc":"开源AI编程助手，支持VS Code/JetBrains，多模型","cat":"code","icon":"▶","color":"#10b981","tags":["free"],"views":"950万","features":["开源","多IDE","多模型"],"pricing":"free","useCases":["编码"]},
+  {"name":"GitHub Spark","url":"github.com/features/spark","desc":"GitHub AI微应用生成器，自然语言创建小工具","cat":"code","icon":"✨","color":"#8b5cf6","tags":["new"],"views":"1100万","features":["微应用","自然语言","GitHub集成"],"pricing":"free","useCases":["编码"]},
+  {"name":"Murf.ai","url":"murf.ai","desc":"专业AI配音工具，120+语音风格，适合视频/播客/广告","cat":"audio","icon":"🎤","color":"#8b5cf6","tags":[],"views":"1500万","features":["AI配音","多语音","专业"],"pricing":"paid","useCases":["音频","视频"]},
+  {"name":"Resemble AI","url":"resemble.ai","desc":"AI语音克隆和合成平台，可克隆任何人的声音","cat":"audio","icon":"🗣️","color":"#ec4899","tags":[],"views":"900万","features":["语音克隆","合成","个性化"],"pricing":"paid","useCases":["音频"]},
+  {"name":"AIVA","url":"aiva.ai","desc":"AI古典音乐作曲工具，生成电影级原声音乐","cat":"audio","icon":"🎼","color":"#f59e0b","tags":["free"],"views":"800万","features":["古典音乐","作曲","电影配乐"],"pricing":"free+paid","useCases":["音频"]},
+  {"name":"Beatoven","url":"beatoven.ai","desc":"AI背景音乐生成器，适合创作者和视频制作者","cat":"audio","icon":"🥁","color":"#ef4444","tags":["free"],"views":"700万","features":["背景音乐","创作者","视频"],"pricing":"free+paid","useCases":["音频"]},
+  {"name":"Jukebox","url":"openai.com/research/jukebox","desc":"OpenAI音乐生成模型，可生成带歌词的完整歌曲","cat":"audio","icon":"🎵","color":"#10b981","tags":[],"views":"1200万","features":["音乐生成","歌词","歌曲"],"pricing":"free","useCases":["音频"]},
+  {"name":"Krisp","url":"krisp.ai","desc":"AI降噪工具，实时消除背景噪音，支持所有会议软件","cat":"audio","icon":"🔇","color":"#06b6d4","tags":["free"],"views":"1800万","features":["降噪","实时","会议"],"pricing":"free+paid","useCases":["音频","办公"]},
+  {"name":"Rytr","url":"rytr.me","desc":"性价比最高的AI写作助手，支持40+语言和多种模板","cat":"writing","icon":"📝","color":"#6366f1","tags":["free"],"views":"1800万","features":["多语言","模板","高性价比"],"pricing":"free+paid","useCases":["写作","营销"]},
+  {"name":"Wordtune","url":"wordtune.com","desc":"AI写作润色和改写工具，增强句子表达的清晰度","cat":"writing","icon":"✨","color":"#8b5cf6","tags":["free"],"views":"1400万","features":["润色","改写","清晰度"],"pricing":"free+paid","useCases":["写作"]},
+  {"name":"Grammarly","url":"grammarly.com","desc":"全球最流行的英语写作助手，AI语法检查和风格优化","cat":"writing","icon":"✅","color":"#22c55e","tags":["free"],"views":"7800万","features":["语法检查","风格优化","英语写作"],"pricing":"free+paid","useCases":["写作"]},
+  {"name":"Quillbot","url":"quillbot.com","desc":"AI改写和摘要工具，最适合学术写作和避免抄袭","cat":"writing","icon":"🔄","color":"#f59e0b","tags":["free"],"views":"3500万","features":["改写","摘要","学术"],"pricing":"free+paid","useCases":["写作"]},
+  {"name":"Anyword","url":"anyword.com","desc":"AI营销文案平台，数据驱动的内容优化和转化预测","cat":"writing","icon":"📊","color":"#ef4444","tags":[],"views":"950万","features":["营销","数据驱动","转化预测"],"pricing":"paid","useCases":["写作","营销"]},
+  {"name":"Mem","url":"mem.ai","desc":"AI自动整理笔记，无需手动分类，智能搜索和关联","cat":"productivity","icon":"🧠","color":"#8b5cf6","tags":["free"],"views":"1100万","features":["自动整理","笔记","智能搜索"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Taskade","url":"taskade.com","desc":"AI项目管理+思维导图，团队协作和自动化工作流","cat":"productivity","icon":"📋","color":"#22c55e","tags":["free"],"views":"900万","features":["项目管理","思维导图","自动化"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Fireflies.ai","url":"fireflies.ai","desc":"AI会议助手，自动记录、转录和总结会议内容","cat":"productivity","icon":"🔥","color":"#f97316","tags":["free"],"views":"1500万","features":["会议记录","转录","总结"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Motion","url":"usemotion.com","desc":"AI日程管理，自动规划任务优先级和时间安排","cat":"productivity","icon":"📅","color":"#6366f1","tags":[],"views":"1200万","features":["日程管理","自动规划","优先级"],"pricing":"paid","useCases":["办公"]},
+  {"name":"Rewind","url":"rewind.ai","desc":"AI个人记忆助手，记录和搜索你在电脑上看到的一切","cat":"productivity","icon":"⏪","color":"#ec4899","tags":[],"views":"800万","features":["记忆搜索","回溯","隐私"],"pricing":"paid","useCases":["办公"]},
+  {"name":"Rows","url":"rows.com","desc":"AI电子表格，自然语言查询和分析数据","cat":"productivity","icon":"📊","color":"#06b6d4","tags":["free"],"views":"750万","features":["电子表格","AI分析","自然语言"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Hints","url":"hints.so","desc":"AI个人助手，集成日历/邮件/任务，语音控制","cat":"productivity","icon":"💡","color":"#f59e0b","tags":["free"],"views":"650万","features":["个人助手","集成","语音"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Uizard","url":"uizard.io","desc":"AI原型设计工具，手绘草图秒变可交互界面","cat":"design","icon":"✏️","color":"#6366f1","tags":["free"],"views":"1200万","features":["原型设计","草图转UI","交互"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"Kittl","url":"kittl.com","desc":"AI矢量设计平台，专业级插画和Logo设计","cat":"design","icon":"🖋️","color":"#f97316","tags":["free"],"views":"900万","features":["矢量设计","Logo","插画"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"Galileo AI","url":"usegalileo.ai","desc":"AI UI设计生成器，文字描述自动生成移动端界面","cat":"design","icon":"🔭","color":"#8b5cf6","tags":["new"],"views":"700万","features":["UI设计","移动端","文字转设计"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"Autodraw","url":"autodraw.com","desc":"Google出品的AI画图工具，草稿自动识别并美化","cat":"design","icon":"🤖","color":"#22c55e","tags":["free"],"views":"1400万","features":["草稿识别","自动美化","Google"],"pricing":"free","useCases":["设计"]},
+  {"name":"Andi","url":"andisearch.com","desc":"无广告AI搜索引擎，直接给答案而非链接列表","cat":"research","icon":"🔎","color":"#06b6d4","tags":["free"],"views":"950万","features":["无广告","直接答案","搜索"],"pricing":"free","useCases":["搜索","研究"]},
+  {"name":"Elicit","url":"elicit.com","desc":"AI学术研究助手，自动搜索和分析学术论文","cat":"research","icon":"📚","color":"#8b5cf6","tags":["free"],"views":"1200万","features":["学术","论文分析","研究"],"pricing":"free+paid","useCases":["研究"]},
+  {"name":"SciSpace","url":"typeset.io","desc":"AI论文阅读平台，自动解释和翻译学术论文","cat":"research","icon":"🔬","color":"#6366f1","tags":["free"],"views":"1100万","features":["论文阅读","翻译","解释"],"pricing":"free+paid","useCases":["研究"]},
+  {"name":"Metaphor","url":"metaphor.systems","desc":"AI知识搜索引擎，理解语义搜索深层关联内容","cat":"research","icon":"🕸️","color":"#f59e0b","tags":[],"views":"700万","features":["语义搜索","深层关联","知识"],"pricing":"free","useCases":["搜索","研究"]},
+  {"name":"Socratic","url":"socratic.org","desc":"Google AI教育应用，拍照解题并逐步讲解","cat":"education","icon":"📸","color":"#22c55e","tags":["free"],"views":"2200万","features":["拍照解题","讲解","学科覆盖"],"pricing":"free","useCases":["学习"]},
+  {"name":"Synthesia EDU","url":"synthesia.io/education","desc":"AI教育视频制作，数字人讲师的课程视频生成","cat":"education","icon":"👨‍🏫","color":"#6366f1","tags":[],"views":"800万","features":["教育视频","数字人","课程"],"pricing":"paid","useCases":["学习"]},
+  {"name":"CheggMate","url":"chegg.com","desc":"Chegg AI学习平台，个性化辅导和作业帮助","cat":"education","icon":"📖","color":"#ef4444","tags":[],"views":"1500万","features":["个性化辅导","作业","学习"],"pricing":"paid","useCases":["学习"]},
+  {"name":"EdX AI","url":"edx.org","desc":"edX AI学习助手，个性化课程推荐和学习路径","cat":"education","icon":"🎓","color":"#f97316","tags":["free"],"views":"900万","features":["课程推荐","学习路径","个性化"],"pricing":"free","useCases":["学习"]},
+  {"name":"Speak","url":"speak.com","desc":"AI英语口语练习App，实时语音识别和纠错反馈","cat":"education","icon":"🗣️","color":"#06b6d4","tags":["free"],"views":"1100万","features":["口语练习","语音识别","纠错"],"pricing":"free+paid","useCases":["学习"]},
+  {"name":"Synthesis","url":"synthesis.com","desc":"AI儿童教育平台，游戏化培养批判性思维","cat":"education","icon":"🎮","color":"#8b5cf6","tags":[],"views":"700万","features":["儿童教育","游戏化","思维"],"pricing":"paid","useCases":["学习"]},
+  {"name":"OpenClaw","url":"openclaw.ai","desc":"本地优先AI Agent平台，iOS/安卓原生应用，可随身操控AI Agent完成复杂任务","cat":"productivity","icon":"🦞","color":"#7c6aef","tags":["new"],"views":"1200万","features":["AI Agent","移动端","本地优先","多Agent协作"],"pricing":"free+paid","useCases":["开发","自动化"]},
+  {"name":"Gemini 2.0","url":"gemini.google.com","desc":"Google最新旗舰模型，100万token上下文，多模态理解","cat":"chat","icon":"🌟","color":"#4285f4","tags":["hot","new"],"views":"8500万","features":["100万上下文","多模态","推理"],"pricing":"free+paid","useCases":["对话","研究","编码"]},
+  {"name":"Seaweed","url":"seaweed.capcut.cn","desc":"字节跳动AI视频模型，60秒连贯视频生成，人物一致性突出","cat":"video","icon":"🌊","color":"#06b6d4","tags":["hot","new"],"views":"6200万","features":["60秒视频","人物一致性","长视频"],"pricing":"free","useCases":["视频","创作"]},
+  {"name":"Veo 2","url":"deepmind.google/veo","desc":"Google DeepMind视频生成，4K电影级画质","cat":"video","icon":"🎥","color":"#ea4335","tags":["hot","new"],"views":"7800万","features":["4K","电影级"],"pricing":"paid","useCases":["视频"]},
+  {"name":"Midjourney V7","url":"midjourney.com","desc":"Midjourney最新版，风格参考和角色一致性升级","cat":"image","icon":"🖼️","color":"#6366f1","tags":["hot"],"views":"9200万","features":["风格参考","角色一致"],"pricing":"paid","useCases":["设计"]},
+  {"name":"Suno V4","url":"suno.ai","desc":"AI音乐生成V4，4分钟长歌曲多风格","cat":"audio","icon":"🎶","color":"#8b5cf6","tags":["hot"],"views":"5600万","features":["长歌曲","多风格"],"pricing":"free+paid","useCases":["音频"]},
+  {"name":"Warp","url":"warp.dev","desc":"AI终端工具，自然语言命令和智能补全","cat":"code","icon":"⚡","color":"#6366f1","tags":["new"],"views":"2800万","features":["AI终端","自然语言"],"pricing":"free","useCases":["编码"]},
+  {"name":"HeyGen 3.0","url":"heygen.com","desc":"数字人3.0，实时互动和多人对话","cat":"video","icon":"👤","color":"#06b6d4","tags":["new"],"views":"3400万","features":["实时互动","多人"],"pricing":"paid","useCases":["视频"]},
+  {"name":"Civitai","url":"civitai.com","desc":"AI模型分享社区，海量SD模型和LoRA","cat":"image","icon":"🏛️","color":"#ec4899","tags":["free"],"views":"4500万","features":["模型分享","社区"],"pricing":"free","useCases":["设计"]},
+  {"name":"Hugging Face","url":"huggingface.co","desc":"全球最大AI模型开源平台，数十万模型","cat":"code","icon":"🤗","color":"#f59e0b","tags":["free"],"views":"8500万","features":["开源","数据集"],"pricing":"free","useCases":["编码"]},
+  {"name":"Oasis","url":"oasis.ai","desc":"AI语音社交平台，虚拟角色实时语音聊天","cat":"chat","icon":"🗣️","color":"#10b981","tags":["new"],"views":"1800万","features":["语音社交","虚拟角色"],"pricing":"free+paid","useCases":["对话"]},
+  {"name":"Tome 2.0","url":"tome.app","desc":"AI演示文稿2.0，自动排版和数据分析嵌入","cat":"productivity","icon":"📊","color":"#8b5cf6","tags":["new"],"views":"2200万","features":["AI排版","数据分析"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Luma Dream Machine","url":"lumalabs.ai","desc":"Luma AI视频生成，手机端3D扫描","cat":"video","icon":"📱","color":"#f97316","tags":["hot"],"views":"5100万","features":["3D扫描","手机端"],"pricing":"free+paid","useCases":["视频"]},
+  {"name":"Stable Video 4D","url":"stability.ai","desc":"Stability AI 4D视频生成，单图生成360度环绕3D视频","cat":"video","icon":"🔄","color":"#8b5cf6","tags":["hot","new"],"views":"4100万","features":["360度","3D","单图生成"],"pricing":"free","useCases":["视频","3D"]},
+  {"name":"Seedance","url":"seedance.ai","desc":"字节跳动AI视频生成模型，60秒电影级视频，原生音画同步","cat":"video","icon":"🎬","color":"#3b82f6","tags":["hot","new"],"views":"3800万","features":["60秒视频","音画同步","多镜头叙事","电影级"],"pricing":"free+paid","useCases":["视频","影视"]},
+  {"name":"Stability Audio","url":"stability.ai/audio","desc":"Stability AI音频生成，文字转音乐和音效","cat":"audio","icon":"🎵","color":"#8b5cf6","tags":["new"],"views":"3200万","features":["音频生成","音效","文字转音乐"],"pricing":"free","useCases":["音频"]},
+  {"name":"Recraft V3","url":"recraft.ai","desc":"Recraft V3矢量设计，品牌风格一致性和设计系统","cat":"design","icon":"🎨","color":"#ec4899","tags":["new"],"views":"1800万","features":["矢量","品牌","设计系统"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"Claude 4 Sonnet","url":"claude.ai","desc":"Anthropic最新模型，性价比最高的推理AI","cat":"chat","icon":"🟣","color":"#d4a574","tags":["hot"],"views":"6700万","features":["推理","性价比","200K"],"pricing":"free+paid","useCases":["对话","编码"]},
+  {"name":"OpenAI o3","url":"openai.com","desc":"OpenAI最新推理模型，数学和编程能力大幅提升","cat":"chat","icon":"🧮","color":"#10a37f","tags":["hot"],"views":"9100万","features":["推理","数学","编程"],"pricing":"paid","useCases":["对话","编码"]},
+  {"name":"Perplexity Pro","url":"perplexity.ai","desc":"AI搜索引擎Pro版，深度研究模式和文件分析","cat":"research","icon":"🔍","color":"#6366f1","tags":["hot"],"views":"4800万","features":["深度研究","文件分析","Pro"],"pricing":"paid","useCases":["搜索","研究"]},
+  {"name":"Anthropic Console","url":"console.anthropic.com","desc":"Anthropic开发者平台，Workbench和API管理","cat":"code","icon":"⚙️","color":"#d4a574","tags":["new"],"views":"1500万","features":["API","Workbench","开发者"],"pricing":"free+paid","useCases":["编码"]},
+  {"name":"Suno Mobile","url":"suno.ai","desc":"Suno手机App，随时随地AI音乐创作","cat":"audio","icon":"📱","color":"#8b5cf6","tags":["new"],"views":"2500万","features":["手机端","AI音乐","创作"],"pricing":"free+paid","useCases":["音频"]},
+  {"name":"Framer AI","url":"framer.com","desc":"AI网站设计工具，自然语言生成网站和组件","cat":"design","icon":"🏗️","color":"#2563eb","tags":["hot"],"views":"3600万","features":["网站生成","组件","自然语言"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"Mistral Large 2","url":"mistral.ai","desc":"Mistral最新旗舰模型，多语言和推理能力突出","cat":"chat","icon":"🇫🇷","color":"#f97316","tags":["new"],"views":"2900万","features":["多语言","推理","旗舰"],"pricing":"free+paid","useCases":["对话"]},
+  {"name":"Gemini Code Assist","url":"cloud.google.com","desc":"Google AI编程助手，深度集成Google Cloud","cat":"code","icon":"💎","color":"#4285f4","tags":["new"],"views":"2200万","features":["Google Cloud","编程","集成"],"pricing":"free+paid","useCases":["编码"]},
+  {"name":"Stable Audio 2.0","url":"stability.ai","desc":"长音频生成，支持3分钟音乐和音效","cat":"audio","icon":"🎼","color":"#8b5cf6","tags":["new"],"views":"1600万","features":["长音频","3分钟","音效"],"pricing":"free","useCases":["音频"]},
+  {"name":"Webflow AI","url":"webflow.com","desc":"Webflow AI网站建设，AI自动布局和响应式设计","cat":"design","icon":"🌐","color":"#6366f1","tags":["hot"],"views":"3100万","features":["AI布局","响应式","网站建设"],"pricing":"free+paid","useCases":["设计"]},
+  {"name":"Descript AI","url":"descript.com","desc":"AI视频编辑，文字编辑视频和AI配音","cat":"video","icon":"✂️","color":"#ef4444","tags":["hot"],"views":"2800万","features":["视频编辑","AI配音","文字编辑"],"pricing":"paid","useCases":["视频"]},
+  {"name":"Typeform AI","url":"typeform.com","desc":"AI表单和调查工具，智能问题生成和分析","cat":"productivity","icon":"📋","color":"#f59e0b","tags":["new"],"views":"1400万","features":["表单","调查","AI分析"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Cal AI","url":"cal.com","desc":"AI日程管理，自动安排会议和智能时间建议","cat":"productivity","icon":"📅","color":"#22c55e","tags":["new"],"views":"1200万","features":["日程管理","AI建议","自动安排"],"pricing":"free+paid","useCases":["办公"]},
+  {"name":"Durable AI","url":"durable.co","desc":"AI网站和小企业工具，30秒生成完整商业网站","cat":"productivity","icon":"🏪","color":"#06b6d4","tags":["new"],"views":"1900万","features":["网站生成","30秒","小企业"],"pricing":"paid","useCases":["办公"]},
+  {"name":"Wondershare Filmora","url":"filmora.wondershare.com","desc":"AI视频编辑软件，模板丰富操作简单","cat":"video","icon":"🎞️","color":"#6366f1","tags":["free"],"views":"5400万","features":["视频编辑","模板","简单"],"pricing":"free+paid","useCases":["视频"]},
+  {"name":"Socratic by Google","url":"socratic.org","desc":"Google AI学习助手，拍照解题和知识点讲解","cat":"education","icon":"📸","color":"#4285f4","tags":["free"],"views":"2200万","features":["拍照解题","讲解","AI学习"],"pricing":"free","useCases":["学习"]},
+  {"name":"Khanmigo","url":"khanacademy.org","desc":"可汗学院AI导师，个性化学习辅导和答疑","cat":"education","icon":"🎓","color":"#22c55e","tags":["free"],"views":"1800万","features":["AI导师","个性化","辅导"],"pricing":"free","useCases":["学习"]},
+  {"name":"MathGPT","url":"mathgpt.com","desc":"AI数学解题工具，拍照识别并逐步讲解","cat":"education","icon":"🧮","color":"#8b5cf6","tags":["free"],"views":"1500万","features":["数学解题","拍照","逐步讲解"],"pricing":"free","useCases":["学习"]}
 ]
 </script>
 
 <script>
-// ── Data ──
+/* ── 工具分类标签（去除emoji，使用纯文字 + 小图标） ── */
 const catMap={chat:'💬 AI 对话',writing:'✍️ AI 写作',image:'🎨 AI 绘画',video:'🎬 AI 视频',audio:'🎵 AI 音频',code:'💻 AI 编程',design:'🎯 AI 设计',productivity:'⚡ AI 效率',research:'🔍 AI 搜索',education:'📚 AI 教育'};
-let tools=[],filtered=[],currentCat='all',currentSort='default',favs=JSON.parse(localStorage.getItem('hive-favs')||'[]');
+let tools=[],filtered=[],currentCat='all',currentSort='default',currentView='grid',
+  favs=JSON.parse(localStorage.getItem('hive-favs')||'[]');
 
-// ── Core Init ──
+/* ── 视图切换 ── */
+function setView(view){
+  currentView=view;
+  localStorage.setItem('hive-view',view);
+  document.querySelectorAll('.view-btn').forEach(function(b){b.classList.toggle('active',b.dataset.view===view)});
+  var wrap=document.getElementById('hiveWrap');
+  wrap.classList.toggle('list-view',view==='list');
+  renderTools();
+}
+
+/* ── 亮暗模式切换 ── */
+function toggleTheme(){
+  var html=document.documentElement;
+  var isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  localStorage.setItem('hive-theme',isDark?'light':'dark');
+  updateThemeIcon();
+}
+function updateThemeIcon(){
+  var icon=document.getElementById('themeIcon');
+  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  if(icon){
+    if(isDark){icon.innerHTML='<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';}
+    else{icon.innerHTML='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';}
+  }
+}
+
+/* ── 侧边抽屉（替换原modal） ── */
+function openDrawer(name){
+  addToHistory(name);
+  var t=tools.find(function(x){return x.name===name});
+  if(!t)return;
+  var tags=(t.tags||[]).filter(function(tag){return tag==='hot'||tag==='free'||tag==='new'||tag==='verified'});
+  var tagLabels={hot:'🔥 热门',free:'✨ 免费',new:'🆕 新品',verified:'✅ 已验证'};
+  var isFav=favs.includes(t.name);
+  var pricingLabel=t.pricing==='free'?'免费':t.pricing==='paid'?'付费':'免费+付费';
+  var c=document.getElementById('drawerContent');
+  c.innerHTML=
+    '<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">'
+    +'<div style="width:64px;height:64px;border-radius:16px;background:'+t.color+';display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:24px;font-weight:800;color:#fff;flex-shrink:0">'+t.name.charAt(0).toUpperCase()+'</div>'
+    +'<div><h2 style="font-size:24px;font-weight:800;margin-bottom:4px">'+t.name+'</h2><p style="font-size:13px;color:var(--text3)">'+t.views+' 浏览 · '+pricingLabel+'</p></div>'
+    +'</div>'
+    +'<p style="font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:20px">'+t.desc+'</p>'
+    +(tags.length?'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">'+tags.map(function(tg){return'<span style="font-size:11px;padding:3px 10px;background:var(--bg3);border-radius:20px;color:var(--text2)">'+tagLabels[tg]+'</span>'}).join('')+'</div>':'')
+    +'<h4 style="font-size:14px;font-weight:700;margin-bottom:8px;color:var(--text)">功能亮点</h4>'
+    +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">'+(t.features||[]).map(function(f){return'<span style="font-size:12px;padding:4px 12px;background:rgba(240,168,48,.08);border-radius:8px;color:var(--honey2)">'+f+'</span>'}).join('')+'</div>'
+    +'<div style="display:flex;gap:10px;flex-wrap:wrap">'
+    +'<a href="https://'+t.url+'" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:14px;padding:10px 24px">'
+    +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 访问官网</a>'
+    +'<button class="btn btn-ghost" onclick="toggleFav(\''+t.name.replace(/'/g,"\\'")+'\');openDrawer(\''+t.name.replace(/'/g,"\\'")+'\')" style="font-size:14px;padding:10px 20px">'+(isFav?'⭐ 已收藏':'☆ 收藏')+'</button>'
+    +'</div>';
+  document.getElementById('detailDrawer').classList.add('active');
+}
+function closeDrawer(){
+  document.getElementById('detailDrawer').classList.remove('active');
+}
+
+/* ── 初始化 ── */
 function init(){
-  const el=document.getElementById('tools-data');
+  var el=document.getElementById('tools-data');
   if(!el){console.error('tools-data not found');return;}
   try{tools=JSON.parse(el.textContent)}catch(e){console.error('JSON error');return;}
   filtered=[...tools];
-  renderCats();
+  renderCatFilter();
   renderFeatured();
   renderTools();
   document.getElementById('statTools').textContent=tools.length;
   document.getElementById('favCount').textContent=favs.length;
   document.getElementById('searchInput').addEventListener('input',doSearch);
+  /* 恢复视图偏好 */
+  var savedView=localStorage.getItem('hive-view')||'grid';
+  setView(savedView);
+  /* 恢复主题偏好 */
+  var savedTheme=localStorage.getItem('hive-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',savedTheme);
+  updateThemeIcon();
   window.addEventListener('scroll',function(){
-    const b=document.getElementById('backTop');
+    var b=document.getElementById('backTop');
     if(b)b.style.display=window.scrollY>400?'block':'none';
   });
 }
 
-function renderCats(){
-  const nav=document.getElementById('categories');
-  const counts={};tools.forEach(function(t){counts[t.cat]=(counts[t.cat]||0)+1});
-  let h='<span class="cat-btn active" data-cat="all" onclick="selectCat(\'all\')">🌟 全部 ('+tools.length+')</span>';
-  for(const[c,name]of Object.entries(catMap)){
-    h+='<span class="cat-btn" data-cat="'+c+'" onclick="selectCat(\''+c+'\')">'+name+' ('+(counts[c]||0)+')</span>';
+/* ── 分类筛选栏（渲染到catFilter） ── */
+function renderCatFilter(){
+  var nav=document.getElementById('catFilter');
+  if(!nav)return;
+  var counts={};tools.forEach(function(t){counts[t.cat]=(counts[t.cat]||0)+1});
+  var h='<span class="cat-btn active" data-cat="all" onclick="selectCat(\'all\')">全部 ('+tools.length+')</span>';
+  for(var c in catMap){
+    h+='<span class="cat-btn" data-cat="'+c+'" onclick="selectCat(\''+c+'\')">'+catMap[c]+' ('+(counts[c]||0)+')</span>';
   }
   nav.innerHTML=h;
 }
@@ -4545,15 +890,17 @@ function setSort(sort){
 }
 
 function doSearch(){
-  const q=document.getElementById('searchInput').value.trim().toLowerCase();
-  const c=document.getElementById('searchClear');
-  c.style.display=q?'inline':'none';
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var c=document.getElementById('searchClear');
+  var hint=document.getElementById('searchEmptyHint');
+  c.style.display=q?'flex':'none';
   filtered=tools.filter(function(t){
     if(currentCat!=='all'&&t.cat!==currentCat)return false;
     if(q&&!t.name.toLowerCase().includes(q)&&!t.desc.toLowerCase().includes(q))return false;
     return true;
   });
   applySort();renderTools();
+  if(hint)hint.style.display=(q&&filtered.length===0)?'block':'none';
 }
 function doFilter(){doSearch()}
 
@@ -4562,58 +909,83 @@ function applySort(){
   else if(currentSort==='new')filtered.sort(function(a,b){return(b.date||'').localeCompare(a.date||'')});
 }
 
+/* ── 蜂王精选（4张卡） ── */
 function renderFeatured(){
-  const grid=document.getElementById('featuredGrid');
+  var grid=document.getElementById('featuredGrid');
   if(!grid)return;
-  const picks=[...tools].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)}).slice(0,4);
+  var picks=[...tools].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)}).slice(0,4);
   grid.innerHTML=picks.map(function(t){
-    return'<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.3s" onmouseover="this.style.borderColor=\'var(--honey)\';this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 8px 30px var(--amber-glow)\';" onmouseout="this.style.borderColor=\'\';this.style.transform=\'\';this.style.boxShadow=\'\';" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')">'
-      +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:28px">'+t.icon+'</span><span style="font-weight:700;font-size:16px">'+t.name+'</span></div>'
+    return'<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.3s" onmouseover="this.style.borderColor=\'var(--honey)\';this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 8px 30px var(--amber-glow)\';" onmouseout="this.style.borderColor=\'\';this.style.transform=\'\';this.style.boxShadow=\'\';" onclick="openDrawer(\''+t.name.replace(/'/g,"\\'")+'\')">'
+      +'<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">'
+      +'<div style="width:48px;height:48px;border-radius:14px;background:'+t.color+';display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;font-weight:800;color:#fff;flex-shrink:0">'+t.name.charAt(0).toUpperCase()+'</div>'
+      +'<span style="font-weight:700;font-size:17px">'+t.name+'</span></div>'
       +'<p style="font-size:13px;color:var(--text2);line-height:1.6">'+t.desc.substring(0,60)+'...</p>'
-      +'<div style="margin-top:12px;display:flex;align-items:center;gap:8px"><span style="color:var(--honey);font-size:12px">⭐ 编辑精选</span><span style="font-size:11px;color:var(--text3);margin-left:auto">'+t.views+'</span></div>'
+      +'<div style="margin-top:14px;display:flex;align-items:center;gap:8px"><span style="color:var(--honey);font-size:12px">⭐ 编辑精选</span><span style="font-size:11px;color:var(--text3);margin-left:auto">'+t.views+'</span></div>'
       +'</div>';
   }).join('');
 }
 
+/* ── 渲染工具网格（支持蜂巢 + 列表双视图） ── */
 function renderTools(){
-  const c=document.getElementById('content');
-  const info=document.getElementById('resultInfo');
+  var c=document.getElementById('content');
+  var info=document.getElementById('resultInfo');
   if(!c)return;
-  if(!filtered.length){c.innerHTML='<div style="text-align:center;padding:60px 20px;color:var(--text3)"><p style="font-size:40px">🍯</p><p>蜂巢里还没找到这个工具</p></div>';if(info)info.textContent='';return}
+  if(!filtered.length){
+    c.innerHTML='<div style="text-align:center;padding:60px 20px;color:var(--text3);grid-column:1/-1;width:100%"><p style="font-size:40px">🍯</p><p>蜂巢里还没找到这个工具</p></div>';
+    if(info)info.textContent='';
+    return;
+  }
   if(info)info.textContent='共 '+filtered.length+' 个工具';
-  const sorted=[...filtered].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)});
-  const featured=new Set(sorted.slice(0,12).map(function(t){return t.name}));
+  var sorted=[...filtered].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)});
+  var featured=new Set(sorted.slice(0,12).map(function(t){return t.name}));
+  var isList=currentView==='list';
 
-  let h='';
+  var h='';
   filtered.forEach(function(t,i){
-    const isFeat=featured.has(t.name);
-    const tags=(t.tags||[]).filter(function(tag){return tag==='hot'||tag==='free'||tag==='new'||tag==='verified'});
-    const mainTag=tags[0];
-    const tagLabel=mainTag==='hot'?'🔥':mainTag==='free'?'✨':mainTag==='new'?'🆕':mainTag==='verified'?'✅':'';
-    const isVerified=(t.tags||[]).includes('verified');
+    var isFeat=featured.has(t.name);
+    var tags=(t.tags||[]).filter(function(tag){return tag==='hot'||tag==='free'||tag==='new'||tag==='verified'});
+    var mainTag=tags[0];
+    var tagLabel=mainTag==='hot'?'🔥':mainTag==='free'?'✨':mainTag==='new'?'🆕':mainTag==='verified'?'✅':'';
+    var pricingLabel=t.pricing==='free'?'免费':t.pricing==='paid'?'付费':'免费+付费';
+    var initials=t.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'').charAt(0).toUpperCase();
 
-    h+='<div class="hive-cell'+(isFeat?' featured':'')+'" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')">'
-      +'<div class="hive-hex">'
-      +(tagLabel?'<span class="hive-tag">'+tagLabel+'</span>':'')
-      +(isVerified?'<span style="position:absolute;top:6px;left:12px;font-size:10px;opacity:.5" title="已验证">✓</span>':'')
-      +'<span class="hive-icon">'+t.icon+'</span>'
-      +'<span class="hive-name">'+t.name+'</span>'
-      +'<span class="hive-cat">'+(t.pricing==='free'?'🆓 免费':t.pricing==='paid'?'💎 付费':'🔄 免费+付费')+'</span>'
-      +'</div></div>';
+    if(isList){
+      /* 列表视图 */
+      h+='<div class="hive-cell'+(isFeat?' featured':'')+'" onclick="openDrawer(\''+t.name.replace(/'/g,"\\'")+'\')">'
+        +'<div class="hive-hex">'
+        +'<div class="hive-avatar" style="background:'+t.color+'">'+initials+'</div>'
+        +'<div class="hive-name">'+t.name+'</div>'
+        +'<div class="hive-desc">'+t.desc+'</div>'
+        +'<div class="hive-meta">'
+        +'<span class="hive-cat">'+(catMap[t.cat]||t.cat).replace(/^[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]\s*/u,'')+'</span>'
+        +'<span class="hive-pricing">'+pricingLabel+'</span>'
+        +(tagLabel?'<span class="hive-tag">'+tagLabel+'</span>':'')
+        +'</div>'
+        +'</div></div>';
+    }else{
+      /* 蜂巢网格视图 */
+      h+='<div class="hive-cell'+(isFeat?' featured':'')+'" onclick="openDrawer(\''+t.name.replace(/'/g,"\\'")+'\')">'
+        +'<div class="hive-hex">'
+        +(tagLabel?'<span class="hive-tag">'+tagLabel+'</span>':'')
+        +'<div class="hive-avatar" style="background:'+t.color+'">'+initials+'</div>'
+        +'<span class="hive-name">'+t.name+'</span>'
+        +'<span class="hive-cat">'+pricingLabel+'</span>'
+        +'</div></div>';
+    }
   });
   c.innerHTML=h;
 }
 
+/* ── 原来 openTool 改为使用侧边抽屉 ── */
 function openTool(name){
-  addToHistory(name);
-  const slug='tool-'+name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'-').toLowerCase();
-  window.location.href='/'+slug+'.html';
+  openDrawer(name);
 }
 
+/* ── 浏览历史 ── */
 function addToHistory(name){
-  const t=tools.find(function(x){return x.name===name});
+  var t=tools.find(function(x){return x.name===name});
   if(!t)return;
-  let history=JSON.parse(localStorage.getItem('hive-history')||'[]');
+  var history=JSON.parse(localStorage.getItem('hive-history')||'[]');
   history=history.filter(function(h){return h.name!==name});
   history.unshift({name:name,icon:t.icon,desc:t.desc,time:new Date().toISOString()});
   if(history.length>20)history=history.slice(0,20);
@@ -4621,8 +993,8 @@ function addToHistory(name){
 }
 
 function showHistory(){
-  const history=JSON.parse(localStorage.getItem('hive-history')||'[]');
-  const content=document.getElementById('favContent');
+  var history=JSON.parse(localStorage.getItem('hive-history')||'[]');
+  var content=document.getElementById('favContent');
   if(history.length===0){content.innerHTML='<p style="color:var(--text3);text-align:center;padding:20px">🕐 还没有浏览记录</p>'}
   else{
     content.innerHTML='<h3 style="margin-bottom:12px">🕐 最近浏览 ('+history.length+')</h3>'+history.map(function(h,i){
@@ -4632,8 +1004,9 @@ function showHistory(){
   document.getElementById('favModal').classList.add('active');
 }
 
+/* ── 收藏 ── */
 function toggleFav(name){
-  const idx=favs.indexOf(name);
+  var idx=favs.indexOf(name);
   if(idx>-1)favs.splice(idx,1);else favs.push(name);
   localStorage.setItem('hive-favs',JSON.stringify(favs));
   document.getElementById('favCount').textContent=favs.length;
@@ -4641,8 +1014,8 @@ function toggleFav(name){
 }
 
 function showFavorites(){
-  const favTools=tools.filter(function(t){return favs.includes(t.name)});
-  const c=document.getElementById('favContent');
+  var favTools=tools.filter(function(t){return favs.includes(t.name)});
+  var c=document.getElementById('favContent');
   if(!favTools.length){c.innerHTML='<p style="color:var(--text3);text-align:center;padding:20px">🍯 蜂巢里还没有收藏的工具</p>'}
   else{c.innerHTML=favTools.map(function(t){return'<div style="padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')">'+t.icon+' '+t.name+' <span style="color:var(--text3);font-size:12px">'+t.desc.substring(0,30)+'...</span></div>'}).join('')}
   document.getElementById('favModal').classList.add('active');
@@ -4656,6 +1029,8 @@ function closeModal(id){
 function clearSearch(){
   document.getElementById('searchInput').value='';
   document.getElementById('searchClear').style.display='none';
+  var hint=document.getElementById('searchEmptyHint');
+  if(hint)hint.style.display='none';
   doFilter();
 }
 
@@ -4673,11 +1048,11 @@ function submitTool(){
 
 function openModal(){document.getElementById('submitModal').classList.add('active')}
 
-// ── i18n ──
+/* ── i18n ── */
 var i18n={zh:{site:'蜂巢 AI',subtitle:'AI',home:'首页',daily:'日报',blog:'资讯',about:'关于',privacy:'隐私',searchPlaceholder:'搜索AI工具...'},en:{site:'Hive AI',subtitle:'',home:'Home',daily:'Briefing',blog:'Blog',about:'About',privacy:'Privacy',searchPlaceholder:'Search AI tools...'}};
 var currentLang=localStorage.getItem('hive-lang')||'zh';
 function t(key){var v=i18n[currentLang]&&i18n[currentLang][key];if(!v)return key;return v.replace('{n}',filtered.length);}
-function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';localStorage.setItem('hive-lang',currentLang);updateLangUI();renderCats();renderFeatured();renderTools();}
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';localStorage.setItem('hive-lang',currentLang);updateLangUI();renderCatFilter();renderFeatured();renderTools();}
 function updateLangUI(){
   try{
     var lb=document.querySelector('.lang-btn');
@@ -4690,16 +1065,16 @@ function updateLangUI(){
   }catch(e){}
 }
 
-// ── Leaderboard ──
+/* ── 排行榜 ── */
 function showLeaderboard(){
-  const sorted=[...tools].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)}).slice(0,10);
+  var sorted=[...tools].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)}).slice(0,10);
   document.getElementById('leaderboardContent').innerHTML=sorted.map(function(t,i){
     return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')"><span style="font-size:20px;font-weight:900;color:'+(i<3?'var(--honey)':'var(--text3)')+';width:30px">'+(i+1)+'</span><span style="font-size:24px">'+t.icon+'</span><div><div style="font-weight:600">'+t.name+'</div><div style="font-size:12px;color:var(--text3)">'+t.desc.substring(0,30)+'... · '+t.views+'</div></div></div>';
   }).join('');
   document.getElementById('leaderboardModal').classList.add('active');
 }
 
-// ── Use Case Quick Search ──
+/* ── 场景快速搜索 ── */
 function selectUseCase(uc){
   document.querySelectorAll('.uc-btn').forEach(function(b){b.classList.remove('active')});
   if(event&&event.target)event.target.classList.add('active');
@@ -4713,12 +1088,7 @@ function selectUseCase(uc){
   if(ri)ri.textContent=uc+'场景: '+filtered.length+' 个工具';
 }
 
-// ── Boot ──
-init();
-
-
-
-// ── Tool Voting ──
+/* ── 投票 ── */
 function voteTool(name,dir){
   var votes=JSON.parse(localStorage.getItem('hive-votes')||'{}');
   var key=name+'_'+dir;
@@ -4726,20 +1096,20 @@ function voteTool(name,dir){
   localStorage.setItem('hive-votes',JSON.stringify(votes));
 }
 
-// ── Random Tool ──
+/* ── 随机探索 ── */
 function randomTool(){
   var t=tools[Math.floor(Math.random()*tools.length)];
   document.getElementById('randomResult').innerHTML=
     '<div class="random-spin">'+t.icon+'</div>'+
     '<h3>'+t.name+'</h3>'+
     '<p style="color:var(--text2);margin:8px 0">'+t.desc+'</p>'+
-    '<a href="/tool-'+t.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'-').toLowerCase()+'.html" class="btn btn-primary">🔍 了解详情</a>'+
+    '<a href="https://'+t.url+'" target="_blank" rel="noopener" class="btn btn-primary">🔍 了解详情</a>'+
     '<br><button class="btn btn-ghost" onclick="randomTool()" style="margin-top:12px">🎲 再来一个</button>';
   document.getElementById('randomModal').classList.add('active');
   addToHistory(t.name);
 }
 
-// ── Tool PK ──
+/* ── 工具PK ── */
 function showPK(){
   newPKBattle();
   document.getElementById('pkModal').classList.add('active');
@@ -4766,7 +1136,7 @@ function pkVote(name,el){
   setTimeout(newPKBattle,800);
 }
 
-// ── Achievements ──
+/* ── 成就系统 ── */
 function getAchievements(){
   var history=JSON.parse(localStorage.getItem('hive-history')||'[]');
   var favs=JSON.parse(localStorage.getItem('hive-favs')||'[]');
@@ -4791,7 +1161,7 @@ function showAchievements(){
   document.getElementById('achievementModal').classList.add('active');
 }
 
-// ── Daily Trivia ──
+/* ── 每日AI挑战 ── */
 var triviaQuestions=[
   {q:'ChatGPT是哪个公司开发的？',opts:['Google','OpenAI','Meta','Apple'],ans:1},
   {q:'Midjourney是什么类型的AI工具？',opts:['对话','编程','绘画','视频'],ans:2},
@@ -4822,27 +1192,10 @@ function answerTrivia(idx,ans,el){
     all[ans].classList.add('correct');
   }
 }
-</script>
 
-<!-- 🎮 互动浮层 -->
-<div class="float-bar" id="floatBar">
-  <button class="float-btn" onclick="randomTool()" title="随机探索">
-    <span class="float-icon">🎲</span>
-    <span class="float-label">探索</span>
-  </button>
-  <button class="float-btn" onclick="showPK()" title="工具PK">
-    <span class="float-icon">⚔️</span>
-    <span class="float-label">PK</span>
-  </button>
-  <button class="float-btn" onclick="showAchievements()" title="成就">
-    <span class="float-icon">🏆</span>
-    <span class="float-label">成就</span>
-  </button>
-  <button class="float-btn" onclick="showTrivia()" title="每日挑战">
-    <span class="float-icon">🎯</span>
-    <span class="float-label">挑战</span>
-  </button>
-</div>
+/* ── 启动 ── */
+init();
+</script>
 
 </body>
 </html>
