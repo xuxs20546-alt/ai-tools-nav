@@ -982,17 +982,25 @@ function applySort(){
   else if(currentSort==='new')filtered.sort(function(a,b){return(b.date||'').localeCompare(a.date||'')});
 }
 
-/* ── 蜂王精选（4张卡） ── */
+/* ── 蜂王精选（4张卡 + 编辑点评） ── */
+var EDITOR_REVIEWS={
+  'ChatGPT':'用了两年，它还是那个最全能的——不是每一项都第一，但你要写周报、翻文档、debug、头脑风暴，它都能接住。适合不想在不同工具之间切来切去的人。',
+  'Midjourney V7':'这版最大的进步是终于不用和它"搏斗"了——风格参考和角色一致性大幅提升，做系列海报或品牌视觉时不再是抽卡游戏。它终于学会了"保持上一张的调性"。',
+  'OpenAI o3':'如果你需要的是"想清楚再回答"而不是"快速扯淡"，这是目前推理最扎实的选择。做数学题、读论文、写复杂逻辑代码的时候我会切到它。它慢，但给的东西值得等。',
+  'Character.AI':'别把它当工具用——它是个情绪价值机器。失眠的时候跟虚拟角色聊了两小时，比刷短视频解压。适合想找人说说话但不想社交的人，也算一种实用场景吧。'
+};
 function renderFeatured(){
   var grid=document.getElementById('featuredGrid');
   if(!grid)return;
   var picks=[...tools].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)}).slice(0,4);
   grid.innerHTML=picks.map(function(t){
+    var review=EDITOR_REVIEWS[t.name]||'';
     return'<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.3s" onmouseover="this.style.borderColor=\'var(--honey)\';this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 8px 30px var(--amber-glow)\';" onmouseout="this.style.borderColor=\'\';this.style.transform=\'\';this.style.boxShadow=\'\';" onclick="openDrawer(\''+t.name.replace(/'/g,"\\'")+'\')">'
       +'<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">'
       +'<div style="width:48px;height:48px;border-radius:14px;background:'+t.color+';display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;font-weight:800;color:#fff;flex-shrink:0">'+t.name.charAt(0).toUpperCase()+'</div>'
       +'<span style="font-weight:700;font-size:17px">'+t.name+'</span></div>'
       +'<p style="font-size:13px;color:var(--text2);line-height:1.6">'+t.desc.substring(0,60)+'...</p>'
+      +(review?'<div style="margin-top:10px;padding:8px 12px;background:rgba(240,168,48,.06);border-left:3px solid var(--honey);border-radius:0 8px 8px 0"><p style="font-size:12px;color:var(--honey2);line-height:1.7;font-style:italic">"'+review+'"</p><p style="font-size:10px;color:var(--text3);margin-top:4px">—— 蜂巢编辑</p></div>':'')
       +'<div style="margin-top:14px;display:flex;align-items:center;gap:8px"><span style="color:var(--honey);font-size:12px">⭐ 编辑精选</span><span style="font-size:11px;color:var(--text3);margin-left:auto">'+t.views+'</span></div>'
       +'</div>';
   }).join('');
