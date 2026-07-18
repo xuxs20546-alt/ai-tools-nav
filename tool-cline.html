@@ -3,37 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cline - VS Code AI编程插件，支持多种模型，自动读写文件、执 | 蜂巢 AI</title>
-<meta name="description" content="Cline：VS Code AI编程插件，支持多种模型，自动读写文件、执行终端命令">
+<title>Cline - VS Code最强开源AI编程插件，自由选择模型 | 蜂巢 AI</title>
+<meta name="description" content="Cline深度评测：VS Code开源AI编程插件，支持任意API提供商（OpenAI、Anthropic、DeepSeek、Ollama等），可直接读写文件执行命令的Agent式编程助手。">
+<meta name="keywords" content="Cline,AI编程,VS Code插件,开源AI,Agent编程,Claude编程">
 <link rel="canonical" href="https://www.ai-nav-build.com/tool-cline.html">
+<meta property="og:title" content="Cline - 🆓 免费 | 蜂巢 AI">
+<meta property="og:description" content="VS Code开源AI编程插件，自由选择模型，Agent式自动读写文件执行命令">
+<meta property="og:url" content="https://www.ai-nav-build.com/tool-cline.html">
 <link rel="stylesheet" href="style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNXGE2XXCY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PNXGE2XXCY");</script>
 <style>
 .tool-hero{text-align:center;padding:60px 24px 40px;background:linear-gradient(180deg,#2563eb15,transparent)}
 .icon-lg{width:80px;height:80px;background:#2563eb;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px}
 .tool-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}
 .tool-hero .sub{color:var(--text2);font-size:15px;max-width:500px;margin:0 auto 20px}
-.cta-btn{display:inline-block;padding:12px 32px;background:var(--honey);color:#1a1000;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;transition:.2s}
+.cta-btn{display:inline-block;padding:12px 32px;background:var(--honey);color:#1a1000;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;margin:0 6px;transition:.2s}
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(240,168,48,.4)}
+.cta-btn.ghost{background:transparent;border:1px solid var(--honey);color:var(--honey2)}
 .wrap{max-width:900px;margin:0 auto;padding:0 24px 80px}
 .wrap h2{font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)}
-.wrap p{font-size:15px;line-height:1.85;color:var(--text2)}
+.wrap p,.wrap li{font-size:15px;line-height:1.85;color:var(--text2)}
+.wrap ul{padding-left:20px;margin-bottom:16px}.wrap li{margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0}
+.pro-box,.con-box{padding:24px;border-radius:var(--radius)}
+.pro-box{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2)}.pro-box h4{color:#34d399;margin-bottom:12px}
+.con-box{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2)}.con-box h4{color:#f87171;margin-bottom:12px}
+.price-badge{display:inline-block;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;margin-bottom:12px}
+.price-free{background:rgba(52,211,153,.15);color:#34d399}
+.price-paid{background:rgba(248,113,113,.15);color:#f87171}
+.price-freemium{background:rgba(240,168,48,.15);color:#f5c060}
 .related{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
-.related-card{padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:inherit;transition:.2s;display:block}
+.related-card{padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:inherit;transition:.2s;display:block}
 .related-card:hover{border-color:var(--honey);transform:translateY(-2px)}
+.related-card .name{font-weight:600;font-size:15px}.related-card .cat{font-size:12px;color:var(--text3);margin-top:4px}
+@media(max-width:768px){.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header class="header"><div class="header-inner"><a href="/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">蜂巢 <span>AI</span></span></a>
-<nav style="margin-left:auto;display:flex;gap:8px"><a href="/" class="btn btn-ghost">🏠 首页</a><a href="/daily.html" class="btn btn-ghost">📋 日报</a></nav></div></header>
+<nav style="margin-left:auto;display:flex;gap:8px"><a href="/" class="btn btn-ghost">🏠 首页</a><a href="/daily.html" class="btn btn-ghost">📋 日报</a><a href="/blog.html" class="btn btn-ghost">📰 资讯</a></nav></div></header>
 <main><div class="tool-hero"><div class="icon-lg">🤖</div><h1>Cline</h1>
-<p class="sub">VS Code AI编程插件，支持多种模型，自动读写文件、执行终端命令</p>
-<a href="https://cline.bot" target="_blank" rel="nofollow" class="cta-btn">🚀 访问官网</a></div>
+<span class="price-badge price-free">🆓 免费</span>
+<p class="sub">VS Code 最强开源 AI Agent 插件——自由选择模型，让 AI 直接操作你的代码</p>
+<a href="https://cline.bot" target="_blank" rel="nofollow" class="cta-btn">🚀 访问官网</a><a href="/" class="cta-btn ghost">🔍 探索更多</a></div>
 <div class="wrap">
-<h2>📖 简介</h2><p>VS Code AI编程插件，支持多种模型，自动读写文件、执行终端命令</p>
-<p>功能：文件操作、终端命令、多模型。</p><h2>💰 价格</h2><p>🆓 免费</p>
-<h2>🔄 同类推荐</h2><div class="related"><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">💎</div></a><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄</div></a><a href="/tool-replit.html" class="related-card"><div class="name">Replit</div><div class="cat">🔄</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">🆓</div></a></div>
+<h2>📖 工具简介</h2>
+<p>Cline 是 VS Code 生态中最强大的开源 AI 编程 Agent 插件。它的核心理念是"让 AI 像一个真正的开发者一样工作"——不是只给你行内代码建议，而是能够<strong>自主读写文件、执行终端命令、搜索代码库、分析错误日志</strong>，完成从"需求描述"到"代码落地"的全流程。Cline 最大的差异化优势是<strong>模型自由度</strong>：你可以接入任何兼容 OpenAI API 格式的模型提供商，包括 OpenAI（GPT-4o）、Anthropic（Claude 3.5 Sonnet）、DeepSeek、Google Gemini、以及通过 Ollama 或 LM Studio 运行的本地模型。这意味着你可以根据任务的敏感度和预算灵活选择后端——复杂重构用 Claude，日常辅助用 DeepSeek（超便宜），涉密项目用本地模型完全离线运行。Cline 在每一次操作前都会展示它计划做什么（"我将创建 `UserService.ts` 并添加 3 个方法"），你需要点击批准才会执行，这种<strong>人工审核 Agent</strong>的模式在安全和效率之间找到了很好的平衡。</p>
+
+<h2>✨ 优劣势分析</h2>
+<div class="grid2">
+<div class="pro-box"><h4>👍 优点</h4><ul>
+<li><strong>模型选择完全自由：</strong>不绑定任何特定 AI 提供商，你可以用 DeepSeek 省钱、Claude 求质量、本地模型保隐私，按需切换没有任何锁定。</li>
+<li><strong>开源且社区活跃：</strong>代码在 GitHub 完全开源，超过 10 万 Star，社区贡献了大量 MCP Server 扩展，你可以自己审计代码逻辑并定制行为。</li>
+<li><strong>Agent 行为的审计性强：</strong>每一步操作都展示 Diff 并等待批准，你可以清晰地看到 AI 改了哪些文件的哪些行，不会出现"咦这文件什么时候被改了"的惊吓。</li>
+</ul></div>
+<div class="con-box"><h4>👎 不足</h4><ul>
+<li><strong>模型费用需自行承担：</strong>Cline 本身免费，但后端调用的 API 费用需要你自己付——如果使用 Claude 3.5 Sonnet 处理大型多文件任务，一次对话可能花费 $1-3 的 API 费用。</li>
+<li><strong>对大项目的上下文管理仍在优化中：</strong>虽然支持手动用 @ 引用文件，但自动识别跨文件上下文的能力不如 Cursor 的代码库索引——在几十万行的项目中可能需要手动指定更多上下文。</li>
+<li><strong>安装和配置有一定门槛：</strong>需要自己注册 API 提供商账号、获取 Key、配置端点，对于不熟悉 API 配置的开发者来说，Initial Setup 比开箱即用的 Cursor 复杂不少。</li>
+</ul></div>
+</div>
+
+<h2>🎯 适用场景</h2>
+<ul>
+<li><strong>需要成本可控或本地运行的 AI 编程方案：</strong>接入 DeepSeek API（价格约为 GPT-4o 的 1/10）或本地 Ollama 模型，可以在几乎零 API 成本的情况下获得高质量的 Agent 编程体验。</li>
+<li><strong>对代码隐私有严格要求的项目：</strong>使用本地模型 + Cline，所有代码处理在本地完成，不需要将代码发送到任何第三方服务器，适合处理内部业务逻辑或未公开的项目。</li>
+<li><strong>喜欢精细控制 AI 行为的资深开发者：</strong>Cline 的"每一步都要批准"的模式给了你完全的掌控权——如果你喜欢 AI 给出方案但由你来审核执行的节奏，Cline 是目前最好的选择。</li>
+</ul>
+
+<h2>💡 使用建议</h2>
+<ul>
+<li><strong>入门推荐 DeepSeek API 作为后端：</strong>注册 DeepSeek 开放平台（platform.deepseek.com），充值 10 块钱能用很久——作为 Cline 的后端性价比远超 OpenAI，且中文理解能力出色。</li>
+<li><strong>安装 MCP Server 扩展能力边界：</strong>Cline 支持 Model Context Protocol，可以在设置中接入浏览器自动化、数据库查询、文件搜索等 MCP Server，让 Agent 的能力远超代码编辑本身。</li>
+<li><strong>大任务拆成小步骤分次执行：</strong>不要让 Cline 一次性"重构整个模块"——先让它分析代码结构，再逐个文件处理，每次都审批 Diff，这样既安全又能控制 API 费用。</li>
+</ul>
+
+<h2>🔄 同类替代</h2>
+<p>如果偏好即装即用或内置模型的方案：</p>
+<div class="related"><a href="/tool-continue.html" class="related-card"><div class="name">Continue</div><div class="cat">🆓 免费</div></a><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-windsurf.html" class="related-card"><div class="name">Windsurf</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">🆓 免费</div></a></div>
 </div></main>
-<footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/daily.html">AI日报</a> · <a href="/privacy.html">隐私政策</a></div></footer>
+<footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>
 </html>
