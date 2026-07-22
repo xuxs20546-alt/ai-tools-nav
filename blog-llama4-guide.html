@@ -1,1 +1,62 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Llama 4完全指南：部署与使用 | 蜂巢 AI</title><meta name="description" content="Meta开源Llama 4系列，性能对标GPT-5。"><link rel="canonical" href="https://www.ai-nav-build.com/blog-llama4-guide.html"><link rel="stylesheet" href="style.css"><link rel="icon" href="/favicon.svg"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script><style>.blog-header{position:sticky;top:0;z-index:100;background:rgba(10,8,6,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}.blog-header .header-inner{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px}.article-hero{max-width:900px;margin:0 auto;padding:48px 24px 32px;text-align:center}.article-hero .tag{display:inline-block;padding:4px 14px;background:rgba(240,168,48,.12);color:#f5c060;border-radius:12px;font-size:12px;margin-bottom:16px}.article-hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;line-height:1.35}.article-body-wrap{max-width:760px;margin:0 auto;padding:0 24px 80px}.article-body-wrap h2{font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)}.article-body-wrap p{font-size:15px;line-height:1.85;color:var(--text2)}.article-footer{max-width:760px;margin:0 auto;padding:32px 24px 60px;border-top:1px solid var(--border)}.article-footer a{color:var(--honey);text-decoration:none}</style></head><body><header class="blog-header"><div class="header-inner"><a href="/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">蜂巢 <span>AI</span></span></a><nav style="margin-left:auto"><a href="/" class="btn btn-ghost">🏠</a><a href="/blog.html" class="btn btn-ghost">📰</a></nav></div></header><article><div class="article-hero"><span class="tag">教程</span><h1>Llama 4完全指南：部署与使用</h1><div class="meta" style="font-size:13px;color:var(--text3)">2026-07-01 · 10 分钟</div></div><div class="article-body-wrap"><h2>Llama 4详解</h2><p>4000亿参数，免费商用。</p></div></article><div class="article-footer"><a href="/blog.html">← 返回资讯列表</a></div><footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI</div></footer></body></html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Llama 4完全指南：部署与使用 | 蜂巢 AI</title><meta name="description" content="Meta开源Llama 4系列，性能对标GPT-5。"><link rel="canonical" href="https://www.ai-nav-build.com/blog-llama4-guide.html"><link rel="stylesheet" href="style.css"><link rel="icon" href="/favicon.svg"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script><style>.blog-header{position:sticky;top:0;z-index:100;background:rgba(10,8,6,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}.blog-header .header-inner{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px}.article-hero{max-width:900px;margin:0 auto;padding:48px 24px 32px;text-align:center}.article-hero .tag{display:inline-block;padding:4px 14px;background:rgba(240,168,48,.12);color:#f5c060;border-radius:12px;font-size:12px;margin-bottom:16px}.article-hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;line-height:1.35}.article-body-wrap{max-width:760px;margin:0 auto;padding:0 24px 80px}.article-body-wrap h2{font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)}.article-body-wrap p{font-size:15px;line-height:1.85;color:var(--text2)}.article-body-wrap ul,.article-body-wrap ol{padding-left:24px;margin-bottom:16px}.article-body-wrap li{font-size:15px;line-height:1.85;color:var(--text2);margin-bottom:8px}.article-body-wrap blockquote{border-left:3px solid var(--accent);background:rgba(124,106,239,.05);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-size:14px;color:var(--text2);font-style:italic}.article-footer{max-width:760px;margin:0 auto;padding:32px 24px 60px;border-top:1px solid var(--border)}.article-footer a{color:var(--honey);text-decoration:none}</style></head><body><header class="blog-header"><div class="header-inner"><a href="/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">蜂巢 <span>AI</span></span></a><nav style="margin-left:auto"><a href="/" class="btn btn-ghost">🏠</a><a href="/blog.html" class="btn btn-ghost">📰</a></nav></div></header><article><div class="article-hero"><span class="tag">教程</span><h1>Llama 4完全指南：部署与使用</h1><div class="meta" style="font-size:13px;color:var(--text3)">2026-07-01 · 10 分钟</div></div><div class="article-body-wrap">
+
+<h2>Llama 4 为什么值得关注</h2>
+<p>Meta在2025年4月发布的Llama 4系列，目前有三个变体：Scout（109B参数，16个expert，1000万token上下文）、Maverick（109B参数，128个expert，100万token上下文）、以及尚未完全发布的Behemoth（288B参数，16个expert，据称在多个STEM基准上超越GPT-4.5）。</p>
+<p>Llama 4有三个显著变化。第一，<strong>全部采用MoE（混合专家）架构</strong>，推理时只激活部分参数，比同规模的密集模型快得多。第二，<strong>原生多模态</strong>——文本和图像输入在预训练阶段就融合了，不是后期拼接的视觉模块。第三，Scout的<strong>1000万token上下文窗口</strong>是目前开源模型之最，理论上可以一次性塞入《三体》三部曲的全文。</p>
+<p>而且——许可协议延续了Llama 3的路线，<strong>研究和商用均免费</strong>（月活7亿以上需单独申请）。这直接降低了个人开发者和中小企业的门槛。</p>
+
+<h2>模型变体怎么选？一张表讲清楚</h2>
+<ul>
+<li><strong>Scout（109B / 16 experts）</strong>：推理时激活约17B参数。核心卖点是超长上下文。适合处理海量文档分析、代码仓库级别的理解、长时间对话记忆。参数量大但推理成本可控。</li>
+<li><strong>Maverick（109B / 128 experts）</strong>：推理时同样激活约17B参数，但expert数量更多，在编程和推理任务上表现更强。适合作为通用主力模型，编程辅助和复杂推理场景首选。</li>
+<li><strong>Behemoth（288B / 16 experts）</strong>：Meta的"教师模型"，目前尚未全面开放权重。官方称其在数学、科学等STEM基准上达到GPT-4.5/Claude 3.5 Opus水平。如果你的场景对数学和科学推理要求极高，等这个。</li>
+</ul>
+<p>对大多数个人开发者来说，<strong>Maverick是综合最优选</strong>：推理成本低、编程能力强、多模态够用。</p>
+
+<h2>三种部署方式，从简单到硬核</h2>
+
+<h3>方式一：云API调用（最省事）</h3>
+<p>如果你不想碰GPU和服务器，直接用第三方托管服务。目前主要选项：</p>
+<ul>
+<li><strong>Groq</strong>：基于自研LPU芯片，Llama 4 Scout推理速度极快（实测500+ token/s）。免费层每天有一定额度，适合个人用户测试使用。</li>
+<li><strong>Together AI</strong>：提供Llama 4全系列的托管API，按token计费，价格比GPT-4o API便宜一个数量级。有完整的OpenAI兼容接口，代码迁移成本几乎为零。</li>
+<li><strong>Fireworks AI</strong>：同样提供OpenAI兼容API，特色是支持函数调用（function calling）和结构化输出，适合需要工具调用的Agent场景。</li>
+</ul>
+
+<h3>方式二：单机本地部署</h3>
+<p>如果你有一张RTX 4090（24GB VRAM），可以用4-bit量化运行Maverick。具体配置：</p>
+<ul>
+<li>量化工具用 <strong>llama.cpp</strong> 或 <strong>vLLM</strong> 的AWQ量化</li>
+<li>4-bit量化后Maverick推理速度约15-25 token/s，对于交互式使用勉强可接受</li>
+<li>如果有Apple Silicon Mac（M2 Ultra 192GB统一内存），可以直接跑FP16版本，推理速度在12-18 token/s</li>
+<li>2-bit量化在8GB VRAM的卡上也能跑，但质量会有明显退化，不建议用于生产环境</li>
+</ul>
+
+<h3>方式三：服务器部署（生产环境）</h3>
+<p>商用部署推荐2×A100（80GB）或4×A6000，用vLLM做推理引擎。关键配置：</p>
+<blockquote>
+--tensor-parallel-size 2<br>
+--max-model-len 131072<br>
+--gpu-memory-utilization 0.90<br>
+--enforce-eager  # 关闭CUDA graph，降低显存占用
+</blockquote>
+<p>Scout的1000万token上下文窗口是理论值。实际使用中超过100万token后，注意力机制的噪声会显著增加，首尾信息的一致性会下降。建议将超长文档拆分成多个chunk，用RAG的方式喂入，而不是一次性塞满上下文窗口。</p>
+
+<h2>Llama 4 vs 其他开源模型</h2>
+<p>横向对比几个主要竞品：</p>
+<ul>
+<li><strong>vs DeepSeek V3</strong>：DeepSeek在中文和多语言上明显更强，数学推理也领先。Llama 4的优势在多模态（DeepSeek V3是纯文本）、英语编程、和生态集成（HuggingFace、Ollama、llama.cpp都已经适配）。</li>
+<li><strong>vs Qwen 2.5</strong>：Qwen 2.5在中文上的能力至今无开源模型能超越。如果你的应用以中文为主、涉及中国文化语境，Qwen 2.5仍然是第一选择。</li>
+<li><strong>vs Mistral Large 2</strong>：两者在编程和推理上伯仲之间。Mistral的强项是多语言（特别是法语和欧洲语言），Llama 4的强项是上下文长度和社区生态。</li>
+</ul>
+
+<h2>实际使用中的三个建议</h2>
+<p><strong>1. 温度参数调低</strong>：Llama 4在温度高于0.7时，输出容易发散。代码生成建议用0.1-0.3，创意写作0.5-0.7，不要超过0.8。</p>
+<p><strong>2. System prompt要明确</strong>：Llama 4对system prompt的遵循度不如GPT-4o。建议把关键指令放在user message的前半部分，或者在对话过程中每3-4轮重复一次核心约束。</p>
+<p><strong>3. 工具调用用JSON mode</strong>：Llama 4的函数调用能力不如GPT-4和Claude。如果你的应用需要工具调用，建议用JSON mode配合严格的schema约束，并在prompt里明确给出工具调用的输出示例。</p>
+
+<h2>总结：Llama 4适合谁</h2>
+<p>如果你想自己部署一个能力比肩GPT-4级别、成本只有商用API十分之一、数据不外传的模型——Llama 4 Maverick目前是最优解。如果你是纯中文场景，Qwen或DeepSeek可能更合适。如果你只需要API调用、不在乎数据隐私，直接付费GPT-4o API是最省心的选择。</p>
+<p>开源模型的进展速度在加快。Llama 4从发布到社区工具全面适配只用了不到两个月。如果你还在观望，现在已经是入场的好时机。</p>
+
+</div></article><div class="article-footer"><a href="/blog.html">← 返回资讯列表</a></div><footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI</div></footer></body></html>

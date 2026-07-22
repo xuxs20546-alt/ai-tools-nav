@@ -58,7 +58,79 @@
   <div class="meta">2025-04-28 · 7 分钟阅读 · ✨</div>
 </div>
 <div class="article-body-wrap">
-<h2>Midjourney是什么？</h2><p>Midjourney是目前最流行的AI绘画工具之一，通过文字描述（Prompt）即可生成高质量的图像。它以独特的艺术风格著称，是设计师、插画师和创意工作者的首选工具。</p><h2>如何开始使用Midjourney</h2><p><strong>步骤一</strong>：访问 midjourney.com，点击"Join the Beta"</p><p><strong>步骤二</strong>：通过Discord账号登录，加入Midjourney官方频道</p><p><strong>步骤三</strong>：在任意频道输入 /imagine，后面跟上你的描述</p><p><strong>步骤四</strong>：等待约60秒，AI将生成4张图片</p><p><strong>步骤五</strong>：选择满意的图片进行放大（U1-U4）或变体（V1-V4）</p><h2>实用提示词技巧</h2><p><strong>基础结构</strong>：主体 + 环境描述 + 风格 + 参数</p><blockquote>/imagine prompt: a cute cat sitting on a windowsill, golden hour sunlight, watercolor style, --ar 16:9 --v 6.1</blockquote><p><strong>技巧一：指定风格</strong></p><p>在提示词末尾加上风格关键词：watercolor（水彩）、oil painting（油画）、3D render（3D渲染）、anime（动漫）、photorealistic（写实摄影）等。</p><p><strong>技巧二：使用参数</strong></p><ul><li><strong>--ar 16:9</strong>：设置图片比例</li><li><strong>--v 6.1</strong>：指定模型版本</li><li><strong>--s 750</strong>：风格化程度（0-1000）</li><li><strong>--q 2</strong>：图片质量</li></ul><p><strong>技巧三：参考图生成</strong></p><p>上传参考图片后获取URL，在提示词中加入图片URL，Midjourney会参考该图片的风格或内容。</p><h2>订阅方案</h2><p>基础计划10美元/月（200次生成），标准计划30美元/月（15小时快速生成），适合不同需求的用户。更多AI绘画工具请访问<a href="index.html">蜂巢 AI</a>。</p>
+
+<h2>Midjourney和你说"输入文字就能出图"完全是两回事</h2>
+<p>Midjourney确实是通过文字生成图片，但OpenAI的DALL·E、Stable Diffusion、即梦也是这样。Midjourney真正的竞争力是三个字：<strong>审美水平</strong>。同样一句prompt，Midjourney产出的光影、构图、色彩质感，在大多数风格上领先竞品一个身位——这也是为什么虽然它的使用方式最不便捷（要通过Discord），设计师群体仍然无法割舍它。</p>
+
+<h2>注册和开始（这个部分确实很快）</h2>
+<ol>
+<li>访问 midjourney.com → 点击"Join the Beta" → 用Discord账号登录</li>
+<li>在Discord里进入任意一个"newbies"频道</li>
+<li>输入 <code>/imagine</code>，后面跟你的prompt，回车</li>
+<li>等待约60秒，生成4张预览图</li>
+<li>U1-U4是放大（Upscale）你选的图，V1-V4是基于你选的图生成变体</li>
+</ol>
+
+<h2>Prompt的底层公式：一句话就能讲清楚</h2>
+<p>Midjourney的prompt和ChatGPT的prompt底层逻辑不同。ChatGPT需要你给上下文、给角色、给约束。Midjourney需要你<strong>给画面信息密度</strong>。</p>
+<p><strong>公式：主体 + 环境 + 光影 + 风格 + 技术参数</strong></p>
+<p>拆解一个例子：</p>
+<blockquote>
+/imagine prompt: a middle-aged detective in a trench coat standing under a flickering streetlamp, rain-slicked cobblestone street, 1940s film noir atmosphere, volumetric fog, rim lighting, shot on Kodak Portra 400, --ar 3:2 --style raw --v 6.1
+</blockquote>
+<ul>
+<li><strong>主体：</strong>a middle-aged detective in a trench coat（中年侦探，穿着风衣）</li>
+<li><strong>环境：</strong>rain-slicked cobblestone street, flickering streetlamp（被雨打湿的鹅卵石街道，闪烁的路灯）</li>
+<li><strong>光影：</strong>volumetric fog, rim lighting（体积雾，轮廓光）</li>
+<li><strong>风格：</strong>1940s film noir atmosphere, shot on Kodak Portra 400（1940年代黑色电影氛围，柯达Portra 400胶片拍摄）</li>
+<li><strong>参数：</strong>--ar 3:2（画幅3:2）, --style raw（减少Midjourney的默认美化）, --v 6.1（使用v6.1模型）</li>
+</ul>
+<p>信息密度决定出图质量。一个只有"a cat"的prompt和一个把猫的品种、姿势、场景、光线、镜头类型全部描述出来的prompt，产出的图是天壤之别。</p>
+
+<h2>关键参数速查（你不需要背，用的时候回来查）</h2>
+<ul>
+<li><code>--ar 16:9</code> 或 <code>--ar 3:2</code>：画幅比例。横图用16:9，竖图用2:3，方形默认1:1。</li>
+<li><code>--v 6.1</code>：模型版本。v6.1是目前图像质量最好的版本。v5.2更"艺术化"一些，适合某些特定风格。</li>
+<li><code>--style raw</code>：减少Midjourney的默认审美滤镜，更忠于你的描述。拍写实摄影类建议开启。</li>
+<li><code>--s 0-1000</code>（Stylize）：风格化程度。0是完全遵循prompt（可能比较平淡），1000是最大程度艺术化（可能偏离原意）。写实摄影建议0-250，艺术创作建议500-750。</li>
+<li><code>--c 0-100</code>（Chaos）：多样性。0是四张图风格高度一致，100是四张图风格迥异。探索阶段用50-80，确定方向后用0-20。</li>
+<li><code>--no [元素]</code>：排除某些元素。例如 <code>--no text, watermark, signature</code>。</li>
+</ul>
+
+<h2>三种进阶玩法</h2>
+
+<h3>1. 风格参考（Style Reference / --sref）</h3>
+<p>上传一张参考图（或输入一个URL），让MJ学习这张图的<strong>风格</strong>而非<strong>内容</strong>。比如你上传一张梵高的《星空》，然后写prompt"a modern city skyline"，生成的就是"用梵高风格画的现代城市天际线"。</p>
+<blockquote>/imagine prompt: a modern city skyline at sunset --sref [图片URL] --sw 500</blockquote>
+<p><code>--sw</code>（style weight）控制风格参考的强度，0-1000，默认100。</p>
+
+<h3>2. 角色参考（Character Reference / --cref）</h3>
+<p>v6新增功能。上传一张人物照片，MJ会在保持这个<strong>角色特征</strong>（面部特征为主）的前提下生成新图。适合需要保持角色一致性的漫画、绘本、角色设计场景。</p>
+<blockquote>/imagine prompt: sitting at a cafe reading a book --cref [角色图片URL] --cw 100</blockquote>
+<p><code>--cw</code>（character weight）：100保留面部+服装，0只保留面部特征。</p>
+
+<h3>3. 图片融合（Blend）</h3>
+<p>用 <code>/blend</code> 命令上传2-5张图片，MJ会把它们融合成一张新图。适合做mood board、概念探索。</p>
+
+<h2>Midjourney vs 竞品：什么时候选MJ，什么时候不用</h2>
+<ul>
+<li><strong>选Midjourney：</strong>艺术感、氛围感、摄影感的图片。海报、概念图、艺术创作、灵感探索。如果你对"好看"有执念，MJ是不二之选。</li>
+<li><strong>选DALL·E 3：</strong>需要精确遵循文字指令（比如"左边一只猫右边一只狗，中间一个蛋糕"）。DALL·E 3的prompt遵循度是最好的。</li>
+<li><strong>选即梦/Stable Diffusion：</strong>需要精确控制画面每个局部（通过ControlNet/lora），或者需要生成中文文字的海报。</li>
+</ul>
+
+<h2>预算：你实际要花多少钱</h2>
+<ul>
+<li><strong>Basic（10美元/月）</strong>：每月约200张图（Fast模式），够个人探索和学习。最常被推荐的入门套餐。</li>
+<li><strong>Standard（30美元/月）</strong>：15小时Fast模式，无限Relax模式（排队慢但无限用）。设计师和内容创作者的性价比之选。</li>
+<li><strong>Pro（60美元/月）</strong>：30小时Fast模式，隐身模式（生成的图不公开）。商业用途。</li>
+</ul>
+<p>首次注册有少量免费额度（通常25张图左右），但需要一个有效的Discord账号。如果你还在观望，先用免费额度跑几天，确认风格合你口味再订阅。</p>
+
+<h2>一条很多人不知道的建议：Midjourney的图需要"后期"才有灵魂</h2>
+<p>MJ直接出的图通常过于"完美"——光影太均衡、色彩太和谐、构图太标准。这种完美反而有一种"AI味"。如果你的工作流止步于MJ出图，你的作品和所有其他AI用户的区别不大。</p>
+<p>创意总监的工作流是：MJ出图 → 导入Photoshop → 手动叠加纹理/噪点 → 局部调色/裁切 → 加文字排版。最后那10%的人工后期，是你和批量AI图之间拉开差距的地方。</p>
+
 </div>
 </article>
 
