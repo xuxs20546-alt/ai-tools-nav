@@ -129,43 +129,10 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .picks-section h2 .icon-box{background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:15px}
 .picks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 
-/* ── 蜂巢交互区 ── */
-.honeycomb-section{max-width:900px;margin:0 auto 48px;padding:0 24px;position:relative;z-index:1}
-.honeycomb-frame{position:relative;width:100%;max-width:700px;margin:0 auto;aspect-ratio:1.35;background:radial-gradient(ellipse at center,rgba(240,168,48,.04),transparent 70%);border-radius:16px}
-.honeycomb-outer{position:absolute;inset:2%;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:transparent;border:2px solid rgba(240,168,48,.15);transition:border-color .4s}
-.honeycomb-section:hover .honeycomb-outer{border-color:rgba(240,168,48,.35)}
-.honeycomb-cell-wrap{position:absolute;width:22%;padding-bottom:25.4%}
-.honeycomb-cell{position:absolute;inset:0;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(135deg,rgba(240,168,48,.08),rgba(240,168,48,.02));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s cubic-bezier(.34,1.56,.64,1);animation:hiveSpin 20s linear infinite;color:inherit;text-decoration:none}
-.honeycomb-cell:hover{transform:scale(1.35);z-index:10;background:linear-gradient(135deg,rgba(240,168,48,.2),rgba(240,168,48,.08));box-shadow:0 0 40px rgba(240,168,48,.2);animation-play-state:paused}
-@keyframes hiveSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.honeycomb-cell:nth-of-type(odd){animation-direction:reverse;animation-duration:25s}
-.honeycomb-cell:nth-of-type(3n){animation-duration:30s}
-.honeycomb-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px}
-.honeycomb-inner .hc-icon{font-size:clamp(20px,3vw,32px);margin-bottom:4px;transition:transform .3s}
-.honeycomb-cell:hover .hc-icon{transform:scale(1.2)}
-.honeycomb-inner .hc-name{font-size:clamp(10px,1.4vw,13px);font-weight:700;color:var(--text);line-height:1.2}
-.honeycomb-inner .hc-count{font-size:clamp(9px,1.1vw,11px);color:var(--text3);margin-top:2px}
-
-/* Cell positions - honeycomb grid 3/4/3, no transform conflicts */
-.hc-p0{top:0;left:17%}
-.hc-p1{top:0;left:39%}
-.hc-p2{top:0;left:61%}
-.hc-p3{top:23%;left:6%}
-.hc-p4{top:23%;left:28%}
-.hc-p5{top:23%;left:50%}
-.hc-p6{top:23%;left:72%}
-.hc-p7{top:46%;left:17%}
-.hc-p8{top:46%;left:39%}
-.hc-p9{top:46%;left:61%}
-
-/* Center bee badge */
-.honeycomb-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16%;padding-bottom:18.5%;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(135deg,var(--honey),var(--honey-dark));display:flex;align-items:center;justify-content:center;z-index:5;animation:hiveCenterPulse 3s ease-in-out infinite}
-@keyframes hiveCenterPulse{0%,100%{box-shadow:0 0 20px rgba(240,168,48,.15)}50%{box-shadow:0 0 40px rgba(240,168,48,.35)}}
-.honeycomb-center-inner{position:absolute;display:flex;flex-direction:column;align-items:center;color:#1a1000;font-size:clamp(14px,2.5vw,24px)}
-.honeycomb-center-inner .bee{font-size:clamp(20px,3vw,32px)}
-
-@media(max-width:640px){.honeycomb-frame{max-width:360px;aspect-ratio:1.2}.honeycomb-cell-wrap{width:28%;padding-bottom:32.3%}.honeycomb-center{width:18%;padding-bottom:20.8%}.hc-p0{top:0;left:12%}.hc-p1{top:0;left:36%}.hc-p2{top:0;left:60%}.hc-p3{top:22%;left:0}.hc-p4{top:22%;left:24%}.hc-p5{top:22%;left:48%}.hc-p6{top:22%;left:72%}.hc-p7{top:44%;left:12%}.hc-p8{top:44%;left:36%}.hc-p9{top:44%;left:60%}}
-
+/* ── 场景快速入口 ── */
+.scene-wrap{max-width:900px;margin:0 auto;padding:0 24px 24px;position:relative;z-index:1;text-align:center}
+.scene-btns{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.scene-hint{font-size:12px;color:var(--text3);margin-top:10px}
 
 /* ── 工具网格工具栏 ── */
 .tools-toolbar{max-width:1200px;margin:0 auto;padding:0 24px 16px;position:relative;z-index:1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -453,23 +420,20 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
   <div class="picks-grid" id="featuredGrid"></div>
 </section>
 
-<!-- ====== 蜂巢交互分类区 ====== -->
-<section class="honeycomb-section">
-  <div class="honeycomb-frame">
-    <div class="honeycomb-outer"></div>
-    <div class="honeycomb-cell-wrap hc-p0"><a href="/category-chat.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">💬</span><span class="hc-name">对话AI</span><span class="hc-count">33 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p1"><a href="/category-writing.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">✍️</span><span class="hc-name">写作AI</span><span class="hc-count">28 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p2"><a href="/category-image.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">🎨</span><span class="hc-name">图像AI</span><span class="hc-count">52 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p3"><a href="/category-code.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">💻</span><span class="hc-name">编程AI</span><span class="hc-count">24 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p4"><a href="/category-video.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">🎬</span><span class="hc-name">视频AI</span><span class="hc-count">38 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p5"><a href="/category-audio.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">🎵</span><span class="hc-name">音频AI</span><span class="hc-count">22 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p6"><a href="/category-design.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">🎯</span><span class="hc-name">设计AI</span><span class="hc-count">36 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p7"><a href="/category-productivity.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">⚡</span><span class="hc-name">效率AI</span><span class="hc-count">31 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p8"><a href="/category-research.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">🔬</span><span class="hc-name">研究AI</span><span class="hc-count">19 款</span></div></a></div>
-    <div class="honeycomb-cell-wrap hc-p9"><a href="/category-education.html" class="honeycomb-cell"><div class="honeycomb-inner"><span class="hc-icon">📚</span><span class="hc-name">教育AI</span><span class="hc-count">18 款</span></div></a></div>
-    <div class="honeycomb-center"><div class="honeycomb-center-inner"><span class="bee">🐝</span></div></div>
+<!-- ====== 场景快速入口 ====== -->
+<div class="scene-wrap">
+  <div class="scene-btns">
+    <button class="cat-btn uc-btn" onclick="selectUseCase('写作')" style="border-color:rgba(167,139,250,.3);color:#a78bfa">✍️ 写作</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('编码')" style="border-color:rgba(52,211,153,.3);color:#34d399">💻 编码</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('设计')" style="border-color:rgba(244,114,182,.3);color:#f472b6">🎨 设计</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('视频')" style="border-color:rgba(251,146,60,.3);color:#fb923c">🎬 视频</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('营销')" style="border-color:rgba(250,204,21,.3);color:#facc15">📢 营销</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('自动化')" style="border-color:rgba(34,211,238,.3);color:#22d3ee">⚡ 自动化</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('研究')" style="border-color:rgba(240,168,48,.3);color:#f5c060">🔬 研究</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('学习')" style="border-color:rgba(52,211,153,.3);color:#34d399">📚 学习</button>
   </div>
-</section>
+  <p class="scene-hint">点击场景，快速找到该用途的AI工具</p>
+</div>
 
 <!-- ====== 工具网格区（分类筛选栏 + 排序 + 视图切换 + 网格） ====== -->
 <div class="tools-toolbar">
