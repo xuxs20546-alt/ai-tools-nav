@@ -130,27 +130,9 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .picks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 
 /* ── 场景快速入口 ── */
-/* ── 蜂巢 ── */
-.hive-section{padding:40px 0 56px;position:relative}
-.hive-section-title{text-align:center;font-size:22px;font-weight:800;margin-bottom:4px}
-.hive-section-sub{text-align:center;font-size:13px;color:var(--text3);margin-bottom:28px}
-.hive-container{position:relative;width:min(62vw,620px);margin:0 auto;aspect-ratio:1}
-.hive-big{position:absolute;inset:0;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:radial-gradient(ellipse at center,rgba(240,168,48,.06),transparent 70%);border:2.5px solid rgba(240,168,48,.18);z-index:0;pointer-events:none}
-.hive-orbit{position:absolute;inset:0;animation:hiveOrbit 45s linear infinite;z-index:1}
-@keyframes hiveOrbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.hive-cell{position:absolute;width:22%;height:25.4%;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(135deg,rgba(240,168,48,.07),rgba(240,168,48,.02));border:1px solid rgba(240,168,48,.1);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s cubic-bezier(.34,1.56,.64,1);text-decoration:none;color:inherit;animation:hiveUnspin 45s linear infinite}
-@keyframes hiveUnspin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
-.hive-cell:hover{animation-play-state:paused;z-index:20;transform:scale(1.45)!important;background:linear-gradient(135deg,rgba(240,168,48,.22),rgba(240,168,48,.06));border-color:var(--honey);box-shadow:0 0 50px rgba(240,168,48,.35)}
-.hive-cell-inner{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;position:relative;z-index:1}
-.hive-cell-icon{font-size:clamp(18px,3.5vw,30px);transition:transform .3s}
-.hive-cell:hover .hive-cell-icon{transform:scale(1.25)}
-.hive-cell-name{font-size:clamp(10px,1.5vw,13px);font-weight:700;color:var(--text)}
-.hive-cell-count{font-size:clamp(8px,1vw,11px);color:var(--text3)}
-.hc-c{top:37%;left:39%}.hc-0{top:10%;left:17%}.hc-1{top:10%;left:39%}.hc-2{top:10%;left:61%}.hc-3{top:30%;left:6%}.hc-4{top:30%;left:28%}.hc-5{top:30%;left:50%}.hc-6{top:30%;left:72%}.hc-7{top:50%;left:17%}.hc-8{top:50%;left:39%}.hc-9{top:50%;left:61%}
-.hive-bee{position:absolute;top:37%;left:39%;width:22%;height:25.4%;z-index:10;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(135deg,var(--honey),var(--honey-dark));display:flex;align-items:center;justify-content:center;animation:hivePulse 3s ease-in-out infinite}
-@keyframes hivePulse{0%,100%{box-shadow:0 0 20px rgba(240,168,48,.2)}50%{box-shadow:0 0 40px rgba(240,168,48,.4)}}
-.hive-bee-inner{font-size:clamp(18px,3vw,28px);color:#1a1000}
-@media(max-width:480px){.hive-container{width:88vw}.hive-cell{width:28%;height:32.3%}.hc-c{top:34%;left:36%}.hc-0{top:8%;left:10%}.hc-1{top:8%;left:36%}.hc-2{top:8%;left:62%}.hc-3{top:28%;left:0%}.hc-4{top:28%;left:24%}.hc-5{top:28%;left:48%}.hc-6{top:28%;left:72%}.hc-7{top:48%;left:10%}.hc-8{top:48%;left:36%}.hc-9{top:48%;left:62%}.hive-bee{top:34%;left:36%;width:28%;height:32.3%}}
+.scene-wrap{max-width:900px;margin:0 auto;padding:0 24px 24px;position:relative;z-index:1;text-align:center}
+.scene-btns{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.scene-hint{font-size:12px;color:var(--text3);margin-top:10px}
 
 /* ── 工具网格工具栏 ── */
 .tools-toolbar{max-width:1200px;margin:0 auto;padding:0 24px 16px;position:relative;z-index:1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -438,27 +420,20 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
   <div class="picks-grid" id="featuredGrid"></div>
 </section>
 
-<!-- ====== 蜂巢分类 ====== -->
-<section class="hive-section">
-  <div class="hive-section-title">🐝 探索蜂巢</div>
-  <div class="hive-section-sub">10 大分类 · 悬停放大 · 每个六边形都是入口</div>
-  <div class="hive-container">
-    <div class="hive-big"></div>
-    <div class="hive-orbit">
-      <a href="/category-chat.html" class="hive-cell hc-c"><div class="hive-cell-inner"><span class="hive-cell-icon">💬</span><span class="hive-cell-name">对话</span><span class="hive-cell-count">33款</span></div></a>
-      <a href="/category-writing.html" class="hive-cell hc-0"><div class="hive-cell-inner"><span class="hive-cell-icon">✍️</span><span class="hive-cell-name">写作</span><span class="hive-cell-count">28款</span></div></a>
-      <a href="/category-image.html" class="hive-cell hc-1"><div class="hive-cell-inner"><span class="hive-cell-icon">🎨</span><span class="hive-cell-name">图像</span><span class="hive-cell-count">52款</span></div></a>
-      <a href="/category-code.html" class="hive-cell hc-2"><div class="hive-cell-inner"><span class="hive-cell-icon">💻</span><span class="hive-cell-name">编程</span><span class="hive-cell-count">24款</span></div></a>
-      <a href="/category-video.html" class="hive-cell hc-3"><div class="hive-cell-inner"><span class="hive-cell-icon">🎬</span><span class="hive-cell-name">视频</span><span class="hive-cell-count">38款</span></div></a>
-      <a href="/category-audio.html" class="hive-cell hc-4"><div class="hive-cell-inner"><span class="hive-cell-icon">🎵</span><span class="hive-cell-name">音频</span><span class="hive-cell-count">22款</span></div></a>
-      <a href="/category-design.html" class="hive-cell hc-5"><div class="hive-cell-inner"><span class="hive-cell-icon">🎯</span><span class="hive-cell-name">设计</span><span class="hive-cell-count">36款</span></div></a>
-      <a href="/category-productivity.html" class="hive-cell hc-6"><div class="hive-cell-inner"><span class="hive-cell-icon">⚡</span><span class="hive-cell-name">效率</span><span class="hive-cell-count">31款</span></div></a>
-      <a href="/category-research.html" class="hive-cell hc-7"><div class="hive-cell-inner"><span class="hive-cell-icon">🔬</span><span class="hive-cell-name">研究</span><span class="hive-cell-count">19款</span></div></a>
-      <a href="/category-education.html" class="hive-cell hc-8"><div class="hive-cell-inner"><span class="hive-cell-icon">📚</span><span class="hive-cell-name">教育</span><span class="hive-cell-count">18款</span></div></a>
-    </div>
-    <div class="hive-bee"><div class="hive-bee-inner">🐝</div></div>
+<!-- ====== 场景快速入口 ====== -->
+<div class="scene-wrap">
+  <div class="scene-btns">
+    <button class="cat-btn uc-btn" onclick="selectUseCase('写作')" style="border-color:rgba(167,139,250,.3);color:#a78bfa">✍️ 写作</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('编码')" style="border-color:rgba(52,211,153,.3);color:#34d399">💻 编码</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('设计')" style="border-color:rgba(244,114,182,.3);color:#f472b6">🎨 设计</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('视频')" style="border-color:rgba(251,146,60,.3);color:#fb923c">🎬 视频</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('营销')" style="border-color:rgba(250,204,21,.3);color:#facc15">📢 营销</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('自动化')" style="border-color:rgba(34,211,238,.3);color:#22d3ee">⚡ 自动化</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('研究')" style="border-color:rgba(240,168,48,.3);color:#f5c060">🔬 研究</button>
+    <button class="cat-btn uc-btn" onclick="selectUseCase('学习')" style="border-color:rgba(52,211,153,.3);color:#34d399">📚 学习</button>
   </div>
-</section>
+  <p class="scene-hint">点击场景，快速找到该用途的AI工具</p>
+</div>
 
 <!-- ====== 工具网格区（分类筛选栏 + 排序 + 视图切换 + 网格） ====== -->
 <div class="tools-toolbar">
