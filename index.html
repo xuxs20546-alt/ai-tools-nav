@@ -127,7 +127,7 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .picks-section{max-width:1200px;margin:0 auto;padding:0 24px 40px;position:relative;z-index:1}
 .picks-section h2{font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .picks-section h2 .icon-box{background:linear-gradient(135deg,var(--honey),var(--honey-dark));color:#1a1000;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:15px}
-.picks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.picks-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}@media(max-width:1200px){.picks-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:640px){.picks-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ── 场景快速入口 ── */
 .scene-wrap{max-width:900px;margin:0 auto;padding:0 24px 24px;position:relative;z-index:1;text-align:center}
