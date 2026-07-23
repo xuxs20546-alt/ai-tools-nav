@@ -140,7 +140,7 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 @keyframes hiveOrbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .hive-cell{position:absolute;width:22%;height:25.4%;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(135deg,rgba(240,168,48,.07),rgba(240,168,48,.02));border:1px solid rgba(240,168,48,.1);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s cubic-bezier(.34,1.56,.64,1);text-decoration:none;color:inherit;animation:hiveUnspin 45s linear infinite}
 @keyframes hiveUnspin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
-.hive-orbit:has(.hive-cell:hover){animation-play-state:paused}.hive-cell:hover{animation-play-state:paused;z-index:20;transform:scale(1.45)!important;background:linear-gradient(135deg,rgba(240,168,48,.22),rgba(240,168,48,.06));border-color:var(--honey);box-shadow:0 0 50px rgba(240,168,48,.35)}
+.hive-cell:hover{animation-play-state:paused;z-index:20;transform:scale(1.45)!important;background:linear-gradient(135deg,rgba(240,168,48,.22),rgba(240,168,48,.06));border-color:var(--honey);box-shadow:0 0 50px rgba(240,168,48,.35)}
 .hive-cell-inner{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;position:relative;z-index:1}
 .hive-cell-icon{font-size:clamp(18px,3.5vw,30px);transition:transform .3s}
 .hive-cell:hover .hive-cell-icon{transform:scale(1.25)}
