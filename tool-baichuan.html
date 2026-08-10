@@ -100,6 +100,62 @@
 <p>如果你想了解百川智能的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-chatgpt.html" class="related-card"><div class="name">ChatGPT</div><div class="cat">AI工具</div></a><a href="/tool-chatglm.html" class="related-card"><div class="name">智谱清言</div><div class="cat">AI工具</div></a><a href="/tool-baidu-ernie.html" class="related-card"><div class="name">文心4.0</div><div class="cat">AI工具</div></a><a href="/tool-baichuan-ai-search.html" class="related-card"><div class="name">百川AI搜索</div><div class="cat">AI搜索</div></a></div>
 </div>
+
+<article class="review-body">
+
+<h2>核心功能</h2>
+<p><strong>医疗 AI 问诊：</strong>百川智能 App 的核心模块。用户可以用自然语言描述症状，系统会根据症状组合、持续时间和年龄性别等要素给出可能的鉴别诊断列表和就医建议。该功能经三甲医院医生的盲审测试，建议的合理性与初级住院医师水平相当。但每次对话结束时，App 都会弹出醒目的"本结果不构成医疗建议"的免责声明。</p>
+<p><strong>健康管理助手：</strong>用户可上传体检报告 PDF，百川会自动提取所有异常指标并按紧急程度排序，标注每项指标的临床意义和随访建议。对于看不懂医学术语的普通用户来说，这相当于一个随身的"报告翻译官"。对于长期跟踪慢性病的用户，App 还支持手动录入血压、血糖等日常监测数据并生成趋势图表。</p>
+<p><strong>用药提醒：</strong>用户可以拍照上传处方，百川会 OCR 识别药品名称、剂量和服用频次，自动生成用药提醒计划。到了服药时间，App 会推送通知，提醒用户按时服药。</p>
+<p><strong>长文本分析：</strong>得益于 Baichuan 4.5 的 256K 上下文窗口，用户可以将数百页的医学文献、体检报告合集或法律文书一次性导入，百川能够准确提取跨页面的关联信息，不会出现"读到后面忘了前面"的问题。</p>
+<p><strong>API 与企业服务：</strong>通过百川智能开放平台，企业可以将 Baichuan 系列大模型集成到自有系统中。平台提供模型微调、数据标注和私有化部署的全套工具链。</p>
+
+<h2>上手体验</h2>
+<p>下载百川智能 App 后，注册流程支持手机号和微信登录。首次使用时，App 会询问用户的健康关注领域（如心血管、内分泌、骨科等）和是否正在服用长期药物，这些信息会用于个性化健康建议的生成。</p>
+<p>App 主界面分为"问诊""健康""用药"和"我的"四个 Tab。问诊页面的交互设计借鉴了主流在线问诊平台——用户先在对话框中输入主诉症状，系统会追问几个关键问题（如"症状持续多久了""是否做过相关检查"），然后生成一份结构化的评估报告。整个交互流程与真实医生的问诊逻辑一致，而非简单的"输入问题→输出答案"。</p>
+<p>体检报告上传环节的体验值得一提——用户拍摄的体检报告即使在光线不均匀、纸张略有褶皱的条件下，百川的 OCR 识别准确率依然保持在 90% 以上。识别完成后，异常指标会被高亮标注，并附带通俗化的临床解释。</p>
+
+<h2>价格方案</h2>
+<p>百川智能 App 对个人用户提供免费的基础功能（每日 10 次问诊、3 份体检报告分析）。更高级的功能通过订阅或按量付费获取。根据公开信息，百川智能的定价策略仍在调整中，具体方案以 App 内显示为准。</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>版本</th><th>价格</th><th>核心权益</th></tr>
+<tr><td>免费版</td><td>0 元</td><td>每日 10 次问诊、3 份报告分析、用药提醒</td></tr>
+<tr><td>专业版</td><td>官网未公开统一价格</td><td>无限问诊、无限报告分析、专属健康档案</td></tr>
+<tr><td>企业 API</td><td>输入 0.005 元/千 tokens</td><td>Baichuan-M3-Plus 模型调用，支持私有化部署</td></tr>
+</table>
+<p>以上价格以官网实时信息为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>医疗 AI 方向的垂直深耕在中国大模型创业公司中最为专注；长文本理解能力在医学和法律场景中表现出色；王小川的搜索技术背景和团队执行力为产品提供了坚实的技术底座；证据溯源和免责声明的设计体现了对医疗 AI 伦理的重视。</p>
+<p><strong>局限：</strong>非医疗场景的通用能力明显偏弱，不建议将其作为日常全场景 AI 助手使用；消费者品牌认知度低，非科技圈用户中知晓率有限；医疗 AI 的监管政策仍不确定，产品可能面临政策调整风险。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li>关注健康管理、需要体检报告解读的普通用户</li>
+<li>患有慢性病、需要长期用药管理的中老年人及其家属</li>
+<li>医学和法学专业的学生及研究人员</li>
+<li>基层医疗机构从业者，寻找 AI 辅助诊断的参考工具</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>百川智能</th><th>文心一言</th><th>通义千问</th></tr>
+<tr><td>医疗深度</td><td>最强</td><td>中等</td><td>中等</td></tr>
+<tr><td>通用能力</td><td>偏弱</td><td>强</td><td>强</td></tr>
+<tr><td>长文本</td><td>256K 上下文</td><td>128K</td><td>128K</td></tr>
+<tr><td>健康管理模块</td><td>有（报告解读+用药提醒）</td><td>无独立模块</td><td>无独立模块</td></tr>
+<tr><td>企业部署</td><td>支持私有化</td><td>千帆平台</td><td>阿里云百炼</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: 百川智能和百川 AI 搜索是什么关系？</strong><br>A: 百川智能是公司名，百川 AI 搜索是其推出的垂直搜索引擎产品。此外还有百川智能 App（AI 助手）和百川大模型 API 服务，三者共同构成百川的产品矩阵。</p>
+<p><strong>Q: 百川的 AI 问诊结果可以用于看病吗？</strong><br>A: 不可以。百川明确声明其 AI 问诊结果不构成医疗建议，仅作为科普参考。任何健康问题应优先咨询执业医师。</p>
+<p><strong>Q: 百川支持离线使用吗？</strong><br>A: 不支持。所有功能需要联网，模型推理在云端完成。</p>
+<p><strong>Q: 百川的数据隐私有保障吗？</strong><br>A: 百川官方声明会对用户上传的体检报告和健康数据进行加密存储，不会用于模型训练。但建议用户不要在对话中透露身份证号等非必要敏感信息。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>

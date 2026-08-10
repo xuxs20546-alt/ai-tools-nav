@@ -87,6 +87,58 @@
 <p>如果你想了解Ponzu AI的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-meshy-ai.html" class="related-card"><div class="name">Meshy AI</div><div class="cat">AI 3D生成</div></a><a href="/tool-spline-ai.html" class="related-card"><div class="name">Spline AI</div><div class="cat">3D设计</div></a><a href="/tool-csm-ai.html" class="related-card"><div class="name">CSM AI</div><div class="cat">AI 3D生成</div></a><a href="/tool-masterpiece-x.html" class="related-card"><div class="name">Masterpiece X</div><div class="cat">AI 3D角色</div></a></div>
 </div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Ponzu AI 是一款利用生成式 AI 技术为 3D 创作者提供纹理和 PBR 材质自动生成服务的专业工具。由一支位于旧金山的创业团队于 2024 年推出，Ponzu AI 的核心理念是将 3D 资产制作流程中最耗时的纹理绘制环节加速到秒级。无论是游戏开发中的环境材质、建筑可视化中的表面纹理，还是产品渲染中的材质原型迭代，Ponzu AI 都能通过文本提示或参考图片快速生成可直接使用的完整材质贴图包。</p>
+<p>平台生成的贴图严格遵循 PBR 工作流规范，输出通道包括基础颜色（Base Color）、法线贴图（Normal Map）、粗糙度（Roughness）、金属度（Metallic）和高度贴图（Height Map），所有贴图默认 4K 分辨率并支持无缝拼接（Seamless/Tileable）。Ponzu AI 兼容 Blender、Maya、3ds Max、Substance Painter、Unity 和 Unreal Engine 等主流 3D 软件和游戏引擎。</p>
+
+<h2>核心功能</h2>
+<p><strong>文本到 PBR 材质生成：</strong>用户用自然语言描述想要的材质效果——例如"老旧的红砖墙，表面有风化的痕迹和青苔斑点"——AI 在数秒内生成完整的 PBR 贴图包。Prompt 中越详细地描述材质的老化程度、表面瑕疵和环境痕迹，生成结果的真实感越强。</p>
+<p><strong>参考图到材质转换：</strong>上传一张真实材质的照片，Ponzu AI 会自动提取其纹理特征并生成无缝可平铺的 PBR 材质。这项功能对于需要将现实世界的材质数字化进入 3D 场景的建筑可视化和影视特效工作流特别有价值。</p>
+<p><strong>材质变体与迭代：</strong>基于同一基础材质，Ponzu AI 可以生成多个变体——比如同一块木地板在不同老化程度、不同光照条件下的表现，或同一面金属墙在不同锈蚀阶段的纹理变化。创作者可以快速探索材质方案，而不需要手动调整每个通道。</p>
+<p><strong>材质库管理与分享：</strong>平台内置材质云存储功能，用户可以保存、分类、标记和搜索自己生成的所有材质。团队版支持共享材质库，团队成员可以复用彼此生成的优质材质，避免重复劳动。</p>
+
+<h2>上手体验</h2>
+<p>Ponzu AI 提供 Web 端操作界面，用户通过浏览器即可完成全部工作流程，不需要安装任何客户端。首次使用需要注册账号，注册后直接进入材质生成界面——左侧是 Prompt 输入区和参考图上传播件，右侧是实时预览窗口。</p>
+<p>生成流程非常直观：在输入框中用英文描述想要的材质（中文 Prompt 的支持正在开发中），选择合适的材质类别标签（金属、木材、石材、织物等），点击生成按钮后等待 3–8 秒即可看到 PBR 贴图的预览。用户可以在预览窗口切换查看各个通道（Base Color / Normal / Roughness 等），确认满意后一键下载整个贴图包（ZIP 格式，含所有通道的 PNG 文件）。</p>
+<p>对于高级用户，Ponzu AI 还提供了 Prompt 权重调节、随机种子锁定和分辨率选择（1K/2K/4K）等进阶设置。最新版本还加入了"材质混合"功能——将两种不同材质的特征融合，创造出全新的混合材质效果。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>价格</th><th>核心权益</th></tr>
+<tr><td>免费版</td><td>$0/月</td><td>月度有限生成额度，2K 分辨率，基础材质库访问</td></tr>
+<tr><td>Pro 版</td><td>按量付费</td><td>单次生成费用约数美分至数十美分，4K 分辨率，完整通道输出</td></tr>
+<tr><td>团队版</td><td>官网未公开</td><td>共享材质库、优先生成队列、API 接入权限</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">以上价格来自官网公开信息，以官网实时价格为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>PBR 材质生成的专业度和准确度在 AI 纹理工具中属于顶级水平，生成的各通道数据严格遵循 PBR 物理渲染规范。无缝拼接质量稳定，在重复铺设时接缝几乎不可见，解决了 AI 纹理生成的重大痛点。生成速度快（秒级），效率是手工绘制的数十倍。Web 端操作无需安装，降低了入门门槛。</p>
+<p><strong>局限：</strong>功能垂直且单一——Ponzu AI 仅做纹理和材质生成，不能创建或编辑 3D 模型，需要与建模软件配合使用。对有机物材质（皮肤、毛发、植被）和半透明材质（玻璃、宝石、水）的生成效果不如硬表面材质准确。用户社区和材质库的规模尚处于早期阶段，与 Substance 生态数百万材质的体量相比差距明显。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>游戏环境美术师：</strong>需要批量生产地面、墙面、地形等大面积纹理的 3D 美术，Ponzu AI 能将纹理制作效率提升数倍。</li>
+<li><strong>建筑可视化设计师：</strong>快速生成匹配设计方案的建筑材料纹理（大理石、木地板、混凝土等），加速方案展示。</li>
+<li><strong>独立游戏开发者：</strong>预算和人力有限的小团队，利用 AI 生成高质量材质来弥补美术资源的不足。</li>
+<li><strong>3D 教学内容制作：</strong>教育工作者利用 Ponzu AI 快速准备教学用的各种材质示例，节省手工制作素材的时间。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>工具</th><th>价格起点</th><th>核心侧重</th><th>适合场景</th></tr>
+<tr><td>Ponzu AI</td><td>$0（有限免费额度）</td><td>文本/图片→PBR 材质，专业通道输出</td><td>游戏、影视、建筑可视化的材质制作</td></tr>
+<tr><td>ArmorPaint / Armox AI</td><td>$0（开源）</td><td>3D 模型上的 AI 纹理绘制</td><td>直接在模型表面绘制和编辑纹理</td></tr>
+<tr><td>Scenario.gg</td><td>按月订阅</td><td>风格化纹理生成 + 训练自定义风格</td><td>风格一致性要求高的游戏项目</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: Ponzu AI 生成的 PBR 材质可以直接用于商业项目吗？</strong><br>A: 根据官网使用条款，通过 Ponzu AI 生成的材质版权归用户所有，可用于包括商业游戏、影视作品在内的任何项目。建议在使用前确认最新的许可协议。</p>
+<p><strong>Q: Ponzu AI 支持哪些 3D 软件的材质格式？</strong><br>A: 生成结果以 PNG 格式输出各通道贴图，可以导入任何支持 PBR 工作流的软件（Blender、Maya、3ds Max、Substance Painter、Unity、Unreal Engine 等）。平台本身不输出特定软件的材质文件格式。</p>
+<p><strong>Q: 生成的材质分辨率最高能达到多少？</strong><br>A: Pro 版支持最高 4K（4096×4096）分辨率输出。免费版限制为 2K。对于需要 8K 及以上分辨率的高端影视项目，目前需要通过外部工具进行超分处理。</p>
+<p><strong>Q: 与 Substance Sampler（原 Alchemist）相比有什么优势？</strong><br>A: Ponzu AI 的优势在于生成式 AI 能力——可以根据文本描述凭空创造出不存在的材质，而 Substance Sampler 更擅长从真实照片中提取和编辑材质。两者可以互补使用：Ponzu AI 做创意生成，Substance 做精细化编辑。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

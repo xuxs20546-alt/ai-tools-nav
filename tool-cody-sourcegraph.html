@@ -96,6 +96,75 @@
 <p>如果你想了解Cody（Sourcegraph）的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-cursor-pro.html" class="related-card"><div class="name">Cursor Pro</div><div class="cat">AI编程</div></a><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">AI编程</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">AI编程</div></a><a href="/tool-tabnine.html" class="related-card"><div class="name">Tabnine</div><div class="cat">AI编程</div></a></div>
 </div>
+
+<article class="review-body">
+
+<h2>🔧 核心功能</h2>
+<p>Cody 的功能围绕"代码库级上下文理解"展开，其核心优势在于 Sourcegraph 搜索引擎带来的全局代码视野：</p>
+<p><strong>代码库级智能补全：</strong>与只在当前打开文件中寻找上下文的普通补全工具不同，Cody 的补全引擎会从 Sourcegraph 索引中拉取整个代码库中与当前编辑位置相关的代码片段作为上下文。例如，你在编写一个调用内部 API 的函数时，Cody 不仅能补全函数名，还能自动提示该 API 的请求参数结构、返回类型和常见调用模式——这些信息来自代码库中其他地方对该 API 的实际使用。</p>
+<p><strong>跨仓库代码问答：</strong>Cody 最强大的能力是跨仓库理解。你可以用自然语言问"OrderService.createOrder 函数在哪几个微服务中被调用？每个调用点的传入参数有什么不同？"，Cody 会通过 Sourcegraph 的代码搜索引擎检索所有关联仓库，汇总调用点并分析参数差异。这项能力在微服务架构的团队中价值极高——开发者不需要手动在多个仓库间跳转。</p>
+<p><strong>智能代码重构：</strong>Cody 支持跨文件、跨仓库的重构操作。例如，你想重命名一个被 20 个微服务调用的公共库函数，Cody 会先在 Sourcegraph 中搜索所有引用点，评估影响范围，然后在你的确认下逐个文件应用修改。生成的修改会自动创建分支并提交 PR。</p>
+<p><strong>命令式快捷操作：</strong>Cody 提供了一系列预定义的斜杠命令：/explain（解释选中的代码）、/test（生成单元测试）、/smell（检测代码异味）、/doc（生成文档注释）。这些命令结合代码库上下文后，输出质量远高于只依赖当前文件的 AI 工具。</p>
+<p><strong>自定义指令（Custom Commands）：</strong>团队可以用 JSON 定义自己的 Cody 命令——例如创建一个 /review 命令，指示 Cody 按照团队的代码审查清单逐项检查 PR 并输出检查报告。这些自定义命令可以被全团队共享使用。</p>
+
+<h2>🚀 上手体验</h2>
+<p>Cody 的使用分为两个层面：个人开发者通过编辑器插件使用，团队管理员通过 Sourcegraph 平台配置索引策略。</p>
+<p>对个人开发者而言，安装过程与主流 AI 编程插件类似：在 VS Code 或 JetBrains 市场中安装 Cody 插件，用 Sourcegraph 账号登录（或 GitHub/Google 账号关联）。首次使用时 Cody 会提示输入代码仓库的 Sourcegraph 实例地址——如果是公开仓库，可以直接使用 Sourcegraph.com 的云服务；私有仓库需要管理员先在 Sourcegraph 平台完成仓库接入和索引配置。</p>
+<p>日常编码时，Cody 的补全体验与 Copilot 相似：输入代码时自动弹出灰字建议。区别在于，当你在一个大型代码库的深处编写代码时，Cody 的建议往往更准确——因为它能"看到"其他模块中对相同 API 的使用方式。对话面板支持多轮对话，每次提问都可以手动通过 @-file 语法引用特定文件作为附加上下文。</p>
+<p>团队管理员在 Sourcegraph 控制台中配置索引策略：选择需要索引的仓库、设置索引更新频率、管理访问权限。索引质量直接影响 Cody 的搜索和补全效果——索引覆盖率越高，Cody 的跨仓库能力越强。</p>
+
+<h2>💲 价格方案</h2>
+<p>Cody 的定价与 Sourcegraph 平台分层绑定，当前公开信息如下：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月费</th><th>核心功能</th></tr>
+<tr><td>Free</td><td>$0</td><td>公开仓库代码搜索与补全、基础问答、斜杠命令、VS Code/JetBrains 插件</td></tr>
+<tr><td>Pro</td><td>$9/月</td><td>Free 全部功能 + 私有仓库支持、高级代码重构、自定义指令、优先模型</td></tr>
+<tr><td>Enterprise</td><td>按需报价</td><td>Pro 全部功能 + 无限私有仓库索引、SSO/SAML、私有部署、自定义模型、审计日志</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">以上价格以官网实时信息为准。Sourcegraph 还为大型企业提供按年度签约的定制方案。</p>
+
+<h2>👍 优点与局限</h2>
+<h3>优点</h3>
+<ul>
+<li><strong>代码库级上下文独一无二：</strong>基于 Sourcegraph 搜索引擎的跨仓库代码索引，使 Cody 能够在整个组织范围内理解代码关系，这是目前其他 AI 编程工具都不具备的能力。</li>
+<li><strong>企业级大规模代码库适配：</strong>对于拥有数百个微服务仓库的大型组织，Cody 的跨仓库搜索和重构能力能显著减少开发者在仓库间跳转的时间。</li>
+<li><strong>开源与免费版慷慨：</strong>对公开仓库提供完整的代码搜索和 AI 补全功能，开源项目维护者可以免费使用全部核心能力。</li>
+<li><strong>自定义指令扩展性好：</strong>团队可以定义符合自身工作流的定制命令，让 AI 遵循团队的审查标准和工作流程。</li>
+</ul>
+<h3>局限</h3>
+<ul>
+<li><strong>依赖 Sourcegraph 平台：</strong>如果代码仓库未接入 Sourcegraph 并完成索引，Cody 的跨仓库优势无法体现，此时与普通 AI 编程工具差异不大。</li>
+<li><strong>学习曲线较陡：</strong>Sourcegraph 平台的配置（索引策略、权限管理、实例部署）需要一定的 DevOps 知识，小团队可能感觉运维负担较重。</li>
+<li><strong>非代码任务支持一般：</strong>文档编写、需求分析、项目管理等非编程类任务不是 Cody 的设计重点，在这些场景中通用 AI 工具表现更好。</li>
+</ul>
+
+<h2>👥 适合人群</h2>
+<ul>
+<li><strong>大型微服务架构团队：</strong>拥有数十到数百个微服务仓库的组织，开发者需要频繁在多个仓库间搜索调用关系和进行跨仓库修改。</li>
+<li><strong>企业级代码治理团队：</strong>需要统一管理组织级代码搜索、确保代码合规性和可追溯性的平台工程或 DevEx 团队。</li>
+<li><strong>开源项目贡献者：</strong>为大型开源项目贡献代码的开发者，利用 Cody 快速理解项目结构和代码约定。</li>
+<li><strong>新入职工程师：</strong>刚加入大型代码库团队的开发者，通过 Cody 的代码搜索和问答快速理解系统架构和代码约定。</li>
+</ul>
+
+<h2>🔄 同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>Cody（Sourcegraph）</th><th>GitHub Copilot</th><th>Cursor</th></tr>
+<tr><td>核心差异</td><td>代码搜索引擎驱动的全局上下文</td><td>GitHub 生态深度集成</td><td>AI 原生 IDE，对话式编程</td></tr>
+<tr><td>跨仓库理解</td><td>强（Sourcegraph 索引）</td><td>弱（仅本地索引）</td><td>弱（仅本地索引）</td></tr>
+<tr><td>代码搜索</td><td>全文 + 语义搜索</td><td>GitHub 代码搜索</td><td>本地文件搜索</td></tr>
+<tr><td>企业部署</td><td>支持私有部署</td><td>GitHub Enterprise 集成</td><td>无私有部署选项</td></tr>
+<tr><td>起价</td><td>免费；Pro $9/月</td><td>免费版可用；Business $19/月</td><td>免费版可用；Pro $20/月</td></tr>
+</table>
+
+<h2>❓ 常见问题</h2>
+<p><strong>Q：Cody 必须配合 Sourcegraph 平台使用吗？</strong><br>A：对于公开仓库，可以直接使用 Sourcegraph.com 的云服务，无需额外部署。对于私有仓库，需要管理员在 Sourcegraph 平台（SaaS 或私有部署）完成仓库接入和索引配置后，Cody 才能发挥跨仓库搜索的优势。</p>
+<p><strong>Q：Cody 与 GitHub Copilot 可以同时使用吗？</strong><br>A：技术上可以，但两个插件的内联补全会有冲突（同时弹出两个建议）。建议选择其一作为主补全工具，另一个仅用于对话问答功能。</p>
+<p><strong>Q：Cody 会读取我的私有代码吗？</strong><br>A：Cody 的代码索引和分析在你指定的 Sourcegraph 实例中完成。企业私有部署版的代码数据全程不出企业网络。SaaS 版的数据处理方式以 Sourcegraph 官方隐私政策为准。</p>
+<p><strong>Q：Cody 支持哪些编程语言？</strong><br>A：Cody 的代码补全和问答支持所有 Sourcegraph 支持的编程语言（包括 JavaScript、TypeScript、Python、Go、Java、Rust、C/C++ 等数十种语言）。斜杠命令如 /test 的测试框架适配因语言而异。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

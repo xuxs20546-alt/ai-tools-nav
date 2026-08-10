@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Leonardo.ai - AI图像和游戏素材生成平台 | 蜂巢 AI</title>
-<meta name="description" content="Leonardo.ai深度评测：AI图像和游戏素材生成平台，角色设计、保持角色一致性的秘密武器。优缺点分析、替代工具推荐。">
+<title>Leonardo.ai 深度评测｜AI游戏素材生成平台 | 蜂巢 AI</title>
+<meta name="description" content="Leonardo.ai 深度评测：游戏AI图像生成平台，角色一致性引擎+批量素材生产+团队协作，免费方案每日150 Token，Premium仅$24/月（年付）。">
 <meta name="keywords" content="Leonardo.ai,AI绘画,游戏素材生成,角色设计">
 <link rel="canonical" href="https://www.ai-nav-build.com/tool-leonardo-ai.html">
 <meta property="og:title" content="Leonardo.ai - 🔄 免费+付费 | 蜂巢 AI">
@@ -83,7 +83,67 @@
 <h2>🔄 同类替代推荐</h2>
 <p>以下AI绘画类工具也值得关注：</p>
 <div class="related"><a href="/tool-midjourney.html" class="related-card"><div class="name">Midjourney</div><div class="cat">💎 付费·艺术质量最高</div></a><a href="/tool-stable-diffusion.html" class="related-card"><div class="name">Stable Diffusion</div><div class="cat">🆓 免费·本地运行</div></a><a href="/tool-getimg-ai.html" class="related-card"><div class="name">GetImg.ai</div><div class="cat">🔄 免+付·20+模型</div></a><a href="/tool-artbreeder.html" class="related-card"><div class="name">Artbreeder</div><div class="cat">🔄 免+付·基因混合</div></a></div>
-</div></main>
+</div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Leonardo.ai 由澳大利亚团队于 2022 年底推出，是一款面向游戏开发者和数字艺术家的 AI 图像生成平台。与 DALL·E、Midjourney 等通用型图像生成器不同，Leonardo 从一开始就将产品定位锁定在"游戏资产管线"上——它的目标不是生成最漂亮的艺术照，而是让游戏开发者能够高效、低成本地产出风格统一、可直接用于项目的系列化素材。</p>
+<p>该平台的核心价值主张围绕三个关键词展开：角色一致性、批量产出、团队协作。它内置了数十个针对不同风格（写实、动漫、像素风、奇幻艺术等）优化的预训练模型，用户可以上传参考图来微调出专属风格模型，然后在该模型下批量生成同一角色的多角度视图、表情变化和动作状态。这种"训练一次、复用无限"的模式，直接解决了游戏美术中最耗时的系列化资产生产问题。</p>
+
+<h2>核心功能</h2>
+<p><strong>角色一致性引擎：</strong>这是 Leonardo 最具辨识度的功能。用户可以上传 10–20 张同一角色的参考图，平台训练出一个专属的角色模型。训练完成后，在任意提示词中引用该模型，生成的图片就会自动继承该角色的面部特征、体型比例和服装风格。对于需要上百张同一角色素材的 RPG 或视觉小说项目，这个功能的价值不可估量。</p>
+<p><strong>AI Canvas 画布编辑：</strong>2024 年上线的 AI Canvas 将生成和编辑整合到了同一个工作区。用户可以在画布上框选区域进行局部重绘（Inpaint），也可以向外扩展画布边界让 AI 补全背景（Outpaint）。这个功能让"生成→不满意部分→局部修改→满意导出"的迭代流程变得极其顺畅，不再需要在多个工具间跳转。</p>
+<p><strong>Alchemy 图像增强：</strong>Alchemy 是 Leonardo 的高级渲染引擎，在普通生成的基础上叠加了额外的精修步骤，能显著提升图像细节、光影质感和构图的专业度。代价是 Token 消耗约为普通模式的 3 倍，但对于需要用于宣传物料或 Steam 商店页面的关键视觉素材，这个投入是值得的。</p>
+<p><strong>Motion 视频化：</strong>平台提供了将静态图转为 2–4 秒短视频的功能。虽然时长有限，但对于在社交媒体上展示角色动态效果、制作 GIF 风格的宣传素材已经足够。该功能消耗的 Token 较高，适合在确认静态图满意后再使用。</p>
+<p><strong>纹理平铺与透明背景：</strong>Leonardo 支持生成无缝平铺纹理（Tileable Texture）和 PNG 透明背景素材。前者可用于 3D 模型的贴图或 2D 游戏的地面/墙面纹理，后者则省去了后期抠图的工序，直接导入游戏引擎即可使用。</p>
+
+<h2>上手体验</h2>
+<p>注册 Leonardo 后，用户会直接进入一个类似项目看板的主界面。左侧是模型选择器和社区模型市场，中央是生成画布，右侧是提示词输入区和参数调整面板。首次使用的推荐路径是：在社区模型市场中浏览并收藏几个感兴趣的风格模型 → 选择一个模型 → 输入简单的英文提示词 → 点击生成。从注册到产出第一张可用的游戏风格图，熟练用户大约 3 分钟即可完成。</p>
+<p>深度使用场景的操作路径则更为复杂：上传 10–20 张参考图创建数据集 → 启动模型训练（通常需要 15–30 分钟）→ 训练完成后在生成时选择自己的模型 → 通过调整提示词权重、Image Guidance 强度等参数来精调输出。这个流程虽然前期投入较多，但一旦模型训练完毕，后续的批量产出效率远高于每次从头生成。</p>
+<p>免费用户每天获得约 150 个 Token，普通生成模式下每张图消耗约 3–5 Token，日均产出量约 30–50 张。需要注意不同功能（Alchemy、Motion、模型训练）的 Token 消耗差异很大，新手容易在测试 Alchemy 增强效果时快速消耗当日额度。</p>
+
+<h2>价格方案</h2>
+<p>Leonardo.ai 提供多层级订阅方案，以下为公开定价（以官网实时价格为准）：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月付价格</th><th>年付价格</th><th>核心权益</th></tr>
+<tr><td>Free</td><td>$0</td><td>—</td><td>每日约 150 Token，基础模型访问，社区模型使用</td></tr>
+<tr><td>Essential</td><td>$12/月</td><td>—</td><td>更多 Token 额度，更快生成队列，基础 Alchemy 功能</td></tr>
+<tr><td>Premium</td><td>$30/月</td><td>$24/月</td><td>大量 Token，全功能 Alchemy，Motion 视频化，模型训练</td></tr>
+<tr><td>Ultimate</td><td>$60/月</td><td>$48/月</td><td>无限生成（公平使用条款），最高优先级队列，团队协作功能</td></tr>
+</table>
+<p>此外平台还提供面向团队的 Starter（$72/月）和 Growth（$144/月）方案，以及面向大型工作室的 Enterprise 定制报价。以独立游戏开发者为参照，Premium（$24/月按年付）是性价比最高的方案——它覆盖了模型训练、Alchemy 增强和 Motion 视频化等核心进阶功能，Token 额度也足够支撑中小型项目的日均需求。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>角色一致性功能在同类产品中表现突出，训练一次即可批量产出风格统一的系列化素材，直接命中游戏开发的核心痛点。Web 界面无需安装、不依赖本地显卡，降低了硬件门槛。免费方案足够慷慨，个人开发者可以完成功能验证后再决定付费。社区模型市场活跃，大量用户共享的模型让新人可以快速找到适合自己风格的起点，避免从零训练的时间成本。</p>
+<p><strong>局限：</strong>在非游戏场景（如商业摄影、写实人像）上的表现不如 Midjourney 等通用型工具。定价方案较多，Token 消耗规则复杂（不同功能消耗量差异大），新用户在不熟悉规则时容易耗尽额度。中国大陆用户访问海外服务器时可能面临网络延迟，且部分功能可能需要稳定的国际网络连接。平台被 Canva 收购后（2024 年），部分用户对独立性和未来方向有所担忧。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>独立游戏开发者：</strong>个人或 2–3 人的小团队，需要快速产出角色立绘、怪物设计、UI 图标和场景概念图，但预算不足以雇佣全职美术。</li>
+<li><strong>像素游戏创作者：</strong>Leonardo 内置的像素艺术模型支持生成 16-bit/32-bit 风格精灵图和背景，是像素游戏开发者的专属利器。</li>
+<li><strong>漫画和视觉小说作者：</strong>依赖角色一致性来确保同一角色在多分镜中外貌统一，AI Canvas 的外绘功能也能帮助扩展画面构图。</li>
+<li><strong>游戏设计学生和爱好者：</strong>免费方案足够覆盖学习和原型制作阶段的日常需求，是进入游戏美术 AI 领域门槛最低的选项之一。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>Leonardo.ai</th><th>Midjourney</th><th>Stable Diffusion</th></tr>
+<tr><td>定位</td><td>游戏资产管线</td><td>通用艺术生成</td><td>开源本地运行</td></tr>
+<tr><td>角色一致性</td><td>★★★★★ 核心功能</td><td>★★ 需外部工具辅助</td><td>★★★ 通过 LoRA 等插件实现</td></tr>
+<tr><td>免费方案</td><td>每日约 150 Token</td><td>无免费方案</td><td>完全免费（需本地硬件）</td></tr>
+<tr><td>入门难度</td><td>低（Web 界面，无需安装）</td><td>低（Discord 操作）</td><td>中高（需部署和调参）</td></tr>
+<tr><td>适合场景</td><td>游戏素材批量生产</td><td>高质量艺术创作</td><td>深度定制和本地隐私需求</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: Leonardo.ai 生成的图片可以商用吗？</strong><br>A: 根据平台的服务条款，付费用户生成的图片可用于商业项目。免费用户生成的图片也拥有使用权，但建议在商业发布前仔细阅读当前版本的使用协议，因为条款可能随版本更新而调整。</p>
+<p><strong>Q: 角色模型训练需要多少张参考图？效果如何？</strong><br>A: 官方建议上传 10–20 张同一角色的高质量参考图，涵盖不同角度和表情。训练时间约 15–30 分钟。训练效果取决于参考图的质量和一致性——图片越清晰、角度越多样、风格越统一，训练出的模型保真度越高。</p>
+<p><strong>Q: Leonardo 和 Midjourney 该怎么选？</strong><br>A: 如果你的主要需求是游戏角色和素材的批量生产（尤其是需要保持角色一致性），选 Leonardo；如果你的目标是单张艺术品质的极致追求（如概念艺术、专辑封面），Midjourney 更合适。两者并不互斥，许多团队用 Leonardo 做批量素材、Midjourney 做关键视觉。</p>
+<p><strong>Q: 国内使用 Leonardo 需要翻墙吗？体验如何？</strong><br>A: Leonardo 服务器位于海外，国内直连可能不稳定。建议使用稳定的国际网络连接。在良好网络条件下，普通生成 5–15 秒完成，Alchemy 增强需要 30 秒到 1 分钟。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
+</main>
 <footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>
 </html>

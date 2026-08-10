@@ -87,6 +87,58 @@
 <p>如果你想了解Promethean AI的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-meshy-ai.html" class="related-card"><div class="name">Meshy AI</div><div class="cat">AI 3D生成</div></a><a href="/tool-csm-ai.html" class="related-card"><div class="name">CSM AI</div><div class="cat">AI 3D生成</div></a><a href="/tool-spline-ai.html" class="related-card"><div class="name">Spline AI</div><div class="cat">3D设计</div></a><a href="/tool-vizcom-ai.html" class="related-card"><div class="name">Vizcom</div><div class="cat">工业设计</div></a></div>
 </div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Promethean AI 是全球首个专门面向 3D 场景智能布局和关卡设计的 AI 工具，由前 Naughty Dog（顽皮狗）技术美术 Andrew Maximov 于 2019 年创立。与那些从零生成 3D 模型的 AI 工具不同，Promethean AI 解决的是 3D 生产流程中另一个核心痛点：如何用已有的 3D 资产库高效地搭建出高质量的场景。艺术家只需用自然语言描述想要的场景布局，AI 就会自动从资产库中选取合适的物体，并按照功能性、物理规则和美学原则进行智能摆放。</p>
+<p>Promethean AI 的技术已被多家 AAA 级游戏工作室和影视视觉效果公司采用。其核心价值在于将场景搭建中最耗时的手动摆放工作自动化——AI 完成约 70% 的布局工作，艺术家仅需进行约 30% 的创意调整和个性化优化。平台原生集成 Unreal Engine 和 Unity，AI 直接在游戏引擎内部生成和布置资产，无需反复导出导入。</p>
+
+<h2>核心功能</h2>
+<p><strong>自然语言驱动的场景布局：</strong>艺术家通过文字描述场景的布局意图——例如"一间混乱的大学宿舍，书桌上堆满书籍和饮料罐，墙上贴着乐队海报，床边地上散落着运动鞋"——Promethean AI 会自动解析这些描述，从资产库中匹配对应的物体，并按照功能分区（睡眠区、学习区、娱乐区）和物理规则进行合理摆放。AI 会自动避免物体之间的穿模和不合理的位置重叠。</p>
+<p><strong>风格记忆与迁移：</strong>Promethean AI 可以"学习"一个艺术家的场景布置风格——通过分析该艺术家手工搭建的几个示范场景，AI 提取其物体摆放习惯、密度偏好、风格倾向等特征，并在后续的自动化布局中自动应用这些风格偏好。这让每个工作室可以维护自己独特的视觉风格，而不只是使用通用的 AI 布局。</p>
+<p><strong>引擎内原生工作流：</strong>Promethean AI 以插件形式直接运行在 Unreal Engine 和 Unity 中，所有 AI 生成的布局和物体直接存在于引擎的场景层级结构中。美术师可以随时在 AI 生成的结果上进行手动调整，AI 和手动操作之间无缝切换。</p>
+<p><strong>批量场景生成：</strong>对于开放世界游戏中的大量次级场景（如城市中的公寓楼、商业街的店铺内部、野外的营地等），Promethean AI 支持批量生成——设定场景类型和风格参数后，AI 可以一次性生成数十个不同布局但风格一致的场景变体。</p>
+
+<h2>上手体验</h2>
+<p>Promethean AI 作为 Unreal Engine 或 Unity 的插件安装后，在引擎内部以独立面板的形式出现。用户需要在首次使用时将自己的 3D 资产库导入并完成分类和标签工作——这是整个流程中最耗时的一步，但也是决定后续 AI 生成质量的关键。</p>
+<p>资产库整理完成后，场景搭建的流程变为：在引擎中创建新关卡 → 打开 Promethean AI 面板 → 用自然语言描述想要的场景 → 点击生成 → AI 自动从资产库中选取物体并在场景中摆放。生成过程通常需要数十秒到数分钟，取决于场景的复杂度和资产库的规模。</p>
+<p>美术师可以在 AI 生成的基础上进行任意修改——调整物体的位置、旋转、缩放，替换不同的资产变体，添加 AI 未覆盖的细节。所有手动修改都会被保留，即使后续再次调用 AI 优化场景的其他部分。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>价格</th><th>核心权益</th></tr>
+<tr><td>免费版（非商业）</td><td>$0/月</td><td>个人学习和非商业项目使用，基础功能</td></tr>
+<tr><td>专业版</td><td>$19.99/月</td><td>商业项目授权，完整功能，优先支持</td></tr>
+<tr><td>企业版</td><td>官网未公开</td><td>定制工作流、API 集成、专属技术支持、多席位管理</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">以上价格来自官网公开信息，以官网实时价格为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>AI 的场景布局智能化和合理性在行业中处于领先地位，物体的摆放遵循功能分区、物理规则和美学原则，而非随机散布。与 Unreal Engine 和 Unity 的原生集成让工作流极为顺畅，不需要在工具之间切换。风格学习能力让每个工作室可以维护独特的视觉风格。批量生成功能对开放世界游戏的场景填充价值巨大。</p>
+<p><strong>局限：</strong>AI 的效果高度依赖用户已有资产库的质量和分类的精细度——资产库混乱则 AI 的输出也会混乱。定价面向专业和企业用户，个人独立开发者或学生群体在免费版的限制下体验有限。训练数据以欧美风格的室内外场景为主，对亚洲风格场景的理解和布局不够准确。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>AAA 游戏工作室的环境美术团队：</strong>手工搭建核心区域后，用 Promethean AI 批量填充大量次级场景，效率提升显著。</li>
+<li><strong>影视前期概念设计团队：</strong>快速搭建多个不同的场景方案供导演筛选，缩短概念设计周期。</li>
+<li><strong>建筑可视化公司的室内设计组：</strong>输入空间尺寸和风格偏好后，AI 快速生成多种室内布置方案，供客户选择。</li>
+<li><strong>VR/AR 内容制作团队：</strong>快速构建大量虚拟环境，缩短沉浸式体验的制作周期。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>工具</th><th>价格起点</th><th>核心侧重</th><th>适合场景</th></tr>
+<tr><td>Promethean AI</td><td>$0（非商业）</td><td>AI 场景布局和风格迁移</td><td>游戏关卡和影视场景的环境搭建</td></tr>
+<tr><td>Meshy AI</td><td>$0（有限免费）</td><td>文本/图片→3D 模型生成</td><td>从零创建单个 3D 资产</td></tr>
+<tr><td>CSM AI</td><td>$0（有限免费）</td><td>图片→3D 模型 + 场景生成</td><td>快速原型和概念验证</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: Promethean AI 自己会创建 3D 模型吗？</strong><br>A: 不会。Promethean AI 只负责从已有的资产库中选取和摆放物体，不生成新的 3D 模型。它需要用户提供高质量的资产库作为"原料"。</p>
+<p><strong>Q: 资产库的整理需要多长时间？</strong><br>A: 取决于资产库的规模，一个含 500-1000 个资产的库通常需要 1-2 周的分类和标签工作。但这属于一次性投入，整理完成的资产库可以持续使用。</p>
+<p><strong>Q: 是否支持除了 Unreal 和 Unity 之外的其他引擎？</strong><br>A: 目前仅原生支持 Unreal Engine 和 Unity。对于使用其他引擎的团队，Promethean AI 提供了 FBX 导出功能，可以将生成好的场景导出为通用格式。</p>
+<p><strong>Q: 免费版可以用于学生作品或非商业的独立游戏吗？</strong><br>A: 免费版提供非商业使用授权，可用于学习、个人作品集和非商业性质的独立项目。如果项目涉及商业化（包括在 Steam 等平台销售），需要升级到专业版。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

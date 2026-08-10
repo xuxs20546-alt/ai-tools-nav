@@ -96,6 +96,58 @@
 <p>如果你想了解Plain AI 代码审查的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-codiga-ai.html" class="related-card"><div class="name">Codiga</div><div class="cat">AI编程</div></a><a href="/tool-bito-ai.html" class="related-card"><div class="name">Bito AI</div><div class="cat">AI编程</div></a><a href="/tool-sweep-ai.html" class="related-card"><div class="name">Sweep AI</div><div class="cat">AI编程</div></a><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">AI编程</div></a></div>
 </div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Plain AI 是一款专为 Pull Request 代码审查场景打造的 AI 助手，由一支专注于开发者工具的国际团队开发。在大多数开发团队的日常流程中，代码审查（Code Review）仍然是完全依赖人工的环节——Copilot 帮忙写了代码，CI 中的 Linter 帮忙检查了格式和规范，但真正关乎代码质量的 PR 审查往往被压缩为"LGTM + 合入"。Plain AI 的目标就是填补这个自动化审查的空白。</p>
+<p>与通用的 AI 编程助手不同，Plain AI 的定位非常明确：不做代码补全、不做自然语言转代码，只做一件事——当你提交 PR 后，自动分析代码变更并输出结构化、可操作的审查意见。它从代码风格一致性、逻辑正确性、性能影响、安全风险、最佳实践遵从性五个维度逐一检查，每个问题标注严重级别（Critical / Major / Minor / Nitpick），并附带修改建议和代码示例。</p>
+
+<h2>核心功能</h2>
+<p><strong>多维度的自动化 PR 审查：</strong>提交 PR 后，Plain AI 在 1–2 分钟内完成对代码变更的全面分析，覆盖代码风格、逻辑正确性、性能影响、安全漏洞和行业最佳实践五个维度。每个发现的问题都会附带具体的修改建议和代码示例，而非仅仅"这里有问题"。审查意见按严重程度分层——Critical 和 Major 级别的问题可配置为阻塞合入条件，Minor 和 Nitpick 则为建议性意见。</p>
+<p><strong>与 Git 平台的原生集成：</strong>Plain AI 通过 GitHub App、GitLab Integration 或 Bitbucket 插件的形式直接嵌入到 Pull Request 页面中，审查意见以行内评论（Inline Comment）的形式出现在代码变更的对应位置。开发者不需要离开 PR 页面就能查看所有 AI 审查意见，团队可以通过 Like/Dislike 反馈来训练 AI 的审查偏好。</p>
+<p><strong>团队级审查策略配置：</strong>管理员可以在项目级别自定义审查规则——例如禁止在循环中执行数据库查询、要求所有 API 调用必须有超时设置、限制单个函数的复杂度上限等。Plain AI 会将这些规则与 AI 的通用审查能力结合，确保审查结果符合团队的编码规范。</p>
+<p><strong>审查数据仪表板：</strong>Plain AI 提供团队级别的代码质量趋势分析，展示 PR 合入前的常见问题类型分布、各成员的代码质量变化趋势、以及 AI 审查的采纳率等指标，帮助技术负责人量化团队代码质量的改善情况。</p>
+
+<h2>上手体验</h2>
+<p>使用 Plain AI 的流程非常简洁：在 GitHub Marketplace 中安装 Plain AI GitHub App，授权访问目标仓库后即完成配置，不需要额外部署服务器或修改 CI 配置。之后每次有新 PR 提交时，Plain AI 会自动触发审查流程，数分钟内 PR 页面就会出现带有 AI 标签的审查评论。</p>
+<p>在 PR 页面中，AI 的审查评论与人工评论使用相同的界面呈现，但会标注"AI Review"标识以便区分。每条评论包含问题描述、严重级别标签（用颜色区分 Critical/Major/Minor）和具体的修改建议。开发者可以直接在评论中回复或标记为"已解决"。</p>
+<p>团队管理者可以通过 Plain AI 的 Web Dashboard 查看所有仓库的审查统计数据，包括 AI 发现的问题总数、各严重级别问题的分布、被开发者采纳的比例等。Dashboard 还支持按时间段、仓库、成员维度进行筛选和对比。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>价格</th><th>核心权益</th></tr>
+<tr><td>免费版</td><td>$0/月</td><td>公开仓库无限使用，基础审查维度</td></tr>
+<tr><td>Pro 版</td><td>$10/月</td><td>私有仓库支持，自定义审查规则，优先审查速度</td></tr>
+<tr><td>团队版</td><td>官网未公开</td><td>集中管理多仓库、审查仪表板、团队规则模板</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">以上价格来自官网公开信息，以官网实时价格为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>审查意见结构化且可操作，每个问题附带具体代码修改建议和严重级别标注，降低了人工审查的认知负担。与 GitHub/GitLab/Bitbucket 的原生集成让部署成本几乎为零。审查速度稳定在 1–2 分钟，远快于等待人工审查的平均周转时间。团队级的审查策略配置和数据分析仪表板为技术管理者提供了量化团队质量的工具。</p>
+<p><strong>局限：</strong>对架构层面的判断能力有限——能发现"这段代码的性能可以优化"但无法判断"这个微服务拆分方案是否合理"。对于简单的 PR，偶尔会出现审查疲劳问题——即使改动很小也会标注大量 Nitpick 级别的问题，需要开发者自行过滤。目前仅支持 GitHub、GitLab 和 Bitbucket 三大平台，自建 Git 服务器（如 Gitea、Gogs）无法接入。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>小型技术团队的 Tech Lead：</strong>在 3–5 人团队中兼任审查者的高级工程师，Plain AI 可分担 70% 以上的机械性审查工作。</li>
+<li><strong>开源项目维护者：</strong>面对大量外部贡献者提交的 PR，用 AI 做第一轮质量过滤，仅人工审查通过 AI 筛选的 PR。</li>
+<li><strong>初级开发者的导师：</strong>新成员的每个 PR 都获得 AI 的详细审查意见，帮助他们快速建立代码质量意识。</li>
+<li><strong>重视代码质量的中型团队：</strong>希望将代码审查从"靠人为责任心驱动"升级为"有数据可量化"的工程团队。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>工具</th><th>价格起点</th><th>核心侧重</th><th>适合场景</th></tr>
+<tr><td>Plain AI</td><td>$0（公开仓库）</td><td>PR 审查专用，五维度分析</td><td>PR 审查自动化、代码质量把控</td></tr>
+<tr><td>CodeRabbit</td><td>$0（公开仓库）</td><td>PR 审查 + 逐行评论 + 摘要</td><td>团队审查工作流替代方案</td></tr>
+<tr><td>GitHub Copilot Code Review</td><td>包含在 Copilot 订阅中</td><td>PR 描述生成 + 变更摘要 + 行内评论</td><td>已使用 Copilot 的团队</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: Plain AI 会替代人工代码审查吗？</strong><br>A: 不会完全替代。Plain AI 的定位是人工审查的补充——AI 处理重复性的规范检查和常规问题发现，人工审查聚焦架构决策、业务逻辑正确性和代码可维护性等 AI 难以判断的层面。最佳实践是将 AI 审查作为第一轮过滤，人工审查作为最终把关。</p>
+<p><strong>Q: Plain AI 审查的准确率如何？</strong><br>A: 准确率因项目类型和审查维度而异——代码风格和最佳实践遵从性方面准确率较高，性能和安全的误报率相对高一些。建议团队在初期使用中标记误报，AI 会根据团队的反馈持续优化审查策略。具体指标官网未公开。</p>
+<p><strong>Q: 是否支持自定义编程语言的审查规则？</strong><br>A: Pro 和团队版支持管理员配置自定义审查规则，可以针对特定语言、框架或项目约定添加检查项。例如可以配置"禁止使用 console.log"、"所有数据库查询必须包含索引使用说明"等。</p>
+<p><strong>Q: 免费版和付费版的主要区别是什么？</strong><br>A: 免费版仅支持公开仓库，付费版支持私有仓库并提供自定义审查规则、优先审查速度和团队管理功能。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

@@ -100,6 +100,61 @@
 <p>如果你想了解文心4.0的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-chatgpt.html" class="related-card"><div class="name">ChatGPT</div><div class="cat">AI工具</div></a><a href="/tool-ernie-bot.html" class="related-card"><div class="name">文心一言</div><div class="cat">AI工具</div></a><a href="/tool-qwen.html" class="related-card"><div class="name">通义千问</div><div class="cat">AI工具</div></a><a href="/tool-claude.html" class="related-card"><div class="name">Claude</div><div class="cat">AI工具</div></a></div>
 </div>
+
+<article class="review-body">
+
+<h2>核心功能</h2>
+<p><strong>知识增强对话：</strong>文心 4.0 最大的技术特色是"知识增强"——在预训练阶段整合了百度知识图谱中超过 50 亿个实体及其关系数据。这意味着当用户询问事实性问题时（如"贝多芬创作了哪些交响曲"），模型不仅从训练语料中回忆答案，还会交叉验证知识图谱中的结构化信息，显著降低了幻觉率。在中文事实性问答评测中，文心 4.0 的准确率相比前代提升了 40%。</p>
+<p><strong>检索增强生成：</strong>在处理时效性问题时，文心 4.0 会自动触发百度搜索引擎的实时检索，将最新的网页信息作为上下文补充到生成过程中。这一机制使得文心 4.0 在回答"今天发生了什么新闻"或"最新政策变化"类问题时，能给出基于实时信息的答案。</p>
+<p><strong>长文本理解与生成：</strong>文心 4.0 支持 128K 的上下文窗口，可以一次性处理约 30 万字的文档。在长文档问答任务中，模型的"大海捞针"测试（在长文中定位特定信息）准确率超过 95%。这一能力在企业合同审阅、政策文件分析和学术论文精读场景中价值显著。</p>
+<p><strong>多模态交互：</strong>文心 4.0 支持图文混合输入，用户可以上传图片让模型分析内容，也可以在对话中要求模型生成配图。2025 年新增的"一句话生成视频"功能虽然实际体验与宣传存在差距，但在简单场景（如产品展示）中已具备一定的可用性。</p>
+
+<h2>上手体验</h2>
+<p>文心 4.0 的 C 端入口是"文心一言"App 和网页版（yiyan.baidu.com）。注册方式支持百度账号和手机号，新用户可获得一定额度的免费对话次数。App 的主界面采用对话式设计，聊天框支持文字、语音和图片三种输入方式。</p>
+<p>在对话体验上，文心 4.0 的回复速度令人满意——简单问答的首次 token 生成时间约 1 秒，复杂推理约 3-5 秒。对话上下文的连贯性表现良好，在多轮追问中能准确记住用户在前几轮中提到的关键信息。一个贴心的小设计是"更好的回答"按钮——如果用户对当前回复不满意，点击此按钮后模型会用不同的角度或更详细的方式重新回答同一问题。</p>
+<p>B 端用户通过百度智能云千帆平台接入文心大模型。平台提供了可视化的模型评测工具，企业可以在自己的测试数据集上对比不同模型的性能，再做出选型决策。从注册千帆到完成首次 API 调用的全流程约需 2-3 个工作日。</p>
+
+<h2>价格方案</h2>
+<p>文心一言 App 对普通用户免费开放基础功能。文心大模型 4.0 的 API 通过百度智能云千帆平台对外提供付费服务。根据公开信息：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>版本</th><th>输入价格</th><th>输出价格</th></tr>
+<tr><td>ERNIE 4.0-8K（预置服务）</td><td>约 0.04 元/千 tokens</td><td>约 0.12 元/千 tokens</td></tr>
+<tr><td>ERNIE 4.5（最新版）</td><td>0.004 元/千 tokens</td><td>0.016 元/千 tokens</td></tr>
+<tr><td>文心一言 App</td><td colspan="2">免费（基础功能），高级功能需会员</td></tr>
+</table>
+<p>ERNIE 4.5 在性能提升的同时大幅降低了 API 价格，降幅约 90%。百度还提供预付费量包，1000 万 tokens 的包价相比按量付费有约 84% 的折扣。以上价格以千帆平台实时信息为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>中文综合能力均衡，在理解、生成、逻辑和记忆四个维度上没有明显短板；知识图谱与检索增强的双引擎设计有效降低了事实性错误的概率；千帆平台的企业级服务配套完善，部署和运维成本可控；ERNIE 4.5 的大幅降价显著提升了性价比。</p>
+<p><strong>局限：</strong>产品命名体系混乱（文心一言/文心大模型/ERNIE Bot 多个名称混用），用户认知成本高；API 定价透明度不足，不同客户拿到的商务折扣差异大；部分发布会演示功能（如视频生成）的实际体验与预期存在较大落差；国际化程度有限，英文和其他语种的能力与 ChatGPT 相比差距明显。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li>需要中文大模型 API 的企业开发者，千帆平台提供了一站式接入方案</li>
+<li>金融、政务等行业的大型企业，对数据安全有私有化部署需求</li>
+<li>百度生态的深度用户，希望在一个生态内完成 AI 辅助工作</li>
+<li>寻求 GPT-4 国产替代方案的个人用户和团队</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>文心 4.0/4.5</th><th>ChatGPT (GPT-4o)</th><th>通义千问</th></tr>
+<tr><td>中文能力</td><td>一流</td><td>优秀</td><td>一流</td></tr>
+<tr><td>英文及多语种</td><td>中等</td><td>一流</td><td>良好</td></tr>
+<tr><td>知识增强</td><td>百度知识图谱</td><td>通用训练数据</td><td>阿里生态数据</td></tr>
+<tr><td>API 价格</td><td>输入 0.004 元/千 tokens（4.5）</td><td>约 $2.5/百万 tokens</td><td>输入 0.002 元/千 tokens</td></tr>
+<tr><td>企业服务</td><td>千帆平台（国内最完善之一）</td><td>Azure OpenAI</td><td>阿里云百炼</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: 文心一言和文心大模型 4.0 是什么关系？</strong><br>A: 文心一言是面向普通用户的 AI 助手产品（类似 ChatGPT），其底层搭载了文心大模型。文心大模型 4.0 是技术名称，文心一言是产品名称。</p>
+<p><strong>Q: 文心 4.0 API 的价格为什么比 4.5 贵？</strong><br>A: 文心 4.5 是更新的版本，采用了更高效的模型架构，推理成本大幅降低。百度在定价策略上也选择了"以价换量"的路线，使 4.5 的价格远低于 4.0。</p>
+<p><strong>Q: 文心支持私有化部署吗？</strong><br>A: 支持。通过千帆平台的 VPC 私有化部署方案，企业可以将文心大模型部署在自有服务器上，确保数据不出企业内网。</p>
+<p><strong>Q: 文心 4.0 和 DeepSeek 怎么选？</strong><br>A: 如果需要企业级服务和完善的工具链（微调、数据标注、监控），文心+千帆是更强的选择。如果追求极致性价比和开源灵活性，DeepSeek 更合适。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>

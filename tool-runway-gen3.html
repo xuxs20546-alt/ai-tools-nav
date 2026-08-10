@@ -87,6 +87,62 @@
 <p>如果你想了解Runway Gen-3的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-pika-3.html" class="related-card"><div class="name">Pika 3.0</div><div class="cat">AI视频生成</div></a><a href="/tool-kling-video.html" class="related-card"><div class="name">可灵AI</div><div class="cat">AI视频生成</div></a><a href="/tool-luma-dream-machine.html" class="related-card"><div class="name">Luma Dream Machine</div><div class="cat">AI视频生成</div></a><a href="/tool-sora.html" class="related-card"><div class="name">Sora</div><div class="cat">AI视频生成</div></a></div>
 </div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Runway Gen-3 Alpha 是 Runway 公司于 2024 年 6 月发布的最新一代 AI 视频生成模型，代表了一个从"像素运动"到"物理世界理解"的重要拐点。Gen-3 采用了全新的模型架构，在以下几个方面实现了质的飞跃：高保真物理模拟（水体流动、火焰燃烧、布料飘动、人体自然运动中的物理真实性）、10 秒时长的高度时间一致性（物体在整个视频中保持外观和结构稳定）以及电影级的画质输出。Runway 已与好莱坞狮门影业等顶级内容制作方建立了战略合作。</p>
+<p>Gen-3 在产品矩阵中的定位是 Runway 平台的高端生成核心。RunwayML 平台本身是一个集成了 30 多种 AI 创意工具的完整生态系统，包括绿幕抠像、运动追踪、超分辨率放大、视频插帧和音频降噪等。Gen-3 作为其中的旗舰模型，代表着 Runway 在"AI 理解物理世界"这个方向上的最新成果。Runway 成立于 2018 年，总部位于纽约，是最早将生成式 AI 应用于视频创作的公司之一。</p>
+
+<h2>核心功能</h2>
+<p><strong>文生视频（Text-to-Video）：</strong>用户输入一段文字描述，Gen-3 可以生成最长 10 秒的高保真视频。Gen-3 对物理规律的模拟能力是其最大卖点——在描述水体流动、火焰燃烧、布料在风中飘动、人物自然行走等场景时，生成结果的物理合理性远超 Gen-2 和其他竞品。对于包含多维度时间控制的要求（如"让一个人在雨中缓慢转身，同时镜头缓慢推近"），Gen-3 的成功率相比前代提升了近 40%。</p>
+<p><strong>图生视频（Image-to-Video）：</strong>用户上传一张静态图片作为起始帧，Gen-3 会在保持图片构图和风格的基础上生成动态视频。这个功能对于需要精准控制画面起点的专业项目尤为重要——先用 Midjourney 或 SD 生成确定构图的图片，然后让 Gen-3 添加动态。</p>
+<p><strong>视频风格化（Video-to-Video）：</strong>将已有视频转换为不同的视觉风格，如将实拍视频转换为动画风格、水彩风格或赛博朋克风格，同时保留原始视频的运动和构图。</p>
+<p><strong>Motion Brush（运动笔刷，Runway 平台通用功能）：</strong>在静态图片上用笔刷绘制希望产生运动的区域和方向，AI 会只让那些区域动起来。这一功能在 Gen-3 模型的支持下运动质量有了显著提升。</p>
+<p><strong>专业编辑工具集成：</strong>RunwayML 平台提供绿幕移除（无需实际绿幕）、动态追踪、超慢动作插帧（24fps→120fps+）、色彩匹配和音频降噪等完整的视频后期工具。</p>
+
+<h2>上手体验</h2>
+<p>使用 Runway 的第一步是注册账号并选择合适的订阅方案。登录后进入 RunwayML 工作台，界面主要分为左侧的模型选择面板、中央的预览/编辑区和右侧的参数控制面板。文生视频是最常用的入口：在提示词输入框中描述你想要的视频内容，选择一个宽高比（横屏 16:9 或竖屏 9:16），点击生成按钮后等待 60-90 秒即可看到结果。</p>
+<p>对于追求精准控制的专业用户，推荐使用图生视频模式——先用其他图像生成工具确定构图起点，再导入 Runway 添加动态。Motion Brush 的使用方式是在图片上用鼠标画出希望运动的方向，AI 会按照轨迹生成运动效果，适合制作动态照片和微动效。生成后的视频可以直接在 Runway 平台内使用编辑工具进行后期修饰，包括超分辨率放大、色彩调整和瑕疵修复。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月付价格（年付）</th><th>月付价格（月付）</th><th>主要权益</th></tr>
+<tr><td>免费版（Free）</td><td>$0</td><td>$0</td><td>125 一次性 credits、基础模型访问</td></tr>
+<tr><td>标准版（Standard）</td><td>约 $12/月</td><td>约 $15/月</td><td>625 credits/月、Gen-3 访问、3 个视频项目</td></tr>
+<tr><td>专业版（Pro）</td><td>约 $28/月</td><td>约 $35/月</td><td>2250 credits/月、无限项目、优先渲染</td></tr>
+<tr><td>无限版（Unlimited）</td><td>约 $76/月</td><td>约 $95/月</td><td>无限视频生成、最高优先级、团队协作</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">注：以上价格为公开渠道收集，以官网 runwayml.com 实时价格为准，credits 消耗依分辨率和时长而异。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>Gen-3 在物理世界模拟方面的表现断层领先——水体、火焰、光影、布料等需要物理真实感的场景中，生成质量明显优于其他 AI 视频工具。10 秒内的时间一致性保持得非常好，画面中的人物和物体不会出现突变或闪烁。RunwayML 平台集成了 30+ 种创意工具，从视频生成到后期修整可以在一个平台内完成，无需导出到第三方软件。Motion Brush 功能是 Runway 独有的杀手级特性，在社交媒体上的传播效应极强。</p>
+<p><strong>局限：</strong>价格门槛较高——基础版 credits 极少，需要生成质量的用户至少需要 Pro 方案。生成时间仍然较长，单次生成需等待 60-90 秒，无法实时预览或交互式创作。视频长度限制在 10 秒，对于需要完整叙事镜头的场景需要多次生成后拼接。精确控制画面内容仍然需要大量试错——同一段提示词在不同时间运行可能产出截然不同的结果。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>影视和广告行业的创意团队：</strong>用于前期概念可视化、场景气氛稿制作和镜头运动参考，降低片场沟通成本和决策风险。</li>
+<li><strong>独立电影制作人和视觉艺术家：</strong>以极低成本实现大气、火焰、水面等场景元素的生成和合成，替代昂贵的 CG 特效外包。</li>
+<li><strong>社交媒体内容创作者：</strong>利用 Motion Brush 和文生视频制作动态照片和创意视觉内容，在短视频平台建立差异化内容风格。</li>
+<li><strong>品牌营销团队：</strong>快速生成多种视觉风格的视频素材用于 A/B 测试，降低视频广告的制作成本和周期。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>对比维度</th><th>Runway Gen-3</th><th>OpenAI Sora</th><th>可灵AI (Kling)</th></tr>
+<tr><td>视频时长</td><td>最长 10 秒</td><td>最长 1 分钟（Plus 限制 20 秒）</td><td>最长约 10 秒</td></tr>
+<tr><td>物理模拟</td><td>业界最佳</td><td>优秀（长时一致性更强）</td><td>良好</td></tr>
+<tr><td>编辑工具</td><td>30+ 种工具集成</td><td>基础编辑功能</td><td>基础编辑功能</td></tr>
+<tr><td>价格</td><td>$12-95/月</td><td>包含在 ChatGPT Plus/Pro 中</td><td>免费+付费</td></tr>
+<tr><td>适合场景</td><td>专业影视、广告制作</td><td>叙事类短片、概念验证</td><td>中文创作者、日常创意</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q：Runway Gen-3 和 Gen-2 有什么区别？</strong><br>A：Gen-3 在物理世界模拟、时间一致性和画质方面相比 Gen-2 有质的飞跃——画质提升约 60%，时间一致性提升约 80%。Gen-3 在处理水体、火焰、人物运动等复杂物理场景时表现明显更真实。但 Gen-2 生成速度更快且成本更低，适合快速迭代探索创意方向。</p>
+<p><strong>Q：Runway 支持中文字幕和中文界面吗？</strong><br>A：Runway 界面以英文为主。中文提示词可以使用但生成效果不如英文精准——因为训练数据以英文描述为主。建议使用英文提示词以获得最佳效果。</p>
+<p><strong>Q：免费版的 credits 用完后还能继续使用吗？</strong><br>A：不能。免费版的 125 credits 是一次性的，用完后需要升级到付费方案才能继续使用。这一点与许多提供每月刷新免费额度的工具有所不同。</p>
+<p><strong>Q：Runway 生成的视频有版权问题吗？</strong><br>A：根据 Runway 的服务条款，付费用户对通过其平台生成的视频内容拥有商业使用权。但建议查阅最新版服务条款确认具体的使用范围和限制。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

@@ -96,6 +96,74 @@
 <p>如果你想了解Codiga的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-sweep-ai.html" class="related-card"><div class="name">Sweep AI</div><div class="cat">AI编程</div></a><a href="/tool-plain-ai.html" class="related-card"><div class="name">Plain AI</div><div class="cat">AI编程</div></a><a href="/tool-bito-ai.html" class="related-card"><div class="name">Bito AI</div><div class="cat">AI编程</div></a><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">AI编程</div></a></div>
 </div>
+
+<article class="review-body">
+
+<h2>🔧 核心功能</h2>
+<p>Codiga 的功能体系以"AI 驱动的代码质量与安全守卫"为核心定位，与传统的静态分析工具形成互补：</p>
+<p><strong>AI 智能代码审查：</strong>在 Pull Request 中，Codiga 不只是检查语法错误或风格违规——它会分析代码的逻辑意图，发现更深层的问题。例如：一个函数承担了过多职责（违反单一职责原则）、异常处理覆盖不完整（某些错误路径缺少 catch）、存在潜在的竞态条件（多线程环境下的共享状态问题）、或变量命名与实际用途不匹配。每次审查结果会以行级注释的形式嵌入 PR，附带问题严重程度标记和可选的修复建议。</p>
+<p><strong>自然语言规则定义引擎：</strong>这是 Codiga 最具差异化的功能。团队可以用自然语言描述编码规范，AI 自动将其转化为可执行的检测规则。例如，输入"所有 API 接口函数必须在开头包含请求参数校验，并在末尾统一返回标准 JSON 格式 {code, data, message}"，Codiga 的 AI 会生成一条检测规则，在后续 PR 中自动标记违反该规范的代码。</p>
+<p><strong>智能代码修复（Auto-Fix）：</strong>对于它检测到的大部分问题，Codiga 会附带一个"Apply Fix"按钮——点击后自动应用修复补丁。例如检测到 SQL 注入风险的字符串拼接查询，会自动替换为参数化查询；检测到未关闭的文件句柄，自动添加 with 语句或 finally 块。据官方数据，约 60% 的检测问题附带可直接应用的修复方案。</p>
+<p><strong>自定义代码片段库：</strong>团队可以将经过审查的常用代码片段（如错误处理模板、日志记录模式、认证中间件）存入 Codiga 的代码片段库，在 VS Code 或 JetBrains 中通过快捷键一键插入，确保团队成员使用统一的最佳实践。</p>
+<p><strong>安全漏洞扫描：</strong>Codiga 集成了对 OWASP Top 10 常见安全漏洞的检测能力，覆盖 SQL 注入、XSS、CSRF、不安全的反序列化、敏感信息泄露等。安全扫描结果会按 CVSS 评分排序，方便团队优先处理高危漏洞。</p>
+
+<h2>🚀 上手体验</h2>
+<p>Codiga 的接入流程围绕 Git 平台展开。注册后，授权 Codiga 访问你的 GitHub、GitLab 或 Bitbucket 仓库。平台会自动扫描选定的仓库，初始全量分析根据代码库大小可能需要几分钟到半小时（10 万行代码约需 30 分钟）。</p>
+<p>分析完成后，Codiga 会在仪表板中展示代码质量总览：问题总数、严重程度分布、最常见的五类问题、以及按文件排序的问题密度热力图。对于每个问题，都可以点开查看详细说明、影响范围和修复建议。</p>
+<p>在日常开发中，Codiga 以"隐形守护者"的方式运行——开发者照常提交 PR，Codiga 作为 CI/CD 流水线的一个检查步骤自动运行分析，结果以行级评论的形式添加到 PR 中。如果配置了"质量门禁"，严重问题会阻止 PR 合并。团队管理员可以在 Codiga 控制台中自定义规则集、调整问题严重等级、以及查看团队代码质量趋势报告。</p>
+
+<h2>💲 价格方案</h2>
+<p>Codiga 采用按团队规模的分层定价模式，当前公开价格如下：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月费</th><th>核心功能</th></tr>
+<tr><td>Free</td><td>$0</td><td>公开仓库无限分析、基础代码质量检测、VS Code/JetBrains 插件</td></tr>
+<tr><td>Teams</td><td>$15/人/月</td><td>私有仓库分析、AI 深度代码审查、自然语言规则定义、15 条自定义规则</td></tr>
+<tr><td>Enterprise</td><td>按需报价</td><td>Teams 全部功能 + SSO/SAML、无限自定义规则、私有部署选项、专属支持</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">以上价格以官网实时信息为准。Codiga 为开源项目提供额外的免费配额。</p>
+
+<h2>👍 优点与局限</h2>
+<h3>优点</h3>
+<ul>
+<li><strong>AI 语义级检测：</strong>不只是检查语法和风格，还能理解代码逻辑发现深层设计问题，这是传统 linter 无法做到的。</li>
+<li><strong>自然语言规则定义门槛低：</strong>团队成员不需要学习 DSL 或正则表达式，用自然语言就能让 AI 自动生成检测规则，极大降低规则维护成本。</li>
+<li><strong>自动修复覆盖面广：</strong>约 60% 的检测问题附带一键修复方案，减少开发者的手工修复时间。</li>
+<li><strong>CI/CD 原生集成：</strong>作为 PR 审查的自动化检查步骤运行，不改变开发者现有的工作流。</li>
+</ul>
+<h3>局限</h3>
+<ul>
+<li><strong>存在一定误报率：</strong>约 10-15% 的 AI 检测结果为误报，需要开发者人工判断——这在 AI 驱动的代码分析工具中属于行业平均水平。</li>
+<li><strong>大型 monorepo 初次分析较慢：</strong>10 万行以上的代码库全量初始化分析可能需要 30 分钟以上。</li>
+<li><strong>免费版限制明显：</strong>私有仓库的 AI 分析和自定义规则仅限付费版，小团队体验完整功能有一定成本。</li>
+</ul>
+
+<h2>👥 适合人群</h2>
+<ul>
+<li><strong>中大型工程团队：</strong>10 人以上的开发团队，代码审查负载高，需要自动化过滤低级问题，让高级工程师专注于架构和设计审查。</li>
+<li><strong>安全合规要求严格的组织：</strong>需要 SOC2 或 ISO 27001 认证的团队，通过 Codiga 的持续安全扫描和审计日志满足合规要求。</li>
+<li><strong>技术债务治理团队：</strong>正在系统性地清理历史技术债务的组织，使用 Codiga 建立基线并跟踪改进趋势。</li>
+<li><strong>开源项目维护者：</strong>公开仓库可免费使用 Codiga 的全部分析功能，帮助维护者在合并社区贡献前自动检查代码质量。</li>
+</ul>
+
+<h2>🔄 同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>Codiga</th><th>SonarQube</th><th>CodeRabbit</th></tr>
+<tr><td>检测方式</td><td>AI 语义分析 + 传统规则引擎</td><td>传统静态分析规则集</td><td>AI 驱动的 PR 审查</td></tr>
+<tr><td>规则定义</td><td>自然语言定义（AI 转化）</td><td>XML/DSL 编写规则</td><td>预定义规则集（不可自定义）</td></tr>
+<tr><td>自动修复</td><td>约 60% 问题可一键修复</td><td>有限的自动修复</td><td>提供修复建议，需手动应用</td></tr>
+<tr><td>起价</td><td>免费（公开仓库）；$15/人/月</td><td>社区版免费；Developer Edition 收费</td><td>免费版可用；Pro $12/人/月</td></tr>
+<tr><td>部署方式</td><td>SaaS + 私有部署选项</td><td>私有部署为主</td><td>SaaS 为主</td></tr>
+</table>
+
+<h2>❓ 常见问题</h2>
+<p><strong>Q：Codiga 能完全替代人工代码审查吗？</strong><br>A：不能。Codiga 擅长发现模式化的问题和安全漏洞，但无法替代资深工程师对架构设计、业务逻辑正确性和可维护性的判断。建议将 Codiga 作为代码审查的第一道自动化防线，配合人工审查使用。</p>
+<p><strong>Q：Codiga 支持哪些编程语言？</strong><br>A：Codiga 支持 JavaScript、TypeScript、Python、Java、Go、PHP、Ruby、C/C++ 等主流语言。不同语言的 AI 分析深度有所差异，JavaScript/TypeScript 和 Python 的支持最为成熟。</p>
+<p><strong>Q：Codiga 会保存我的代码吗？</strong><br>A：SaaS 版在分析过程中会临时拉取代码，分析完成后根据数据保留策略存储分析结果（问题列表），但不会长期存储完整源代码。私有部署版代码全程不出企业网络。具体以官方隐私政策为准。</p>
+<p><strong>Q：Codiga 与 ESLint/SonarQube 等工具有冲突吗？</strong><br>A：不冲突。Codiga 的 AI 分析关注的层面与传统 linter 不同（语义 vs. 语法），建议同时使用——ESLint 负责风格和基本规则，Codiga 负责深层质量分析。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

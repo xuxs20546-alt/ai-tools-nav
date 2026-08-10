@@ -99,6 +99,75 @@
 <h2>🔄 同类替代</h2>
 <p>如果偏好 IDE 内集成体验或固定订阅制：</p>
 <div class="related"><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-cline.html" class="related-card"><div class="name">Cline</div><div class="cat">🆓 免费</div></a><a href="/tool-devin.html" class="related-card"><div class="name">Devin</div><div class="cat">💎 付费</div></a><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">💎 付费</div></a></div>
+<hr style="margin:40px 0 20px;border:1px solid var(--border)">
+
+<article class="review-body">
+
+<h2>&#x1f527; 核心功能</h2>
+<p>Claude Code 的功能体系围绕"让 AI 成为终端里的编程搭档"来设计，下面是其最核心的几个能力模块：</p>
+
+<p><strong>1. 代码库全局索引与跨文件理解。</strong>启动 Claude Code 时，它会自动扫描项目目录结构，构建文件之间的依赖关系图谱。当你提问"这个接口被哪些地方调用"，它会直接列出所有调用位置的具体文件和行号，而不是凭模型记忆猜测。对于中大型项目（数百个源文件级别），这个能力意味着你可以把它当作一个随时可查阅的"活的代码知识库"。</p>
+
+<p><strong>2. 自然语言驱动的文件操作。</strong>你可以直接说"把 src/utils 下面的所有日志调用从 console.log 改成 logger.info，顺便引入统一的 logger 模块"，Claude Code 会逐文件修改、展示差异、等你确认后提交。它支持跨文件编辑、批量替换、新建目录和文件、删除废弃代码等完整的文件系统操作，覆盖了日常开发中绝大部分的重构和清理场景。</p>
+
+<p><strong>3. Shell 命令执行与输出解析。</strong>Claude Code 可以在你的终端中运行任意 Shell 命令——安装依赖、运行测试套件、执行 lint 检查、启动开发服务器——然后读取命令的输出结果，根据输出判断下一步操作。比如运行测试后发现 8 个失败用例，它会自动阅读失败日志，定位相关源代码，并给出修复建议。</p>
+
+<p><strong>4. Git 原生集成。</strong>它可以帮你写规范化的 commit message、提交代码、创建分支、查看提交历史和差异，甚至帮你解决合并冲突。这不仅仅是"帮你敲 git 命令"——它理解你的代码变更内容，能够生成描述准确、结构完整的 commit message，质量远高于手写的"fix bug"。</p>
+
+<h2>&#x1f680; 上手体验</h2>
+<p>Claude Code 的入门门槛比大多数 AI 编程工具要低：你只需要在终端里用 npm 全局安装（<code>npm install -g @anthropic-ai/claude-code</code>），然后运行 <code>claude</code> 命令即可进入交互式会话。第一次启动时，它会引导你完成 API 密钥配置——支持 Anthropic API Key 直接连接，也可以通过第三方 API 中转服务来访问。</p>
+
+<p>进入会话后，你会看到一个简洁的命令行界面，底部是输入提示符。它的交互模式类似聊天：你输入自然语言指令，它在终端里逐行输出思考和操作过程。当你让它修改代码时，它会用类似 Git diff 的格式展示每一次变更，每个修改块底部都会有 <code>[y/n]</code> 确认提示——你必须手动批准后改动才会真正写入磁盘。这个机制对于害怕 AI 乱改代码的开发者来说非常重要。</p>
+
+<p>日常使用中最常见的操作模式是：先描述一个任务（"帮我在 api 模块里加一个获取用户订单列表的接口"），Claude Code 会自动浏览相关文件、理解项目结构、生成代码、展示差异、等你确认。整个过程你不需要打开任何 IDE，也不用在文件和终端之间来回切换——所有的思考、搜索、编辑、验证都在同一个终端会话中完成。</p>
+
+<h2>&#x1f4b0; 价格方案</h2>
+<p>Claude Code 本身不单独收费，它包含在 Anthropic 的 Claude 付费订阅计划中。以下是截至 2026 年 8 月的公开定价（以官网实时价格为准）：</p>
+
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:var(--bg2)"><th>方案</th><th>月费</th><th>Claude Code 访问</th><th>适用场景</th></tr>
+<tr><td>Free</td><td>免费</td><td>有限次数</td><td>轻度体验、偶尔使用</td></tr>
+<tr><td>Pro</td><td>$20/月</td><td>&#x2705; 完整访问</td><td>个人开发者日常使用</td></tr>
+<tr><td>Max</td><td>$100/月</td><td>&#x2705; 5 倍 Pro 用量</td><td>高频用户、专业开发者</td></tr>
+<tr><td>Max 20x</td><td>$200/月</td><td>&#x2705; 20 倍 Pro 用量</td><td>重度用户、全职依赖</td></tr>
+<tr><td>Team Premium</td><td>$100/座/月</td><td>&#x2705; 团队版</td><td>企业团队协作</td></tr>
+</table>
+
+<p>如果直接通过 API 调用，Claude Sonnet 模型的标准费率为每百万输入 token $3、每百万输出 token $15（2026 年 8 月 31 日前优惠价为 $2/$10）。中文用户还需考虑 API 中转服务的额外成本——国内常见的第三方 API 代理通常在此基础上有一定溢价。</p>
+
+<h2>&#x1f4ca; 同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:var(--bg2)"><th>维度</th><th>Claude Code</th><th>GitHub Copilot</th><th>Cursor</th></tr>
+<tr><td>工作方式</td><td>终端 CLI 原生</td><td>IDE 插件内嵌</td><td>独立 IDE（VS Code 分支）</td></tr>
+<tr><td>代码理解深度</td><td>全局索引 + 200K 上下文</td><td>当前文件 + 打开标签页</td><td>全仓库索引 + 多文件编辑</td></tr>
+<tr><td>价格</td><td>$20/月起（含 Pro）</td><td>$10/月（个人）</td><td>免费版可用，Pro $20/月</td></tr>
+<tr><td>GUI 支持</td><td>&#x274c; 纯终端</td><td>&#x2705; IDE 内嵌</td><td>&#x2705; 完整 IDE</td></tr>
+<tr><td>Git 集成</td><td>&#x2705; 深度集成</td><td>&#x2705; 基础 commit 建议</td><td>&#x2705; 内嵌 Git 面板</td></tr>
+<tr><td>适合场景</td><td>终端重度用户、CI/CD 集成</td><td>IDE 内代码补全、插件生态</td><td>全功能 AI IDE、重构任务</td></tr>
+</table>
+
+<p>Claude Code 的核心差异在于它是完全围绕终端设计的——如果你习惯了命令行工作流，它的体验远比在 IDE 里和 AI 对话更自然。如果你更偏好图形化界面和可视化操作，Cursor 或 GitHub Copilot 配合 VS Code 可能是更合适的选择。</p>
+
+<h2>&#x2753; 常见问题</h2>
+<p><strong>Q：Claude Code 和 Claude.ai 网页版有什么关系？</strong><br>
+Claude Code 是独立于网页版的终端工具，专门针对编程场景定制了文件系统交互、Git 集成和代码索引能力。虽然底层调用同一个模型，但 Claude Code 的工具调用和代码操作能力远强于网页聊天。</p>
+
+<p><strong>Q：国内用户怎么使用 Claude Code？</strong><br>
+Claude Code 在中国大陆无法直接访问 Anthropic API，需要通过第三方 API 中转服务来连接。配置时将 API 端点指向中转服务的地址即可。需要注意的是，中转服务的稳定性和响应延迟因提供商而异。</p>
+
+<p><strong>Q：Claude Code 支持哪些编程语言？</strong><br>
+作为基于大语言模型的工具，它理论上支持所有常见编程语言——Python、JavaScript/TypeScript、Go、Rust、Java、C/C++、Ruby、PHP 等。对于小众语言，理解能力会有所下降，因为训练数据中相关代码样本较少。</p>
+
+<p><strong>Q：它安全吗？会不会泄露我的代码？</strong><br>
+Anthropic 官方声明不会使用通过 API 提交的代码来训练模型。但你的代码会被发送到服务器进行处理。如果你处理的是高度敏感的私有代码，可以考虑使用支持本地部署的同类开源工具（如 Aider 配合本地模型）。</p>
+
+<p><strong>Q：和 Cursor 相比，选哪个更好？</strong><br>
+这取决于你的工作习惯。如果你大部分时间都在终端里工作（比如后端开发、DevOps、开源贡献者），Claude Code 的终端原生体验会更高效。如果你更依赖 IDE 的可视化界面（比如前端开发、需要频繁预览），Cursor 的完整体验更舒适。不少开发者实际上是两者混用。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+
+</article>
+
 </div>
 </main>
 

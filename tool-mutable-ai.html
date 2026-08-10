@@ -95,7 +95,57 @@
 <h2>🔄 同类替代推荐</h2>
 <p>如果你想了解Mutable AI的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-locofy-ai.html" class="related-card"><div class="name">Locofy</div><div class="cat">设计转代码</div></a><a href="/tool-anima-app.html" class="related-card"><div class="name">Anima</div><div class="cat">设计转代码</div></a><a href="/tool-v0.html" class="related-card"><div class="name">v0.dev</div><div class="cat">AI编程</div></a><a href="/tool-builder-io.html" class="related-card"><div class="name">Builder.io</div><div class="cat">设计转代码</div></a></div>
-</div>
+
+<article class="review-body" style="max-width:900px;margin:0 auto;padding:0 24px 80px">
+<h2>工具简介</h2>
+<p>Mutable AI 是一款以 AI 驱动代码生成和重构为核心的开发者工具，它将重点放在两个差异化的高价值场景：将 Figma 等设计工具中的视觉设计稿自动转换为可运行的前端代码，以及将老旧技术栈（如 jQuery、AngularJS）自动迁移到现代框架（如 React、Vue）。这种"设计入口"和"遗留系统出口"两端发力的策略，让 Mutable AI 在 Cursor、GitHub Copilot 等编辑器内辅助工具的竞争格局中找到了独特定位。</p>
+
+<h2>核心功能</h2>
+<p><strong>设计稿转代码：</strong>用户将 Figma 设计文件链接导入 Mutable AI，平台自动解析组件层级、布局关系和样式属性，生成像素级还原的 React 或 Vue 组件代码，附带对应的 CSS/Tailwind 样式。自动布局（Auto Layout）识别准确度较高，对标准化的 UI 组件（按钮、卡片、表单、导航栏）的还原效果最为稳定。</p>
+<p><strong>代码库理解与文档生成：</strong>Mutable AI 能够分析整个代码仓库，生成结构化的项目文档和组件说明。它会自动识别代码中的模块依赖关系、函数调用链和类型定义，并输出一份可读性强的技术文档，这对于接手遗留项目的新开发者特别实用。</p>
+<p><strong>遗留系统现代化迁移：</strong>这是 Mutable AI 最有技术壁垒的功能。它能识别 jQuery 的 DOM 操作模式、事件绑定方式和 AJAX 调用，将其自动转换为 React Hooks 和现代 API 调用。在规范化程度较高的项目中，转换后的代码语法正确率较好，但对大量使用非标准模式的老项目仍需人工审查。</p>
+<p><strong>自动化代码编辑与测试生成：</strong>平台支持在理解代码上下文的基础上进行批量自动编辑——例如将整个项目中的 class 组件转换为函数组件——并自动生成对应的单元测试框架代码。</p>
+
+<h2>上手体验</h2>
+<p>Mutable AI 以 Web 应用为主，也有 VS Code 扩展。典型的使用流程是：在平台上创建新项目，选择"设计转代码"或"代码迁移"模式。对于设计转代码，粘贴 Figma 文件链接并选择目标框架（React/Vue），平台开始解析设计稿的图层、组件和布局信息，几分钟后生成完整的代码包。代码会附带 AI 撰写的组件文档和使用说明，可以直接下载或推送到 GitHub 仓库。对于代码迁移，上传或连接代码仓库后，选择源技术栈和目标技术栈，平台对项目进行全量扫描后给出迁移计划，用户确认后逐模块执行转换。整体交互逻辑清晰，但在处理大型项目（50+ 文件）时扫描和转换时间会明显增加。</p>
+
+<h2>价格方案</h2>
+<p>Mutable AI 采用按席位计费的分层订阅模式：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月费（每席位）</th><th>核心权益</th></tr>
+<tr><td>Basic</td><td>$10/月</td><td>基础代码生成、代码库搜索</td></tr>
+<tr><td>Codebase Pro</td><td>$25/月</td><td>设计转代码、代码迁移、完整文档生成</td></tr>
+<tr><td>Enterprise</td><td>定制报价</td><td>自定义转换规则、SSO、私有部署</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">* 以官网实时价格为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>设计转代码能力在同类工具中表现突出——对 Figma Auto Layout 的识别准确度较高，生成的代码结构清晰、组件拆分合理。遗留系统迁移是少有的专精方向，对 jQuery 到 React 的转换有专门的模型支持。生成的代码附带 AI 文档和测试框架，交付物完整性优于仅生成代码的工具。</p>
+<p><strong>局限：</strong>复杂动画和交互场景的支持有限——涉及 GSAP、Canvas 或 WebGL 的页面，生成的代码还原度明显下降。迁移效果高度依赖原项目的代码规范性，非标准模式越多准确率越低。相较于 Cursor 等编辑器内工具，Mutable AI 的实时编码辅助体验不够流畅。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>前端开发团队：</strong>需要从 Figma 设计稿快速产出前端代码，缩短设计到开发的交付周期。</li>
+<li><strong>技术负责人/架构师：</strong>负责老旧项目技术栈升级，需要自动化迁移工具降低迁移成本。</li>
+<li><strong>产品经理/创业者：</strong>有设计稿需要快速验证产品可行性，在正式开发前生成可交互原型。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>Mutable AI</th><th>Locofy</th><th>v0.dev</th></tr>
+<tr><td>设计转代码</td><td>✅ Figma → React/Vue</td><td>✅ Figma → 多框架</td><td>✅ 描述 → React</td></tr>
+<tr><td>代码迁移</td><td>✅ jQuery→React 等</td><td>❌</td><td>❌</td></tr>
+<tr><td>文档生成</td><td>✅ AI 自动生成</td><td>部分</td><td>❌</td></tr>
+<tr><td>起始价格</td><td>$10/月</td><td>免费+付费</td><td>免费（限量）</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: Mutable AI 生成的设计转代码可以直接用于生产环境吗？</strong><br>A: 建议将生成的代码视为高质量初稿而非直接上线的成品。通常需要开发者对生成的代码进行审查和微调，特别是在处理复杂交互逻辑和状态管理时。但对于标准化的 UI 组件和页面布局，生成代码的可直接使用率较高。</p>
+<p><strong>Q: 支持哪些设计工具的导入？</strong><br>A: 目前主要支持 Figma，对 Sketch 和 Adobe XD 的支持程度因版本而异。建议查阅官网最新支持列表。Figma 设计文件使用 Auto Layout 和规范的命名能显著提升转换质量。</p>
+<p><strong>Q: 代码迁移支持哪些技术栈？</strong><br>A: 最常见的迁移路径是 jQuery/AngularJS → React/Vue。对其他源语言和目标框架的支持建议参考官方文档，因为平台的迁移模型在持续更新中。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

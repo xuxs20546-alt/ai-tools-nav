@@ -87,6 +87,65 @@
 <p>如果你想了解Civitai的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-stable-diffusion-xl.html" class="related-card"><div class="name">Stable Diffusion XL</div><div class="cat">AI图像生成</div></a><a href="/tool-tensor-art.html" class="related-card"><div class="name">Tensor.Art</div><div class="cat">AI图像创作</div></a><a href="/tool-seaart-ai.html" class="related-card"><div class="name">SeaArt</div><div class="cat">AI图像工具</div></a><a href="/tool-liblib-ai.html" class="related-card"><div class="name">LiblibAI</div><div class="cat">AI图像平台</div></a></div>
 </div>
+
+<article class="review-body" style="max-width:900px;margin:40px auto;padding:0 24px 80px">
+
+<h2>工具简介</h2>
+<p>Civitai 是全球最大的 AI 图像生成模型分享与创作平台，于 2022 年底上线，由 Justin Maier 创立。平台的灵感来源于"模型的 GitHub"这一概念——在 Stable Diffusion 开源后，全球创作者开始训练各种微调模型（Checkpoint、LoRA、Embedding），但缺乏一个统一、友好的分发和发现渠道。Civitai 填补了这个空白，迅速成为 Stable Diffusion 生态中不可或缺的核心基础设施。截至 2026 年中，Civitai 上已托管超过 30 万个 Checkpoint 基础模型、50 万个 LoRA 适配器以及数百万个 Embedding 和 Hypernetwork，日均活跃用户超过 200 万。平台的核心理念是"发现→预览→下载→创作→分享"的完整闭环——创作者上传模型和示例图，用户浏览和筛选，下载后在本地或平台在线使用，满意后评分评论，形成良性循环。</p>
+<p>2024 年，Civitai 推出内置在线生图功能（Generator），用户无需本地部署 Stable Diffusion 即可直接在浏览器中使用平台上任意公开模型进行图像生成。2025 年上线了 Buzz 积分经济系统和"悬赏"（Bounties）机制，用户可以发布需求并悬赏积分激励创作者开发定制模型。Civitai 还推出了 Civitai Red 高级订阅服务，提供更高的在线生图额度、优先队列和独家功能访问。对于 AI 绘画爱好者和专业创作者而言，Civitai 不仅是找模型的工具，更是灵感来源、技术交流社区和创作变现平台。</p>
+
+<h2>核心功能</h2>
+<p><strong>模型发现与筛选：</strong>Civitai 的模型搜索引擎和分类系统是其最核心的能力。平台支持按模型类型（Checkpoint、LoRA、Textual Inversion、Hypernetwork 等）、基础模型（SD 1.5、SDXL、Flux、SD3 等）、风格标签（写实、动漫、像素、油画等）、用途标签（人像、风景、建筑、产品等）进行多维度筛选。排序方式包括最热门（Most Downloaded）、最高评分（Highest Rated）、最新发布和最受讨论等。每个模型页面上都附带创作者上传的示例图片、推荐参数（prompt、negative prompt、采样器、步数等）和使用说明，用户可以快速评估模型的实际效果是否符合自己的需求。</p>
+<p><strong>在线生图（Generator）：</strong>Civitai 内置的在线生图功能允许用户无需任何本地 GPU 环境，直接在浏览器中使用平台上的任何公开模型进行图像生成。用户选择一个模型作为基础，选择一个或多个 LoRA 作为风格微调，输入 prompt 和参数，点击生成即可。生成速度取决于模型大小和当前服务器负载，通常从几秒到几十秒不等。这项功能对新用户特别友好——可以在决定下载模型本地部署之前先在线体验效果，大大降低了 AI 绘画的入门门槛。</p>
+<p><strong>悬赏（Bounties）系统：</strong>用户可以在平台上发布悬赏任务——例如"需要一个能稳定生成北欧极简风格室内设计图的 LoRA"或"需要一个能还原 80 年代香港街景的 Checkpoint"——并设置 Buzz 积分或现金悬赏金额。社区创作者可以接下任务并提交训练成果，需求方验收后发放赏金。这个机制有效激励了针对特定垂直需求的定制化模型开发，催生了大量原本不会出现在免费模型库中的高质量专用模型。</p>
+<p><strong>社区与内容生态：</strong>Civitai 本质上是一个以模型为中心的创作者社区。每个模型页面下方都有评论区，创作者和用户在此交流使用心得、分享调参技巧、报告问题和提出改进建议。平台还设有讨论版（Articles & Discussions），用户可以发布详细的模型使用教程、对比评测和技术分析文章。2025 年上线的挑战赛（Contests）功能定期举办主题创作比赛，获奖者可以获得 Buzz 积分和平台流量扶持。</p>
+<p><strong>Buzz 积分经济：</strong>Buzz 是 Civitai 的平台内虚拟积分。用户可以通过每日签到、发布内容、参与社区活动等方式免费获取 Buzz，也可以直接购买。Buzz 可以用于：在线生图消耗、下载付费模型、发布悬赏、打赏创作者等。创作者获得的 Buzz 可以按一定比例兑换为现金（需满足提现门槛），这使得在 Civitai 上创作模型成为了一种可能的变现途径。</p>
+
+<h2>上手体验</h2>
+<p>Civitai 的使用流程自然顺畅。访问 civitai.com，使用邮箱或 Google/Discord 账号注册后进入首页。首页展示的是当前热门的模型和社区精选内容。新用户推荐从"Models"页面开始浏览——先选择一个感兴趣的类别（如 Realistic 写实风格、Anime 动漫风格），然后按"Most Downloaded"排序，点击任何一个看起来有趣的模型进入详情页。详情页展示了模型的示例图片（通常有 10 到 30 张）、技术参数、使用说明和用户评论。如果决定使用这个模型，可以选择"Download"下载到本地在 Stable Diffusion WebUI 或 ComfyUI 中使用，也可以直接点击"Create"在平台内在线生成。</p>
+<p>在线生图界面分为左右两栏：左侧是模型选择和参数设置区（基础模型 + LoRA 叠加 + Prompt/ Negative Prompt + 采样参数），右侧是生成结果展示区。选择一个基础 Checkpoint，添加需要的 LoRA（每个 LoRA 有权重滑块用于控制影响力），输入 prompt，点击"Generate"即可。生成结果不满意可以调整 prompt 和参数后重新生成。对于本地部署的进阶用户，下载模型后搭配 Automatic1111 WebUI 或 ComfyUI 使用是标准做法——Civitai 提供的模型卡上通常会标注推荐参数，可以直接复制到本地工具中使用。免费用户每天有固定的在线生图额度（Buzz 点数），重度用户推荐订阅 Civitai Red（$10/月起）以获得更多额度和更快的生成队列。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:#f8f9fa"><th>方案</th><th>费用</th><th>核心权益</th></tr>
+<tr><td>Free</td><td>免费</td><td>模型浏览和下载，每日免费 Buzz 签到积分，有限在线生图额度</td></tr>
+<tr><td>Buzz 充值</td><td>$5 起（一次性购买）</td><td>在线生图消耗，发布悬赏，打赏创作者</td></tr>
+<tr><td>Civitai Red</td><td>$10/月起</td><td>更高在线生图额度，优先生成队列，Red 专属功能，无广告</td></tr>
+</table>
+<p style="font-size:13px;color:#98a2b3">注：以上价格为 2026 年公开信息整理。具体价格、Buzz 兑换比例和功能以 civitai.com 实时显示为准。Buzz 积分价格可能根据区域和活动有所不同。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>模型资源的丰富度和质量在 AI 图像模型分享领域无出其右——30 万+ Checkpoint 和 50 万+ LoRA 覆盖了从超写实人像到二次元动漫、从建筑设计到产品渲染的几乎所有视觉风格需求。发现和筛选体验优秀——多维度的分类、排序和预览系统让用户能快速找到高质量模型，避免了在海量低质量内容中大海捞针的痛苦。在线生图功能将使用门槛降到几乎为零——不需要本地 GPU、不需要技术知识，任何人打开浏览器就能体验 AI 绘画。悬赏系统有效解决了长尾需求——以往"想要一个特定风格的模型但不会自己训练"的困境有了实际的解决方案。社区活跃、学习资源丰富——每个模型页面下的评论区、使用教程和参数分享构成了一个庞大的知识库。</p>
+<p><strong>局限：</strong>内容审核处于灰色地带——平台上大量模型基于受版权保护的动漫、游戏和电影角色训练，虽然 Civitai 在逐步加强版权合规审核，但法律风险仍未完全解决。成人内容比例较高——站内相当比例的模型和示例图涉及成人或敏感内容，虽然平台提供了 NSFW 过滤开关，但整体社区氛围对企业和教育用户不够友好。在线生图费用对于重度用户不低——相比自行部署 Stable Diffusion 的零边际成本，按量付费或订阅 Red 都需要持续支出。中文内容占比偏低——虽然平台支持中文界面，但大部分模型的说明、示例 prompt 和社区讨论仍以英文为主，中文用户需要一定的英文基础才能充分利用平台资源。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>AI 绘画爱好者和创作者：</strong>Civitai 是 AI 绘画创作的灵感来源和工具库——在这里发现新风格、下载新模型、学习新技巧，是每个 Stable Diffusion 用户日常工作流中不可替代的一环。</li>
+<li><strong>角色设计师和视觉艺术家：</strong>利用 Civitai 上的海量风格模型快速探索角色设计的视觉方向，从数百种风格变体中筛选最优方案后再进入精细创作阶段。</li>
+<li><strong>电商和产品摄影师：</strong>通过悬赏系统请社区创作者训练特定产品类别的专用 LoRA 模型，实现低成本、高质量的批量产品场景图生成。</li>
+<li><strong>AI 模型训练者和技术研究者：</strong>Civitai 提供了展示和分发自己训练模型的平台，同时社区的反馈和数据（下载量、评分、评论）也是优化模型的重要参考。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:#f8f9fa"><th>对比维度</th><th>Civitai</th><th>Hugging Face</th><th>Tensor.Art</th></tr>
+<tr><td>产品定位</td><td>AI 图像模型社区与创作平台</td><td>通用 ML 模型托管与开发平台</td><td>AI 图像在线生成与模型平台</td></tr>
+<tr><td>起步价格</td><td>免费 / Red $10/月</td><td>免费 / Pro $9/月</td><td>免费 / Pro 约 $5/月</td></tr>
+<tr><td>模型类型</td><td>专注图像生成（Checkpoint/LoRA/Embedding）</td><td>全品类（NLP/CV/Audio/多模态）</td><td>专注图像生成 + 在线创作</td></tr>
+<tr><td>核心优势</td><td>图像模型最多，社区最活跃，在线生图</td><td>通用 ML 生态，API 托管，企业级</td><td>在线生图体验最佳，中文支持好</td></tr>
+<tr><td>适合场景</td><td>AI 绘画创作、模型发现、风格探索</td><td>ML 开发、模型训练、企业部署</td><td>在线 AI 绘画创作、中文用户</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: Civitai 上下载的模型可以商用吗？</strong><br>A: 每个模型的使用许可由上传者自行设定。大部分模型采用开放许可（如 CreativeML Open RAIL-M 等），允许个人和商业使用。但部分模型标注为"仅限个人使用"或有特定的商业限制。下载前务必查看模型页面上的许可证信息。对于涉及版权角色的 LoRA 模型，即使标注为开放许可，仍可能面临版权纠纷风险。</p>
+<p><strong>Q: 我需要什么硬件才能在本地使用 Civitai 上的模型？</strong><br>A: Stable Diffusion 模型（SD 1.5/SDXL）建议至少 6GB 显存的 NVIDIA GPU（如 RTX 2060 及以上），8GB 以上体验更佳。SD3 和 Flux 等新一代模型对显存要求更高（建议 12GB 以上）。如果不想投资 GPU 硬件，可以直接使用 Civitai 的在线生图功能，不需要任何本地配置。</p>
+<p><strong>Q: Civitai 和 Tensor.Art / LiblibAI 有什么区别？</strong><br>A: Civitai 是全球最大的国际社区，英文内容为主，模型数量最多。Tensor.Art 和 LiblibAI（哩布哩布）是国内类似的平台，中文支持更好，更贴合中国用户的审美和使用习惯。三者的核心功能类似（模型分享 + 在线生图），选择主要取决于语言偏好和内容风格偏好。</p>
+<p><strong>Q: Buzz 积分有什么用？值得购买吗？</strong><br>A: Buzz 用于在线生图消耗、下载部分付费模型、发布悬赏和打赏创作者。如果你主要在本地使用模型（下载后在自己电脑上跑），Buzz 的消耗很小。如果你主要依赖 Civitai 的在线生图功能，Buzz 会消耗得较快。对于轻度用户，日常签到和社区活动赠送的免费 Buzz 通常够用；重度在线生图用户建议订阅 Civitai Red。</p>
+<p><strong>Q: NSFW 内容如何过滤？</strong><br>A: 在账户设置中开启 NSFW 内容过滤后，大部分成人内容会被自动隐藏。但需要注意过滤并非 100% 有效——部分擦边内容可能仍会出现在浏览结果中。对于有严格内容要求的用户（如未成年用户、教育场景），建议在家长或教师监督下使用，或选择内容审核更严格的国内替代平台。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

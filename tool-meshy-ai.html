@@ -87,6 +87,69 @@
 <p>如果你想了解Meshy AI的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-luma-ai-3d.html" class="related-card"><div class="name">Luma AI 3D</div><div class="cat">AI 3D扫描</div></a><a href="/tool-csm-ai.html" class="related-card"><div class="name">CSM AI</div><div class="cat">AI 3D生成</div></a><a href="/tool-spline-ai.html" class="related-card"><div class="name">Spline AI</div><div class="cat">3D设计</div></a><a href="/tool-tripo-ai.html" class="related-card"><div class="name">Tripo AI</div><div class="cat">AI 3D模型</div></a></div>
 </div>
+
+<article class="review-body" style="max-width:900px;margin:0 auto;padding:0 24px 80px">
+
+<h2>工具简介</h2>
+<p>Meshy AI 是一款基于生成式 AI 的在线 3D 模型创作平台，由来自 MIT 和 Google 的华人团队于 2022 年创立，总部位于美国。它的核心价值主张是用 AI 降低 3D 内容创作的门槛——将传统 3D 建模中需要长时间学习和大量手工操作的工作，压缩为输入一行文字或上传一张图片即可完成。截至 2026 年年中，Meshy 已积累超过 200 万注册用户，是全球规模最大的 AI 3D 生成平台之一。</p>
+<p>从产品架构看，Meshy 完全基于云端运行，用户无需安装任何软件即可在浏览器中完成从模型生成、预览、纹理编辑到导出全流程。它本质上是一个"AI 驱动的 3D 资产工厂"，将原本分散在多个专业软件中的建模、UV 展开、纹理绘制等步骤统一为几次点击。平台同时面向个人创作者和企业客户——前者通过 Web 界面直接使用，后者可通过 API 将 3D 生成能力集成到游戏引擎、电商平台等自有系统中。</p>
+
+<h2>核心功能</h2>
+<p><strong>Text to 3D（文生 3D）：</strong>Meshy 的旗舰功能。用户在输入框中用自然语言描述想要的 3D 对象，AI 在几十秒到几分钟内输出带 PBR 纹理的三维模型。描述可以包括物体类别、材质、颜色、风格（写实/卡通/体素）等属性。生成的模型从几何结构到纹理贴图均为全自动生成，用户随后可在预览窗中旋转缩放查看效果。</p>
+<p><strong>Image to 3D（图生 3D）：</strong>上传一张物体图片，Meshy 的深度估计算法会推断三维形状并生成 360 度完整的 3D 模型。该功能对正面拍摄、光照均匀的物体效果最佳。平台还支持多角度图片输入模式——上传正面、侧面和背面照片可以显著提升生成精度。这一功能在电商 3D 展示和产品原型验证场景中应用广泛。</p>
+<p><strong>AI Texturing（AI 纹理）：</strong>允许用户上传已有的白模（无纹理 3D 模型），通过文字描述为其自动生成材质纹理。系统会生成漫反射、法线和粗糙度等全套 PBR 贴图。例如上传一个角色白模后输入"蓝色金属盔甲"，AI 会自动为模型的不同部位分配合适的材质效果。</p>
+<p><strong>AI Animation（AI 动画）：</strong>2025 年新增的角色动画功能。用户导入人形 3D 模型后，Meshy 会自动为其添加骨骼绑定并生成预设动画（行走、跑步、待机等）。该功能大幅降低了角色动画的制作门槛，但目前仍处于快速迭代阶段，对复杂角色和非人形模型的适配有待完善。</p>
+<p><strong>格式支持与导出：</strong>Meshy 支持导出 OBJ、FBX、GLB、USDZ、STL 等主流格式，覆盖游戏引擎（Unity/Unreal Engine）、3D 软件（Blender/Maya/3ds Max）、Web 展示（GLB）和 3D 打印（STL）等几乎全部用途。</p>
+
+<h2>上手体验</h2>
+<p>初次访问 Meshy 官网，用户可以选择 Google 或 Discord 账号一键登录，也可使用邮箱注册。登录后的工作区结构清晰："发现"页展示社区热门作品（可查看提示词作为参考），"创作"页提供 Text to 3D 和 Image to 3D 两种入口，个人资产库则保存所有历史生成记录。以 Text to 3D 为例：用户输入提示词后选择风格预设，点击生成按钮，系统显示实时进度条。首次生成通常耗时 30-90 秒，后续任务因排队情况存在波动。</p>
+<p>生成完成后，3D 预览窗口内支持自由旋转、缩放和平移。右侧面板提供材质调节（粗糙度、金属感）、线框模式和导出格式选择。导出操作直接在前端完成，无需额外工具。对于刚接触 3D 的用户，Meshy 的交互逻辑直观且不需要任何 3D 背景知识——整个过程类似使用图像生成工具，只不过输出的是三维物体而非二维图片。平台还提供了 Unity 和 Unreal Engine 插件，开发者可直接在引擎内调用 Meshy 的生成能力。</p>
+
+<h2>价格方案</h2>
+<p>Meshy 采用按月的积分制定价，不同操作消耗数量不等的积分（credits）：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:#f5f5f5"><th>版本</th><th>月费</th><th>月积分</th><th>主要权益</th></tr>
+<tr><td>Free</td><td>免费</td><td>200</td><td>基础功能，模型公开，含水印</td></tr>
+<tr><td>Pro</td><td>$20/月</td><td>1,000</td><td>生成速度+60%，API 访问，私有资产</td></tr>
+<tr><td>Max</td><td>$49/月</td><td>3,000</td><td>优先队列，更高纹理分辨率，更高并发</td></tr>
+<tr><td>Enterprise</td><td>需询价</td><td>定制</td><td>专属实例、SLA、团队管理、定制模型</td></tr>
+</table>
+<p>参考消耗：一次 Text to 3D 约 20 credits，Image to 3D 约 15-25 credits，AI Texturing 约 10-15 credits。Free 版每月约可生成 10 个模型，适合学习和轻度试用。Pro 版对独立开发者和中小团队来说性价比较高。以上价格以官网实时信息为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>第一，生成质量在 AI 3D 领域处于第一梯队——在几何完整性和纹理贴图质量两个维度上综合表现领先多数竞品。第二，全云端的浏览器工作流消除了硬件和系统门槛，任何能上网的设备都可使用。第三，格式兼容性出色，从游戏开发到 3D 打印的所有常见输出需求都能满足。第四，Pro 版月费仅 $20 的定价对个人用户友好，在同类产品中具有价格竞争力。</p>
+<p><strong>局限：</strong>第一，AI 生成的模型拓扑结构不够规整，直接用于游戏引擎时通常需要手动减面和重拓扑。第二，人物角色的面部、手部等精细部位的重建质量不稳定，不如专门的人物生成工具。第三，生成结果偏向中低多边形风格，在影视级高精度需求下仍有较大差距。第四，中文提示词的生成效果弱于英文，这与训练数据的语言分布有关。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>独立游戏开发者：</strong>需要快速生产道具、场景装饰等游戏资产，预算有限但对生成速度要求高的个人或小团队。</li>
+<li><strong>3D 打印爱好者：</strong>通过文字描述直接获得可打印的 STL 文件，省去学习 Blender 或 Fusion 360 的时间成本。</li>
+<li><strong>电商运营与产品经理：</strong>为商品创建 3D 展示模型或 AR 预览资产，提升线上购物体验和转化率。</li>
+<li><strong>教育工作者：</strong>用于 3D 设计入门教学，让学生在接触专业软件之前先建立对三维空间和模型结构的直观理解。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:#f5f5f5"><th>维度</th><th>Meshy AI</th><th>Tripo AI</th><th>Luma AI</th></tr>
+<tr><td>价格</td><td>Pro $20/月</td><td>Starter $9.9/月</td><td>整合入 Luma 订阅体系</td></tr>
+<tr><td>核心功能</td><td>文生3D + 图生3D + 纹理 + 动画</td><td>文生3D + 图生3D + 打印优化</td><td>3D 扫描 + 场景重建 + Genie</td></tr>
+<tr><td>生成速度</td><td>30-90 秒</td><td>中等</td><td>较慢</td></tr>
+<tr><td>格式支持</td><td>OBJ/FBX/GLB/USDZ/STL</td><td>OBJ/GLB/STL</td><td>GLB/USDZ</td></tr>
+<tr><td>最佳场景</td><td>游戏开发、原型、打印</td><td>3D 打印、电商展示</td><td>AR/VR 体验、场景捕捉</td></tr>
+</table>
+<p>三款工具的定位各有侧重：Meshy 在功能全面性和生成速度上综合表现最优，Tripo 在 3D 打印优化上有独特优势且起价更低，Luma AI 在真实场景 3D 重建领域更为突出。选择时建议根据自身的主要使用场景（游戏 vs 打印 vs 场景重建）来决定。</p>
+
+<h2>常见问题</h2>
+<p><strong>Q：Meshy 和 Meshy 3D Pro 是什么关系？</strong><br>A：Meshy 是品牌总称，Meshy 3D Pro 通常指代平台的付费版本（Pro 版）。同一套技术底座，只是功能开放程度和月度配额不同。</p>
+<p><strong>Q：生成的模型能否直接商用？</strong><br>A：Pro 及以上版本生成的模型为用户私有，可用于商业项目。Free 版产物为公开资产，商用前需确认最新条款。</p>
+<p><strong>Q：不支持中文提示词吗？</strong><br>A：支持，但英文提示词的效果更好。复杂对象的描述建议使用英文或中英混合。</p>
+<p><strong>Q：可以离线使用吗？</strong><br>A：不可以，Meshy 是纯云端服务，所有生成计算均在远程服务器完成。</p>
+<p><strong>Q：是否支持团队协作？</strong><br>A：Enterprise 版提供团队管理功能，包括共享资产库、权限控制和用量统计。Pro 和 Max 版为个人订阅，不包含团队协作功能。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+
+</article>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

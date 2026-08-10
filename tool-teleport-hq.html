@@ -96,6 +96,33 @@
 <p>如果你想了解TeleportHQ的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-locofy-ai.html" class="related-card"><div class="name">Locofy</div><div class="cat">设计转代码</div></a><a href="/tool-anima-app.html" class="related-card"><div class="name">Anima</div><div class="cat">设计转代码</div></a><a href="/tool-builder-io.html" class="related-card"><div class="name">Builder.io</div><div class="cat">设计转代码</div></a><a href="/tool-webflow.html" class="related-card"><div class="name">Webflow</div><div class="cat">网站建设</div></a></div>
 </div>
+<article class="review-body">
+
+<h2>核心功能</h2>
+<p>TeleportHQ 的核心是一套可视化网页构建器，其"所见即所得"的拖拽编辑体验与传统设计工具相似——用户可以拖拽文本块、图片、按钮、表单等 UI 组件到画布上，实时调整样式和布局。但与纯视觉工具不同的是，TeleportHQ 在后台实时生成干净的前端代码（HTML/CSS/JS），并保持视觉与代码的双向同步——你在画布上拖拽一个按钮，对应的 React JSX 代码片段会即时更新；反过来，你在代码面板中修改 CSS 属性，画布上的视觉呈现也会同步变化。</p>
+<p>组件库是 TeleportHQ 的另一大亮点——内置了大量经过设计的 UI 组件（导航栏、卡片、表单、弹窗等），用户可以直接拖拽使用并自定义样式。响应式编辑功能支持按断点（Desktop / Tablet / Mobile）独立调整布局，确保同一个页面对不同屏幕尺寸都有良好的呈现。代码导出支持 React、Vue、Angular、Preact、Next.js 和纯 HTML/CSS 等多种格式，导出的代码不依赖 TeleportHQ 运行时，可以独立部署和修改。对于团队协作场景，TeleportHQ 提供了共享工作区和多人实时编辑功能，设计师和开发者可以在同一个界面上协同工作。</p>
+
+<h2>上手体验</h2>
+<p>TeleportHQ 完全基于 Web，无需下载任何软件，打开浏览器即可开始使用。注册免费账户后进入项目面板，你可以选择从空白画布开始，也可以从模板库中选择一个设计模板作为起点。可视化编辑器的操作逻辑与 Figma 或 Webflow 类似——左侧是组件面板，中间是画布，右侧是属性面板。拖拽组件到画布上后，可以在属性面板中调整颜色、字体、间距、边框等样式，也可以直接编辑文本内容。代码面板默认隐藏在一侧，点击切换按钮即可查看实时生成的代码。从设计稿到可发布网页页面的转化过程对熟悉可视化工具的用户较为直观，但对完全没有前端基础的用户可能需要 1-2 天的学习适应期。Figma 设计稿导入功能的还原度不如 Locofy 等专用工具，但作为免费功能的起点是合格的。</p>
+
+<h2>价格方案</h2>
+<p>TeleportHQ 提供从免费到团队的多层定价，以官网实时价格为准：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月费</th><th>年费</th><th>主要特性</th></tr>
+<tr><td>Free</td><td>$0</td><td>$0</td><td>1 个项目，核心编辑器，基础导出</td></tr>
+<tr><td>Professional</td><td>$18/月</td><td>$9/月</td><td>不限项目，高级导出，去品牌水印</td></tr>
+<tr><td>Agency</td><td>官网未公开</td><td>—</td><td>团队协作，定制模板，优先支持</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">以上价格为公开资料整理，以官网实时价格为准。</p>
+
+<h2>常见问题</h2>
+<p><strong>TeleportHQ 生成的代码质量如何？</strong>代码遵循现代前端最佳实践，使用语义化的 HTML 结构和 BEM 命名风格。导出的 React/Vue 代码可以直接集成到现有项目中。但生成的代码没有状态管理、路由和 API 集成等业务逻辑，这部分仍需开发者手动补充。</p>
+<p><strong>TeleportHQ 适合完全不会编程的人吗？</strong>适合用于制作静态内容页面（如落地页和个人主页）。对于需要动态数据交互的页面，仍需要有前端开发知识来补充业务逻辑。TeleportHQ 的定位是"降低前端 UI 开发成本"，而不是"完全替代前端开发"。</p>
+<p><strong>TeleportHQ 的私有化部署怎么做？</strong>TeleportHQ 的核心引擎在 GitHub 上开源（UIPkg），企业可以通过 Docker 在自有服务器上部署。私有化部署版本可以深度定制 UI 组件库和代码生成规则，同时数据完全留在企业内部。</p>
+<p><strong>TeleportHQ 与 Webflow 有什么区别？</strong>Webflow 是集成了 CMS 和托管服务的完整网站建设平台，适合从零建站；TeleportHQ 更专注于设计到代码的转化环节，适合已有开发团队的场景——设计师用 TeleportHQ 出 UI 和代码，开发者在本地 IDE 中补充业务逻辑。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

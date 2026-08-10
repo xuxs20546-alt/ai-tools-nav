@@ -103,6 +103,75 @@
 <a href="/tool-flux.html" class="related-card"><div class="name">Flux</div><div class="cat">新一代开源模型，质量惊人</div></a>
 <a href="/tool-ideogram.html" class="related-card"><div class="name">Ideogram</div><div class="cat">文字生成最准，海报神器</div></a>
 </div>
+<hr style="margin:40px 0 20px;border:1px solid var(--border)">
+
+<article class="review-body">
+
+<h2>&#x1f527; 核心功能</h2>
+<p>Midjourney 的功能体系围绕"将想象力快速可视化"来设计，以下是其最核心的几个能力模块：</p>
+
+<p><strong>1. 文本到图像生成（Text-to-Image）。</strong>这是 Midjourney 最基础也最强大的功能。在 Discord 中输入 <code>/imagine</code> 命令后跟一段英文描述（prompt），几十秒内即可生成四张高质量图像。你可以对其中任意一张进行放大（Upscale）获取更高分辨率的版本，或基于其中一张的风格进行变体生成（Variation），延续其构图和风格特征但产出新的画面。</p>
+
+<p><strong>2. 灵活的参数控制系统。</strong>Midjourney 的参数体系是其区别于普通 AI 绘图工具的核心壁垒。长宽比（<code>--ar 16:9</code>）控制画面比例、风格化强度（<code>--stylize 0-1000</code>）控制 AI 对艺术风格的发挥程度、混乱度（<code>--chaos 0-100</code>）控制四张变体之间的差异程度、否定词（<code>--no text</code>）排除不想要的内容。图片参考权重（<code>--iw 0.5-2</code>）让你可以上传参考图来控制生成方向——这比纯文字描述精准得多。</p>
+
+<p><strong>3. 角色一致性与风格参考。</strong>V6.1 版本引入的两个重要功能解决了 AI 绘图领域的长期痛点。角色一致性（Character Consistency）允许你锁定一个人物形象，在多张图之间保持相同的面部特征、发型和服装——这对系列插画和品牌 IP 创作至关重要。风格参考（Style Reference）让你上传一张风格样本图，AI 会将后续所有生成都套用该风格，确保系列作品视觉统一。</p>
+
+<p><strong>4. 外绘扩展（Pan/Zoom Out）。</strong>你可以选择一张已生成的图像，向外扩展画面内容——AI 会自动补全扩展区域的背景和细节。这个功能在建筑和场景设计中尤为实用：先生成一个室内局部，然后逐步向外扩展，最终得到完整的空间全景图。</p>
+
+<h2>&#x1f680; 上手体验</h2>
+<p>Midjourney 的入门路径与众不同——它完全运行在 Discord 平台内，没有独立的 Web 或桌面应用。使用流程是：注册 Discord 账号 → 加入 Midjourney 官方服务器 → 在任意新手频道（newbies）中输入 <code>/imagine</code> → 加上 prompt 描述 → 等待生成。整个过程中你看到的是一个聊天界面，你的指令和其他用户的作品在同一个信息流中滚动。这种设计对习惯传统应用的初学者来说需要适应，但也因此营造了极强的社区学习氛围。</p>
+
+<p>初学者最常犯的错误是 prompt 过于简短——"a beautiful landscape"只能得到一张普通的风光图，而"a misty mountain valley at golden hour, cinematic lighting, volumetric fog, photorealistic, shot on 85mm lens --ar 16:9 --stylize 250"则能得到一张氛围感强得多的作品。在公开频道中观察他人的 prompt 并分析其语法结构，是学习 Midjourney 最快的方式。</p>
+
+<p>另一个实际问题是图片管理。由于所有生成结果都在 Discord 的聊天流中，当你累计生成了几百张图后，找回特定的一张变得相当困难。Midjourney 官网提供了个人作品库的网页浏览功能，但搜索和分类能力仍然有限。重度用户通常会建立自己的本地图库管理系统，将满意的作品及时下载归档。</p>
+
+<h2>&#x1f4b0; 价格方案</h2>
+<p>Midjourney 已取消免费试用，转为纯付费订阅模式。以下是截至 2026 年 8 月的公开定价（以官网实时价格为准）：</p>
+
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:var(--bg2)"><th>方案</th><th>月费</th><th>年费（月均）</th><th>GPU 快速时间</th><th>适合人群</th></tr>
+<tr><td>Basic</td><td>$10/月</td><td>$8/月</td><td>约 3.3 小时/月</td><td>轻度用户、偶尔使用</td></tr>
+<tr><td>Standard</td><td>$30/月</td><td>$24/月</td><td>约 15 小时/月</td><td>日常创作者、设计师</td></tr>
+<tr><td>Pro</td><td>$60/月</td><td>$48/月</td><td>约 30 小时/月</td><td>专业创作者、商业用途</td></tr>
+<tr><td>Mega</td><td>$120/月</td><td>$96/月</td><td>约 60 小时/月</td><td>工作室、批量生产需求</td></tr>
+</table>
+
+<p>GPU 快速时间是指使用高性能 GPU 进行图像生成的时间配额——消耗完后可以继续使用"慢速模式"（Relax Mode），但生成速度会明显下降。年付可节省约 20% 费用。对于大多数个人用户来说，Standard（$30/月）是性价比最高的选择——15 小时的 GPU 快速时间足够每天生成几十组图像。</p>
+
+<h2>&#x1f4ca; 同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:var(--bg2)"><th>维度</th><th>Midjourney</th><th>DALL·E 3</th><th>Stable Diffusion</th></tr>
+<tr><td>图像审美质量</td><td>&#x2705; 业界标杆、艺术感强</td><td>&#x26a0;&#xfe0f; 偏写实、风格较单一</td><td>&#x2705; 灵活（取决于模型）</td></tr>
+<tr><td>文本理解能力</td><td>&#x26a0;&#xfe0f; 需 prompt 工程经验</td><td>&#x2705; 自然语言理解最强</td><td>&#x26a0;&#xfe0f; 取决于模型</td></tr>
+<tr><td>文字渲染</td><td>&#x26a0;&#xfe0f; 经常出错</td><td>&#x2705; 准确度最高</td><td>&#x274c; 较弱</td></tr>
+<tr><td>操作平台</td><td>Discord（纯聊天界面）</td><td>ChatGPT 或 API</td><td>本地 / WebUI</td></tr>
+<tr><td>开源与自由度</td><td>&#x274c; 闭源、受限于 Discord</td><td>&#x274c; 闭源、内容审查严格</td><td>&#x2705; 完全开源、可本地部署</td></tr>
+<tr><td>起售价</td><td>$10/月</td><td>含 ChatGPT Plus（$20/月）</td><td>免费（本地部署）</td></tr>
+<tr><td>适合场景</td><td>概念艺术、品牌插画、建筑可视化</td><td>图文排版、快速原型、普通用户</td><td>批量生产、定制模型、隐私需求</td></tr>
+</table>
+
+<p>三款工具各有不可替代的优势：Midjourney 胜在审美，DALL·E 3 胜在自然语言理解和文字渲染，Stable Diffusion 胜在开源自由和可定制性。如果预算允许，专业创作者通常会组合使用——Midjourney 做创意探索和风格化，DALL·E 3 做需要精确文字的场景，SD 做批量生产和本地化部署。</p>
+
+<h2>&#x2753; 常见问题</h2>
+<p><strong>Q：Midjourney 有没有免费试用？</strong><br>
+目前 Midjourney 已基本取消免费试用，新用户需要付费订阅才能使用。但在特殊活动期间偶尔会短暂开放免费生成额度。如果可以接受低画质，可以关注 Midjourney 官方偶尔推出的"Free Trial Weekend"活动。</p>
+
+<p><strong>Q：生成的图片版权归谁？可以商用吗？</strong><br>
+根据 Midjourney 的服务条款，付费用户拥有其生成图像的商业使用权，但 Midjourney 也保留在特定情况下使用这些图像的权利（如展示和推广）。如果你使用公共频道的他人提示词格式来生成图像，图像本身仍是你的创作，但提示词的结构相似性不构成版权侵权。对于商业项目，建议使用 Pro 或 Mega 套餐，这两个套餐提供了更明确的版权保护条款。</p>
+
+<p><strong>Q：中文 prompt 能用吗？效果怎么样？</strong><br>
+Midjourney 对英文 prompt 的识别效果远好于中文。虽然它也能理解简单的中文描述，但在复杂场景、特定风格和精细参数的控制上，英文 prompt 的准确度明显更高。如果你不擅长英文，可以先写好中文描述，通过翻译工具转为英文后再输入——这比直接用中文 prompt 的效果好得多。</p>
+
+<p><strong>Q：Midjourney 能生成带中文文字的图片吗？</strong><br>
+可以尝试，但成功率不高。V6 版本在英文字母和数字的生成上已经有了很大进步，但中文汉字的生成仍然经常出现错字、乱码或笔画缺失。如果你需要带精确中文文字的海报或 Logo，建议用 Midjourney 只生成画面部分，文字排版部分交给 Photoshop 或 Canva 等工具后期添加。</p>
+
+<p><strong>Q：Discord 被墙了怎么用 Midjourney？</strong><br>
+Midjourney 依赖 Discord，而 Discord 在中国大陆访问需要科学上网工具。如果你所在环境无法稳定访问 Discord，可以考虑使用国内的替代方案，如阿里巴巴的通义万相、字节跳动的即梦等。或者通过第三方 Midjourney API 中转服务来间接使用——但这通常有额外的费用和功能限制。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+
+</article>
+
 </div>
 </main>
 

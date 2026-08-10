@@ -87,6 +87,59 @@
 <p>如果你想了解Luma AI 3D的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-meshy-ai.html" class="related-card"><div class="name">Meshy AI</div><div class="cat">AI 3D生成</div></a><a href="/tool-csm-ai.html" class="related-card"><div class="name">CSM AI</div><div class="cat">AI 3D生成</div></a><a href="/tool-spline-ai.html" class="related-card"><div class="name">Spline AI</div><div class="cat">3D设计</div></a><a href="/tool-luma-dream-machine.html" class="related-card"><div class="name">Luma Dream Machine</div><div class="cat">AI视频生成</div></a></div>
 </div>
+
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Luma AI 是由 Luma Labs（创始人 Amit Jain 和 Alex Yu）于 2021 年推出的 AI 3D 重建平台。公司最初的核心技术是 NeRF（神经辐射场）和 3D Gaussian Splatting——两种从多张 2D 照片重建高保真 3D 场景的革命性算法。Luma AI 让任何拥有智能手机的人都能化身为 3D 扫描仪：只需围绕物体缓慢移动拍摄一段视频，AI 便可在云端重构出可在任意角度自由观看的 3D 场景。</p>
+<p>Luma AI 的 3D 重建质量在消费级产品中首屈一指。相比传统摄影测量需数百张精确对准的照片和数小时计算，Luma AI 仅需一段 1-2 分钟的视频就能在 15-30 分钟内输出令人惊叹的 3D 场景。公司在 2024 年将产品线扩展至 AI 视频生成领域（Dream Machine），但其 3D 技术根基仍然是其最核心的竞争力。Luma AI 已被广泛应用于电影视觉特效、游戏场景还原、电商 AR 体验和文化遗产数字化保护等领域。</p>
+
+<h2>核心功能</h2>
+<p><strong>手机端 3D 扫描：</strong>iOS 和 Android App 提供引导式拍摄体验，通过实时穹顶网格指导用户以正确角度和速度环绕目标。支持单物体和完整场景两种模式，拍摄时长 30 秒到 2 分钟不等。</p>
+<p><strong>3D Gaussian Splatting 渲染：</strong>与传统的三角网格不同，高斯泼溅技术将场景渲染为"3D 照片"——在光照、半透明材质和高反射表面的表现方面，目前仍是消费级产品中的标杆。在 Web 浏览器中即可实现流畅的自由视角漫游。</p>
+<p><strong>交互式 3D Viewer 分享：</strong>每个完成的扫描生成独立的网页链接，接收方无需安装任何 App 即可在浏览器中自由浏览和交互，支持嵌入网页和社交媒体。</p>
+<p><strong>多格式导出与 API：</strong>付费用户可导出 GLB、USDZ、OBJ、PLY 等格式至 Blender、Maya、Unity 等专业工具。API 按每次捕捉约 $1 计费，允许开发者将重建能力集成到第三方应用中。</p>
+
+<h2>上手体验</h2>
+<p>从 App Store 或 Google Play 下载后，邮箱注册即可开始使用，无需绑定信用卡。拍摄界面上方显示实时穹顶网格，帮助用户保持环绕的均匀速度。App 会通过颜色提示（绿/黄/红）反馈拍摄质量。建议在阴天室外或均匀漫反射光环境下拍摄，避免直射阳光造成的硬阴影。一个桌面物体的拍摄约 1-2 分钟，大场景约 3-5 分钟。</p>
+<p>拍摄完成后自动上传云端处理（需网络连接），处理时间取决于场景复杂度，通常在 15-30 分钟。处理完成后会推送通知，用户可在 App 或 Web 端查看 3D 结果并生成分享链接。如果重建质量不佳，可调整拍摄条件后重试。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>费用</th><th>核心权益</th></tr>
+<tr><td>Free</td><td>$0</td><td>有限次数扫描、基础分享和导出</td></tr>
+<tr><td>Premium</td><td>$20+/月</td><td>更多扫描次数、高清网格导出、API 接入</td></tr>
+<tr><td>API</td><td>约 $1/次捕捉</td><td>NeRF 和网格模型重建，适合应用集成</td></tr>
+</table>
+<p style="font-size:13px;color:#98a2b3">以官网实时价格为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>3D 重建的视觉质量在消费级产品中无人能及，Gaussian Splatting 对半透明和高反射物体的处理能力远超传统摄影测量。使用门槛极低——会用手机拍视频即可产出专业级 3D 场景。交互式网页分享体验流畅，接收方零安装成本。</p>
+<p><strong>局限：</strong>对拍摄环境和光线要求较高，室外强光或室内昏暗环境下的重建质量明显下降。生成的文件体积较大（高保真场景可达数百 MB），存储和传输成本不低。3D 场景的可编辑性有限——更适合"展示"而非"修改"，作为创作素材的灵活性不如传统多边形模型。当前 Luma Labs 的研发重心明显偏向 Dream Machine 视频产品线，3D 扫描 App 的功能更新节奏有所放缓。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li>电影和广告的视觉特效团队，用于实拍场景的数字化还原</li>
+<li>博物馆和考古团队，对文物进行非接触式数字化存档</li>
+<li>电商品牌和产品设计师，创建产品的交互式 3D 展示和 AR 预览</li>
+<li>建筑师和室内设计师，快速记录和分享空间现状</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>工具</th><th>核心技术</th><th>价格</th><th>适合场景</th></tr>
+<tr><td>Luma AI 3D</td><td>Gaussian Splatting + NeRF</td><td>免费+$20/月</td><td>高保真场景视觉还原</td></tr>
+<tr><td>Polycam</td><td>摄影测量 + LiDAR</td><td>免费+$7.99/月</td><td>精确几何建模与测量</td></tr>
+<tr><td>CSM AI</td><td>AI 图像→3D 生成</td><td>免费+订阅</td><td>从单张图片生成 3D 模型</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q：Luma AI 3D 和 Dream Machine 是同一个产品吗？</strong><br>A：不是。Luma AI 3D 负责 3D 扫描和场景重建，Dream Machine 是 AI 视频生成工具。两者共用 Luma Labs 的品牌和账号体系，但功能完全独立。</p>
+<p><strong>Q：扫描反光物体有什么技巧？</strong><br>A：高反射和半透明物体（玻璃、金属、水面）是 3D 扫描的难点。临时使用消光喷雾（摄影器材店有售）可以显著改善效果。Gaussian Splatting 本身对这类材质比传统摄影测量更友好。</p>
+<p><strong>Q：中国区能正常使用吗？</strong><br>A：App 可在中国区 App Store 和主流安卓应用商店下载。云端处理依赖网络连接，部分地区可能需要加速器才能获得稳定的上传和处理速度。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

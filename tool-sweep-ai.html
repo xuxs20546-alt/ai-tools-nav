@@ -96,6 +96,34 @@
 <p>如果你想了解 Sweep AI 的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-github-copilot-workspace.html" class="related-card"><div class="name">GitHub Copilot Workspace</div><div class="cat">AI编程</div></a><a href="/tool-devin.html" class="related-card"><div class="name">Devin</div><div class="cat">AI编程</div></a><a href="/tool-cline.html" class="related-card"><div class="name">Cline</div><div class="cat">AI编程</div></a><a href="/tool-gpt-engineer.html" class="related-card"><div class="name">GPT Engineer</div><div class="cat">AI编程</div></a></div>
 </div>
+<article class="review-body">
+
+<h2>核心功能</h2>
+<p>Sweep AI 的核心能力是 Issue-to-PR 自动转化。维护者在 GitHub Issue 中写入"Sweep: 用 TypeScript 重构 userService 中的 findById 方法，添加缓存逻辑"，Sweep 会自动阅读仓库中的相关代码文件及相关测试文件，生成代码修改方案并通过创建 Pull Request 提交。它不仅仅是简单替换文本——Sweep 会理解函数调用链，确保重构不破坏现有接口，并在生成的 PR 中自测验证。另一个关键功能是代码库级搜索和索引——Sweep 在安装到仓库后会对整个代码库建立语义索引，后续收到 Issue 时能精准定位到需要修改的文件和函数。</p>
+<p>Sweep 还提供了 JetBrains IDE 集成中的 next-edit autocomplete 功能，在 IntelliJ、PyCharm 等 IDE 中提供上下文感知的代码补全，能预测开发者即将编辑的下一个位置。对于批量重构场景，Sweep 支持"模式替换"——只需在 Issue 中描述替换规则（如"将项目中所有 console.log 替换为 logger.info"），Sweep 会自动扫描全仓并逐个替换，生成附带变更清单的 PR。测试驱动验证管线是 Sweep 的质量保障层——生成的代码会自动运行项目的测试套件，未能通过的 PR 会被自动回退并重新生成。</p>
+
+<h2>上手体验</h2>
+<p>Sweep 的安装极为简洁——在目标 GitHub 仓库中通过 GitHub Marketplace 安装 Sweep App，授权后约 5 分钟内即可完成初始设置。首次安装后，Sweep 会在后台扫描代码库并建立语义索引，这个步骤对中小型仓库（5 万行以下）通常在 10 分钟内完成。使用流程非常简单：在 GitHub 上创建一个新的 Issue，标题和正文中描述你的需求，并在文中标记 @sweep，Sweep 会自动在 Issue 的评论区回复确认并开始工作。几分钟到十几分钟后（取决于任务复杂度），一个新的 Pull Request 就会出现。PR 的描述中包含了修改摘要、受影响文件清单和测试运行结果。用户的后续工作主要是审查代码质量——对于简单的 bug 修复和代码风格调整，通常只需少量微调即可合并。对于涉及复杂业务逻辑的任务，Sweep 生成的代码更适合作为初稿，需要人工补充边界条件处理。</p>
+
+<h2>价格方案</h2>
+<p>Sweep AI 提供从免费入门到专业级的定价方案，以官网实时价格为准：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月费</th><th>主要内容</th></tr>
+<tr><td>Free</td><td>$0</td><td>无限 Issue 转 PR，1,000 次自动补全，$5 API 额度</td></tr>
+<tr><td>Basic</td><td>$10/月</td><td>无限自动补全，更多 API 额度</td></tr>
+<tr><td>Pro</td><td>$20/月</td><td>优先支持，更大 API 额度，高级代码分析</td></tr>
+<tr><td>Ultra</td><td>$60/月</td><td>最高 API 额度，企业级支持</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">以上价格为公开资料整理，以官网实时价格为准。</p>
+
+<h2>常见问题</h2>
+<p><strong>Sweep 支持哪些编程语言？</strong>Sweep 对 Python、JavaScript、TypeScript、Go 和 Rust 有较深的理解，对 Java、C# 和 Ruby 的支持也在持续改进中。处理前端框架（React、Vue）和后端框架（Django、Express）的代码时表现较好。</p>
+<p><strong>Sweep 生成的 PR 代码质量如何？</strong>对于明确的、范围限定的任务（如 bug 修复、代码重构、添加简单功能），生成的代码通常可直接合并或仅需少量微调。对于需要深度理解业务逻辑的复杂任务，建议将生成的 PR 作为技术方案的参考初稿。</p>
+<p><strong>Sweep 会访问我的私有代码吗？</strong>Sweep 需要读取目标仓库的代码才能分析和生成修改，GitHub App 的安装过程中可以指定授权范围。对于商业代码仓库，建议评估安全政策后再决定是否使用。</p>
+<p><strong>Sweep 与其他 AI 编程工具相比有什么独特优势？</strong>Sweep 的核心差异化在于"完全异步"——开发者只需创建 Issue 描述需求，Sweep 在后台独立完成分析和代码生成，开发者不必实时守在终端前。这个模式特别适合分布式团队和异步工作流。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

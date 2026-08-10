@@ -87,6 +87,62 @@
 <p>如果你想了解Stable Diffusion 3的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-stable-diffusion-xl.html" class="related-card"><div class="name">Stable Diffusion XL</div><div class="cat">AI图像生成</div></a><a href="/tool-midjourney-v7.html" class="related-card"><div class="name">Midjourney V7</div><div class="cat">AI图像生成</div></a><a href="/tool-dalle-4.html" class="related-card"><div class="name">DALL·E 4</div><div class="cat">AI图像生成</div></a><a href="/tool-dreamstudio.html" class="related-card"><div class="name">DreamStudio</div><div class="cat">AI图像生成</div></a></div>
 </div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Stable Diffusion 3（SD3）是 Stability AI 于 2024 年 6 月发布的最新开源图像生成旗舰模型，其核心技术突破在于采用了全新的 MMDiT（Multimodal Diffusion Transformer）架构。与 SDXL 基于 U-Net 的传统架构完全不同，SD3 的 MMDiT 将文本编码和图像去噪过程统一在 Transformer 框架内处理，使模型能够更精细地理解文本与图像之间的对应关系。这一架构变革带来的最直观提升是文字渲染能力的飞跃——SD3 可以在生成的图像中准确地呈现英文单词、短句甚至多行排版文字。</p>
+<p>SD3 提供多个参数规模的版本：SD3 Medium（2B 参数，开源）和完整版（8B 参数，通过 API 提供）。Stability AI 在 2024 年 10 月进一步发布了 SD 3.5 系列更新，包含 SD 3.5 Large、SD 3.5 Large Turbo 和 SD 3.5 Medium 三个变体，在保持 MMDiT 架构优势的同时优化了推理速度和多样性。SD3 对人体的解剖结构、手部姿态和面部细节也有显著改进，六指畸形等常见 AI 绘图问题的概率大幅降低。</p>
+
+<h2>核心功能</h2>
+<p><strong>文字渲染：</strong>SD3 是目前唯一能够可靠地在图像中生成清晰可读英文文本的开源模型。在海报设计、封面制作、社交媒体信息图等场景中，用户可以指定生成图片中的具体文字内容，AI 会将文字以符合场景风格的排版方式渲染到图像中。在提示词中用引号包裹需要渲染的文字（如 'a poster with the text "SUMMER SALE"'），可以获得最佳效果。</p>
+<p><strong>多主体精确构图：</strong>通过 MMDiT 架构和 Rectified Flow 采样策略，SD3 在面对"一只猫在左边沙发上，一只狗在右边地毯上，一扇窗户在中间"这类包含 3 个以上独立物体及明确空间关系的复杂提示词时，准确率相比 SDXL 提升了约 55%。</p>
+<p><strong>语义理解与否定处理：</strong>Transformer 原生融合文本和图像特征，使 SD3 在理解否定关系（如"没有太阳的阴天"）和替代关系时表现优异，大幅减少了传统扩散模型中常见的语义混淆问题。</p>
+<p><strong>人体解剖学改进：</strong>SD3 对人体手部的手指数量和姿态、面部五官比例和身体结构的处理有明显进步——六指畸形的概率相比前代降低了约 70%，对于需要人物出镜的设计场景来说，这大大减少了后期修复工作。</p>
+<p><strong>多版本灵活部署：</strong>SD3 提供从 2B 到 8B 参数的多种模型规模，满足从消费级显卡本地推理到云端 API 高性能调用的不同需求。SD 3.5 系列进一步优化了推理速度和多样性。</p>
+
+<h2>上手体验</h2>
+<p>SD3 的使用入口主要有三种：通过 Stability AI 官方 API（Stable Assistant 或 Stable Artisan 平台）、通过 ComfyUI 等开源前端本地部署开源版本、或通过 CivitAI 等第三方平台使用托管服务。对于大多数用户，最简单的入门方式是在 Stable Assistant 网页端注册账号并直接使用——界面简洁，输入提示词即可生成，无需任何配置。</p>
+<p>对于有本地部署需求的用户，SD3 Medium（2B）可以在 8GB 显存的消费级显卡上运行，但出图细节丰富度与完整版（8B）存在明显差距。完整版推理建议至少 24GB 显存。在 ComfyUI 中使用 SD3 需要下载对应的模型文件和配置文件，然后通过节点式工作流搭建生成管线。需要注意的是，SD3 的提示词最佳实践与 SDXL 有所不同——SD3 更擅长处理长而详细的提示词（建议 80-150 tokens），对空间位置关系的描述理解更好。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>使用方式</th><th>价格</th><th>说明</th></tr>
+<tr><td>SD3 Medium 开源版</td><td>免费</td><td>Stability AI Community License，可本地部署，8GB+ 显存</td></tr>
+<tr><td>Stable Assistant 网页版</td><td>免费试用+付费</td><td>通过网页调用 SD3 完整版，按 credits 消耗</td></tr>
+<tr><td>Stability AI API</td><td>按量付费</td><td>按生成张数计费，完整版 8B 模型</td></tr>
+<tr><td>Stability AI 会员</td><td>约 $9-27/月</td><td>含一定 credits 额度和 API 调用优先级</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">注：以上价格为公开渠道收集，以 stability.ai 官网实时价格为准。开源版（SD3 Medium）可免费商用和非商用。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>文字渲染能力在开源图像模型中独树一帜，是目前唯一能可靠生成清晰英文文本的开源方案。MMDiT 架构带来的语义对齐精度提升在多主体构图和否定关系处理方面表现明显。开源版本可本地部署，无 API 费用、无内容审查、隐私性好。人体解剖学表现的改善意味着"AI 手"问题得到了实质性缓解。</p>
+<p><strong>局限：</strong>SD3 Medium（2B）与完整版（8B）在细节丰富度上存在明显差距——开源版的画质天花板低于完整版。由于 MMDiT 架构与 SDXL 的 U-Net 完全不同，此前积累的海量 SDXL LoRA 和 ControlNet 无法直接复用，社区生态需要时间重建。完整版推理对硬件要求较高（建议 24GB 显存），消费级显卡运行受限。中文文字渲染能力仍然较弱。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>海报和封面设计师：</strong>利用 SD3 的文字渲染能力直接在生成图像中加入标题和文案，大幅缩短设计流程。</li>
+<li><strong>绘本和漫画创作者：</strong>利用多主体控制能力在单画面中编排多个角色的互动场景，批量产出故事插图。</li>
+<li><strong>电商素材运营团队：</strong>同时生成多种不同构图的商品图，用于 A/B 测试筛选最优方案。</li>
+<li><strong>AI 图像技术研究者：</strong>MMDiT 架构代表了扩散模型从 U-Net 向 Transformer 的范式转移，是重要的研究方向。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>对比维度</th><th>SD3</th><th>SDXL</th><th>Midjourney V7</th></tr>
+<tr><td>价格</td><td>免费开源+付费 API</td><td>免费开源</td><td>$10-60/月订阅</td></tr>
+<tr><td>文字渲染</td><td>强（英文）</td><td>弱</td><td>一般</td></tr>
+<tr><td>多主体构图</td><td>优秀（MMDiT 架构）</td><td>良好（需区域提示辅助）</td><td>优秀</td></tr>
+<tr><td>本地部署</td><td>支持（2B 开源版）</td><td>支持</td><td>不支持</td></tr>
+<tr><td>社区生态</td><td>建设中</td><td>极其丰富</td><td>无需生态（开箱即用）</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q：SD3 和 SDXL 我应该用哪个？</strong><br>A：如果你的工作流高度依赖现有的 SDXL LoRA 和 ControlNet 模型，建议继续使用 SDXL，等 SD3 生态成熟后再迁移。如果你主要从零开始生成图像、需要文字渲染能力或处理复杂的多主体构图，SD3 是更好的选择。两者并不互斥，很多用户在实际工作中会同时使用。</p>
+<p><strong>Q：SD3 Medium（2B）开源版够用吗？</strong><br>A：对于个人项目和探索性使用来说足够。SD3 Medium 在构图、色彩和基本场景生成方面已经表现出色。但在细节丰富度、材质表现和复杂光影方面与完整版 8B 模型存在肉眼可见的差距。</p>
+<p><strong>Q：SD3 支持中文提示词吗？</strong><br>A：SD3 可以使用中文提示词，但英文提示词通常能获得更精准的生成结果。对于需要精确文字渲染的中文内容，SD3 目前的表现还不够理想。</p>
+<p><strong>Q：SD3 的商用许可是怎样的？</strong><br>A：SD3 Medium 开源版采用 Stability AI Community License，允许免费商用和非商用。通过 API 或 Stable Assistant 生成的图像，其商用权限以 Stability AI 的服务条款为准。建议在商用前查阅最新的许可协议。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

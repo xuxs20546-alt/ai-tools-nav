@@ -100,6 +100,61 @@
 <p>如果你想了解阶跃星辰的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-chatgpt.html" class="related-card"><div class="name">ChatGPT</div><div class="cat">AI工具</div></a><a href="/tool-qwen.html" class="related-card"><div class="name">通义千问</div><div class="cat">AI工具</div></a><a href="/tool-chatglm.html" class="related-card"><div class="name">智谱清言</div><div class="cat">AI工具</div></a><a href="/tool-sensetime-ririxin.html" class="related-card"><div class="name">商汤日日新</div><div class="cat">AI工具</div></a></div>
 </div>
+
+<article class="review-body" style="max-width:900px;margin:0 auto;padding:0 24px 80px">
+<h2>核心功能</h2>
+<p>阶跃星辰的产品矩阵以 Step 系列大模型为核心，覆盖了从千亿参数的 Step-1 到万亿参数的 Step-2，以及 2025 年推出的面向 Agent 场景的 Step 3.7 Flash 高效模型。在多模态理解方面，Step 系列支持图片、视频、文档三种主要输入模态：图片理解模型可以识别物体、文字、图表和空间关系，并对复杂场景进行深度推理；视频分析模型能够逐帧追踪画面中的动态变化，理解事件因果链和时间线；文档解析模型则针对 PDF、扫描件等非结构化文档进行信息提取和结构化输出。</p>
+<p>端到端语音能力是阶跃星辰的另一个亮点。step-1o-audio 和 step-audio-2 模型支持语音输入到语音输出的完整链路，用户可以直接用自然说话的方式与模型交互，模型以语音形式回应，延迟控制在可接受范围内。在工程化方面，阶跃星辰的 API 全面兼容 OpenAI 接口格式，开发者可以用已有的 OpenAI SDK 直接调用，迁移成本极低。平台还提供模型微调功能，企业可以用自有数据对模型进行定制训练。2025 年发布的 Step 3.7 Flash 模型专门针对 Agent 场景优化，强化了工具调用、联网搜索和长链任务的编排能力。</p>
+
+<h2>上手体验</h2>
+<p>阶跃星辰的开发者平台（platform.stepfun.com）是用户接触 Step 系列模型的主要入口。注册流程简单：使用手机号或邮箱注册后，在控制台创建 API Key，即可通过 REST API 或兼容 OpenAI 格式的 SDK 调用模型。平台提供了体验中心（Playground），开发者可以在不写代码的情况下通过 Web 界面测试不同模型的效果——上传图片让模型识别、输入文本看理解和生成能力、上传文档看解析结果。</p>
+<p>API 调用的典型流程是：选择模型（如 step-2-16k 用于长文本理解，step-1v-8k 用于图片分析）→ 构建请求体（包含 system prompt、user message 和图片/文档的 base64 数据或 URL）→ 发送 HTTP POST 请求 → 解析返回的 JSON 结果。视频分析使用异步模式时，先提交视频文件获取 task_id，轮询查询状态直到处理完成，再拉取结果。阶跃星辰的 API 响应速度在轻量级任务上很快（1–3 秒），但对于视频和长文档的处理需要数分钟，平台会通过 Webhook 或轮询通知完成状态。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<thead><tr><th>模型</th><th>输入价格（每百万 token）</th><th>输出价格（每百万 token）</th></tr></thead>
+<tbody>
+<tr><td>step-1o-audio（端到端语音）</td><td>25 元</td><td>5 元</td></tr>
+<tr><td>step-audio-2（语音模型）</td><td>10 元</td><td>2 元</td></tr>
+<tr><td>Step-2 系列（多模态旗舰）</td><td>按官网实时定价</td><td>按官网实时定价</td></tr>
+<tr><td>Step 3.7 Flash（Agent 场景）</td><td>按官网实时定价</td><td>按官网实时定价</td></tr>
+</tbody>
+</table>
+<p style="color:#667085;font-size:13px">※ 以上价格来自阶跃星辰开放平台公开信息（2026 年）。不同模型版本定价不同，图片/视频分析按额外维度计费，以 platform.stepfun.com 实时价格为准。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>多模态视觉理解是阶跃星辰最清晰的差异化优势——Step 系列在图表解析、工程图纸理解和医学影像分析等场景的表现处于国产模型前列。端到端语音交互体验流畅，step-1o-audio 在中文语音场景下的自然度接近真人对话水平。API 的 OpenAI 兼容性让存量项目的迁移成本几乎为零，开发者无需重写代码即可接入。模型微调功能对 B 端客户的定制化需求响应积极，可以基于行业专有数据训练专属模型。</p>
+<p><strong>局限：</strong>C 端消费级产品的缺失限制了品牌影响力——没有类似 ChatGPT 或元宝这样的免费聊天产品，普通用户几乎没有接触渠道。API 定价在国产模型中偏中高端，对预算有限的创业团队构成成本压力。通用对话和创意写作能力在纯文本场景下不如专注此赛道的竞品（如 DeepSeek）。平台目前缺少成熟的 RAG（检索增强生成）和 Agent 编排的图形化工具，开发者需要自行搭建相关基础设施。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>计算机视觉工程师</strong>——需要高精度的图片/视频理解 API 嵌入到产品中，从事自动驾驶、工业质检或医学影像分析。</li>
+<li><strong>企业 AI 团队</strong>——寻找可定制微调的多模态模型，有自有行业数据和明确的商业落地场景。</li>
+<li><strong>智能硬件开发者</strong>——需要端到端语音交互能力集成到机器人、智能眼镜或车载系统中。</li>
+<li><strong>已有 OpenAI API 集成经验、寻求国产替代的团队</strong>——兼容 OpenAI 格式的 API 让切换成本极低。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<thead><tr><th>维度</th><th>阶跃星辰 Step</th><th>智谱 GLM</th><th>商汤日日新</th></tr></thead>
+<tbody>
+<tr><td>多模态重点</td><td>视觉理解 + 空间推理</td><td>图文生成 + 知识图谱</td><td>视觉感知 + 行业解决方案</td></tr>
+<tr><td>语音能力</td><td>端到端语音交互</td><td>基础语音识别</td><td>基础语音能力</td></tr>
+<tr><td>API 兼容</td><td>OpenAI 格式兼容</td><td>自有格式 + OpenAI 兼容</td><td>自有格式为主</td></tr>
+<tr><td>C 端产品</td><td>无</td><td>有（智谱清言）</td><td>有（商量）</td></tr>
+<tr><td>适合场景</td><td>视觉 AI + Agent 开发</td><td>知识密集型应用</td><td>行业垂直解决方案</td></tr>
+</tbody>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: 阶跃星辰有没有免费的消费端产品？</strong><br>A: 目前阶跃星辰没有类似 ChatGPT 或腾讯元宝的免费聊天应用。个人用户如果想体验 Step 系列模型的能力，可以通过开放平台的体验中心（Playground）进行测试，或者调用 API（有少量免费额度）。</p>
+<p><strong>Q: Step API 能处理多大的图片和视频？</strong><br>A: 图片理解模型支持常见的 JPEG、PNG、WebP 格式，单张图片分辨率上限约为 4096×4096 像素（具体取决于模型版本）。视频分析支持 MP4、MOV 等主流格式，时长上限因模型而异，建议查阅平台文档获取最新限制。</p>
+<p><strong>Q: 从 OpenAI API 迁移到阶跃星辰需要改多少代码？</strong><br>A: 由于阶跃星辰的 API 兼容 OpenAI 格式，理论上只需将 base_url 从 api.openai.com 改为 api.stepfun.com，将 API Key 替换，并调整 model 参数名称为 Step 系列模型名即可。但在提示词效果和输出格式上可能存在细微差异，需要测试验证。</p>
+<p><strong>Q: 阶跃星辰的模型和 DeepSeek 相比如何？</strong><br>A: 两个模型定位不同——Step 侧重于多模态视觉理解和端到端语音交互，DeepSeek 侧重于纯文本推理和代码生成。如果主要需求是图片/视频分析，Step 更有优势；如果是纯文本对话和代码辅助，DeepSeek 的综合表现更强。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-10 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>

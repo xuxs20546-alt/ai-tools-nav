@@ -86,6 +86,53 @@
 <p>以下AI代理类工具也值得关注：</p>
 <div class="related"><a href="/tool-openclaw.html" class="related-card"><div class="name">OpenClaw</div><div class="cat">🔄</div></a><a href="/tool-poe.html" class="related-card"><div class="name">Poe</div><div class="cat">🔄</div></a></div>
 
+<article class="review-body" style="margin-top:24px">
+<h2>核心功能</h2>
+<ul>
+<li><strong>端到端自主任务执行：</strong>在云端 Linux 沙箱中，Manus 可以自主浏览网页、运行代码、读写文件，把一个复杂的多步骤任务从头执行到尾，最终交付可用的成果物，例如整理好的表格、分析报告、演示文稿或数据看板。</li>
+<li><strong>多智能体协作架构：</strong>官方架构把任务拆解为规划、执行、验证等环节，由多个分工不同的智能体协作完成，在处理复杂任务时的完成度比单一对话式模型更高。</li>
+<li><strong>执行过程透明可干预：</strong>任务进行中可以看到它正在调用什么工具、读取了哪些数据、下一步的计划是什么；如果发现方向偏离，可以随时发消息纠正，不必等任务结束后再返工。</li>
+<li><strong>多类型文件处理：</strong>支持 PDF、Excel、图片、网页等多种输入，常见用例包括批量简历筛选、市场报告整理、数据抓取与可视化。</li>
+<li><strong>多端与可扩展：</strong>除 Web 端外还提供 iOS/Android 应用和浏览器扩展，可以从手机发起任务、在云端继续执行；同时支持 MCP 等协议接入自定义工具，扩展 Agent 的能力边界。</li>
+</ul>
+<h2>上手体验</h2>
+<p>访问 manus.im 注册账号即可开始（发布初期为邀请制，后续逐步向公众开放）。在输入框中用自然语言描述目标，例如"整理这 30 份简历并输出候选人对比表"，Manus 会先给出任务规划，然后逐项执行。</p>
+<p>执行过程中页面会实时展示运行日志和工具调用记录，你可以像看直播一样观察它的每一步操作，并在中途插入指令调整方向。任务结束后，成果文件会出现在任务列表中，可直接下载或保存到自己的工作区。</p>
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>档位</th><th>价格</th><th>说明</th></tr>
+<tr><td>免费版</td><td>$0</td><td>每日有限积分，可体验完整任务流程</td></tr>
+<tr><td>付费入门档</td><td>约 $20/月起</td><td>含数千积分，按任务复杂度消耗</td></tr>
+<tr><td>团队/企业版</td><td>按需报价</td><td>更多积分、席位管理与协作功能</td></tr>
+</table>
+<p>Manus 采用积分制计费，任务越复杂消耗的积分越多，具体档位与价格请以官网实时信息为准。</p>
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>Manus 真正把"重复劳动"自动化——凡是规则清晰、步骤明确的任务，交给它都能省下大量人工时间；执行过程透明，方便用户监控和干预；对 PDF、Excel 等办公文件的处理能力在同类 Agent 中属于第一梯队。</p>
+<p><strong>局限：</strong>任务目标模糊或步骤复杂时，Agent 仍可能出现偏离，需要人工盯防；积分制下重度任务的成本感明显；作为 2025 年才走红的新品类，整体稳定性和成熟度仍在快速进化中。</p>
+<h2>适合人群</h2>
+<ul>
+<li>数据分析师与调研人员：批量整理报告、抓取数据、生成对比表；</li>
+<li>HR 与招聘团队：简历筛选、候选人排序与评语生成；</li>
+<li>独立开发者与创业者：自动化重复性的研究、整理和文档工作；</li>
+<li>内容与运营从业者：素材收集、竞品情报整理、日报生成。</li>
+</ul>
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>工具</th><th>执行方式</th><th>定价模式</th><th>适合场景</th></tr>
+<tr><td>Manus</td><td>云端沙箱自主执行多步骤任务</td><td>免费版 + 积分制付费</td><td>端到端的复杂任务交付</td></tr>
+<tr><td>OpenAI Operator</td><td>浏览器操作型 Agent</td><td>包含在 ChatGPT 订阅中</td><td>网页操作类任务（订票、填表等）</td></tr>
+<tr><td>ChatGPT</td><td>对话 + 工具调用</td><td>订阅制</td><td>问答与轻量辅助</td></tr>
+</table>
+<h2>常见问题</h2>
+<ul>
+<li><strong>Manus 和 ChatGPT 有什么区别？</strong>ChatGPT 以对话为主，给出答案和建议；Manus 是执行型 Agent，能自主调用工具完成整个任务并交付成果文件。</li>
+<li><strong>免费版能用吗？</strong>可以。免费版提供每日有限积分，适合体验和轻度任务，重度使用需要订阅付费档位。</li>
+<li><strong>任务执行失败或跑偏怎么办？</strong>执行过程实时可见，发现偏差可以随时发消息纠正，也可以在任务列表里终止或重跑。</li>
+<li><strong>数据安全如何保障？</strong>任务运行在官方云端沙箱中，具体的数据保留与安全策略以官网说明为准。</li>
+<li><strong>支持中文吗？</strong>支持，中文任务描述和中文成果输出都可以直接使用。</li>
+</ul>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </div></main>
 <footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>

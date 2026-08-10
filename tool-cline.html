@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cline - VS Code最强开源AI编程插件，自由选择模型 | 蜂巢 AI</title>
+<title>Cline 深度评测｜蜂巢 AI</title>
 <meta name="description" content="Cline深度评测：VS Code开源AI编程插件，支持任意API提供商（OpenAI、Anthropic、DeepSeek、Ollama等），可直接读写文件执行命令的Agent式编程助手。">
 <meta name="keywords" content="Cline,AI编程,VS Code插件,开源AI,Agent编程,Claude编程">
 <link rel="canonical" href="https://www.ai-nav-build.com/tool-cline.html">
@@ -83,7 +83,51 @@
 <h2>🔄 同类替代</h2>
 <p>如果偏好即装即用或内置模型的方案：</p>
 <div class="related"><a href="/tool-continue.html" class="related-card"><div class="name">Continue</div><div class="cat">🆓 免费</div></a><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-windsurf.html" class="related-card"><div class="name">Windsurf</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">🆓 免费</div></a></div>
-</div></main>
+</div>
+<article class="review-body">
+<h2>核心功能</h2>
+<p>Cline 的功能体系围绕"让 AI 像真正的开发者一样工作"展开，具体包括以下几个核心能力：</p>
+<p><strong>1. 自主文件编辑与终端操作</strong>——这是 Cline 区别于普通补全工具的最根本特征。你可以用自然语言描述需求（如"在项目中添加一个用户认证模块，包含 JWT 登录、注册和 token 刷新逻辑"），Cline 会分析项目结构，在正确的位置创建文件、写入代码，并自行执行终端命令来安装依赖和运行测试。每次操作前，Cline 都会以 Diff 形式展示即将做出的改动，你必须在 IDE 中点击"批准"之后它才会执行。</p>
+<p><strong>2. 多模型灵活接入</strong>——Cline 不绑定任何特定的 AI 提供商。你可以配置 OpenAI、Anthropic、Google Gemini、DeepSeek、OpenRouter 等任何兼容 OpenAI API 格式的服务，也可以通过 Ollama 或 LM Studio 连接本地模型。这意味着你可以根据任务的敏感度和预算灵活选择后端：涉密项目用本地模型完全离线，日常开发用便宜的 DeepSeek API，复杂重构切换 Claude。</p>
+<p><strong>3. MCP 协议支持</strong>——Cline 实现了 Anthropic 推出的 Model Context Protocol，允许通过 MCP Server 扩展 Agent 的能力边界。社区已经贡献了大量 MCP Server，涵盖浏览器自动化、数据库查询、文件系统搜索、Git 操作等场景。安装一个 MCP Server 后，Cline 就能在编程过程中实时查询数据库 Schema、抓取网页文档、甚至操作浏览器进行端到端测试。</p>
+<p><strong>4. 代码库搜索与上下文感知</strong>——Cline 可以搜索整个项目的代码，使用 `@file` 和 `@folder` 引用特定文件或目录作为上下文。在处理既有代码库时，你可以让 Cline 先分析项目结构再执行操作，而不是盲写代码。</p>
+<p><strong>5. 错误诊断与自动修复</strong>——当遇到编译错误、测试失败或运行时报错时，你可以将错误信息直接粘贴到 Cline 对话中，它会分析错误原因、定位问题代码并给出修复方案，执行后还会自动重新运行验证。</p>
+
+<h2>上手体验</h2>
+<p>Cline 的安装路径简单直接：在 VS Code 扩展商店搜索"Cline"并点击安装（注意认准作者"Saoud Rizwan"，避免装到名字相似的冒牌插件）。安装完成后，左侧活动栏会出现一个机器人图标，点击即可打开 Cline 面板。</p>
+<p>第一次使用时，Cline 会引导你配置 AI 提供商。最推荐入门方式是选择 DeepSeek API：注册 platform.deepseek.com 账号 → 创建 API Key → 在 Cline 设置中输入 Key 和 API Base URL。选择 DeepSeek 的好处是成本极低（同等任务约为 GPT-4o 的 1/10），对于日常编程辅助完全够用。配置完成后，你就可以在对话框里像与人对话一样向 Cline 提需求了。</p>
+<p>典型的日常使用流程是：在编辑器中打开项目 → 按下 Cmd+L（Mac）或 Ctrl+L（Windows）唤起 Cline → 输入需求描述 → Cline 展示执行计划 → 你审核并批准 → Cline 自动创建/修改文件 → 运行测试验证。整个交互体验像在和一个资深同事结对编程：它提出方案，你来把关。</p>
+
+<h2>价格方案</h2>
+<p>Cline 本身完全免费且开源（Apache 2.0），但调用后端 AI 模型产生的 API 费用需要用户自行承担。以下是不同模型方案的参考成本：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>模型</th><th>参考成本（每百万 tokens）</th><th>适用场景</th></tr>
+<tr><td>极省方案</td><td>DeepSeek V3</td><td>输入 ~$0.27，输出 ~$1.10</td><td>日常编码、简单重构</td></tr>
+<tr><td>均衡方案</td><td>Claude 3.5 Sonnet</td><td>输入 ~$3，输出 ~$15</td><td>复杂逻辑、多文件重构</td></tr>
+<tr><td>本地免费</td><td>Ollama + 开源模型</td><td>免费（仅消耗本机算力）</td><td>涉密项目、离线开发</td></tr>
+</table>
+<p>一次典型的单文件功能实现约消耗 5-20 万 tokens，使用 DeepSeek API 成本约 $0.05-0.20，使用 Claude API 成本约 $0.50-2.00。Cline 官方还提供了付费的 API 中转服务，但定价和套餐以官网实时信息为准。</p>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>Cline</th><th>Cursor</th><th>GitHub Copilot</th></tr>
+<tr><td>价格</td><td>免费（自付API费）</td><td>$20/月 Pro</td><td>$10/月 个人</td></tr>
+<tr><td>模型自由度</td><td>任意兼容提供商</td><td>内置 GPT/Claude 等</td><td>仅 OpenAI 模型</td></tr>
+<tr><td>Agent 行为</td><td>人工审批每步操作</td><td>Composer 自动执行</td><td>行内补全为主</td></tr>
+<tr><td>开源</td><td>是（Apache 2.0）</td><td>否</td><td>否</td></tr>
+<tr><td>适合场景</td><td>精细控制、模型自由</td><td>开箱即用、快速迭代</td><td>轻量补全、熟悉生态</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q：Cline 和 Cursor 应该选哪个？</strong><br>A：如果你偏好"AI 自动执行但可能改过头"的体验，选 Cursor Composer；如果你喜欢"AI 每次改动都先让你审"的模式，且想自由选择后端模型（比如用 DeepSeek 省钱），选 Cline。两者不冲突，可以并存使用。</p>
+<p><strong>Q：免费是真的免费吗？</strong><br>A：Cline 插件本体永久免费，但 AI 模型的 API 调用费需要你自己支付给第三方提供商（如 OpenAI、Anthropic、DeepSeek）。如果你用 Ollama 跑本地模型，那就是真正零成本。</p>
+<p><strong>Q：本地模型的效果能跟 Claude 比吗？</strong><br>A：不能。本地开源模型（如 Qwen-Coder、DeepSeek Coder）在复杂推理上的表现与 Claude 3.5 Sonnet 有明显差距，但对于简单的 CRUD 代码生成、注释补全和格式调整来说完全够用。建议日常用本地模型，遇到复杂任务时临时切换云端模型。</p>
+<p><strong>Q：Cline 会泄露我的代码吗？</strong><br>A：如果你使用本地 Ollama 模型，所有代码处理完全在本地完成，不会离开你的电脑。如果使用云端 API，代码会传输到对应的 API 提供商服务器——建议阅读各提供商的隐私政策，确认他们是否使用 API 数据训练模型。</p>
+<p><strong>Q：Cline 支持 JetBrains 吗？</strong><br>A：截至 2026 年中，Cline 仅支持 VS Code（及其衍生编辑器如 Cursor、VSCodium）。JetBrains 用户建议考虑 Codeium 或 GitHub Copilot 作为替代。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
+</main>
 <footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>
 </html>

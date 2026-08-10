@@ -83,7 +83,65 @@
 <h2>🔄 同类替代推荐</h2>
 <p>以下AI绘画类工具也值得关注：</p>
 <div class="related"><a href="/tool-midjourney.html" class="related-card"><div class="name">Midjourney</div><div class="cat">💎 付费·即开即用</div></a><a href="/tool-dall-e-3.html" class="related-card"><div class="name">DALL·E 3</div><div class="cat">🔄 免+付·文本最强</div></a><a href="/tool-flux.html" class="related-card"><div class="name">Flux</div><div class="cat">🆓 免费·开源新标杆</div></a><a href="/tool-comfyui.html" class="related-card"><div class="name">ComfyUI</div><div class="cat">🆓 免费·SD最佳搭档</div></a></div>
-</div></main>
+</div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Stable Diffusion（简称 SD）是 Stability AI 开源的文本到图像扩散模型，自 2022 年 8 月首次发布以来，已成为 AI 图像生成领域中最灵活、最具可定制性的工具。与 Midjourney 和 DALL·E 等闭源云端服务不同，SD 最根本的差异化特点是"你拥有自己的生成引擎"——你可以将它下载到自己的电脑甚至手机上运行，完全离线、无审查、无限生成，不用为每次出图付费。目前的主流版本包括 SD 1.5、SDXL 和 SD 3/3.5，其中 SDXL 是社区使用最广泛的主力版本。</p>
+<p>Stable Diffusion 真正的威力不在于基础模型本身，而在于其庞大且活跃的开源生态。通过 WebUI（Automatic1111、ComfyUI、Fooocus 等），用户可以搭建高度定制化的图像生成管线。ControlNet、LoRA、IP-Adapter 等插件的出现将 SD 从"黑盒生成器"转变为"精确可控的创意助理"——你可以用线稿、深度图、骨骼姿态、边缘检测等方式精确控制画面构图，用 LoRA 训练专属的风格或角色模型。在 CivitAI 和 Hugging Face 上有数十万个社区贡献的 Checkpoint 和 LoRA 模型可以免费下载使用。</p>
+
+<h2>核心功能</h2>
+<p><strong>文生图（Text-to-Image）：</strong>根据自然语言描述生成图像，这是 SD 最基础的功能。通过选择不同的 Checkpoint（基础模型）和配置采样参数（步数、CFG Scale、采样器），用户可以在出图速度和出图质量之间找到平衡。社区验证的优质 Checkpoint 如 Juggernaut XL、Realistic Vision 和 DreamShaper，出图质量已非常接近 Midjourney。</p>
+<p><strong>图生图（Image-to-Image）：</strong>上传一张参考图，SD 在保留原图构图和色彩基调的基础上进行风格变体生成。通过调整 Denoising Strength（去噪强度，0-1），用户可以控制保留原图的程度——值越低越接近原图，值越高变化越大。</p>
+<p><strong>ControlNet 精确控制：</strong>这是 SD 生态中最具变革性的功能模块。通过 Canny 边缘检测、Depth 深度图、OpenPose 骨骼姿态、Scribble 涂鸦引导、Tile 分块放大、IP-Adapter 风格迁移等超过 15 种控制模式，用户可以实现对图像构图的精确到像素级别的控制。这是所有闭源工具都无法提供的能力。</p>
+<p><strong>LoRA 微调与风格定制：</strong>LoRA 允许用户用几十张图片训练出特定角色、物体或风格的小型适配器。训练完成后，只需在提示词中加入 LoRA 的触发词，即可在任意 Checkpoint 上复用该风格。多个 LoRA 可以按不同权重叠加使用，实现极其丰富的风格组合。</p>
+<p><strong>Inpainting 与 Outpainting：</strong>Inpainting 用笔刷标记图像中需要修改的区域，AI 只在这些区域内重新生成。Outpainting 则是在图像边界外扩展画面，AI 自动生成与原有画面风格一致的扩展内容。这两个功能在照片修复和创意延展场景中非常实用。</p>
+
+<h2>上手体验</h2>
+<p>Stable Diffusion 的入门路径取决于用户的技术背景。对于零代码基础的用户，推荐从 CivitAI 的在线生成器或 Fooocus 桌面客户端开始——这两个入口都隐藏了所有技术细节，用户只需输入提示词即可生成图像。Fooocus 安装包仅 1.5GB，解压即用，自动适配显卡参数，是目前最友好的本地 SD 入口。</p>
+<p>对于有一定技术基础的用户，Automatic1111 WebUI 是最主流的选择。安装需要 Python 环境和 Git，但教程资源非常丰富。WebUI 提供了完整的参数控制面板和插件系统。对于追求极致效率和可复用性的高级用户，ComfyUI 是最终归宿——通过可视化节点连接构建生成管线，可以将复杂的工作流保存为 JSON 文件与社区分享。推荐的学习路线是：Fooocus（体验）→ A1111 WebUI（学习）→ ComfyUI（精通）。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>使用方式</th><th>价格</th><th>硬件/平台要求</th></tr>
+<tr><td>本地部署（SD/SDXL/SD3 Medium）</td><td>完全免费</td><td>NVIDIA 显卡 6-8GB+ 显存</td></tr>
+<tr><td>Stability AI API（含 SD3 完整版）</td><td>按量付费</td><td>无硬件要求</td></tr>
+<tr><td>Stability AI 会员</td><td>约 $9-27/月</td><td>含 credits 额度</td></tr>
+<tr><td>云端 GPU（RunPod/Vast.ai）</td><td>约 $0.3-0.8/小时</td><td>无硬件要求</td></tr>
+<tr><td>CivitAI 在线生成</td><td>免费+付费加速</td><td>浏览器即可</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">注：以上价格为公开渠道收集，SD 模型本身免费开源，以上为使用 SD 的各类渠道价格。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>完全免费且可本地运行——无需订阅费、无需联网、无生成次数限制、无内容审查，只需一张 NVIDIA 消费级显卡。ControlNet 生态提供了业内最强的构图控制能力，精确度远超任何闭源工具。LoRA 让个人用户也能训练专属的风格和角色模型，社区积累了数十万个现成的 LoRA 可直接使用。隐私性极佳——所有运算在本地完成，图片不会上传到任何服务器。社区高度活跃，每天都有新的 Checkpoint、LoRA 和工作流被分享。</p>
+<p><strong>局限：</strong>硬件门槛和配置复杂度对非技术用户非常不友好——需要 NVIDIA 显卡、安装 Python 环境、配置 CUDA、下载模型，从零开始可能需要 2-4 小时。默认基础模型出图质量远不如 Midjourney，需要通过社区 Checkpoint 弥补。社区模型质量参差不齐，新手容易陷入"不断下载新模型但出不了好图"的循环。中文提示词理解弱于英文。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>专业数字艺术家和插画师：</strong>利用 ControlNet 的精确控制能力，将 SD 作为创意助理融入专业工作流——手绘线稿后 AI 上色渲染，再手动精修。</li>
+<li><strong>游戏和影视概念设计团队：</strong>批量产出多种风格的概念图，通过 IP-Adapter 保持角色一致性，大幅提升产能。</li>
+<li><strong>电商和广告创意团队：</strong>通过 ComfyUI 搭建自动化管线，一键批量生成风格统一的商品展示图和广告素材。</li>
+<li><strong>AI 研究者和技术爱好者：</strong>SD 是学习扩散模型和图像生成技术的最佳实验平台，完全开源使深入研究和自定义开发成为可能。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>对比维度</th><th>Stable Diffusion</th><th>Midjourney</th><th>Flux</th></tr>
+<tr><td>价格</td><td>免费开源</td><td>$10-60/月</td><td>免费开源（部分模型）</td></tr>
+<tr><td>本地部署</td><td>支持</td><td>不支持</td><td>支持</td></tr>
+<tr><td>构图控制精度</td><td>极高（ControlNet）</td><td>有限</td><td>良好</td></tr>
+<tr><td>出图美学（开箱）</td><td>低（需优质 Checkpoint）</td><td>极高</td><td>高</td></tr>
+<tr><td>社区生态</td><td>全球最大最活跃</td><td>依赖 Discord 社区</td><td>快速成长中</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q：Stable Diffusion 对电脑配置有什么要求？</strong><br>A：最低推荐 NVIDIA RTX 3060（8GB 显存）+ 16GB 内存。6GB 显存可运行但容易爆显存。AMD 显卡可通过 DirectML 或 ROCm 运行但速度较慢。Apple Silicon Mac 可通过 MPS 后端或 Draw Things 等专用客户端运行。纯 CPU 运行极慢不推荐。</p>
+<p><strong>Q：我应该用哪个版本？SD 1.5、SDXL 还是 SD 3？</strong><br>A：对于新用户，推荐直接从 SDXL 入手——它在分辨率、构图能力和社区生态之间取得了最好的平衡。SD 1.5 适合特定的二次元和动漫风格，因为这个方向上的 SD 1.5 社区模型最为成熟。SD 3 代表未来方向但目前社区生态仍在建设中。</p>
+<p><strong>Q：什么是 Checkpoint？在哪里下载好的 Checkpoint？</strong><br>A：Checkpoint 是完整的基础模型文件（通常 2-7GB），决定了生成图像的基本风格和质量方向。推荐在 CivitAI（civitai.com）按下载量、评分和示例图筛选优质 Checkpoint。常用的有 Juggernaut XL（写实摄影）、DreamShaper（艺术风格）和 Realistic Vision（真人写实）。</p>
+<p><strong>Q：SD 生成的图片可以商用吗？</strong><br>A：SD 模型本身的许可（Creative ML OpenRAIL-M）允许商用。但需注意：如果你使用了第三方 Checkpoint 或 LoRA，需要查阅这些衍生模型的许可条款。另外 AI 生成内容的版权保护在不同法域存在差异，建议在重要商业项目中使用前咨询法律意见。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
+</main>
 <footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>
 </html>

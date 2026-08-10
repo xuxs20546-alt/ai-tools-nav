@@ -96,6 +96,66 @@
 <p>如果你想了解Fig AI 终端的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-warp-terminal.html" class="related-card"><div class="name">Warp AI终端</div><div class="cat">AI终端</div></a><a href="/tool-amazon-q.html" class="related-card"><div class="name">Amazon Q</div><div class="cat">AI编程</div></a><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">AI编程</div></a><a href="/tool-amazon-codewhisperer.html" class="related-card"><div class="name">CodeWhisperer</div><div class="cat">AI编程</div></a></div>
 </div>
+<article class="review-body" style="max-width:900px;margin:40px auto 0;padding:0 24px 80px">
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">工具简介</h2>
+<p>Fig 由 Brendan Falk 和 Matt Schrage 于 2020 年创立，是一款为命令行终端提供 IDE 级智能补全的工具。它的核心创新在于让开发者在自己熟悉的终端（如 iTerm2、Hyper、VS Code 内置终端、Windows Terminal 等）中获得类似代码编辑器的自动补全体验——输入命令时自动弹出子命令、参数、文件路径、Git 分支等建议。</p>
+<p>2023 年，Amazon 收购了 Fig 并将团队和技术整合进 Amazon Q Developer 生态。此后原 Fig 产品逐步演化为 Amazon Q Developer CLI（开源仓库仍可在 GitHub 上找到），原有 Fig 用户也迁移到了 Amazon Q 平台。对于非 AWS 用户，Amazon Q Developer 的 Free Tier 仍然提供了基础的命令行补全能力。</p>
+
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">核心功能</h2>
+<p><strong>1. 上下文感知的命令补全：</strong>Fig 的核心能力是在终端中提供智能补全。输入命令时，它会基于当前目录、Git 状态、历史命令记录和已安装的 CLI 工具，动态推荐最可能的参数、选项和路径。例如输入 <code>git checkout </code> 后会自动列出所有分支，输入 <code>kubectl get </code> 后列出可用资源类型。</p>
+<p><strong>2. AI 自然语言转命令：</strong>用户可以用自然语言描述需求，系统生成对应的 shell 命令。比如输入"查找当前目录下最近 7 天修改过的所有 .log 文件并按照大小排序"，Fig 的 AI 会生成对应的 <code>find</code> 管道命令。</p>
+<p><strong>3. 社区补全规范仓库：</strong>Fig 维护了一个开源的补全规范仓库（GitHub: withfig/autocomplete），社区贡献者为数百个 CLI 工具编写了补全规则，覆盖 git、docker、npm、aws、kubectl、terraform 等常用工具。开发者也可以为自己的内部工具编写自定义规范。</p>
+<p><strong>4. Dotfiles 和脚本管理：</strong>Fig 提供了 dotfiles 同步功能，允许开发者在多台机器之间同步终端配置、别名和自定义脚本，减少环境搭建的重复工作。</p>
+<p><strong>5. Amazon Q 生态整合：</strong>收购后的产品与 AWS 服务深度整合，在终端中可以直接获得 AWS CLI 的上下文补全、资源 ID 匹配和 IAM 权限感知建议。</p>
+
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">上手体验</h2>
+<p>安装 Fig（现为 Amazon Q CLI）的过程非常简单：通过 Homebrew 或官方安装脚本一键完成。安装后需要授权辅助功能权限（macOS），以便 Fig 的守护进程能够捕获终端输入。首次使用时，Fig 会自动检测系统中安装的 CLI 工具并下载对应的补全规范。</p>
+<p>在日常使用中，补全弹窗会以半透明浮层出现在光标附近，按下 Tab 键即可接受建议。自然语言转命令功能通过特定的快捷键（通常是 Ctrl+Space）激活召唤一个输入框。整体交互流畅，补全建议的响应时间通常在几百毫秒内，不会造成输入卡顿。对于 macOS 用户，Fig 与 iTerm2、Terminal.app、Warp 等终端兼容良好；Windows 用户可通过 WSL 或 Windows Terminal 使用。</p>
+
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">价格方案</h2>
+<p>Fig 被收购后，定价已整合到 Amazon Q Developer 体系中，以下为公开信息汇总：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<thead><tr style="background:#f9fafb"><th>方案</th><th>适用对象</th><th>价格与内容</th></tr></thead>
+<tbody>
+<tr><td>Free Tier</td><td>个人开发者</td><td>免费，含基础补全和自然语言转命令，每月有使用次数上限</td></tr>
+<tr><td>Amazon Q Developer Pro</td><td>专业开发者</td><td>约 $20/月/用户，含高级 AI 补全、代码审查、安全扫描等</td></tr>
+<tr><td>Enterprise</td><td>企业团队</td><td>定制报价，含 SSO、管理控制台、IP 白名单等企业特性</td></tr>
+</tbody>
+</table>
+<p style="color:#98a2b3;font-size:13px">* 以上为公开资料汇总，价格以 Amazon Q Developer 官网实时信息为准。</p>
+
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">优点与局限</h2>
+<p><strong>优点：</strong>Fig 的补全体验在收购前后一直是一流的，尤其是社区贡献的补全规范覆盖了绝大多数开发者日常使用的 CLI 工具。自然语言转命令功能对于不熟悉某些 CLI 参数的开发者非常实用，减少了查文档和搜索引擎的时间。开源补全仓库（24k+ GitHub Stars）证明了社区的活跃度和信任。Amazon 收购后，产品获得了更稳定的资金支持和 AWS 生态的深度整合。</p>
+<p><strong>局限：</strong>被收购后的产品路线与原 Fig 不完全一致，部分老用户对品牌变更和强制迁移到 Amazon Q 有不满。非 AWS 用户可能觉得 AWS 专有功能占据了开发重心而与自己无关。后台守护进程会占用一定系统资源（约 100–200MB 内存），在配置较低的机器上可能影响体验。Windows 上的原生支持不如 macOS 完善。</p>
+
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">适合人群</h2>
+<ul>
+<li><strong>日常重度使用命令行的开发者：</strong>每天在终端中花费超过两小时，希望减少重复输入。</li>
+<li><strong>AWS 生态的工程师：</strong>频繁使用 AWS CLI、CDK、SAM 等工具，需要深度整合的 AWS 上下文补全。</li>
+<li><strong>刚接触命令行的新手：</strong>通过自然语言生成命令，边用边学 Linux/macOS 命令行的语法。</li>
+<li><strong>多机器工作的开发者：</strong>借助 dotfiles 同步功能，在个人电脑和工作电脑之间保持一致的终端环境。</li>
+</ul>
+
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<thead><tr style="background:#f9fafb"><th>维度</th><th>Fig（Amazon Q CLI）</th><th>Warp</th><th>GitHub Copilot CLI</th></tr></thead>
+<tbody>
+<tr><td>核心侧重</td><td>补全规范 + 社区 + AI</td><td>全新终端 + AI 块编辑</td><td>自然语言 → 命令</td></tr>
+<tr><td>终端兼容</td><td>现有终端（插件式）</td><td>独立终端应用</td><td>现有终端</td></tr>
+<tr><td>定价</td><td>免费版可用，Pro $20/月</td><td>免费版可用，Pro $18/月</td><td>含在 GitHub Copilot 订阅中</td></tr>
+<tr><td>社区补全</td><td>丰富（数百 CLI 工具）</td><td>内置有限</td><td>依赖 AI 即时生成</td></tr>
+<tr><td>适合场景</td><td>不想换终端的开发者</td><td>愿意尝试全新终端体验</td><td>已有 Copilot 订阅的开发者</td></tr>
+</tbody>
+</table>
+
+<h2 style="font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)">常见问题</h2>
+<p><strong>Q: Fig 还能下载使用吗？</strong><br>A: 原 Fig 产品已被整合进 Amazon Q Developer。旧版 Fig 不再更新，现有用户已迁移。新用户可直接安装 Amazon Q CLI 获得类似体验。</p>
+<p><strong>Q: 补全规范支持哪些 Shell？</strong><br>A: 补全规范主要面向 bash、zsh 和 fish，macOS 默认的 zsh 体验最佳。</p>
+<p><strong>Q: 数据隐私如何？Fig 会记录我的命令吗？</strong><br>A: 据 Amazon Q 的文档，AI 补全功能需要将部分上下文发送到服务端处理。企业版支持私有网络和 VPC 端点以增强数据安全。敏感信息（如密码、API Key）会通过本地过滤避免上传。</p>
+<p><strong>Q: 非 AWS 用户值得使用吗？</strong><br>A: Free Tier 的命令补全和自然语言转命令功能对非 AWS 用户仍然实用，但部分高级功能（如 AWS 资源感知）对非 AWS 用户价值有限。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

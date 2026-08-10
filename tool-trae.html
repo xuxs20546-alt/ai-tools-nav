@@ -84,7 +84,63 @@
 <h2>🔄 同类替代</h2>
 <p>如果考虑数据合规或偏好其他生态，以下是 Trae 的主要替代选项：</p>
 <div class="related"><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-windsurf.html" class="related-card"><div class="name">Windsurf</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">🆓 免费</div></a><a href="/tool-continue.html" class="related-card"><div class="name">Continue</div><div class="cat">🆓 免费</div></a></div>
-</div></main>
+</div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Trae 是字节跳动于 2024 年推出的 AI 原生集成开发环境（IDE），基于 VS Code 内核深度定制开发。Trae 的定位非常明确——为国内开发者提供一个无需网络代理、完美支持中文编程、永久免费的 AI 编程工具。在 Cursor、Copilot 等海外 AI 编程工具因网络限制在国内使用体验大打折扣的背景下，Trae 的出现填补了一个巨大的市场空白。据公开数据，Trae 累计已服务超过 600 万开发者。</p>
+<p>Trae 内置了 GPT-4o 和 Claude 3.5 Sonnet 等顶级大语言模型，国内用户无需任何 VPN 或代理配置即可直接调用。其核心交互模式 Builder 允许开发者用中文自然语言描述功能需求，AI 会自动分析项目结构、生成跨文件代码并展示 Diff 预览。Trae 对国内主流技术栈（Vue、React + Ant Design、微信小程序、uni-app 等）的支持尤为出色，生成代码的风格和注释更贴合中文开发者的习惯。Trae 目前支持 macOS 和 Windows 平台，国际版则通过 trae.ai 域名提供。</p>
+
+<h2>核心功能</h2>
+<p><strong>Builder 模式：</strong>这是 Trae 最核心的差异化功能。用户用自然语言（中文或英文）描述一个完整的功能需求——例如"帮我写一个带分页和搜索功能的用户列表页面，调用 /api/users 接口，使用 Ant Design 组件"——Builder 会自动分析项目上下文，跨文件生成所需的代码，并在右侧面板展示详细的 Diff 预览。用户可以逐文件、逐行确认每处代码变更，决定接受或拒绝。与 ChatGPT 的"生成代码→手动复制粘贴"模式相比，Builder 的效率高出一个数量级。</p>
+<p><strong>Chat 对话面板：</strong>Trae 提供侧边栏 Chat 面板，支持多轮对话、代码解释、Bug 分析和终端命令执行。对话上下文包括当前打开的文件和项目结构，AI 的回答可以直接插入到编辑器中。Chat 面板还支持终端命令的生成和执行——你可以直接问"帮我配置 Docker Compose"或"这个 Nginx 规则怎么写"，AI 给出代码后一键执行。</p>
+<p><strong>智能代码补全：</strong>Trae 的 Tab 补全功能与 Cursor 和 Copilot 类似，在编写代码时自动预测和补全后续内容。由于内置了 GPT-4o 和 Claude 模型，补全的准确率和上下文理解能力在免费工具中处于第一梯队。</p>
+<p><strong>多模型选择：</strong>Trae 内置了多种 AI 模型供用户按需选择，包括 GPT-4o、Claude 3.5 Sonnet 以及字节跳动自研的模型。用户可以根据任务的复杂度和类型切换模型——复杂逻辑用 GPT-4o 或 Claude，简单补全用自研模型以节省响应时间。</p>
+<p><strong>VS Code 插件兼容：</strong>由于基于 VS Code 内核，Trae 可以安装绝大多数 VS Code 插件，包括主题、语言支持、格式化工具和 Git 集成等。这大大降低了从 VS Code 迁移的成本。</p>
+
+<h2>上手体验</h2>
+<p>Trae 的安装过程与普通桌面应用一样简单——从官网（trae.cn）下载对应平台的安装包（macOS DMG 或 Windows EXE），双击安装即可。首次启动时，Trae 会引导用户完成初始化设置，包括选择界面语言（中文/英文）、配色主题和快捷键方案（VS Code 兼容模式或 Trae 自有模式）。如果之前使用 VS Code，可以导入 VS Code 的配置和已安装的插件列表。</p>
+<p>日常使用中，最常用的两种交互方式是：1）在编辑器中直接编写代码时，Tab 补全会自动触发，按 Tab 键接受建议；2）选中一段代码或打开 Chat 面板（快捷键 Cmd+L / Ctrl+L），用自然语言描述需求。Builder 模式适合较大的功能开发任务——点击 Builder 按钮或使用快捷键，输入完整的功能描述后，AI 会生成跨文件代码并展示 Diff。日常开发流程几乎不需要离开 Trae 界面——写代码、问 AI、执行终端命令、查看 Git 状态都在同一个窗口内完成。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月付价格</th><th>主要权益</th></tr>
+<tr><td>免费版（Free）</td><td>$0/月</td><td>5000 次自动补全/月、基础模型访问、Builder 功能</td></tr>
+<tr><td>专业版（Pro）</td><td>约 $10/月</td><td>更高频次的自动补全、优先访问高级模型、更多 Builder 额度</td></tr>
+<tr><td>团队版（Team）</td><td>官网咨询</td><td>团队管理面板、集中计费、数据控制选项</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">注：以上价格为公开渠道收集，以官网 trae.cn 实时价格为准。Trae 的国内版和国际版定价策略可能不同。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>国内网络直连无需代理——这是 Trae 相比 Cursor、Copilot 等海外工具最核心的优势，也是国内开发者的最大痛点。中文编程体验业界最强——Builder 对中文需求理解精准，生成代码和注释的风格地道。永久免费且免费版不限基础功能使用次数。对国内主流技术栈（Vue、React+Ant Design、微信小程序等）的代码生成质量高。字节跳动内部大规模使用验证了产品的稳定性。</p>
+<p><strong>局限：</strong>代码和项目上下文会发送到字节跳动服务器处理，对于有严格数据合规要求的企业（金融、政务等），这是一个需要审慎评估的风险点。部分深度依赖 VS Code 特有 API 的插件可能不兼容，尤其是 Remote SSH/Container 类插件。"永久免费"的策略是否可持续存在不确定性——如果未来商业化压力增大，可能转变为付费模式或限流。国际版（trae.ai）的模型和功能可能与中国版存在差异。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>国内个人开发者和自由职业者：</strong>无需网络代理即可使用 GPT-4o 级别的 AI 编程辅助，是目前国内最具性价比的 AI IDE 选择。</li>
+<li><strong>使用国内主流技术栈的前端/全栈开发者：</strong>Vue、React + Ant Design、微信小程序、uni-app 等项目，Trae 的代码生成质量明显优于英文工具。</li>
+<li><strong>编程初学者和学生：</strong>Builder 模式用中文描述需求即可生成代码，大幅降低学习门槛和挫败感。</li>
+<li><strong>中小型创业团队：</strong>免费使用顶级 AI 编程能力，降低开发工具成本的同时提升团队效率。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>对比维度</th><th>Trae</th><th>Cursor</th><th>Windsurf</th></tr>
+<tr><td>价格</td><td>免费+$10/月 Pro</td><td>免费+$20/月 Pro</td><td>免费+$15/月 Pro</td></tr>
+<tr><td>国内网络</td><td>直连无需代理</td><td>需要代理</td><td>需要代理</td></tr>
+<tr><td>中文支持</td><td>极佳（中文原生优化）</td><td>良好</td><td>良好</td></tr>
+<tr><td>核心交互</td><td>Builder 模式+Chat</td><td>Tab+Chat+Composer</td><td>Cascade 流式卡片</td></tr>
+<tr><td>数据隐私</td><td>代码发送至字节服务器</td><td>可选隐私模式</td><td>代码发送至 Codeium 服务器</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q：Trae 和 Cursor 我该选哪个？</strong><br>A：如果你在国内且不想折腾网络代理，Trae 是首选。如果你在海外或已有稳定的网络代理，Cursor 的 Composer 功能和插件生态更成熟。两者的核心 AI 能力（GPT-4o/Claude）在同一水平线，差异主要在本地化体验和网络可用性上。</p>
+<p><strong>Q：Trae 真的永久免费吗？</strong><br>A：Trae 目前提供永久免费的免费版方案，字节跳动将其定位为开发者生态基础设施。但任何商业公司的免费策略都可能随时间变化——建议关注官方公告，在免费版额度受限时再评估是否升级 Pro。</p>
+<p><strong>Q：Trae 会收集我的代码吗？数据安全吗？</strong><br>A：Trae 的功能实现需要将代码和项目上下文发送至字节跳动服务器。根据公开的隐私政策，字节跳动声称会保护用户数据安全并仅用于提供 AI 服务。但对于有严格数据合规要求的企业（金融、政务、核心商业机密），建议在法务评估后再使用，或考虑完全本地的替代方案。</p>
+<p><strong>Q：Trae 可以在 Linux 上使用吗？</strong><br>A：目前 Trae 主要支持 macOS 和 Windows 平台。Linux 版本的发布状态建议查阅 trae.cn 官方公告。在 Linux 上可以考虑使用 Cursor 或 VS Code + Continue/Cline 插件的替代方案。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
+</main>
 <footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>
 </html>

@@ -96,6 +96,65 @@
 <p>如果你想了解Locofy 设计转代码的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-anima-app.html" class="related-card"><div class="name">Anima</div><div class="cat">设计转代码</div></a><a href="/tool-builder-io.html" class="related-card"><div class="name">Builder.io</div><div class="cat">设计转代码</div></a><a href="/tool-teleport-hq.html" class="related-card"><div class="name">TeleportHQ</div><div class="cat">设计转代码</div></a><a href="/tool-mutable-ai.html" class="related-card"><div class="name">Mutable AI</div><div class="cat">AI编程</div></a></div>
 </div>
+
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Locofy（locofy.ai）是一款 AI 驱动的设计转代码工具，核心能力是将 Figma 和 Penpot 设计稿自动转换为生产级前端代码。与早期"截图变 HTML"的工具不同，Locofy 深入理解 Figma 的设计系统——它能识别 Auto Layout、组件变体、样式系统和命名规范，将这些设计信息映射为符合现代前端最佳实践的组件化代码。</p>
+<p>Locofy 的总部位于新加坡，其 Figma 插件"Locofy Lightning"在 Figma 社区获得了广泛使用。平台支持导出为 React、React Native、Vue、Next.js、Gatsby、Angular、HTML/CSS 和 Flutter 等多种框架和平台的代码，并提供了 Tailwind CSS、CSS Modules、Styled Components 等主流样式方案选项。2024 年 Locofy 引入了付费方案，同时保留了有限的免费额度供开发者体验。</p>
+
+<h2>核心功能</h2>
+<p><strong>Figma 设计稿智能解析：</strong>Locofy 不是简单地将 Figma 图层"翻译"为 div 元素，而是理解设计意图——它识别哪些图层组成一个逻辑组件、哪些是实例（Instance）应该被复用、哪些使用了 Auto Layout 应该转换为 Flexbox 或 Grid。这种语义级别的理解是 Locofy 生成的代码质量优于"截图转代码"类工具的根本原因。</p>
+<p><strong>组件智能拆分与复用：</strong>平台会自动检测设计中重复出现的模式（如多个相似的卡片、按钮或列表项），将其抽取为可复用的前端组件。生成的组件命名语义化、props 接口清晰，开发者可以直接将其融入现有的组件体系。这个功能对于大型项目的价值尤其显著——它能将几十个手动创建的相似组件自动归并为一个参数化组件。</p>
+<p><strong>响应式断点生成：</strong>Locofy 支持从 Figma 的响应式设计设置中读取断点信息，并生成对应的 CSS 媒体查询或 Tailwind 响应式类名。对于需要适配 Mobile/Tablet/Desktop 三端的页面，这个功能可以省去大量手写响应式代码的时间。</p>
+<p><strong>可视化迭代工具 Locofy Builder：</strong>生成的代码不是"一次性交付"的——设计师和开发者可以在 Locofy Builder 中继续对页面进行可视化调整，调整后的变更可以增量同步到已有代码中，不会覆盖开发者手动编写的业务逻辑。这个能力解决了"设计改了后代码需要重新生成"的老大难问题。</p>
+<p><strong>多框架导出：</strong>同一份设计稿可以一键导出为 React、Vue、React Native 等多个目标框架的代码。对于需要同时维护 Web 端和移动端的团队，这个功能大幅减少了重复的切图工作。</p>
+
+<h2>上手体验</h2>
+<p>Locofy 的使用流程以 Figma 为起点：在 Figma 插件市场安装"Locofy Lightning"插件 → 在 Figma 中选择要转换的设计帧 → 使用插件标记组件、交互和响应式设置 → 点击同步到 Locofy Builder → 在 Builder 中进行微调和代码配置 → 一键导出代码或同步到 GitHub。</p>
+<p>从实际使用体验来看，转换质量高度依赖于 Figma 设计稿的规范化程度。如果设计师在 Figma 中正确使用了 Auto Layout、组件变体和命名规范，生成的代码质量可以达到"90% 可用，只需手动微调业务逻辑"的水平。但如果设计稿是"一坨绝对定位的图层"，生成的代码质量会显著下降，需要大量手动调整。</p>
+<p>对于中小型页面的转换，从 Figma 选中到获得可用代码通常只需 5–10 分钟。大型项目（50+ 页面、200+ 组件）的首次转换可能需要 1–2 小时，因为需要对自动拆分出的组件进行人工审查和命名调整。内置的 AI 辅助功能在 2024–2025 年间持续增强，能够自动建议组件边界和 props 定义。</p>
+
+<h2>价格方案</h2>
+<p>Locofy 于 2024 年引入付费方案。以下为公开定价（以官网实时价格为准）：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月付价格</th><th>核心权益</th></tr>
+<tr><td>Free</td><td>$0</td><td>每月有限 LDM Token，基础代码导出</td></tr>
+<tr><td>Pro</td><td>$33/月</td><td>更多 Token，完整框架支持，优先处理队列</td></tr>
+<tr><td>Business</td><td>定制报价</td><td>团队协作，私有部署选项，专属支持</td></tr>
+</table>
+<p>LDM（Locofy Design Model）Token 是平台的计费单位，每次设计转代码操作消耗一定数量的 Token。免费方案每月提供的 Token 约够转换 3 个简单页面。对于频繁使用的中小型团队，Pro 方案（$33/月）的性价比相对合理——如果它能替代一个初级前端工程师 30% 的切图工作量，投资回报就远超订阅成本。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>对 Figma Auto Layout 和组件系统的理解深度在同类工具中处于领先，生成的代码结构和命名规范遵循现代前端标准。多框架导出能力让同一份设计稿可以服务于 Web、移动端等多个渠道。Builder 的增量更新机制解决了"设计迭代后代码需要重做"的痛点，保护了开发者已在代码中投入的手动优化。支持的框架范围广泛——React、Vue、Angular、Next.js、React Native、Flutter 等主流选择均有覆盖。</p>
+<p><strong>局限：</strong>输出质量严重依赖输入设计稿的规范化程度，对"不规范"的设计稿容忍度较低。复杂交互动画（如手势驱动的拖拽、自定义过渡动画）仍需手动编码，Locofy 目前主要覆盖静态 UI 和基础交互状态（hover、active 等）。生成的代码虽然结构好，但在极致性能优化（如代码分割策略、懒加载粒度）方面无法替代有经验的开发者做手动调整。免费额度仅够轻度试用，评估完整能力需要付费。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>前端开发团队：</strong>将重复性的 UI 切图工作自动化，让开发者聚焦于业务逻辑和交互实现。</li>
+<li><strong>全栈开发者和独立开发者：</strong>一人承担设计和开发，需要快速将 Figma 设计落地为可运行的代码，减少手动写 CSS 的时间。</li>
+<li><strong>需要多端同步的团队：</strong>Web 和 React Native 两端维护同一套设计，Locofy 可以同时生成两端代码。</li>
+<li><strong>敏捷开发团队中的设计师：</strong>设计师可以直接使用 Locofy 将设计稿转为可交互的原型代码，加速与开发的沟通和验证。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>维度</th><th>Locofy</th><th>Anima</th><th>Builder.io</th></tr>
+<tr><td>设计工具支持</td><td>Figma、Penpot</td><td>Figma、Sketch、XD</td><td>Figma</td></tr>
+<tr><td>框架支持</td><td>React/Vue/Angular/RN/Flutter/Next.js</td><td>React/Vue/HTML</td><td>React/Vue/Svelte/Qwik</td></tr>
+<tr><td>组件智能拆分</td><td>✅ 自动检测</td><td>有限</td><td>✅ AI 辅助</td></tr>
+<tr><td>可视化迭代</td><td>✅ Builder 增量更新</td><td>✅</td><td>✅ 可视化编辑器</td></tr>
+<tr><td>起价</td><td>$33/月</td><td>$39/月</td><td>免费方案可用，Pro $29/月</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q: Locofy 生成的代码可以直接用于生产环境吗？</strong><br>A: 可以，但建议经过人工审查。Locofy 生成的代码结构、命名规范和响应式逻辑通常质量不错，但业务逻辑（如 API 调用、状态管理、表单验证）仍需开发者手动补充。生成的代码更适合作为"高质量的 UI 起点"，而非"零修改的最终产物"。</p>
+<p><strong>Q: 为什么我生成的代码看起来不对？设计稿需要满足什么条件？</strong><br>A: 最佳效果需要 Figma 设计稿满足以下条件：使用 Auto Layout（而非手动定位）、组件使用 Variants（而非独立图层）、图层命名语义化（如"Button/Primary"而非"Frame 123"）。Locofy 的官方文档中有详细的设计规范指南，建议设计师在开始使用前阅读。</p>
+<p><strong>Q: Locofy 支持从其他设计工具（Sketch、Adobe XD）转换吗？</strong><br>A: 目前主要支持 Figma 和 Penpot。对于使用 Sketch 或 XD 的团队，需要先将设计稿迁移到 Figma，或考虑使用 Anima（原生支持 Sketch 和 XD）。</p>
+<p><strong>Q: 代码导出后还可以在 Locofy 中修改吗？</strong><br>A: 可以。Locofy Builder 支持增量同步——设计稿更新后，Builder 会将变更增量应用到已导出的代码上，而不会覆盖开发者手动添加的业务逻辑。这是 Locofy 相比"一次性导出"工具的核心竞争优势。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

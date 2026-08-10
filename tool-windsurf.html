@@ -84,7 +84,64 @@
 <h2>🔄 同类替代</h2>
 <p>如果偏好更成熟的生态或不同交互方式：</p>
 <div class="related"><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-cline.html" class="related-card"><div class="name">Cline</div><div class="cat">🆓 免费</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">🆓 免费</div></a><a href="/tool-claude-code.html" class="related-card"><div class="name">Claude Code</div><div class="cat">💎 付费</div></a></div>
-</div></main>
+</div>
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Windsurf 是 Codeium 团队于 2024 年推出的 AI 原生 IDE，基于 VS Code 内核深度改造。它的核心创新是 Cascade 模式——一种全新的 AI 编程交互范式。不同于传统 AI 编程工具"提问→回答→复制粘贴"的流程，Cascade 将 AI 建议以流式卡片的形式直接在编辑器中展开，每张卡片包含代码变更、解释说明和操作选项，用户逐张接受或拒绝，整个过程流畅自然。</p>
+<p>Windsurf 内置了项目级上下文感知引擎，AI 会自动识别与当前编辑任务相关的跨文件代码——包括关联的类型定义、配置文件、调用链等——无需用户手动指定引用范围。更强大的是，Windsurf 的 AI 可以直接执行终端命令：你说"运行测试并修复失败的用例"，它会自动触发测试运行、读取输出、找到失败的用例并修改代码。这种自动化闭环在同类 AI IDE 中非常罕见。Windsurf 由 Codeium 团队打造——Codeium 本身是 GitHub Copilot 的一个主要免费替代品，积累了大量 AI 代码补全的技术经验。</p>
+
+<h2>核心功能</h2>
+<p><strong>Cascade 流式编程：</strong>这是 Windsurf 最具差异化的功能。AI 的建议不再是一大段代码一次性输出，而是以流式卡片的形式逐条呈现——每条卡片包含一个独立的代码变更、变更理由和接受/拒绝选项。这种方式解决了传统 AI Chat 模式"一次性输出大量代码难以验证"的问题，让每一步变更都清晰可控、可追溯、可回退。对于大型重构任务，Cascade 的分步执行方式比全量生成安全得多。</p>
+<p><strong>项目级上下文感知：</strong>Windsurf 的 AI 引擎会自动扫描整个项目的文件结构，理解代码之间的依赖和引用关系。当你在编辑一个组件时，AI 会自动感知相关的类型定义、API 调用、状态管理代码和测试文件，无需手动 @ 引用或描述上下文。这种"环境感知"能力让 AI 的建议更贴合项目的实际架构。</p>
+<p><strong>自动命令执行：</strong>Windsurf 的 AI 可以直接在终端中执行命令——安装依赖、运行测试、启动开发服务器、执行 Git 操作等。它还能读取终端输出并据此调整后续操作。例如 AI 运行测试后发现 3 个失败用例，会自动分析失败原因并修改代码来修复它们。</p>
+<p><strong>Supercomplete 智能补全：</strong>Codeium 团队的代码补全技术在 Windsurf 中以 Supercomplete 的名字提供，支持多行代码预测和上下文感知补全，准确率和速度在免费工具中表现出色。</p>
+<p><strong>Rules 规则系统：</strong>Windsurf 支持在项目根目录创建 .windsurfrules 文件，定义编码规范和 AI 行为约束——例如"始终使用 async/await 而非 .then()"、"API 调用统一使用 lib/api.ts 中的封装"。AI 生成代码时会严格遵守这些规则，确保团队代码风格的一致性。</p>
+
+<h2>上手体验</h2>
+<p>Windsurf 的安装与 VS Code 类似——从官网（codeium.com/windsurf）下载安装包，支持 macOS、Windows 和 Linux。首次启动时可以选择导入 VS Code 的设置、快捷键方案和已安装的插件。界面布局与 VS Code 高度相似，左侧是文件浏览器和扩展面板，中央是编辑器，右侧是 Cascade 面板。</p>
+<p>日常使用中，有两种主要交互方式：1）在编辑器中触发 Supercomplete 代码补全，按 Tab 接受建议；2）在 Cascade 面板中用自然语言描述需求。Cascade 的核心体验在于它的流式执行——AI 会分步执行任务，每步输出一个独立的代码变更卡片。典型的 Cascade 对话流程是：描述需求→AI 分析项目结构→AI 逐步生成代码变更→用户逐条审阅接受/拒绝→AI 执行终端命令验证→根据结果自动修复。建议开发者在 .windsurfrules 中提前设定项目规范，这能显著提升 AI 生成代码的一致性和质量。</p>
+
+<h2>价格方案</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>月付价格</th><th>主要权益</th></tr>
+<tr><td>免费版（Free）</td><td>$0/月</td><td>25 credits/月、Supercomplete 无限补全、基础 Cascade 功能</td></tr>
+<tr><td>专业版（Pro）</td><td>$15/月</td><td>500 credits/月、高级模型访问、优先队列</td></tr>
+<tr><td>企业版（Enterprise）</td><td>官网咨询</td><td>无限 credits、自托管选项、SSO、管理面板</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">注：以上价格为公开渠道收集，以官网 codeium.com/windsurf 实时价格为准。Credits 消耗量取决于任务复杂度和使用的高级功能。</p>
+
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>Cascade 的流式卡片交互模式在 AI IDE 中独树一帜——将大任务分解为可逐条审阅的小步骤，比一次性输出大量代码安全可控。自动执行终端命令的能力让 AI 从"代码生成器"进化为"自主开发助手"——可以独立完成编写→测试→修复的完整闭环。项目级上下文感知无需手动引用文件，降低了使用门槛。免费版提供无限 Supercomplete 补全，对轻度用户非常友好。Pro 版 $15/月 比 Cursor Pro（$20/月）更具价格优势。</p>
+<p><strong>局限：</strong>作为 2024 年才正式发布的产品，Windsurf 的稳定性仍有提升空间——部分插件兼容性问题和偶发的 UI 卡顿。Cascade 模式的学习曲线——习惯了传统 Chat 模式的开发者需要适应分步骤的流式交互方式。闭源产品且与 Codeium 生态绑定——Cascade 工作流无法迁移到其他编辑器。免费版的 credits 额度（25/月）对于中度以上的专业开发者可能不够用。</p>
+
+<h2>适合人群</h2>
+<ul>
+<li><strong>追求自动化开发流程的资深开发者：</strong>Cascade 的自动命令执行可以实现"说目标→AI 自主完成"的开发体验，适合已经习惯 AI 辅助编程并希望进一步自动化的开发者。</li>
+<li><strong>从 Codeium 插件升级的用户：</strong>已在 VS Code 中使用 Codeium 插件的开发者升级到 Windsurf 可获得无缝体验延续，同时解锁 Cascade 和自动命令执行。</li>
+<li><strong>关注 AI 编程范式演进的技术探索者：</strong>Cascade 模式代表了一种与传统 Chat 模式完全不同的 AI 集成思路，对于关心"AI 时代编程范式会怎样变化"的开发者极具参考价值。</li>
+<li><strong>注重编码规范的团队：</strong>Rules 规则系统可以固化团队编码规范，确保 AI 生成的代码始终符合团队标准。</li>
+</ul>
+
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>对比维度</th><th>Windsurf</th><th>Cursor</th><th>Trae</th></tr>
+<tr><td>价格</td><td>免费+$15/月 Pro</td><td>免费+$20/月 Pro</td><td>免费+$10/月 Pro</td></tr>
+<tr><td>核心交互</td><td>Cascade 流式卡片</td><td>Tab+Chat+Composer</td><td>Builder 模式+Chat</td></tr>
+<tr><td>自动命令执行</td><td>支持（独有优势）</td><td>支持</td><td>支持（Chat 面板）</td></tr>
+<tr><td>项目级上下文</td><td>自动感知</td><td>.cursorrules 手动配置</td><td>自动感知</td></tr>
+<tr><td>国内网络</td><td>需要代理</td><td>需要代理</td><td>直连无需代理</td></tr>
+<tr><td>适合场景</td><td>追求自动化闭环的资深开发者</td><td>追求成熟生态的全栈开发者</td><td>国内开发者、中文项目</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><strong>Q：Windsurf 和 Cursor 本质上有什么区别？</strong><br>A：最大的区别在于 AI 交互模式。Cursor 的 Composer 是一次性将完整的代码变更展示出来让你审核，而 Windsurf 的 Cascade 是将变更拆成多个步骤逐条呈现。Cascade 更适合需要逐步骤验证的大型重构，Cursor 的工作流更适合快速的小范围修改。另外 Windsurf 的自动命令执行和项目级自动上下文感知是其差异化优势。</p>
+<p><strong>Q：Windsurf 免费版够用吗？</strong><br>A：对于轻度 AI 编程用户（偶尔使用 Chat 功能，主要依赖代码补全），免费版的 25 credits + 无限 Supercomplete 是足够的。但对于每天需要频繁使用 Cascade 的专业开发者，25 credits/月可能在一周内就用完，建议升级 Pro。</p>
+<p><strong>Q：.windsurfrules 文件怎么写？</strong><br>A：.windsurfrules 是放在项目根目录的文本文件，内容为一条条编码规则。例如："使用 TypeScript strict 模式"、"所有 API 调用必须经过 lib/api.ts 中的统一封装"、"组件命名遵循 PascalCase"。AI 在生成代码前会读取该文件并遵循其中的规则。建议与团队共同维护该文件。</p>
+<p><strong>Q：Windsurf 的数据隐私如何？</strong><br>A：Windsurf 的 AI 功能需要将代码和上下文发送至 Codeium 的服务器处理。免费版和 Pro 版的代码可能会被用于改善服务质量（需查阅最新隐私政策确认）。对于有严格数据合规要求的企业，建议选择 Enterprise 方案或自托管选项。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
+
+</main>
 <footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>
 </html>

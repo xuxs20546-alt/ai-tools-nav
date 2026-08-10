@@ -84,6 +84,75 @@
 <h2>🔄 同类替代</h2>
 <p>如果不考虑付费订阅或需要本地私有化部署，以下工具是 Copilot 的主要替代方案：</p>
 <div class="related"><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">🆓 免费</div></a><a href="/tool-tabnine.html" class="related-card"><div class="name">Tabnine</div><div class="cat">🔄 免费+付费</div></a><a href="/tool-trae.html" class="related-card"><div class="name">Trae</div><div class="cat">🆓 免费</div></a></div>
+<hr style="margin:40px 0 20px;border:1px solid var(--border)">
+
+<article class="review-body">
+
+<h2>&#x1f527; 核心功能</h2>
+<p>GitHub Copilot 经过多个大版本迭代后，功能体系已经远超最初的"行级补全"定位。以下是其当前最核心的几个能力模块：</p>
+
+<p><strong>1. 实时代码补全。</strong>这是 Copilot 最经典、也是用户感知最强的功能。在编辑器中输入代码时，Copilot 会实时分析光标上下的代码上下文、相邻文件的内容以及项目中的类型定义，以灰色幽灵文本的形式给出补全建议。你可以按 Tab 接受整行建议，也可以逐词部分接受。对于重复性高的模板代码（如 Redux 的 action creator、Express 路由定义），Copilot 经常能一次补全整个函数体。</p>
+
+<p><strong>2. Copilot Chat。</strong>编辑器内置的对话面板，支持自然语言问答。你可以选中一段代码让它解释逻辑、让它用另一种语言重写、让它写单元测试、或者描述一个功能让它生成实现。Chat 面板还能直接读取项目中其他文件作为参考上下文，回答质量远高于通用 AI 对话工具。</p>
+
+<p><strong>3. 多模型选择。</strong>2025 年起，Copilot 不再绑定单一模型。Pro 及以上版本支持在 GPT-4o、Claude Sonnet 4、Gemini 2.5 等多个前沿模型之间切换。不同模型在不同编程语言和任务类型上各有所长——比如多数开发者反馈 Claude 在复杂重构上更精准，GPT 在快速补全上响应更快。</p>
+
+<p><strong>4. Agent 模式。</strong>在 Chat 面板中切换到 Agent 模式后，Copilot 不再只是"回答你的问题"，而是可以自主执行多步骤操作——读取文件、修改代码、运行终端命令、根据输出结果调整策略。你可以给它一个高层次目标（"帮我给这个项目加上用户认证"），然后它在终端中逐步完成所有操作。</p>
+
+<h2>&#x1f680; 上手体验</h2>
+<p>使用 Copilot 的起点非常简单：在 VS Code 或 JetBrains IDE 的扩展市场中搜索"GitHub Copilot"并安装，然后用 GitHub 账户登录即可。如果你是学生、教师或知名开源项目维护者，可以通过 GitHub Education 或开源计划免费获取 Pro 版权限。</p>
+
+<p>安装完成后，你几乎不需要做任何配置就能立刻感受到它的存在——打开任意代码文件开始输入，灰色文字就会在光标后面自动浮现。默认情况下，Copilot 在后台持续分析你当前编辑的文件和项目中相关的上下文，补全建议通常在 200-500 毫秒内显示。日常编码中最常见的交互模式是：写一个函数名的注释描述 → Copilot 补全整段实现 → 写几行后 Copilot 自动补全剩余逻辑 → 不满意时按 Alt+] 切换到下一个备选建议。</p>
+
+<p>Chat 面板的使用场景也在快速增加。很多开发者已经养成了"选中代码 → Ctrl+I 打开 Chat → 描述需求"的肌肉记忆，比如"给这个函数加 JSDoc 注释""用正则重写这段字符串处理逻辑"或"解释一下这段代码的复杂度"。对于已经习惯 VS Code 工作流的开发者来说，Copilot 的集成深度让它在使用体验上比切换到独立的 AI 工具再拷贝粘贴高出不少效率。</p>
+
+<h2>&#x1f4b0; 价格方案</h2>
+<p>GitHub Copilot 自 2026 年 6 月起转向用量计费模式，但基础订阅价格保持不变。以下是截至 2026 年 8 月的公开定价（以官网实时价格为准）：</p>
+
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:var(--bg2)"><th>方案</th><th>月费</th><th>核心权益</th><th>适合人群</th></tr>
+<tr><td>Free</td><td>$0</td><td>2000 次补全/月、基础 Chat</td><td>学生、轻度体验用户</td></tr>
+<tr><td>Pro</td><td>$10/月</td><td>无限补全、Agent 模式、多模型、300 次高级请求</td><td>个人开发者</td></tr>
+<tr><td>Pro+</td><td>$39/月</td><td>Pro 全部 + 前沿模型优先、1500 次高级请求</td><td>高频用户</td></tr>
+<tr><td>Business</td><td>$19/用户/月</td><td>Pro 全部 + 组织策略管理、IP 保护</td><td>企业团队</td></tr>
+<tr><td>Enterprise</td><td>$39/用户/月</td><td>Business 全部 + 知识库集成、自定义模型</td><td>大型企业</td></tr>
+</table>
+
+<p>对于学生和开源项目维护者，GitHub 提供免费的 Pro 版授权（通过 GitHub Student Developer Pack 和开源计划申请）。对于国内用户，支付方式支持国际信用卡，部分渠道也支持 PayPal。</p>
+
+<h2>&#x1f4ca; 同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr style="background:var(--bg2)"><th>维度</th><th>GitHub Copilot</th><th>Cursor</th><th>Codeium</th></tr>
+<tr><td>补全质量</td><td>&#x2705; 业界标杆、上下文感知强</td><td>&#x2705; 全仓库索引、精准</td><td>&#x26a0;&#xfe0f; 中上水平</td></tr>
+<tr><td>IDE 支持</td><td>&#x2705; 10+ 编辑器、覆盖最广</td><td>&#x26a0;&#xfe0f; 仅自己的 IDE</td><td>&#x2705; 15+ 编辑器</td></tr>
+<tr><td>Agent 模式</td><td>&#x2705; 多步骤自主执行</td><td>&#x2705; Composer Agent</td><td>&#x274c; 无</td></tr>
+<tr><td>多模型选择</td><td>&#x2705; GPT-4o、Claude、Gemini</td><td>&#x2705; 多模型</td><td>&#x26a0;&#xfe0f; 有限</td></tr>
+<tr><td>免费版</td><td>&#x2705; 2000 次/月</td><td>&#x2705; 2000 次/月</td><td>&#x2705; 无限（基础功能）</td></tr>
+<tr><td>价格（Pro）</td><td>$10/月</td><td>$20/月</td><td>$10/月</td></tr>
+<tr><td>适合场景</td><td>GitHub 生态、多 IDE 切换</td><td>全功能 AI IDE 体验</td><td>预算敏感、多编辑器需求</td></tr>
+</table>
+
+<p>GitHub Copilot 的核心竞争力在于"IDE 覆盖广度 + GitHub 生态集成"——无论你的团队用 VS Code、JetBrains 还是 Neovim，都能统一使用同一个 AI 工具。如果你更看重 AI IDE 的整体体验而非编辑器兼容性，Cursor 的深度集成可能更合你的口味。</p>
+
+<h2>&#x2753; 常见问题</h2>
+<p><strong>Q：Copilot 和 Cursor 到底选哪个？</strong><br>
+如果你已经在 VS Code 或 JetBrains 中建立了成熟的工作流和插件生态，Copilot 作为插件嵌入的成本最低。如果你愿意为了更好的 AI 体验换一个编辑器，Cursor 从底层为 AI 重构了整个编码交互，整体体验更一体化。实际上不少开发者两者都在用——Copilot 做日常补全，Cursor 做复杂重构。</p>
+
+<p><strong>Q：Copilot 会泄露我的代码吗？</strong><br>GitHub 官方声明 Business 和 Enterprise 版用户的代码片段不会被存储或用于模型训练。个人 Pro 版用户可以选择在设置中关闭"允许使用我的代码片段改进产品"选项。但无论如何，你的代码在补全和对话过程中会被发送到 GitHub/Microsoft 的服务器进行处理——严格的数据合规场景需要评估这个风险。</p>
+
+<p><strong>Q：国内网络环境能正常使用吗？</strong><br>
+GitHub Copilot 的服务端不在中国大陆，直接连接可能出现不稳定或无法访问的情况。大多数国内开发者通过代理或 VPN 来保证连接稳定性。需要注意的是，代理的不稳定会直接导致补全延迟甚至降级——如果你发现补全总是灰字不出现，大概率是网络问题而非 Copilot 本身挂了。</p>
+
+<p><strong>Q：Copilot 支持中文注释和提示吗？</strong><br>
+支持。你可以用中文写注释来描述需求，Copilot 会根据中文注释生成代码。但英文注释的生成准确率通常更高——因为 GitHub 上的代码注释以英文为主，模型的训练语料中英文注释的样本远多于中文。</p>
+
+<p><strong>Q：学生怎么免费获取 Copilot Pro？</strong><br>
+通过 GitHub Student Developer Pack 申请。需要验证你的学生身份（学校邮箱或学生证），审核通过后可免费使用 Copilot Pro。开源项目维护者可以通过 GitHub 的开源计划申请免费授权，条件是你的仓库需要满足一定的活跃度和 Star 数要求。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+
+</article>
+
 </div></main>
 <footer class="footer"><div class="footer-bottom">🐝 © 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">隐私政策</a></div></footer>
 </body>

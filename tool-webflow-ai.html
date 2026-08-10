@@ -87,6 +87,38 @@
 <p>如果你想了解Webflow AI的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-framer-ai.html" class="related-card"><div class="name">Framer AI</div><div class="cat">AI建站</div></a><a href="/tool-microsoft-designer.html" class="related-card"><div class="name">Microsoft Designer</div><div class="cat">AI设计</div></a><a href="/tool-lovable.html" class="related-card"><div class="name">Lovable</div><div class="cat">AI建站</div></a><a href="/tool-figma-ai.html" class="related-card"><div class="name">Figma AI</div><div class="cat">UI设计</div></a></div>
 </div>
+
+<h2>⚙️ 核心功能</h2>
+<p>Webflow 的 AI 功能围绕"加速设计流程"这一核心理念展开，目前主要包含以下四个模块：</p>
+<p><strong>AI Site Builder（AI 建站器）：</strong>用户只需输入一段自然语言描述，Webflow 即可在几分钟内生成一个包含完整设计系统（配色、字体、组件库）的多页面网站草稿。该功能不仅生成页面布局，还会自动建立全局类名体系和响应式断点，确保生成的网站在桌面、平板和手机上都能正常显示。与传统建站工具的模板生成不同，AI Site Builder 产出的每一个元素都对应真实的 HTML/CSS 代码，设计师可以在生成后进入可视化编辑器进行任意粒度的调整。AI Site Builder 还支持从 Figma 导入设计文件后自动转换为 Webflow 页面结构，对于从设计工具到开发阶段的衔接有显著的效率提升。</p>
+<p><strong>AI Assistant（AI 助手）：</strong>嵌入在 Webflow Designer 面板中的对话式 AI 助手，可执行设计修改指令。用户可以直接告诉助手"把这个 hero 区域换成深色背景、白色文字"或"为这个博客列表创建 CMS 集合和对应的动态页面"，助手会自动执行操作。AI Assistant 支持自然语言指令执行、CMS 内容批量生成、以及页面模块的快速创建和修改。2025 年起，AI Assistant 还加入了 MCP（Model Context Protocol）支持，允许开发者通过标准化接口将外部 AI 模型与 Webflow 设计工作流深度集成。</p>
+<p><strong>AI 内容生成：</strong>Webflow 的 AI 可以批量生成符合 SEO 规范的页面文案、产品描述和博客内容。它能够理解 CMS 集合的结构，自动为每个条目填充标题、摘要和正文内容。在生成内容时会遵守页面的语义结构，确保 H1/H2/H3 层级正确。对于多语言站点，AI 内容生成器支持自动翻译和本地化调整。</p>
+<p><strong>AI SEO 优化与 AEO：</strong>Webflow 的 AI SEO 模块能自动分析页面的标题、meta description、图片 alt 文本、链接结构和内容可读性，并给出具体的改进建议。2026 年起 Webflow 开始整合 AEO（Answer Engine Optimization）功能，帮助网站在 AI 搜索引擎（如 ChatGPT Search、Perplexity）中获得更好的曝光，包括自动生成结构化数据和 FAQ schema 标记。</p>
+
+<h2>🖱️ 上手体验</h2>
+<p>首次进入 Webflow 的体验分为两条路径：零基础用户可以从 AI Site Builder 开始，输入网站描述后等待约 2-3 分钟即可获得一个可用的网站原型；有设计经验的用户则会直接进入 Designer 界面。Webflow Designer 的界面分为左侧面板（元素/组件/样式）、中间画布（所见即所得的页面预览）和右侧设置面板。设计师通过拖拽组件到画布上并调整属性来构建页面，这与 Figma 或 Sketch 的操作逻辑类似，区别在于 Webflow 的每一个操作都在生成实际代码。</p>
+<p>AI Assistant 以悬浮面板的形式存在于 Designer 右下角，点击后展开对话界面。用户可以用中文或英文输入指令。例如输入"为关于我们页面创建一个团队介绍区域，包含 4 名成员的卡片"，AI Assistant 会自动生成相应的 div 结构、CSS 类和 CMS 集合设置。生成结果会先在预览模式中呈现，用户确认后才会应用到实际页面，这个确认机制有效避免了 AI 自动修改对现有设计的意外破坏。</p>
+<p>日常操作中最常用的路径是：在画布上选择元素 → 在右侧面板调整样式属性 → 使用 AI Assistant 生成新模块或修改布局。Webflow 提供了丰富的键盘快捷操作，能在很大程度上减少鼠标操作频次。对于从 Figma 转过来的设计师，Webflow 的 Figma 插件可以实现设计稿到 Webflow 页面的自动转换，减少了大量重复性的手动还原工作。</p>
+
+<h2>💲 价格方案</h2>
+<p>Webflow 在 2026 年 5 月进行了定价体系重构，当前站点计划分为 Basic、Premium 和 Enterprise 三个层级。AI 功能（AI Site Builder、AI Assistant、AI 内容生成等）包含在 Premium 及以上方案中，每个站点每月有固定的 AI 使用额度。以下为主要层级概览（以官网实时价格为准）：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>方案</th><th>年付价格（参考）</th><th>主要特性</th></tr>
+<tr><td>Starter（免费）</td><td>$0</td><td>webflow.io 子域名、2 个页面、有限 AI 体验额度</td></tr>
+<tr><td>Basic</td><td>$15/月</td><td>自定义域名、基本 SEO 工具、每月 50GB 带宽</td></tr>
+<tr><td>Premium</td><td>$25/月</td><td>CMS 集合 20,000 条、完整 AI 功能、站点搜索</td></tr>
+<tr><td>Enterprise</td><td>定制报价</td><td>高级安全、SLA、专属支持、无限制扩展</td></tr>
+</table>
+<p>Workspace 计划（面向设计团队）从 Free 到 Enterprise 不等，付费版 Core 约 $19/月/人起，提供协作编辑、权限管理和品牌资产管理。所有价格以官网实时发布为准。</p>
+
+<h2>❓ 常见问题</h2>
+<p><strong>Q: Webflow 适合完全没有编程基础的人吗？</strong><br>A: Webflow 的学习曲线比 Wix 或 Squarespace 等纯模板工具要陡峭。虽然 AI Site Builder 降低了入门门槛，但要充分利用 Webflow 的定制化能力，建议至少理解 HTML/CSS 的基本概念。Webflow University 的免费课程可以将入门时间控制在 1-2 周内。</p>
+<p><strong>Q: Webflow 的 AI 功能和 Framer AI 有什么区别？</strong><br>A: Webflow 的 AI 定位为"AI 辅助现有设计流程"——AI 生成的是可逐像素修改的标准 Webflow 页面，而非封闭的 AI 黑盒；Framer AI 则更偏向"AI 原生生成"——用提示词从头创建一个完整的设计稿。Webflow 适合需要代码级精度和 CMS 能力的专业项目，Framer 适合快速原型和轻量级展示页面。</p>
+<p><strong>Q: Webflow 生成网站的 SEO 表现如何？</strong><br>A: Webflow 生成的 HTML 代码语义清晰、层级规范，对搜索引擎爬虫非常友好。加上内置的 sitemap 自动生成、301 重定向管理、结构化数据支持，Webflow 网站在 SEO 方面的表现在业内评价较高，通常优于大多数模板建站工具。</p>
+<p><strong>Q: 可以在 Webflow 中导出代码部署到其他服务器吗？</strong><br>A: 付费版用户可以导出完整的 HTML/CSS/JS 静态代码。但 CMS 动态内容和电商功能依赖 Webflow 的托管服务运行，导出后将不可用。如果只需要静态展示页面，导出后可以部署到任何第三方服务器。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
 </body>

@@ -95,6 +95,54 @@
 <h2>🔄 同类替代推荐</h2>
 <p>如果你想了解 Cursor Pro 的替代品，以下工具也值得关注：</p>
 <div class="related"><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">AI编程</div></a><a href="/tool-windsurf.html" class="related-card"><div class="name">Windsurf</div><div class="cat">AI编程</div></a><a href="/tool-continue.html" class="related-card"><div class="name">Continue</div><div class="cat">AI编程</div></a><a href="/tool-claude-code.html" class="related-card"><div class="name">Claude Code</div><div class="cat">AI编程</div></a></div>
+
+<article class="review-body">
+<h2>工具简介</h2>
+<p>Cursor 由旧金山 AI 初创公司 Anysphere 开发，是 AI 编程赛道近年来增长最快的产品之一，Pro 订阅是面向个人开发者的主力档位。与"在编辑器上叠加补全插件"的思路不同，Cursor 团队把产品定位为 AI 原生编辑器，围绕 Agent 化开发重新设计了人机协作方式：开发者用自然语言描述任务，AI 负责跨文件规划、修改、运行命令并自我修正。</p>
+<p>2025 年起，Cursor 的定价体系从"无限高级模型请求"调整为"用量池"模式，Pro 版包含约 20 美元的前沿模型用量与不限量的 Tab 补全，这一调整引发了社区广泛讨论，也让额度的实际价值成为选购时最需要关注的指标。</p>
+<h2>核心功能</h2>
+<p><strong>Agent 模式（原 Composer）。</strong>用自然语言描述"给登录接口加限流并补测试"这类任务，Agent 会列出执行计划，跨文件创建和修改代码、运行终端命令、检查输出，形成"描述→执行→检查→修正"的自主开发循环，这是 Pro 档位最核心的价值。</p>
+<p><strong>Tab 智能补全。</strong>基于全项目上下文预测光标后的多行改动，官方将其定位为不限量提供的核心体验，适合高频小步迭代。</p>
+<p><strong>全仓库代码索引。</strong>自动建立项目的代码、文档与 Git 历史索引，提问时用 @Codebase 引用，AI 能精准找到相关的函数、常量与依赖关系，生成代码无需手动补充 imports。</p>
+<p><strong>多模型自由切换。</strong>同一界面内可使用 GPT、Claude、Gemini 等前沿模型，按任务复杂度选择"快速补全"或"深度分析"。</p>
+<p><strong>团队协作能力。</strong>Teams 档支持共享规则、代码评审与权限管理，适合小团队统一 AI 协作规范（具体功能以官网说明为准）。</p>
+<h2>上手体验</h2>
+<p>从官网下载客户端（支持 Windows、macOS、Linux），首次启动可以一键导入 VS Code 的设置与插件，迁移成本几乎为零。免费注册即可使用 Hobby 档，先体验 Tab 补全和有限的 Agent 请求。</p>
+<p>升级 Pro 后，最常用的路径是：新建项目→用 Chat 确认技术方案→用 Agent 生成骨架代码→用 Tab 快速续写→提交前让 Code Review 检查改动。遇到报错时直接把错误信息贴给 AI，让它定位并修复。建议在项目根目录维护 .cursorrules 文件，把技术栈和编码规范写进去，AI 生成代码时会更贴合团队风格。</p>
+<h2>价格方案</h2>
+<p>Cursor 官方采用"订阅+用量"混合定价，以下为官网公开档位，年付有折扣，具体以官网实时价格为准。</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><td><strong>方案</strong></td><td><strong>价格</strong></td><td><strong>主要权益</strong></td></tr>
+<tr><td>Hobby（免费）</td><td>0 美元</td><td>有限 Agent 请求、基础补全</td></tr>
+<tr><td>Pro</td><td>20 美元/月</td><td>约 20 美元前沿模型用量、不限量 Tab 补全、更高 Agent 额度</td></tr>
+<tr><td>Pro+ / Teams</td><td>更高档位</td><td>更多用量与团队协作功能</td></tr>
+<tr><td>Ultra</td><td>200 美元/月</td><td>20 倍用量池、面向重度用户</td></tr>
+</table>
+<h2>优点与局限</h2>
+<p><strong>优点：</strong>Agent 化开发效率显著，一次自然语言描述可完成跨 5-8 个文件的改动；上下文理解能力强，符合现代工程实践的默认设定；VS Code 生态无缝兼容，迁移平滑。</p>
+<p><strong>局限：</strong>定价从"无限"调整为"用量池"后，重度用户的可用额度比早期缩水，社区争议较大；用量池耗尽后的成本需要自己关注；首次索引大型 monorepo 时资源占用高，低配置机器可能卡顿。</p>
+<h2>适合人群</h2>
+<ul>
+<li>全栈工程师与独立开发者：日常开发的主力编辑器；</li>
+<li>创业者与原型验证团队：用自然语言快速搭建 MVP；</li>
+<li>从 VS Code 迁移的工程师：几乎零学习成本的升级路径；</li>
+<li>AI 编程新手：可从 Hobby 免费档起步，熟悉 AI 协作范式。</li>
+</ul>
+<h2>同类工具对比</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><td><strong>工具</strong></td><td><strong>价格</strong></td><td><strong>功能侧重</strong></td><td><strong>适合场景</strong></td></tr>
+<tr><td>Cursor Pro</td><td>20 美元/月</td><td>编辑器+Agent 一体化</td><td>日常开发与大型改动</td></tr>
+<tr><td>GitHub Copilot</td><td>约 10 美元/月</td><td>IDE 插件，补全与聊天</td><td>轻量辅助、团队统一方案</td></tr>
+<tr><td>Claude Code</td><td>Claude 订阅+API 用量</td><td>终端 Agent</td><td>偏好命令行工作流的用户</td></tr>
+</table>
+<p>想要"编辑器+Agent"一体化体验选 Cursor；只需要补全和聊天选 Copilot 更划算；习惯终端工作流可以对比 Claude Code。</p>
+<h2>常见问题</h2>
+<p><strong>Q：Pro 版每月包含多少请求？</strong>A：官方表述为含约 20 美元的前沿模型用量池，具体额度随模型与任务消耗计算，以官网为准。</p>
+<p><strong>Q：免费版能用 Agent 吗？</strong>A：Hobby 档提供有限的 Agent 请求，适合轻度体验和评估。</p>
+<p><strong>Q：从 VS Code 迁移麻烦吗？</strong>A：不麻烦，插件、快捷键和设置都可以导入，几乎无需重新学习。</p>
+<p><strong>Q：代码数据安全如何？</strong>A：官方提供隐私与训练相关设置，企业场景可选用 Teams/企业版，详见官网隐私政策。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">评测更新：2026-08-09 ｜ 本文基于公开资料整理，价格以官网实时为准</p>
+</article>
 </div>
 </main>
 <footer class="footer"><div class="footer-bottom">© 2026 蜂巢 AI · <a href="/">首页</a> · <a href="/blog.html">资讯</a> · <a href="/daily.html">AI日报</a> · <a href="/about.html">关于</a> · <a href="/privacy.html">隐私</a></div></footer>
