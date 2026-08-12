@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Stable Diffusion - Open-Source Image Generation with Highly Customizable Local Deployment | Hive AI</title>
-<meta name="description" content="In-depth Stable Diffusion review: open-source image generation, highly customizable local deployment. Full breakdown of ControlNet, LoRA, and ComfyUI workflows.">
-<meta name="keywords" content="Stable Diffusion,AI绘画,ControlNet,LoRA,ComfyUI">
+<title>Stable Diffusion Review - Open-Source Image Generation with Highly Customizable Local Deployment | Beehive AI</title>
+<meta name="description" content="In-depth Stable Diffusion review: open-source image generation with highly customizable local deployment. Complete guide to ControlNet, LoRA, and ComfyUI workflows.">
+<meta name="keywords" content="Stable Diffusion,AI art,ControlNet,LoRA,ComfyUI">
 <link rel="canonical" href="https://www.ai-nav-build.com/en/tool-stable-diffusion.html">
-<meta property="og:title" content="Stable Diffusion - 🆓 Free | Hive AI">
-<meta property="og:description" content="Open-source image generation, highly customizable local deployment">
+<meta property="og:title" content="Stable Diffusion - 🆓 Free | Beehive AI">
+<meta property="og:description" content="Open-source image generation with highly customizable local deployment">
 <meta property="og:url" content="https://www.ai-nav-build.com/en/tool-stable-diffusion.html">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" hreflang="zh-CN" href="/tool-stable-diffusion.html">
@@ -17,7 +17,7 @@
 <link rel="alternate" hreflang="fr" href="/fr/tool-stable-diffusion.html">
 <link rel="alternate" hreflang="ja" href="/ja/tool-stable-diffusion.html">
 <link rel="alternate" hreflang="ru" href="/ru/tool-stable-diffusion.html">
-<link rel="stylesheet" href="style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNXGE2XXCY"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PNXGE2XXCY");</script>
@@ -49,105 +49,105 @@
 </style>
 </head>
 <body>
-<header class="header"><div class="header-inner"><a href="/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">Hive <span>AI</span></span></a>
-<nav style="margin-left:auto;display:flex;gap:8px"><a href="/" class="btn btn-ghost">🏠 Home</a><a href="/daily.html" class="btn btn-ghost">📋 Daily</a><a href="/blog.html" class="btn btn-ghost">📰 News</a></nav></div></header>
+<header class="header"><div class="header-inner"><a href="/en/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">Beehive <span>AI</span></span></a>
+<nav style="margin-left:auto;display:flex;gap:8px"><a href="/en/" class="btn btn-ghost">🏠 Home</a><a href="/en/daily.html" class="btn btn-ghost">📋 Daily</a><a href="/en/blog.html" class="btn btn-ghost">📰 Blog</a></nav></div></header>
 <main><div class="tool-hero"><div class="icon-lg">🌀</div><h1>Stable Diffusion</h1>
 <span class="price-badge price-free">🆓 Free</span>
 <p class="sub">Open-source image generation with highly customizable local deployment</p>
-<a href="https://stability.ai" target="_blank" rel="nofollow" class="cta-btn">🚀 Visit Official Site</a><a href="/" class="cta-btn ghost">🔍 Explore More</a></div>
+<a href="https://stability.ai" target="_blank" rel="nofollow" class="cta-btn">🚀 Visit Official Website</a><a href="/en/" class="cta-btn ghost">🔍 Explore More</a></div>
 <div class="wrap">
 <h2>📖 Overview</h2>
-<p>Stable Diffusion (SD for short) is an open-source text-to-image diffusion model released by Stability AI. Since its first release in August 2022, it has become the most flexible and customizable tool in AI image generation. Unlike closed-source cloud services such as Midjourney and DALL·E 3, SD's biggest differentiator is that it is "your own generation engine" — you can download it and run it on your own computer or even your phone, fully offline, uncensored, and unlimited, without paying per image. Current mainstream versions include SD 1.5, SDXL, and SD 3. Among them, SDXL achieved a qualitative leap in detail rendering and composition, while SD 3 further optimized text rendering and multi-object understanding.</p>
-<p>The real power of Stable Diffusion lies not in the base model itself but in its vast and active open-source ecosystem. Through WebUIs (such as Automatic1111 and ComfyUI), users get an extremely feature-rich visual interface supporting text-to-image, image-to-image, inpainting, outpainting, and other core functions. More critically, plugins such as ControlNet, LoRA, and IP-Adapter have completely changed the game: ControlNet lets you precisely control composition with line art, depth maps, pose skeletons, and edge detection; LoRA lets you train a fine-tuned model for a specific character, style, or object with just a few dozen images. Community platforms like CivitAI host tens of thousands of user-contributed Checkpoints and LoRA models available for free download — from anime styles to photorealistic photography, from architectural rendering to product design, covering almost every visual style.</p>
+<p>Stable Diffusion (SD for short) is the open-source text-to-image diffusion model released by Stability AI. Since its first release in August 2022, it has become the most flexible and customizable tool in AI image generation. Unlike closed-source cloud services such as Midjourney and DALL·E 3, SD's biggest differentiator is that it is "your own generation engine" — you can download it to your own computer or even phone and run it fully offline, uncensored, and unlimited, without paying for each image. Current mainstream versions include SD 1.5, SDXL, and SD 3; SDXL marks a qualitative leap in detail rendering and composition, while SD 3 further improves text rendering and multi-object understanding.</p>
+<p>The real power of Stable Diffusion lies not in the base model itself, but in its vast and active open-source ecosystem. Through WebUIs (such as Automatic1111 and ComfyUI), users get an extremely feature-rich visual interface supporting text-to-image, image-to-image, inpainting (local regeneration), outpainting (extension beyond the edges), and other core functions. More importantly, plugins such as ControlNet, LoRA, and IP-Adapter have completely changed the game: ControlNet lets you control composition precisely with line art, depth maps, pose skeletons, and edge detection; LoRA lets you train fine-tuned models for specific characters, styles, or objects from just dozens of images. On community platforms such as CivitAI, tens of thousands of user-contributed Checkpoint and LoRA models are available for free download, covering almost every visual style — from anime to photorealistic photography, architectural rendering to product design.</p>
 
 <h2>✨ Pros and Cons</h2>
 <div class="grid2">
-<div class="pro-box"><h4>👍 Strengths</h4><ul>
-<li><strong>Completely free and runs locally:</strong> No subscription, no internet connection, no generation limits. With a GPU with 6GB+ of VRAM, you can generate dozens of images per minute indefinitely. Optimized versions that run on phones are now available.</li>
-<li><strong>Massive and extremely flexible ecosystem:</strong> ControlNet offers the industry's strongest composition control (more precise than any Midjourney feature), LoRA lets individual users train their own models, and ComfyUI's node-based workflows can build extremely complex automated pipelines.</li>
-<li><strong>Privacy and content freedom:</strong> All computation happens locally, and images are never uploaded to any server. With no content moderation, you can freely create anything the law does not prohibit — crucial for fields such as medical illustration and adult-oriented art.</li></ul></div>
-<div class="con-box"><h4>👎 Drawbacks</h4><ul>
-<li><strong>High hardware barrier and complex setup:</strong> You need an NVIDIA GPU (8GB+ VRAM recommended). The installation process involves Python environments, CUDA, model downloads, and more. For non-technical users, simply getting WebUI installed can eat up an afternoon.</li>
-<li><strong>Output quality ceiling depends on model quality and prompt skills:</strong> The default base model produces results far below Midjourney. You need time to find and download quality Checkpoints and learn the meaning of professional parameters such as weights, samplers, and CFG Scale.</li>
-<li><strong>Inconsistent community model quality:</strong> CivitAI has plenty of low-quality, duplicate, or poorly trained models. Beginners easily fall into an endless "try the next one" loop, wasting hours without a single satisfying image.</li></ul></div>
+<div class="pro-box"><h4>👍 Advantages</h4><ul>
+<li><strong>Completely free and runs locally:</strong> no subscription, no internet connection required, no generation limits. With a GPU with 6GB+ VRAM, you can generate endlessly at dozens of images per minute. Optimized versions that run on phones are now emerging.</li>
+<li><strong>Huge and extremely flexible ecosystem:</strong> ControlNet provides the strongest composition control in the industry (more precise than any Midjourney feature), LoRA lets individual users train their own custom models, and ComfyUI's node-based workflows enable highly complex automated pipelines.</li>
+<li><strong>Privacy and content freedom:</strong> all computation happens locally, and images are never uploaded to any server. There is no content moderation, so you can freely create anything not prohibited by law — critical for fields such as medical illustration and adult-oriented art.</li></ul></div>
+<div class="con-box"><h4>👎 Limitations</h4><ul>
+<li><strong>High hardware requirements and complex setup:</strong> you need an NVIDIA GPU (8GB+ VRAM recommended), and the installation involves a Python environment, CUDA, model downloads, and more. For non-technical users, just getting a WebUI running can take an entire afternoon.</li>
+<li><strong>Output quality depends on model quality and prompt skills:</strong> the default base model's output is far below Midjourney's. You need to spend time finding and downloading quality Checkpoints and learning professional parameters such as weights, samplers, and CFG Scale.</li>
+<li><strong>Inconsistent quality of community models:</strong> CivitAI has many low-quality, duplicated, or poorly trained models. Beginners easily fall into an endless "try the next one" loop, wasting plenty of time without producing a single satisfactory image.</li></ul></div>
 </div>
 
-<h2>🎯 Use Cases</h2>
+<h2>🎯 Best Use Cases</h2>
 <ul>
-<li><strong>Professional digital artists and illustrators:</strong> Use ControlNet's line-art coloring, pose control, and composition locking to treat AI as a creative assistant rather than a replacement. Artists can sketch → SD colors and renders → manual refinement, forming an efficient workflow.</li>
-<li><strong>Commercial scenarios needing batch production:</strong> E-commerce product images, game assets, architectural renderings — scenarios that need high output volume with consistent style. Automated pipelines built with ComfyUI enable one-click batch image generation.</li>
-<li><strong>AI researchers and students:</strong> Being fully open source, SD is the best platform for learning and researching diffusion models. You can read the source code, adjust model parameters, train your own Checkpoints, and deeply understand the principles behind AI generation.</li>
+<li><strong>Professional digital artists and illustrators:</strong> leverage ControlNet's line-art coloring, pose control, and composition locking to treat AI as a creative assistant rather than a replacement. Artists can sketch → color and render with SD → manually refine, forming an efficient workflow.</li>
+<li><strong>Commercial scenarios requiring batch production:</strong> e-commerce product images, game assets, architectural renderings — scenarios that need high-volume output with consistent style. By building automated pipelines with ComfyUI, you can achieve one-click batch generation.</li>
+<li><strong>AI researchers and students:</strong> since it is fully open source, SD is the best platform for learning and researching diffusion models. You can read the source code, adjust model parameters, and train your own Checkpoints to deeply understand the principles behind AI generation.</li>
 </ul>
 
 <h2>💡 Usage Tips</h2>
 <ul>
-<li><strong>Don't start with vanilla SD — go straight to community-curated Checkpoints:</strong> Quality base models such as Juggernaut XL, Realistic Vision, and DreamShaper are community-verified. Download a good Checkpoint and build LoRAs on top of it — far more efficient than tuning from scratch.</li>
-<li><strong>Prioritize learning ComfyUI over A1111 WebUI:</strong> ComfyUI's node-based workflow has a slightly steeper learning curve, but once mastered, its modularity, reusability, and shareability far exceed A1111. You can directly import workflow JSON files shared by the community and build complex generation pipelines within minutes.</li>
-<li><strong>Make good use of CivitAI's filtering and rating systems:</strong> Filter models by download count, rating, and example image quality. Pay attention to trigger words and recommended parameters (recommended CFG, steps, sampler) on model pages — this information is key to saving trial-and-error time.</li>
+<li><strong>Don't start with the original SD — use community-curated Checkpoints:</strong> high-quality base models such as Juggernaut XL, Realistic Vision, and DreamShaper are community-proven. Download a good Checkpoint and build on it with LoRA; it is far more efficient than tuning from scratch.</li>
+<li><strong>Prioritize learning ComfyUI over the A1111 WebUI:</strong> ComfyUI's node-based workflow has a somewhat steeper learning curve, but once mastered, its modularity, reusability, and shareability far surpass A1111. You can directly import workflow JSON files shared by the community and build complex generation pipelines within minutes.</li>
+<li><strong>Make good use of CivitAI's filtering and rating systems:</strong> filter models by download count, rating, and example image quality. Pay attention to the Trigger Words and recommended parameters (recommended CFG, steps, sampler) on model pages — this information is key to saving trial-and-error time.</li>
 </ul>
 
 <h2>🔄 Similar Alternatives</h2>
-<p>The following AI drawing tools are also worth a look:</p>
-<div class="related"><a href="/tool-midjourney.html" class="related-card"><div class="name">Midjourney</div><div class="cat">💎 Paid · Ready to use</div></a><a href="/tool-dall-e-3.html" class="related-card"><div class="name">DALL·E 3</div><div class="cat">🔄 Free+Paid · Best text rendering</div></a><a href="/tool-flux.html" class="related-card"><div class="name">Flux</div><div class="cat">🆓 Free · New open-source benchmark</div></a><a href="/tool-comfyui.html" class="related-card"><div class="name">ComfyUI</div><div class="cat">🆓 Free · SD's best partner</div></a></div>
+<p>The following AI art tools are also worth checking out:</p>
+<div class="related"><a href="/en/tool-midjourney.html" class="related-card"><div class="name">Midjourney</div><div class="cat">💎 Paid · Ready to Use</div></a><a href="/en/tool-dall-e-3.html" class="related-card"><div class="name">DALL·E 3</div><div class="cat">🔄 Free+Paid · Best Text Rendering</div></a><a href="/en/tool-flux.html" class="related-card"><div class="name">Flux</div><div class="cat">🆓 Free · New Open-Source Benchmark</div></a><a href="/en/tool-comfyui.html" class="related-card"><div class="name">ComfyUI</div><div class="cat">🆓 Free · SD's Best Partner</div></a></div>
 </div>
 <article class="review-body">
 <h2>Overview</h2>
-<p>Stable Diffusion (SD for short) is an open-source text-to-image diffusion model from Stability AI. Since its first release in August 2022, it has become the most flexible and customizable tool in AI image generation. Unlike closed-source cloud services such as Midjourney and DALL·E, SD's fundamental differentiator is that "you own your generation engine" — you can download it and run it on your own computer or even your phone, fully offline, uncensored, and unlimited, without paying per image. Current mainstream versions include SD 1.5, SDXL, and SD 3/3.5, with SDXL being the most widely used main version in the community.</p>
-<p>The real power of Stable Diffusion lies not in the base model itself but in its vast and active open-source ecosystem. Through WebUIs (Automatic1111, ComfyUI, Fooocus, etc.), users can build highly customized image generation pipelines. Plugins such as ControlNet, LoRA, and IP-Adapter transformed SD from a "black-box generator" into a "precisely controllable creative assistant" — you can control composition with line art, depth maps, skeletal poses, and edge detection, and train custom style or character models with LoRA. On CivitAI and Hugging Face, hundreds of thousands of community-contributed Checkpoints and LoRA models are available for free download.</p>
+<p>Stable Diffusion (SD for short) is the open-source text-to-image diffusion model released by Stability AI. Since its first release in August 2022, it has become the most flexible and customizable tool in AI image generation. Unlike closed-source cloud services such as Midjourney and DALL·E, SD's fundamental differentiator is that "you own your generation engine" — you can download it to your own computer or even phone, run it fully offline, uncensored, and unlimited, without paying per image. Current mainstream versions include SD 1.5, SDXL, and SD 3/3.5, with SDXL being the most widely used community workhorse.</p>
+<p>The real power of Stable Diffusion lies not in the base model itself, but in its vast and active open-source ecosystem. Through WebUIs (Automatic1111, ComfyUI, Fooocus, etc.), users can build highly customized image generation pipelines. Plugins such as ControlNet, LoRA, and IP-Adapter have transformed SD from a "black-box generator" into a "precisely controllable creative assistant" — you can control composition precisely with line art, depth maps, skeletal poses, and edge detection, and train custom style or character models with LoRA. On CivitAI and Hugging Face, hundreds of thousands of community-contributed Checkpoint and LoRA models are available for free download.</p>
 
 <h2>Core Features</h2>
-<p><strong>Text-to-Image:</strong> Generates images from natural language descriptions — SD's most basic function. By choosing different Checkpoints (base models) and configuring sampling parameters (steps, CFG Scale, sampler), users can balance generation speed and output quality. Community-verified Checkpoints such as Juggernaut XL, Realistic Vision, and DreamShaper produce quality already very close to Midjourney.</p>
-<p><strong>Image-to-Image:</strong> Upload a reference image and SD generates style variations while preserving the original composition and color tone. By adjusting Denoising Strength (0-1), users control how much of the original is preserved — lower values stay closer to the original, higher values change more.</p>
-<p><strong>ControlNet precise control:</strong> The most transformative functional module in the SD ecosystem. Through more than 15 control modes — Canny edge detection, Depth maps, OpenPose skeletal poses, Scribble guidance, Tile tiled upscaling, IP-Adapter style transfer — users achieve pixel-level control over image composition. This is a capability no closed-source tool can offer.</p>
-<p><strong>LoRA fine-tuning and style customization:</strong> LoRA lets users train small adapters for a specific character, object, or style with just a few dozen images. After training, simply add the LoRA's trigger word to your prompt to reuse that style on any Checkpoint. Multiple LoRAs can be stacked with different weights for extremely rich style combinations.</p>
-<p><strong>Inpainting and Outpainting:</strong> Inpainting lets you brush over the areas of an image you want to modify, and the AI regenerates only those regions. Outpainting extends the canvas beyond the image's edges, with the AI automatically generating extension content matching the original style. Both are very practical for photo restoration and creative extension scenarios.</p>
+<p><strong>Text-to-Image:</strong> generate images from natural language descriptions — SD's most basic function. By choosing different Checkpoints (base models) and configuring sampling parameters (steps, CFG Scale, sampler), users can balance generation speed and quality. Community-verified Checkpoints such as Juggernaut XL, Realistic Vision, and DreamShaper produce quality very close to Midjourney's.</p>
+<p><strong>Image-to-Image:</strong> upload a reference image, and SD generates style variations while preserving the original composition and color tone. By adjusting the Denoising Strength (0-1), you control how much of the original is preserved — lower values stay closer to the original, higher values change it more.</p>
+<p><strong>Precise control with ControlNet:</strong> the most transformative module in the SD ecosystem. With more than 15 control modes — Canny edge detection, Depth maps, OpenPose skeletal poses, Scribble guidance, Tile tiled upscaling, IP-Adapter style transfer — users achieve pixel-level control over composition. No closed-source tool offers this capability.</p>
+<p><strong>LoRA fine-tuning and style customization:</strong> LoRA lets users train small adapters for specific characters, objects, or styles from just dozens of images. After training, simply add the LoRA trigger word to your prompt to reuse the style on any Checkpoint. Multiple LoRAs can be combined with different weights for extremely rich style combinations.</p>
+<p><strong>Inpainting and Outpainting:</strong> Inpainting lets you brush over areas that need modification, and the AI regenerates only those regions. Outpainting extends the image beyond its borders, with the AI automatically generating content consistent with the original style. Both features are very practical for photo restoration and creative extension.</p>
 
 <h2>Getting Started</h2>
-<p>Stable Diffusion's entry path depends on your technical background. For users with zero coding experience, we recommend starting with CivitAI's online generator or the Fooocus desktop client — both hide all technical details, so users only need to enter a prompt to generate images. The Fooocus installer is only 1.5GB, unpack-and-run, and auto-configures GPU parameters — currently the friendliest local SD entry point.</p>
-<p>For users with some technical background, Automatic1111 WebUI is the most mainstream choice. Installation requires a Python environment and Git, but tutorial resources are abundant. WebUI provides a full parameter control panel and plugin system. For advanced users pursuing ultimate efficiency and reusability, ComfyUI is the final destination — build generation pipelines by connecting visual nodes, and save complex workflows as JSON files to share with the community. Recommended learning path: Fooocus (experience) → A1111 WebUI (learning) → ComfyUI (mastery).</p>
+<p>The entry path into Stable Diffusion depends on your technical background. For users with no coding experience, we recommend starting with CivitAI's online generator or the Fooocus desktop client — both hide all technical details; you only need to enter a prompt to generate images. The Fooocus installer is only 1.5GB, works right after extraction, and automatically adapts to your GPU parameters — currently the friendliest local SD entry point.</p>
+<p>For users with some technical background, Automatic1111 WebUI is the most popular choice. It requires a Python environment and Git, but tutorial resources are abundant. The WebUI provides a complete parameter control panel and plugin system. For advanced users pursuing maximum efficiency and reusability, ComfyUI is the final destination — build generation pipelines by connecting visual nodes, and save complex workflows as JSON files to share with the community. Recommended learning path: Fooocus (experience) → A1111 WebUI (learn) → ComfyUI (master).</p>
 
 <h2>Pricing</h2>
 <table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
 <tr><th>Usage Method</th><th>Price</th><th>Hardware/Platform Requirements</th></tr>
 <tr><td>Local deployment (SD/SDXL/SD3 Medium)</td><td>Completely free</td><td>NVIDIA GPU with 6-8GB+ VRAM</td></tr>
-<tr><td>Stability AI API (incl. full SD3)</td><td>Pay-as-you-go</td><td>No hardware required</td></tr>
-<tr><td>Stability AI membership</td><td>~$9-27/month</td><td>Includes credit allowance</td></tr>
-<tr><td>Cloud GPU (RunPod/Vast.ai)</td><td>~$0.3-0.8/hour</td><td>No hardware required</td></tr>
+<tr><td>Stability AI API (incl. full SD3)</td><td>Pay-as-you-go</td><td>No hardware requirements</td></tr>
+<tr><td>Stability AI membership</td><td>~$9-27/month</td><td>Includes credits</td></tr>
+<tr><td>Cloud GPU (RunPod/Vast.ai)</td><td>~$0.3-0.8/hour</td><td>No hardware requirements</td></tr>
 <tr><td>CivitAI online generation</td><td>Free + paid acceleration</td><td>Browser only</td></tr>
 </table>
-<p style="color:#98a2b3;font-size:13px">Note: Prices above are collected from public sources. The SD models themselves are free and open source; the above reflects the costs of various channels for using SD.</p>
+<p style="color:#98a2b3;font-size:13px">Note: the prices above are collected from public sources. The SD models themselves are free and open source; the above are prices for various channels of using SD.</p>
 
 <h2>Strengths and Limitations</h2>
-<p><strong>Strengths:</strong> Completely free and runs locally — no subscription, no internet, no generation limits, no content moderation; just an NVIDIA consumer GPU. The ControlNet ecosystem provides the industry's strongest composition control, far more precise than any closed-source tool. LoRA lets individual users train custom style and character models, and the community has accumulated hundreds of thousands of ready-made LoRAs for direct use. Excellent privacy — all computation happens locally, and images are never uploaded to any server. The community is highly active, with new Checkpoints, LoRAs, and workflows shared every day.</p>
-<p><strong>Limitations:</strong> The hardware barrier and setup complexity are very unfriendly to non-technical users — you need an NVIDIA GPU, a Python environment, CUDA configuration, and model downloads; starting from zero can take 2-4 hours. Default base model output quality is far below Midjourney and must be compensated for with community Checkpoints. Community model quality varies, and beginners easily fall into a "keep downloading new models but never getting good images" loop. Chinese prompt understanding is weaker than English.</p>
+<p><strong>Strengths:</strong> completely free and runs locally — no subscription, no internet, no generation limits, no content moderation; just one consumer NVIDIA GPU. The ControlNet ecosystem provides the industry's strongest composition control, far more precise than any closed-source tool. LoRA lets individual users train custom styles and character models, and the community has accumulated hundreds of thousands of ready-made LoRAs. Excellent privacy — all computation happens locally, and images are never uploaded to any server. The community is highly active, with new Checkpoints, LoRAs, and workflows shared every day.</p>
+<p><strong>Limitations:</strong> the hardware barrier and configuration complexity are very unfriendly to non-technical users — you need an NVIDIA GPU, a Python environment, CUDA setup, and model downloads; starting from zero can take 2-4 hours. The default base model's output quality is far below Midjourney's and must be compensated with community Checkpoints. Community model quality is inconsistent, and beginners easily fall into a "keep downloading new models but never getting good images" loop. Chinese prompt understanding is weaker than English.</p>
 
 <h2>Who It's For</h2>
 <ul>
-<li><strong>Professional digital artists and illustrators:</strong> Use ControlNet's precise control to integrate SD into professional workflows as a creative assistant — hand-drawn line art colored and rendered by AI, then refined manually.</li>
-<li><strong>Game and film concept design teams:</strong> Batch-produce concept images in multiple styles, maintain character consistency with IP-Adapter, and greatly boost output capacity.</li>
-<li><strong>E-commerce and advertising creative teams:</strong> Build automated pipelines with ComfyUI for one-click batch generation of style-consistent product display images and ad materials.</li>
-<li><strong>AI researchers and tech enthusiasts:</strong> SD is the best experimental platform for learning diffusion models and image generation technology; full open source makes deep research and custom development possible.</li>
+<li><strong>Professional digital artists and illustrators:</strong> use ControlNet's precise control to integrate SD into professional workflows as a creative assistant — hand-drawn line art, AI coloring and rendering, then manual refinement.</li>
+<li><strong>Game and film concept design teams:</strong> batch-produce concept art in multiple styles, maintain character consistency with IP-Adapter, and significantly boost productivity.</li>
+<li><strong>E-commerce and advertising creative teams:</strong> build automated pipelines with ComfyUI to generate consistent product images and ad assets in batches with one click.</li>
+<li><strong>AI researchers and tech enthusiasts:</strong> SD is the best experimental platform for learning diffusion models and image generation technology; full open source makes in-depth research and custom development possible.</li>
 </ul>
 
 <h2>Comparison with Similar Tools</h2>
 <table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
-<tr><th>Comparison Dimension</th><th>Stable Diffusion</th><th>Midjourney</th><th>Flux</th></tr>
-<tr><td>Price</td><td>Free & open source</td><td>$10-60/month</td><td>Free & open source (some models)</td></tr>
+<tr><th>Dimension</th><th>Stable Diffusion</th><th>Midjourney</th><th>Flux</th></tr>
+<tr><td>Price</td><td>Free &amp; open source</td><td>$10-60/month</td><td>Free &amp; open source (some models)</td></tr>
 <tr><td>Local deployment</td><td>Supported</td><td>Not supported</td><td>Supported</td></tr>
 <tr><td>Composition control precision</td><td>Extremely high (ControlNet)</td><td>Limited</td><td>Good</td></tr>
-<tr><td>Out-of-the-box aesthetics</td><td>Low (needs quality Checkpoint)</td><td>Extremely high</td><td>High</td></tr>
-<tr><td>Community ecosystem</td><td>World's largest and most active</td><td>Relies on Discord community</td><td>Growing fast</td></tr>
+<tr><td>Out-of-the-box aesthetics</td><td>Low (needs quality Checkpoints)</td><td>Extremely high</td><td>High</td></tr>
+<tr><td>Community ecosystem</td><td>World's largest and most active</td><td>Relies on the Discord community</td><td>Rapidly growing</td></tr>
 </table>
 
 <h2>FAQ</h2>
-<p><strong>Q: What are the hardware requirements for Stable Diffusion?</strong><br>A: Minimum recommendation: NVIDIA RTX 3060 (8GB VRAM) + 16GB RAM. 6GB VRAM works but easily runs out. AMD GPUs can run via DirectML or ROCm but are slower. Apple Silicon Macs can run via the MPS backend or dedicated clients such as Draw Things. Pure CPU is extremely slow and not recommended.</p>
-<p><strong>Q: Which version should I use — SD 1.5, SDXL, or SD 3?</strong><br>A: For new users, we recommend starting with SDXL — it strikes the best balance among resolution, composition capability, and community ecosystem. SD 1.5 suits specific anime and manga styles, where its community models are the most mature. SD 3 represents the future direction, but its community ecosystem is still under construction.</p>
-<p><strong>Q: What is a Checkpoint? Where do I download good Checkpoints?</strong><br>A: A Checkpoint is a complete base model file (usually 2-7GB) that determines the basic style and quality direction of generated images. We recommend filtering quality Checkpoints on CivitAI (civitai.com) by download count, rating, and example images. Common choices include Juggernaut XL (photorealistic), DreamShaper (artistic style), and Realistic Vision (realistic humans).</p>
-<p><strong>Q: Can images generated by SD be used commercially?</strong><br>A: The SD model license (Creative ML OpenRAIL-M) permits commercial use. However, if you use third-party Checkpoints or LoRAs, you need to review the license terms of those derived models. In addition, copyright protection for AI-generated content differs across jurisdictions, so we recommend seeking legal advice before major commercial projects.</p>
-<p class="review-meta" style="color:#98a2b3;font-size:13px">Review updated: 2026-08-09 ｜ Compiled from public sources; prices are subject to the official website in real time.</p>
+<p><strong>Q: What are Stable Diffusion's hardware requirements?</strong><br>A: Minimum recommended: NVIDIA RTX 3060 (8GB VRAM) + 16GB RAM. It runs with 6GB VRAM but easily runs out of memory. AMD GPUs can run via DirectML or ROCm, but slower. Apple Silicon Macs can run via the MPS backend or dedicated clients such as Draw Things. Pure CPU operation is extremely slow and not recommended.</p>
+<p><strong>Q: Which version should I use — SD 1.5, SDXL, or SD 3?</strong><br>A: For new users, we recommend starting directly with SDXL — it offers the best balance of resolution, composition ability, and community ecosystem. SD 1.5 suits specific anime styles, as the SD 1.5 community models in that direction are the most mature. SD 3 represents the future direction, but its community ecosystem is still under construction.</p>
+<p><strong>Q: What is a Checkpoint? Where can I download good Checkpoints?</strong><br>A: A Checkpoint is a complete base model file (usually 2-7GB) that determines the basic style and quality direction of generated images. We recommend filtering quality Checkpoints on CivitAI (civitai.com) by download count, rating, and example images. Common choices include Juggernaut XL (photorealistic), DreamShaper (artistic style), and Realistic Vision (realistic people).</p>
+<p><strong>Q: Can images generated with SD be used commercially?</strong><br>A: The SD model's own license (Creative ML OpenRAIL-M) permits commercial use. However, if you use third-party Checkpoints or LoRAs, you need to check the license terms of those derivative models. In addition, copyright protection of AI-generated content varies by jurisdiction; we recommend consulting legal advice before important commercial projects.</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">Review updated: 2026-08-09 | Based on publicly available information; prices subject to real-time official rates</p>
 </article>
 
 </main>
-<footer class="footer"><div class="footer-bottom">🐝 © 2026 Hive AI · <a href="/">Home</a> · <a href="/blog.html">News</a> · <a href="/daily.html">AI Daily</a> · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">Privacy Policy</a></div></footer>
+<footer class="footer"><div class="footer-bottom">🐝 © 2026 Beehive AI · <a href="/en/">Home</a> · <a href="/en/blog.html">Blog</a> · <a href="/en/daily.html">AI Daily</a> · <a href="/en/faq.html">FAQ</a> · <a href="/en/privacy.html">Privacy Policy</a></div></footer>
 </body>
 </html>
