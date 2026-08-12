@@ -461,6 +461,64 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 .float-btn:hover .float-icon{transform:none}
 .float-btn .float-label{color:var(--text3)}
 
+
+/* ═══════════════════════════════════════════════
+   印章 + 榫卯 (2026-08 中式工艺点缀)
+   ═══════════════════════════════════════════════ */
+
+/* ── 印章 seal: 朱红印泥底 + 白字楷书 + 双线框 ── */
+.seal{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#b03a2e;color:#f7ede2;
+  font-family:"STKaiti","KaiTi","Songti SC",serif;font-weight:700;
+  border:2px solid #b03a2e;outline:1.5px solid #f7ede2;outline-offset:-4px;
+  border-radius:3px;letter-spacing:.12em;line-height:1;
+  box-shadow:inset 0 0 0 1px rgba(247,237,226,.55);
+  user-select:none;flex-shrink:0;
+}
+/* 主印章: 盖在 hero 标题旁, 微旋转像真章 */
+.seal-main{
+  width:52px;height:52px;font-size:20px;writing-mode:vertical-rl;padding:6px 0;
+  transform:rotate(3deg);box-shadow:0 3px 10px rgba(176,58,46,.28);
+  margin-left:18px;
+}
+.hero-title-wrap{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap}
+.hero-title-wrap h1{text-align:center}
+/* 小印章: 盖在区块标题旁 */
+.seal-sm{width:auto;height:24px;font-size:12.5px;padding:0 9px;transform:rotate(-2deg);margin-left:10px;vertical-align:3px;box-shadow:0 2px 6px rgba(176,58,46,.22)}
+
+/* ── 榫卯: 标题木枋 ── */
+.block-joist{position:relative;height:14px;margin:6px 0 30px;display:flex;align-items:center}
+.block-joist::before{content:'';flex:1;height:4px;background:linear-gradient(180deg,#cbb492,#b89c76);border-radius:2px}
+.block-joist::after{content:'';width:8px;height:8px;background:#8a6f4d;border-radius:1px;margin-left:6px;box-shadow:2px 0 0 #8a6f4d}
+/* 榫头: 两端凸出的小木块 */
+.block-joist .tenon{width:14px;height:6px;background:#8a6f4d;border-radius:1px;margin-right:4px;position:relative}
+.block-joist .tenon::before{content:'';position:absolute;left:3px;top:-4px;width:8px;height:4px;background:#a98c63;border-radius:1px}
+
+/* ── 榫卯: 卡片角榫 hover ── */
+.pick,.tool{
+  position:relative;
+}
+.pick:hover::after,.tool:hover::after{
+  content:'';position:absolute;top:6px;right:6px;width:8px;height:8px;
+  background:var(--moss,#6b7f6a);border-radius:1px;opacity:.85;
+  box-shadow:-2px -2px 0 rgba(107,127,106,.35);
+}
+/* 精选卡片四角留白处加木纹小榫 (静态装饰, 很轻) */
+.pick::before{
+  content:'';position:absolute;left:6px;bottom:6px;width:10px;height:3px;
+  background:#c9b492;border-radius:1px;opacity:.8;
+}
+
+/* ── 榫卯: 分类按钮像木牌 ── */
+.cat-btn{border-radius:2px;position:relative;padding:7px 16px;border:1.5px solid var(--wood,#a08060);color:var(--wood-deep,#6f5638);background:transparent}
+.cat-btn::after{content:'';position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);width:6px;height:6px;background:#a08060;border-radius:1px;opacity:0;transition:opacity .2s}
+.cat-btn:hover::after{opacity:1}
+.cat-btn.on{background:var(--wood,#a08060);color:#f7f3ec}
+
+/* ── 页脚木牌 ── */
+.footer-brand h3::after{content:'';display:inline-block;width:34px;height:2px;background:var(--wood,#a08060);margin-left:10px;vertical-align:4px;border-radius:1px}
+
 </style>
 <link rel="alternate" hreflang="zh-CN" href="https://www.ai-nav-build.com/">
 <link rel="alternate" hreflang="en" href="https://www.ai-nav-build.com/en/">
@@ -524,7 +582,7 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 <!-- ====== Hero ====== -->
 <section class="hero">
   <div class="hero-content">
-    <h1><span data-i18n="heroTitle">慢慢逛，</span><br><span class="gradient">总有合心意的 AI 工具</span></h1>
+    <div class="hero-title-wrap"><h1><span data-i18n="heroTitle">慢慢逛，</span><br><span class="gradient">总有合心意的 AI 工具</span></h1><span class="seal seal-main" aria-hidden="true">蜂巢</span></div>
     <p data-i18n="heroSub">五百多件工具，像摆在家里的器物，不喧哗，不催促。按需取用，用顺手的就是好工具。</p>
 
     <div class="hero-stats">
@@ -541,12 +599,12 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 
 <!-- ====== 蜂王精选（4张卡） ====== -->
 <section class="picks-section">
-  <h2><span class="icon-box" style="display:none"></span>本周精选 <span style="font-size:13px;font-weight:400;color:var(--text3);margin-left:4px" data-i18n="picksSub">人工精选 · 每周更新</span></h2>
+  <h2><span class="icon-box" style="display:none"></span>本周精选 <span class="seal seal-sm" aria-hidden="true">手择</span><span style="font-size:13px;font-weight:400;color:var(--text3);margin-left:10px" data-i18n="picksSub">人工精选 · 每周更新</span></h2><div class="block-joist" aria-hidden="true"><span class="tenon"></span></div>
   <div class="picks-grid" id="featuredGrid"></div>
 </section>
 
 <!-- ====== 场景快速入口 ====== -->
-<div class="scene-wrap">
+<div class="scene-wrap"><div class="block-joist" style="max-width:240px;margin:0 auto 16px" aria-hidden="true"><span class="tenon"></span></div>
   <div class="scene-btns">
     <button class="cat-btn uc-btn" onclick="selectUseCase('写作')">写作</button>
     <button class="cat-btn uc-btn" onclick="selectUseCase('编码')">编码</button>
@@ -559,11 +617,11 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
     <button class="cat-btn uc-btn" onclick="selectUseCase('研究')">研究</button>
     <button class="cat-btn uc-btn" onclick="selectUseCase('设计素材')">素材</button>
   </div>
-  <p class="scene-hint" data-i18n="sceneTitle">点击场景筛选 · 10 个常用用途</p>
+  <p class="scene-hint" data-i18n="sceneTitle" style="margin-top:14px">点击场景筛选 · 10 个常用用途</p>
 </div>
 
 <!-- ====== 工具网格区（分类筛选栏 + 排序 + 视图切换 + 网格） ====== -->
-<div class="tools-toolbar">
+<div class="block-joist" style="max-width:1080px;margin:8px auto 18px" aria-hidden="true"><span class="tenon"></span></div><div class="tools-toolbar">
   <div class="sort-group">
     <span class="sort-btn active" data-sort="default" onclick="setSort('default')">综合</span>
     <span class="sort-btn" data-sort="hot" onclick="setSort('hot')">最热</span>
