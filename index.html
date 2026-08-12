@@ -541,6 +541,45 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
   background-size:auto,auto,140px 140px;
 }
 
+
+/* ═══════════════════════════════════════════════
+   卡片图标印章化 (朱红印泥 + 楷体活字 + 晕染)
+   参考 08 奥运开幕式水墨/活字美学
+   ═══════════════════════════════════════════════ */
+.hive-avatar{
+  position:relative;
+  background:#b03a2e!important;           /* 压过内联 t.color */
+  color:#f7ede2!important;
+  font-family:"STKaiti","KaiTi","Songti SC","Noto Serif CJK SC",serif!important;
+  font-weight:700;
+  border:2px solid #b03a2e;
+  outline:1.5px solid #f7ede2;outline-offset:-4px;
+  border-radius:3px;                       /* 印章方角 */
+  box-shadow:inset 0 0 0 1px rgba(247,237,226,.5), 0 2px 8px rgba(176,58,46,.28);
+  transform:rotate(-2deg);
+  letter-spacing:0;line-height:1;
+  overflow:hidden;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+/* 印泥晕染: 噪点 + 边缘浓淡 */
+.hive-avatar::after{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='11'/><feColorMatrix type='matrix' values='0 0 0 0 0.05 0 0 0 0 0.03 0 0 0 0 0.02 0 0 0 0.5 0'/></filter><rect width='80' height='80' filter='url(%23m)'/></svg>");
+  background-size:80px 80px;opacity:.55;pointer-events:none;
+  border-radius:inherit;
+}
+/* 网格卡片印章 */
+.hive-cell .hive-avatar{width:38px;height:38px;font-size:17px;border-radius:3px;margin-bottom:6px}
+/* 精选大卡印章 */
+.picks-grid .hive-avatar{width:42px;height:42px;font-size:19px;border-radius:3px}
+.hive-cell.featured .hive-avatar{width:44px;height:44px;font-size:20px;border-radius:3px}
+/* 列表视图印章 */
+.hive-wrap.list-view .hive-avatar{width:40px;height:40px;font-size:18px;border-radius:3px;margin-bottom:0}
+/* 悬停: 印章按实(回正+加深), 像用力盖了一下 */
+.hive-cell:hover .hive-avatar{transform:rotate(0deg) scale(1.06);box-shadow:inset 0 0 0 1px rgba(247,237,226,.6), 0 3px 10px rgba(176,58,46,.38);transition:transform .2s,box-shadow .2s}
+/* 排行榜/抽屉里的旧 emoji 图标也改成小印章 */
+#leaderboardContent .hive-avatar,#leaderboardContent [style*="font-size:24px"]{background:#b03a2e!important;color:#f7ede2!important;border-radius:3px;font-family:"STKaiti","KaiTi",serif!important;font-weight:700;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;font-size:14px!important;padding:0;border:1.5px solid #b03a2e;outline:1px solid #f7ede2;outline-offset:-3px;box-shadow:inset 0 0 0 1px rgba(247,237,226,.45),0 1px 5px rgba(176,58,46,.25);transform:rotate(-2deg)}
+
 </style>
 <link rel="alternate" hreflang="zh-CN" href="https://www.ai-nav-build.com/">
 <link rel="alternate" hreflang="en" href="https://www.ai-nav-build.com/en/">
@@ -11813,7 +11852,7 @@ function renderFeatured(){
     var review=EDITOR_REVIEWS[t.name]||'';
     return'<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.3s" onmouseover="this.style.borderColor=\'var(--honey)\';this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 8px 30px var(--amber-glow)\';" onmouseout="this.style.borderColor=\'\';this.style.transform=\'\';this.style.boxShadow=\'\';" onclick="openDrawer(\''+t.name.replace(/'/g,"\\'")+'\')">'
       +'<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">'
-      +'<div style="width:38px;height:38px;border-radius:12px;background:'+t.color+';display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;font-weight:800;color:#fff;flex-shrink:0">'+t.name.charAt(0).toUpperCase()+'</div>'
+      +'<div class="hive-avatar" style="flex-shrink:0">'+t.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'').charAt(0).toUpperCase()+'</div>'
       +'<span style="font-weight:700;font-size:14px">'+t.name+'</span></div>'
       +'<p style="font-size:11px;color:var(--text2);line-height:1.5">'+t.desc.substring(0,50)+'...</p>'
       +(review?'<div style="margin-top:10px;padding:8px 12px;background:rgba(240,168,48,.06);border-left:3px solid var(--honey);border-radius:0 8px 8px 0"><p style="font-size:11px;color:var(--honey2);line-height:1.5;font-style:italic">"'+review+'"</p><p style="font-size:10px;color:var(--text3);margin-top:4px">—— 蜂巢编辑</p></div>':'')
@@ -11828,7 +11867,7 @@ function renderTools(){
   var info=document.getElementById('resultInfo');
   if(!c)return;
   if(!filtered.length){
-    c.innerHTML='<div style="text-align:center;padding:60px 20px;color:var(--text3);grid-column:1/-1;width:100%"><p style="font-size:40px">🍯</p><p>蜂巢里还没找到这个工具</p></div>';
+    c.innerHTML='<div style="text-align:center;padding:60px 20px;color:var(--text3);grid-column:1/-1;width:100%"><p style="font-size:40px;margin-bottom:12px"><span class="hive-avatar" style="width:44px;height:44px;font-size:20px;border-radius:3px">空</span></p><p>蜂巢里还没找到这个工具</p></div>';
     if(info)info.textContent='';
     return;
   }
@@ -11842,7 +11881,7 @@ function renderTools(){
     var isFeat=featured.has(t.name);
     var tags=(t.tags||[]).filter(function(tag){return tag==='hot'||tag==='free'||tag==='new'||tag==='verified'});
     var mainTag=tags[0];
-    var tagLabel=mainTag==='hot'?'🔥':mainTag==='free'?'✨':mainTag==='new'?'🆕':mainTag==='verified'?'✅':'';
+    var tagLabel=mainTag==='hot'?'热':mainTag==='free'?'免':mainTag==='new'?'新':mainTag==='verified'?'荐':'';
     var pricingLabel=t.pricing==='free'?'免费':t.pricing==='paid'?'付费':'免费+付费';
     var initials=t.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'').charAt(0).toUpperCase();
 
@@ -11952,7 +11991,7 @@ function openModal(){document.getElementById('submitModal').classList.add('activ
 function showLeaderboard(){
   var sorted=[...tools].sort(function(a,b){return(parseInt(b.views)||0)-(parseInt(a.views)||0)}).slice(0,10);
   document.getElementById('leaderboardContent').innerHTML=sorted.map(function(t,i){
-    return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')"><span style="font-size:20px;font-weight:900;color:'+(i<3?'var(--honey)':'var(--text3)')+';width:30px">'+(i+1)+'</span><span style="font-size:24px">'+t.icon+'</span><div><div style="font-weight:600">'+t.name+'</div><div style="font-size:12px;color:var(--text3)">'+t.desc.substring(0,30)+'... · '+t.views+'</div></div></div>';
+    return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="openTool(\''+t.name.replace(/'/g,"\\'")+'\')"><span style="font-size:20px;font-weight:900;color:'+(i<3?'var(--honey)':'var(--text3)')+';width:30px">'+(i+1)+'</span><span class="hive-avatar" style="width:28px;height:28px;font-size:13px;border-radius:3px;flex-shrink:0">'+t.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g,'').charAt(0).toUpperCase()+'</span><div><div style="font-weight:600">'+t.name+'</div><div style="font-size:12px;color:var(--text3)">'+t.desc.substring(0,30)+'... · '+t.views+'</div></div></div>';
   }).join('');
   document.getElementById('leaderboardModal').classList.add('active');
 }
