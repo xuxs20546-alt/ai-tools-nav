@@ -519,6 +519,28 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none}
 /* ── 页脚木牌 ── */
 .footer-brand h3::after{content:'';display:inline-block;width:34px;height:2px;background:var(--wood,#a08060);margin-left:10px;vertical-align:4px;border-radius:1px}
 
+
+/* ── 工具卡片木纹纹理 (很轻, 不抢内容) ── */
+.hive-hex{
+  background-color:#faf7f1;
+  background-image:
+    repeating-linear-gradient(92deg, rgba(160,128,96,.06) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(0deg, rgba(160,128,96,.045) 0 1px, transparent 1px 7px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.006 0.4' numOctaves='2' seed='7'/><feColorMatrix type='matrix' values='0 0 0 0 0.54 0 0 0 0 0.44 0 0 0 0 0.32 0 0 0 0.5 0'/></filter><rect width='140' height='140' filter='url(%23g)'/></svg>");
+  background-size:auto,auto,140px 140px;
+}
+.picks-grid .hive-hex{background-color:#faf7f1;background-image:repeating-linear-gradient(92deg, rgba(160,128,96,.06) 0 2px, transparent 2px 22px),repeating-linear-gradient(0deg, rgba(160,128,96,.045) 0 1px, transparent 1px 7px),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.006 0.4' numOctaves='2' seed='7'/><feColorMatrix type='matrix' values='0 0 0 0 0.54 0 0 0 0 0.44 0 0 0 0 0.32 0 0 0 0.5 0'/></filter><rect width='140' height='140' filter='url(%23g)'/></svg>");background-size:auto,auto,140px 140px}
+/* 列表视图同纹 */
+.hive-wrap.list-view .hive-hex{background-color:#faf7f1;background-image:repeating-linear-gradient(92deg, rgba(160,128,96,.055) 0 2px, transparent 2px 22px),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.006 0.4' numOctaves='2' seed='7'/><feColorMatrix type='matrix' values='0 0 0 0 0.54 0 0 0 0 0.44 0 0 0 0 0.32 0 0 0 0.5 0'/></filter><rect width='140' height='140' filter='url(%23g)'/></svg>");background-size:auto,140px 140px}
+/* 悬停: 木纹微深, 像手指摩挲过 */
+.hive-cell:hover .hive-hex{
+  background-image:
+    repeating-linear-gradient(92deg, rgba(160,128,96,.075) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(0deg, rgba(160,128,96,.05) 0 1px, transparent 1px 7px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.006 0.4' numOctaves='2' seed='7'/><feColorMatrix type='matrix' values='0 0 0 0 0.54 0 0 0 0 0.44 0 0 0 0 0.32 0 0 0 0.6 0'/></filter><rect width='140' height='140' filter='url(%23g)'/></svg>");
+  background-size:auto,auto,140px 140px;
+}
+
 </style>
 <link rel="alternate" hreflang="zh-CN" href="https://www.ai-nav-build.com/">
 <link rel="alternate" hreflang="en" href="https://www.ai-nav-build.com/en/">
