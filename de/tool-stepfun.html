@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="baidu-site-verification" content="codeva-GDtmTxcRKy" />
+<title>StepFun Testbericht – multimodale LLMs der Step-Serie, universeller Agent auf dem Weg zur AGI | Beehive AI</title>
+<meta name="description" content="Ausführlicher Testbericht und Anwendungsleitfaden zur Step-Serie von StepFun. Gegründet von Harry Shum, ehemaligem globalen Executive Vice President bei Microsoft – die multimodalen Step-Modelle überzeugen bei visuellem Verständnis und mathematischem Denken. Vor- und Nachteile sowie Empfehlungen für Alternativen.">
+<meta name="keywords" content="StepFun,Step-LLM,stepfun,Harry Shum,multimodale KI">
+<link rel="canonical" href="https://www.ai-nav-build.com/de/tool-stepfun.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StepFun Ausführlicher Testbericht & Anwendungsleitfaden">
+<meta property="og:description" content="Gegründet von Harry Shum, ehemaligem globalen Executive Vice President bei Microsoft, überzeugen die multimodalen Step-Modelle bei visuellem Verständnis und mathematischem Denken">
+<meta property="og:url" content="https://www.ai-nav-build.com/de/tool-stepfun.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="zh-CN" href="https://www.ai-nav-build.com/tool-stepfun.html">
+<link rel="alternate" hreflang="en" href="https://www.ai-nav-build.com/en/tool-stepfun.html">
+<link rel="alternate" hreflang="de" href="https://www.ai-nav-build.com/de/tool-stepfun.html">
+<link rel="alternate" hreflang="fr" href="https://www.ai-nav-build.com/fr/tool-stepfun.html">
+<link rel="alternate" hreflang="ja" href="https://www.ai-nav-build.com/ja/tool-stepfun.html">
+<link rel="alternate" hreflang="ru" href="https://www.ai-nav-build.com/ru/tool-stepfun.html">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNXGE2XXCY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PNXGE2XXCY");</script>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?1eb475f4e4544dbb45fa2f787dc87c20";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script>
+<style>
+.tool-hero{text-align:center;padding:60px 24px 40px;background:linear-gradient(180deg,#1e40af15,transparent)}
+.tool-hero .icon-lg{width:80px;height:80px;background:#1e40af;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px;box-shadow:0 0 40px #1e40af40}
+.tool-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}
+.tool-hero .sub{color:var(--text2);font-size:15px;max-width:500px;margin:0 auto 20px}
+.cta-btn{display:inline-block;padding:12px 32px;background:var(--accent);color:#fff;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;margin:0 6px;transition:.2s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(124,106,239,.4)}
+.cta-btn.ghost{background:transparent;border:1px solid var(--accent);color:var(--accent2)}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 80px}
+.wrap h2{font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)}
+.wrap p,.wrap li{font-size:15px;line-height:1.85;color:var(--text2)}
+.wrap ul{padding-left:20px;margin-bottom:16px}
+.wrap li{margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0}
+.pro-box,.con-box{padding:24px;border-radius:var(--radius)}
+.pro-box{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2)}
+.pro-box h4{color:#34d399;margin-bottom:12px}
+.con-box{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2)}
+.con-box h4{color:#f87171;margin-bottom:12px}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.related-card{padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:inherit;transition:.2s;display:block}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .name{font-weight:600;font-size:15px}
+.related-card .cat{font-size:12px;color:var(--text3);margin-top:4px}
+.stars{color:#facc15;font-size:16px;letter-spacing:2px;margin-right:6px}
+.rating{font-weight:700;font-size:18px}
+.rating-count{color:var(--text3);font-size:13px}
+@media(max-width:768px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="/de/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">Beehive <span>AI</span></span></a>
+<nav style="display:flex;gap:6px;margin-left:auto"><a href="/de/" class="btn btn-ghost">🏠 Startseite</a><a href="/de/daily.html" class="btn btn-ghost">📰 Täglich</a><a href="/de/blog.html" class="btn btn-ghost">📚 Blog</a></nav>
+</div></header>
+
+<main>
+<div class="tool-hero"><div class="icon-lg">🌟</div><h1>StepFun Ausführlicher Testbericht</h1>
+<p class="sub">Gegründet von Harry Shum, ehemaligem globalen Executive Vice President bei Microsoft, überzeugen die multimodalen Step-Modelle bei visuellem Verständnis und mathematischem Denken</p>
+<a href="https://www.stepfun.com" target="_blank" rel="nofollow" class="cta-btn">🚀 Offizielle Website besuchen</a>
+<a href="/de/" class="cta-btn ghost">🔍 Weitere Tools entdecken</a>
+<div style="margin-top:18px"><span class="stars">★★★★☆</span><span class="rating">4.1</span> <span class="rating-count">(98 Bewertungen)</span></div>
+</div>
+
+<div class="wrap">
+<h2>📖 Überblick</h2>
+<p>StepFun wurde 2023 von Dr. Harry Shum gegründet – einem weltweit führenden Computer-Vision-Forscher und ehemaligem globalen Executive Vice President bei Microsoft – mit der Vision, dass „jeder Schritt in Richtung AGI zählt". Das Flaggschiff-Produkt, die Step-Serie großer Sprachmodelle, konzentriert sich auf den Aufbau multimodaler Agenten: Anders als andere große Sprachmodelle, die Bildverständnis nur als Zusatzfunktion anbieten, hat StepFun die Modalitäten Vision, Sprache und Code von Beginn der Modellarchitektur an gleichberechtigt gemeinsam trainiert. Step-1V, das erste öffentliche multimodale Flaggschiffmodell, erzielte Ende 2024 im MMMU-Benchmark (Massive Multi-discipline Multimodal Understanding) Ergebnisse auf dem Niveau von GPT-4V.</p>
+<p>Das 2025 veröffentlichte Step-2-Modell hat die visuelle Denkfähigkeit weiter ausgebaut: Das Modell erkennt nicht nur Objekte und Text in Bildern, sondern versteht auch räumliche Beziehungen, geometrische Strukturen und physikalische Kausalketten. Lädt man beispielsweise eine komplexe mechanische Konstruktionszeichnung hoch, kann Step-2 die Montagebeziehungen und Bewegungsabläufe der einzelnen Teile erklären – ein direkter kommerzieller Nutzen für Konstruktion und intelligente Fertigung. StepFun bietet zudem eine API-Plattform für Entwickler mit drei Produktlinien: Bildverständnis, Videoanalyse und Dokumentenanalyse. In der Wahrnehmung autonomer Fahrzeuge und in der industriellen Qualitätskontrolle gibt es bereits Vorzeigekunden.</p>
+<h2>✨ Vor- und Nachteile</h2>
+<div class="grid2">
+<div class="pro-box"><h4>👍 Stärken</h4><ul>
+<li>Klare Differenzierung bei visuellem Verständnis und räumlichem Denken: Bei Aufgaben, die visuelles und logisches Denken kombinieren – Diagrammanalyse, Verständnis von Konstruktionszeichnungen und medizinische Bildanalyse – übertrifft die Step-Serie rein textbasierte oder schwach visuelle Modelle derselben Generation deutlich</li>
+<li>Starke akademische und industrielle Präsenz des Gründungsteams: Dr. Harry Shum blickt auf über 30 Jahre Forschung in Computer Vision und KI zurück; Kernforscher aus Microsoft Research Asia, Tsinghua und CMU machen über 40 % des Teams aus – technische Tiefe und Talentdichte gehören zu den besten unter den chinesischen Modellen</li>
+<li>Präzise, vertikale API-Produktlinien: Statt „one model fits all" zu verfolgen, optimiert StepFun Bildverständnis, Videoanalyse und Dokumentenanalyse als getrennte Linien – jede mit eigenen Benchmarks und Kundenfällen, ideal für Unternehmen mit klaren Technologieentscheidungen</li>
+</ul></div>
+<div class="con-box"><h4>👎 Schwächen</h4><ul>
+<li>Kein Verbraucherprodukt: Anders als Tencent Yuanbao oder Baidu ERNIE Bot mit riesigen Konsumenten-Apps hat StepFun derzeit kein kostenloses Chatprodukt für Endnutzer – Entwickler müssen für die Nutzung der Step-Fähigkeiten über die API bezahlen, eine recht hohe Hürde</li>
+<li>Allgemeine Konversation und kreatives Schreiben sind keine Kernstärken: Die Ressourcen von Step konzentrieren sich stark auf multimodales Verständnis; reiner Text-Chat und kreatives Schreiben stechen gegenüber Verbraucher-Chatbots nicht hervor – als Alltags-Chatassistent nicht zu empfehlen</li>
+<li>Außerhalb der Fachszene praktisch unbekannte Marke: Der zurückhaltende, technologieorientierte Stil von StepFun führt zu minimaler Präsenz in allgemeinen Medien und in der Öffentlichkeit, was die Arbeitgeberattraktivität einschränkt und die künftige Talentstrategie erschweren kann</li>
+</ul></div>
+</div>
+
+<h2>🎯 Anwendungsfälle</h2>
+<ul>
+<li><strong>Intelligente Analyse und Qualitätskontrolle von Industriezeichnungen</strong> – Produktscans vom Band werden in Echtzeit an die Step-API gesendet; das System vergleicht automatisch mit Standard-Konstruktionszeichnungen und markiert Maßabweichungen und Oberflächenfehler. Ein Elektronikhersteller senkte die Fehlalarmquote der manuellen Sichtprüfung von 8 % auf 1,5 %.</li>
+<li><strong>Unterstützte Befundung medizinischer Bilder</strong> – Radiologen laden CT- oder MRT-Bilder eines Patienten hoch; Step-2 markiert automatisch verdächtige Läsionsbereiche, misst deren Größe und liefert eine Wahrscheinlichkeitseinschätzung für gutartig/bösartig – als „zweites Paar Augen" für diagnostische Entscheidungen.</li>
+<li><strong>Szenenverständnis und Annotation für autonomes Fahren</strong> – Nach dem Rückfluss von Straßentestdaten klassifizieren Unternehmen mit der Step-API automatisch Fußgänger, Fahrzeuge, Verkehrszeichen und Anomalien und verkürzen die manuelle Annotation von 1 Million Bildern von 3 Monaten auf 1 Woche.</li>
+</ul>
+
+<h2>💡 Nutzungsempfehlungen</h2>
+<ul>
+<li><strong>Vor der API-Auswahl die eigenen Daten gegen offizielle Benchmarks testen:</strong> StepFun veröffentlicht Benchmark-Daten für jedes Modell, aber reale Geschäftsszenarien können von Standard-Testsets abweichen – erst eine Evaluierung mit 200–500 eigenen Datenpunkten durchführen, dann über den Kauf entscheiden</li>
+<li><strong>Für die Videoanalyse den asynchronen Batch-Modus bevorzugen:</strong> Die Video-API von Step unterstützt synchrone und asynchrone Aufrufe; bei Videos über 5 Minuten unbedingt den asynchronen Modus verwenden, sonst drohen Timeouts und unvollständige Ergebnisse</li>
+<li><strong>Dokumentenanalyse für bessere Ergebnisse mit einer OCR-Engine kombinieren:</strong> Das Dokumentverständnis von Step reagiert empfindlich auf die Scanqualität; historische Scans mit geringer Auflösung zuerst mit professionellen OCR-Tools vorverarbeiten und dann an die Step-API zur strukturierten Extraktion senden</li>
+</ul>
+
+<h2>🔄 Empfohlene Alternativen</h2>
+<p>Wenn Sie sich für Alternativen zu StepFun interessieren, sind diese Tools ebenfalls einen Blick wert:</p>
+<div class="related"><a href="/de/tool-chatgpt.html" class="related-card"><div class="name">ChatGPT</div><div class="cat">KI-Tool</div></a><a href="/de/tool-qwen.html" class="related-card"><div class="name">Qwen</div><div class="cat">KI-Tool</div></a><a href="/de/tool-chatglm.html" class="related-card"><div class="name">Zhipu Qingyan</div><div class="cat">KI-Tool</div></a><a href="/de/tool-sensetime-ririxin.html" class="related-card"><div class="name">SenseTime RiriXin</div><div class="cat">KI-Tool</div></a></div>
+</div>
+
+<article class="review-body" style="max-width:900px;margin:0 auto;padding:0 24px 80px">
+<h2>Kernfunktionen</h2>
+<p>Die Produktmatrix von StepFun dreht sich um die Step-Serie großer Sprachmodelle – vom Step-1 mit hundert Milliarden Parametern über den Step-2 mit Billionen Parametern bis zum 2025 eingeführten effizienten Modell Step 3.7 Flash für Agenten-Szenarien. Beim multimodalen Verständnis unterstützt die Step-Serie drei primäre Eingabemodalitäten – Bilder, Video und Dokumente: Bildverständnismodelle erkennen Objekte, Text, Diagramme und räumliche Beziehungen und führen tiefe Schlussfolgerungen zu komplexen Szenen durch; Videomodelle verfolgen dynamische Veränderungen Bild für Bild und verstehen Ereigniskausalketten und Zeitlinien; Dokumentenmodelle extrahieren und strukturieren Informationen aus unstrukturierten Dokumenten wie PDFs und Scans.</p>
+<p>Die End-to-End-Sprachfähigkeit ist ein weiteres Highlight von StepFun. Die Modelle step-1o-audio und step-audio-2 unterstützen die vollständige Kette von Spracheingabe bis Sprachausgabe: Nutzer interagieren mit dem Modell in natürlicher Sprache und es antwortet per Sprachausgabe, mit einer Latenz im akzeptablen Bereich. Technisch ist die StepFun-API vollständig kompatibel mit dem OpenAI-Schnittstellenformat, sodass Entwickler sie direkt mit vorhandenen OpenAI-SDKs aufrufen können – die Migrationskosten sind verschwindend gering. Die Plattform bietet außerdem Modell-Feintuning, sodass Unternehmen Modelle mit eigenen Daten individualisieren können. Das 2025 veröffentlichte Step 3.7 Flash wurde speziell für Agenten-Szenarien optimiert und stärkt Tool-Calling, Websuche und die Orchestrierung langer Aufgabenketten.</p>
+
+<h2>Erste Schritte</h2>
+<p>Die StepFun-Entwicklerplattform (platform.stepfun.com) ist der wichtigste Einstiegspunkt zur Step-Serie. Die Registrierung ist einfach: Nach der Anmeldung mit Telefonnummer oder E-Mail wird in der Konsole ein API-Key erstellt, und schon lassen sich Modelle per REST-API oder OpenAI-kompatiblen SDKs aufrufen. Die Plattform bietet ein Playground, in dem Entwickler ohne Code verschiedene Modelle über die Weboberfläche testen können – Bild hochladen und erkennen lassen, Text eingeben und Verständnis sowie Generierung prüfen oder ein Dokument hochladen und die Parse-Ergebnisse ansehen.</p>
+<p>Ein typischer API-Ablauf: Modell auswählen (z. B. step-2-16k für Langtextverständnis, step-1v-8k für Bildanalyse) → Anfragekörper erstellen (mit System-Prompt, User-Message sowie Base64-Daten oder URLs für Bilder/Dokumente) → HTTP-POST-Request senden → die zurückgegebene JSON-Antwort parsen. Bei asynchroner Videoanalyse wird zuerst die Videodatei übermittelt, um eine task_id zu erhalten, dann pollt man den Status, bis die Verarbeitung abgeschlossen ist, und ruft die Ergebnisse ab. Die API-Antwortzeiten von StepFun sind bei leichten Aufgaben schnell (1–3 Sekunden); Video- und Langdokumentverarbeitung dauert jedoch mehrere Minuten – die Plattform meldet die Fertigstellung per Webhook oder Polling.</p>
+
+<h2>Preismodelle</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<thead><tr><th>Modell</th><th>Eingabepreis (pro Million Tokens)</th><th>Ausgabepreis (pro Million Tokens)</th></tr></thead>
+<tbody>
+<tr><td>step-1o-audio (End-to-End-Sprache)</td><td>25 CNY</td><td>5 CNY</td></tr>
+<tr><td>step-audio-2 (Sprachmodell)</td><td>10 CNY</td><td>2 CNY</td></tr>
+<tr><td>Step-2-Serie (multimodales Flaggschiff)</td><td>Echtzeitpreise auf der offiziellen Website</td><td>Echtzeitpreise auf der offiziellen Website</td></tr>
+<tr><td>Step 3.7 Flash (Agenten-Szenarien)</td><td>Echtzeitpreise auf der offiziellen Website</td><td>Echtzeitpreise auf der offiziellen Website</td></tr>
+</tbody>
+</table>
+<p style="color:#667085;font-size:13px">※ Die obigen Preise stammen aus öffentlichen Informationen der StepFun-Offenplattform (2026). Die Preise variieren je nach Modellversion; Bild-/Videoanalyse wird nach zusätzlichen Dimensionen abgerechnet. Maßgeblich sind die Echtzeitpreise auf platform.stepfun.com.</p>
+
+<h2>Stärken und Grenzen</h2>
+<p><strong>Stärken:</strong> Multimodales visuelles Verständnis ist der klarste Differenzierungsvorteil von StepFun – die Step-Serie gehört bei Diagrammanalyse, Verständnis von Konstruktionszeichnungen und medizinischer Bildanalyse zu den besten inländischen Modellen. Die End-to-End-Sprachinteraktion ist flüssig; step-1o-audio kommt in chinesischen Szenarien nahe an die Natürlichkeit echter menschlicher Konversation heran. Die OpenAI-Kompatibilität der API macht die Migration bestehender Projekte nahezu kostenlos – Entwickler müssen keinen Code umschreiben. Das Modell-Feintuning reagiert aktiv auf Individualisierungswünsche von B2B-Kunden und ermöglicht das Training dedizierter Modelle auf branchenspezifischen Daten.</p>
+<p><strong>Grenzen:</strong> Das Fehlen von Verbraucherprodukten begrenzt die Markenwirkung – ohne ein kostenloses Chatprodukt wie ChatGPT oder Yuanbao haben normale Nutzer fast keinen Zugang. Die API-Preise liegen im mittleren bis oberen Bereich unter den inländischen Modellen und bedeuten Kostendruck für Startups mit knappen Budgets. Allgemeine Konversation und kreatives Schreiben sind in reinen Textszenarien schwächer als bei darauf spezialisierten Wettbewerbern (z. B. DeepSeek). Die Plattform bietet derzeit keine ausgereiften grafischen Werkzeuge für RAG (retrieval-augmented generation) und Agenten-Orchestrierung – Entwickler müssen die entsprechende Infrastruktur selbst aufbauen.</p>
+
+<h2>Für wen es geeignet ist</h2>
+<ul>
+<li><strong>Computer-Vision-Ingenieure</strong> – benötigen hochpräzise Bild-/Video-Verständnis-APIs zur Einbindung in Produkte, etwa für autonomes Fahren, industrielle Qualitätskontrolle oder medizinische Bildanalyse.</li>
+<li><strong>Enterprise-KI-Teams</strong> – suchen anpassbare, feintunbare multimodale Modelle mit eigenen Branchendaten und klaren kommerziellen Einsatzszenarien.</li>
+<li><strong>Entwickler intelligenter Hardware</strong> – benötigen End-to-End-Sprachinteraktion für Roboter, Smart Glasses oder Fahrzeugsysteme.</li>
+<li><strong>Teams mit OpenAI-API-Erfahrung auf der Suche nach inländischen Alternativen</strong> – die OpenAI-kompatible API hält die Umstellungskosten extrem niedrig.</li>
+</ul>
+
+<h2>Vergleich mit ähnlichen Tools</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<thead><tr><th>Dimension</th><th>StepFun Step</th><th>Zhipu GLM</th><th>SenseTime RiriXin</th></tr></thead>
+<tbody>
+<tr><td>Multimodaler Schwerpunkt</td><td>Visuelles Verständnis + räumliches Denken</td><td>Bild-/Textgenerierung + Wissensgraphen</td><td>Visuelle Wahrnehmung + Branchenlösungen</td></tr>
+<tr><td>Sprachfähigkeit</td><td>End-to-End-Sprachinteraktion</td><td>Basis-Spracherkennung</td><td>Basis-Sprachfunktionen</td></tr>
+<tr><td>API-Kompatibilität</td><td>OpenAI-Format kompatibel</td><td>Eigenes Format + OpenAI-kompatibel</td><td>Überwiegend eigenes Format</td></tr>
+<tr><td>Verbraucherprodukt</td><td>Keines</td><td>Ja (Zhipu Qingyan)</td><td>Ja (SenseChat)</td></tr>
+<tr><td>Geeignet für</td><td>Visuelle KI + Agentenentwicklung</td><td>Wissensintensive Anwendungen</td><td>Vertikale Branchenlösungen</td></tr>
+</tbody>
+</table>
+
+<h2>Häufige Fragen</h2>
+<p><strong>F: Hat StepFun ein kostenloses Verbraucherprodukt?</strong><br>A: Derzeit hat StepFun keine kostenlose Chat-Anwendung wie ChatGPT oder Tencent Yuanbao. Privatnutzer, die die Step-Serie ausprobieren möchten, können sie über das Playground der Offenplattform testen oder die API aufrufen (es gibt ein kleines kostenloses Kontingent).</p>
+<p><strong>F: Wie große Bilder und Videos kann die Step-API verarbeiten?</strong><br>A: Die Bildverständnismodelle unterstützen gängige Formate wie JPEG, PNG und WebP; die Auflösungsobergrenze pro Bild liegt bei etwa 4096×4096 Pixeln (abhängig von der Modellversion). Die Videoanalyse unterstützt gängige Formate wie MP4 und MOV; die Längenbegrenzung variiert je nach Modell – die aktuellen Limits finden Sie in der Plattformdokumentation.</p>
+<p><strong>F: Wie viel Code muss ich für die Migration von der OpenAI-API ändern?</strong><br>A: Da die API von StepFun OpenAI-Format-kompatibel ist, muss theoretisch nur die base_url von api.openai.com auf api.stepfun.com geändert, der API-Key ersetzt und die Modellparameternamen auf die Step-Serie angepasst werden. Bei Prompt-Wirkung und Ausgabeformat kann es jedoch feine Unterschiede geben, daher ist ein Test erforderlich.</p>
+<p><strong>F: Wie schneiden die Modelle von StepFun im Vergleich zu DeepSeek ab?</strong><br>A: Die beiden Modelle sind unterschiedlich positioniert – Step konzentriert sich auf multimodales visuelles Verständnis und End-to-End-Sprachinteraktion, DeepSeek auf reines Textdenken und Codegenerierung. Stehen Bild-/Videoanalyse im Vordergrund, hat Step die Nase vorn; bei reiner Textkonversation und Code-Unterstützung ist DeepSeek insgesamt stärker.</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">Testbericht aktualisiert: 2026-08-10 ｜ Basierend auf öffentlich zugänglichen Informationen; Preise laut offiziellen Echtzeitangaben</p>
+</article>
+
+</main>
+
+<footer class="footer"><div class="footer-bottom">© 2026 Beehive AI · <a href="/de/">Startseite</a> · <a href="/de/blog.html">Blog</a> · <a href="/de/daily.html">KI-Tagesübersicht</a> · <a href="/de/about.html">Über uns</a> · <a href="/de/privacy.html">Datenschutz</a></div></footer>
+</body>
+</html>
