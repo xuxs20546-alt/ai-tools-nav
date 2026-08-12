@@ -117,3 +117,47 @@ a{color:inherit;text-decoration:none}::selection{background:var(--accent);color:
 .logo:hover .logo-hex{transform:rotate(30deg)}
 .logo-bee{position:relative;z-index:1;font-size:22px}
 .logo-text span{font-size:13px;font-weight:400;color:var(--text3);margin-left:2px;-webkit-text-fill-color:var(--text3)}
+
+
+/* ============================================================
+   暖白原木皮肤覆盖层 (2026-08 改版) — 工具页/博客页共享
+   ============================================================ */
+:root{
+  --bg:#f7f3ec;--bg2:#efe9df;--bg3:#e7e0d3;--bg4:#ddd5c4;
+  --text:#2e2a24;--text2:#6d6457;--text3:#a3988a;
+  --accent:#6b7f6a;--accent2:#8a9a7b;--glow:rgba(107,127,106,.12);
+  --green:#4d7c5f;--red:#b05555;--orange:#b8863b;
+  --border:#e2dacb;--border2:#d5ccba;
+  --ad-bg:#efe9df;--ad-border:#e2dacb;
+  --honey:#a08060;--honey2:#b8916e;--honey3:#c9a684;--honey-dark:#6f5638;
+  --amber:#b8916e;--amber-glow:rgba(160,128,96,.10);
+  --glass-bg:rgba(247,243,236,.85);--glass-border:rgba(160,128,96,.10);
+}
+body{background:var(--bg);color:var(--text)}
+::selection{background:var(--moss,#6b7f6a);color:#f4f1e8}
+.header{background:rgba(247,243,236,.9);border-bottom:1px solid var(--border)}
+.logo-text{background:none;-webkit-background-clip:initial;-webkit-text-fill-color:var(--honey-dark);font-family:"Songti SC","Noto Serif CJK SC",serif;letter-spacing:.06em}
+.logo-icon{background:var(--bg3)}
+.btn-primary{background:var(--accent);color:#f4f1e8}
+.btn-primary:hover{box-shadow:none}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2)}
+.stat-num{background:none;-webkit-background-clip:initial;-webkit-text-fill-color:var(--honey-dark)}
+.search-box input{background:var(--bg2);border-color:var(--border2);color:var(--text)}
+.search-box input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.tool-hero{background:transparent}
+.tool-hero h1{font-family:"Songti SC","Noto Serif CJK SC",serif;color:var(--text)}
+.tool-hero .sub{color:var(--text2)}
+.wrap h2{color:var(--text);border-top-color:var(--border)}
+.wrap p,.wrap li{color:var(--text2)}
+.pro-box{background:rgba(77,124,95,.07);border-color:rgba(77,124,95,.2)}
+.con-box{background:rgba(176,85,85,.06);border-color:rgba(176,85,85,.18)}
+.related-card{background:var(--bg2);border-color:var(--border)}
+.related-card:hover{border-color:var(--accent)}
+.cta-btn{background:var(--accent);color:#f4f1e8}
+.cta-btn:hover{box-shadow:none}
+.cta-btn.ghost{background:transparent;border:1px solid var(--accent);color:var(--accent2)}
+.ad-banner{background:var(--ad-bg);border-color:var(--ad-border)}
+.ad-label{color:var(--text3);background:var(--bg3)}
+.footer{background:var(--bg2);border-top:1px solid var(--border)}
+.footer a{color:var(--text3)}
+.footer a:hover{color:var(--accent)}

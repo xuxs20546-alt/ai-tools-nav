@@ -13,7 +13,7 @@
   // ═════ 翻译字典 ═════
   function loadDict(){
     DICT={
-      siteName:{zh:'蜂巢 AI',en:'Hive AI',de:'Hive AI',fr:'Hive AI',ja:'ハイブ AI',ru:'Хайв AI'},
+      siteName:{zh:'蜂巢 AI',en:'Beehive AI',de:'Beehive AI',fr:'Beehive AI',ja:'ビーハイブ AI',ru:'Beehive AI'},
       siteDesc:{zh:'发现最好用的 AI 人工智能工具 | 蜂巢式 AI 导航',en:'Discover the Best AI Tools | AI Directory',de:'KI-Tools entdecken | KI-Verzeichnis',fr:'Découvrez les meilleurs outils IA',ja:'最高のAIツールを見つける | AIナビ',ru:'Лучшие ИИ-инструменты | Навигатор'},
       navHome:{zh:'首页',en:'Home',de:'Start',fr:'Accueil',ja:'ホーム',ru:'Главная'},
       navDaily:{zh:'日报',en:'Briefing',de:'Bericht',fr:'Briefing',ja:'デイリー',ru:'Брифинг'},
@@ -21,9 +21,9 @@
       navAbout:{zh:'关于',en:'About',de:'Über',fr:'À propos',ja:'について',ru:'О нас'},
       navPrivacy:{zh:'隐私',en:'Privacy',de:'Datenschutz',fr:';Confidentialité',ja:'プライバシー',ru:'Конфид.'},
       navContact:{zh:'联系',en:'Contact',de:'Kontakt',fr:'Contact',ja:'お問合せ',ru:'Контакты'},
-      heroTitle:{zh:'发现最适合你的',en:'Discover Your Perfect',de:'Entdecke dein perfektes',fr:'Découvrez votre',ja:'あなたに最適な',ru:'Найдите свой'},
+      heroTitle:{zh:'慢慢逛，',en:'Take your time,',de:'In Ruhe stöbern,',fr:'Prenez votre temps,',ja:'ゆっくり、',ru:'Не спешите,'},
       heroTitle2:{zh:'AI 工具',en:'AI Tool',de:'KI-Tool',fr:'outil IA',ja:'AIツールを',ru:'ИИ-инструмент'},
-      heroSub:{zh:'从 500+ 款精选 AI 产品中，按分类、用途和热度快速定位',en:'From 500+ curated AI products, find by category, use case and popularity',de:'Aus 500+ KI-Produkten – nach Kategorie und Beliebtheit',fr:'Parmi 500+ produits IA – par catégorie et popularité',ja:'500以上の厳選AI製品からカテゴリ・用途で検索',ru:'Из 500+ ИИ-продуктов – по категориям и популярности'},
+      heroSub:{zh:'五百多件工具，像摆在家里的器物，不喧哗，不催促。按需取用，用顺手的就是好工具。',en:'Over five hundred tools, arranged like things in a home—quiet, unhurried. Take what you need.',de:'Über fünfhundert Werkzeuge, wie Dinge im eigenen Heim—still und unaufdringlich. Nimm, was du brauchst.',fr:'Plus de cinq cents outils, rangés comme chez soi—calmes, sans hâte. Prenez ce qu'il vous faut.',ja:'五百を超える道具を、家の中の物のように静かに並べて。必要なものをどうぞ。',ru:'Более пятисот инструментов — как вещи дома: тихо, без суеты. Берите то, что нужно.'},
       searchPlaceholder:{zh:'搜索 AI 工具…',en:'Search AI tools…',de:'KI-Tools suchen…',fr:'Rechercher…',ja:'AIツール検索…',ru:'Поиск ИИ…'},
       statTools:{zh:'AI 工具',en:'AI Tools',de:'KI-Tools',fr:'Outils IA',ja:'AIツール',ru:'Инструм.'},
       statCats:{zh:'大分类',en:'Categories',de:'Kategorien',fr:'Catégories',ja:'カテゴリ',ru:'Категории'},
@@ -53,10 +53,10 @@
       emptySearch:{zh:'没找到匹配的工具',en:'No matching tools',de:'Keine Treffer',fr:'Aucun résultat',ja:'一致なし',ru:'Нет результ.'},
       btnVisit:{zh:'访问官网',en:'Visit',de:'Besuchen',fr:'Visiter',ja:'訪問',ru:'Перейти'},
       btnDetail:{zh:'评测详情',en:'Review',de:'Review',fr:'Avis',ja:'レビュー',ru:'Обзор'},
-      footerDesc:{zh:'蜂巢 AI 是一站式 AI 工具导航平台。已收录 500+ 款 AI 工具，涵盖 10 大领域。',en:'Hive AI is an AI tool directory with 500+ tools across 10 categories.',de:'KI-Tool-Verzeichnis mit 500+ Tools.',fr:'Annuaire IA avec 500+ outils.',ja:'500以上のAIツールを紹介。',ru:'Навигатор 500+ ИИ-инструментов.'},
+      footerDesc:{zh:'蜂巢 AI 是一站式 AI 工具导航平台。已收录 500+ 款 AI 工具，涵盖 10 大领域。',en:'Beehive AI is an AI tool directory with 500+ tools across 10 categories.',de:'Beehive AI – KI-Tool-Verzeichnis mit 500+ Tools.',fr:'Beehive AI – Annuaire IA avec 500+ outils.',ja:'ビーハイブAI – 500以上のAIツールを紹介。',ru:'Beehive AI – навигатор 500+ ИИ-инструментов.'},
       footerLinks:{zh:'快速链接',en:'Quick Links',de:'Links',fr:'Liens',ja:'リンク',ru:'Ссылки'},
       footerDisclaimer:{zh:'免责声明：所有工具归原作者所有。',en:'Disclaimer: All tools belong to their respective owners.',de:'Haftungsausschluss.',fr:'Avertissement.',ja:'免責事項。',ru:'Отказ от ответ.'},
-      copyright:{zh:'© 2026 蜂巢 AI',en:'© 2026 Hive AI',de:'© 2026 Hive AI',fr:'© 2026 Hive AI',ja:'© 2026 ハイブAI',ru:'© 2026 Hive AI'},
+      copyright:{zh:'© 2026 蜂巢 AI',en:'© 2026 Beehive AI',de:'© 2026 Beehive AI',fr:'© 2026 Beehive AI',ja:'© 2026 ビーハイブAI',ru:'© 2026 Beehive AI'},
       allTools:{zh:'全站工具评测',en:'All Tool Reviews',de:'Alle Reviews',fr:'Tous les avis',ja:'全レビュー',ru:'Все обзоры'},
       allPosts:{zh:'全部文章',en:'All Posts',de:'Alle Beiträge',fr:'Tous les articles',ja:'全記事',ru:'Все статьи'},
       blogHero:{zh:'AI 教程与行业观察',en:'AI Tutorials & Insights',de:'KI-Tutorials',fr:'Tutoriels IA',ja:'AIチュートリアル',ru:'ИИ-уроки'},
