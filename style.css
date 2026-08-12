@@ -161,3 +161,6 @@ body{background:var(--bg);color:var(--text)}
 .footer{background:var(--bg2);border-top:1px solid var(--border)}
 .footer a{color:var(--text3)}
 .footer a:hover{color:var(--accent)}
+
+/* ── 补丁: 工具页图标块浅色化 ── */
+.tool-hero .icon-lg{background:var(--bg3)!important;box-shadow:none!important;color:var(--text)}
