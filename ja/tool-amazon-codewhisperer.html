@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Amazon CodeWhisperer 徹底レビュー｜Beehive AI</title><meta name="description" content="Amazon CodeWhisperer（現 Amazon Q Developer）徹底レビュー：機能、無料枠とPro料金、導入フロー、GitHub Copilotとの比較、よくある質問。"><link rel="canonical" href="https://www.ai-nav-build.com/ja/tool-amazon-codewhisperer.html"><meta property="og:url" content="https://www.ai-nav-build.com/ja/tool-amazon-codewhisperer.html"><link rel="alternate" hreflang="zh-CN" href="https://www.ai-nav-build.com/tool-amazon-codewhisperer.html"><link rel="alternate" hreflang="en" href="https://www.ai-nav-build.com/en/tool-amazon-codewhisperer.html"><link rel="alternate" hreflang="de" href="https://www.ai-nav-build.com/de/tool-amazon-codewhisperer.html"><link rel="alternate" hreflang="fr" href="https://www.ai-nav-build.com/fr/tool-amazon-codewhisperer.html"><link rel="alternate" hreflang="ja" href="https://www.ai-nav-build.com/ja/tool-amazon-codewhisperer.html"><link rel="alternate" hreflang="ru" href="https://www.ai-nav-build.com/ru/tool-amazon-codewhisperer.html"><link rel="stylesheet" href="style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script><style>.tool-hero{text-align:center;padding:60px 24px 40px;background:linear-gradient(180deg,#f9731615,transparent)}.icon-lg{width:80px;height:80px;background:#f97316;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px}.tool-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}.tool-hero .sub{color:var(--text2);font-size:15px;max-width:500px;margin:0 auto 20px}.cta-btn{display:inline-block;padding:12px 32px;background:var(--honey);color:#1a1000;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none}.cta-btn:hover{transform:translateY(-2px)}.wrap{max-width:900px;margin:0 auto;padding:0 24px 80px}.wrap h2{font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)}.wrap p{font-size:15px;line-height:1.85;color:var(--text2)}.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}.related-card{padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:inherit;transition:.2s;display:block}.related-card:hover{border-color:var(--honey)}</style></head><body><header class="header"><div class="header-inner"><a href="/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">Beehive <span>AI</span></span></a><nav style="margin-left:auto"><a href="/" class="btn btn-ghost">🏠 ホーム</a></nav></div></header><main><div class="tool-hero"><div class="icon-lg">☁️</div><h1>Amazon CodeWhisperer</h1><p class="sub">AWSの無料AIコーディングアシスタント。15以上の言語とAWSサービスに対応</p><a href="https://aws.amazon.com/codewhisperer" target="_blank" rel="nofollow" class="cta-btn">🚀 公式サイトへ</a></div><div class="wrap"><h2>📖 概要</h2><p>AWSの無料AIコーディングアシスタント。15以上の言語とAWSサービスに対応</p><h2>💰 料金</h2><p>🆓 無料</p><h2>🔄 類似ツール</h2><div class="related"><a href="/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">💎</div></a><a href="/tool-cursor.html" class="related-card"><div class="name">Cursor</div><div class="cat">🔄</div></a><a href="/tool-replit.html" class="related-card"><div class="name">Replit</div><div class="cat">🔄</div></a><a href="/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">🆓</div></a></div></div><article class="review-body" style="max-width:900px;margin:0 auto;padding:0 24px 40px">
+<h2>ツール概要</h2>
+<p>Amazon CodeWhisperer は、アマゾン ウェブ サービス（AWS）が提供するAIペアプログラミングアシスタントです。2022年6月にプレビューとして登場し、2023年6月に正式提供が開始されました。開発者がコメントを書いたり、少しコードを入力したりすると、関数やロジック全体を自動補完します。Python、Java、JavaScript、TypeScript、Go、Rustなど主要言語に対応し、Lambda、S3、EC2などのAWSサービスについてはベストプラクティスに沿ったコード提案を行います。2024年4月30日、AWSはCodeWhispererをAmazon Q Developerブランドに統合しましたが、従来の無料枠とProサブスクリプション体系は現在も継続しています。AWSエコシステムで開発する人にとって、GitHub Copilotに次ぐ主要な無料代替ツールであり、「クラウドベンダー自前のコーディングアシスタント」を理解する代表的な存在です。</p>
+<h2>主要機能</h2>
+<p>1つ目はコード自動補完です。関数名やコメントを書くだけで、コンテキストに基づいて関数全体を生成します。IDEプラグインはVS Code、JetBrainsファミリー全体、Visual Studio、AWSのCloud9に対応し、提案の受け入れはTabキーを押すだけです。</p>
+<p>2つ目はAWSサービスとの深い統合です。AWS API呼び出しに特化して学習しており、Lambda関数やS3の読み書き、IAMポリシーなどのコード生成時にAWS公式のベストプラクティスに沿った提案を行います。これが汎用コーディングアシスタントとの最も明確な違いです。</p>
+<p>3つ目はセキュリティスキャンです。インジェクションリスク、ハードコードされたキー、脆弱な暗号化アルゴリズムなど、一般的な脆弱性パターンをスキャンし、具体的な修正提案を提示します。この機能は無料枠でも利用でき、類似ツールでは珍しい差別化ポイントです。</p>
+<p>4つ目は引用追跡とコンプライアンス通知です。生成コードがオープンソースプロジェクトを参照している場合、対応するライセンス情報を表示し、コンプライアンス審査時にチームが出所を追跡しやすくします。</p>
+<p>5つ目はコマンドライン対応です。2023年11月からAWSはCodeWhisperer for command line（現在はAmazon Q Developer CLIに統合）を提供しており、ターミナルで自然言語を使ってスクリプト作成やログ調査などをAIに指示できます。</p>
+<h2>導入と使い方</h2>
+<p>初回利用にはAWSアカウントの登録が必要です。無料枠は個人開発者に完全に開放されており、支払い方法の登録は不要です。インストールも簡単で、VS CodeやJetBrainsのプラグインマーケットで検索してインストールし、AWS Builder IDまたはIAM Identity Centerでログインすればエディタで利用開始できます。</p>
+<p>日常的な使い方は、コメントを書くか関数シグネチャを入力し、グレーの提案が表示されたらTabで受け入れ、Escで無視する、という流れです。提案が邪魔な場合は設定で自動提案をオフにし、ショートカットで手動トリガーに切り替えられます。AWS関連コードでは、デフォルトで有効なセキュリティスキャンを維持し、コミット前に追加のチェックを行うことをおすすめします。</p>
+<p>注目すべき変更点として、2024年の改名後、旧CodeWhispererプラグインは自動的にAmazon Q Developerへ移行します。メニューや設定は新しいブランドになりますが、使い方はほぼ同じです。インストールから最初に使える提案が届くまで、通常は十数分で完了します。</p>
+<h2>料金プラン</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>プラン</th><th>料金</th><th>説明</th></tr>
+<tr><td>無料枠</td><td>0ドル</td><td>個人開発者が利用可能。コード提案とセキュリティスキャンを含む。利用枠に制限あり</td></tr>
+<tr><td>Q Developer Pro</td><td>約19ドル/ユーザー/月</td><td>より高い利用上限、チーム管理、より多くの高度な機能</td></tr>
+</table>
+<p>上記は2024〜2025年の公開情報に基づく価格です。実際の価格と利用枠はAWS公式サイトの最新情報をご確認ください。</p>
+<h2>メリットとデメリット</h2>
+<p>メリット：無料枠が個人開発者に完全に開放され、導入コストがゼロ。AWSサービスと深く連携し、クラウド開発での提案品質が高い。セキュリティスキャンとライセンス引用の通知は明確な加点要素で、コンプライアンス重視のチームに実用的です。</p>
+<p>デメリット：AWSをまったく使わないチームには強みが活かせず、日常的な補完品質はGitHub Copilotなどの成熟製品にまだ及ばない。Q Developerへの改名後は製品ラインが複雑になり、初心者が無料枠・Pro・各種利用枠の説明で混乱しやすい。コマンドラインなどの高度な機能は、ある程度のAWS利用経験がなければ価値を発揮しにくい。</p>
+<h2>こんな人におすすめ</h2>
+<ul>
+<li>AWSクラウドサービスを利用して開発する個人エンジニアとチーム；</li>
+<li>ゼロコストでAIコーディングアシスタントを試したい初心者；</li>
+<li>コードのセキュリティスキャンが必要な開発者；</li>
+<li>すでにAWS IDEツールチェーン（Cloud9など）を利用している開発者。</li>
+</ul>
+<h2>類似ツール比較</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>ツール</th><th>料金</th><th>機能の特徴</th><th>おすすめのシーン</th></tr>
+<tr><td>Amazon Q Developer</td><td>無料枠＋約19ドル/月</td><td>AWS統合、セキュリティスキャン</td><td>AWSエコシステムでの開発</td></tr>
+<tr><td>GitHub Copilot</td><td>個人版 約10ドル/月</td><td>汎用コード補完</td><td>フルスタックの日常開発</td></tr>
+<tr><td>Codeium</td><td>無料＋有料</td><td>補完とチャット</td><td>コスト重視の個人ユーザー</td></tr>
+</table>
+<h2>よくある質問</h2>
+<p><strong>CodeWhispererは今もこの名前ですか？</strong> 2024年4月からAmazon Q Developerに改名されました。旧プラグインは自動的に移行し、機能は継続されます。</p>
+<p><strong>無料枠で足りる？</strong> 個人開発者の日常的な補完とセキュリティスキャンには基本的に十分です。チーム管理やより高い利用枠が必要になったらProを検討してください。</p>
+<p><strong>対応している開発環境は？</strong> VS Code、JetBrainsシリーズ、Visual Studio、AWS Cloud9に対応したプラグインが提供されています。</p>
+<p><strong>GitHub Copilotと同時にインストールできますか？</strong> 技術的には可能ですが、両方で自動提案を有効にすると互いに干渉しやすいため、片方だけにしておくことをおすすめします。</p>
+<p class="review-meta" style="color:#98a2b3;font-size:13px">レビュー更新：2026-08-09 ｜ 本記事は公開資料に基づいて作成されており、価格は公式サイトの最新情報を参照してください</p>
+</article></main><footer class="footer"><div class="footer-bottom">🐝 © 2026 Beehive AI</div></footer></body></html>
