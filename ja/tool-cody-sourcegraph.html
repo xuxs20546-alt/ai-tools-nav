@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="baidu-site-verification" content="codeva-GDtmTxcRKy" />
+<title>Cody（Sourcegraph）徹底レビュー – コード検索ベースのAIコーディングアシスタント | Beehive AI</title>
+<meta name="description" content="Cody（Sourcegraph）徹底レビュー。コード検索ベースのAIコーディングアシスタント。コードベース全体のコンテキストを深く理解し、コードを正確に特定・修正します。">
+<meta name="keywords" content="Cody AI,Sourcegraph,コード検索,AIコーディングアシスタント">
+<link rel="canonical" href="https://www.ai-nav-build.com/ja/tool-cody-sourcegraph.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cody（Sourcegraph）徹底レビュー">
+<meta property="og:description" content="Cody（Sourcegraph）徹底レビュー。コード検索ベースのAIコーディングアシスタント。コードベース全体のコンテキストを深く理解し、コードを正確に特定・修正します。">
+<meta property="og:url" content="https://www.ai-nav-build.com/ja/tool-cody-sourcegraph.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="zh-CN" href="https://www.ai-nav-build.com/tool-cody-sourcegraph.html">
+<link rel="alternate" hreflang="en" href="https://www.ai-nav-build.com/en/tool-cody-sourcegraph.html">
+<link rel="alternate" hreflang="de" href="https://www.ai-nav-build.com/de/tool-cody-sourcegraph.html">
+<link rel="alternate" hreflang="fr" href="https://www.ai-nav-build.com/fr/tool-cody-sourcegraph.html">
+<link rel="alternate" hreflang="ja" href="https://www.ai-nav-build.com/ja/tool-cody-sourcegraph.html">
+<link rel="alternate" hreflang="ru" href="https://www.ai-nav-build.com/ru/tool-cody-sourcegraph.html">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1177189308772483" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNXGE2XXCY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PNXGE2XXCY");</script>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?1eb475f4e4544dbb45fa2f787dc87c20";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script>
+<style>
+.tool-hero{text-align:center;padding:60px 24px 40px;background:linear-gradient(180deg,#f59e0b15,transparent)}
+.tool-hero .icon-lg{width:80px;height:80px;background:#f59e0b;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px;box-shadow:0 0 40px #f59e0b40}
+.tool-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}
+.tool-hero .sub{color:var(--text2);font-size:15px;max-width:500px;margin:0 auto 20px}
+.cta-btn{display:inline-block;padding:12px 32px;background:var(--accent);color:#fff;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;margin:0 6px;transition:.2s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(124,106,239,.4)}
+.cta-btn.ghost{background:transparent;border:1px solid var(--accent);color:var(--accent2)}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 80px}
+.wrap h2{font-size:22px;font-weight:700;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)}
+.wrap p,.wrap li{font-size:15px;line-height:1.85;color:var(--text2)}
+.wrap ul{padding-left:20px;margin-bottom:16px}
+.wrap li{margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0}
+.pro-box,.con-box{padding:24px;border-radius:var(--radius)}
+.pro-box{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2)}
+.pro-box h4{color:#34d399;margin-bottom:12px}
+.con-box{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2)}
+.con-box h4{color:#f87171;margin-bottom:12px}
+.related{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.related-card{padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:inherit;transition:.2s;display:block}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .name{font-weight:600;font-size:15px}
+.related-card .cat{font-size:12px;color:var(--text3);margin-top:4px}
+.stars{color:#facc15;font-size:16px;letter-spacing:2px;margin-right:6px}
+.rating{font-weight:700;font-size:18px}
+.rating-count{color:var(--text3);font-size:13px}
+@media(max-width:768px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="/ja/" class="logo"><div class="logo-icon"><div class="logo-hex"></div><span class="logo-bee">🐝</span></div><span class="logo-text">Beehive <span>AI</span></span></a>
+<nav style="display:flex;gap:6px;margin-left:auto"><a href="/ja/" class="btn btn-ghost">🏠 ホーム</a><a href="/ja/daily.html" class="btn btn-ghost">📰 デイリー</a><a href="/ja/blog.html" class="btn btn-ghost">📚 ブログ</a></nav>
+</div></header>
+<main>
+<div class="tool-hero"><div class="icon-lg">🔍</div><h1>Cody（Sourcegraph）徹底レビュー – コード検索ベースのAIコーディングアシスタント | Beehive AI</h1>
+<p class="sub">コード検索ベースのAIコーディングアシスタント。コードベース全体のコンテキストを深く理解し、コードを正確に特定・修正</p>
+<a href="https://sourcegraph.com/cody" target="_blank" rel="nofollow" class="cta-btn">🚀 公式サイトへ</a>
+<a href="/ja/" class="cta-btn ghost">🔍 もっと探す</a>
+<div style="margin-top:18px"><span class="stars">★★★★★</span><span class="rating">4.0</span> <span class="rating-count">(163件の評価)</span></div>
+</div>
+<div class="wrap">
+<h2>📖 ツール概要</h2>
+<p>CodyはSourcegraph社が開発したAIコーディングアシスタントで、最大の差別化ポイントはSourcegraphの強力なコード検索エンジンを利用できることです。CursorやCopilotがエディタ内のローカルインデックスに依存するのに対し、CodyはSourcegraphがホストするコードベース全体の全文インデックスに直接アクセスできます。リポジトリやモジュールをまたぐ大規模なコード問題を扱う際、他のAIツールには真似できない「視野」の広さを備えています。つまり、現在開いているファイルだけでなく、組織内の関連するすべてのリポジトリのコードを「見る」ことができるのです。</p>
+<p>CodyはVS Code、JetBrains、Neovimなどの主要エディタに対応し、コード補完、対話型Q&amp;A、コード解説、単体テストの自動生成などの機能を提供します。最大の特徴は「コード検索駆動のコンテキスト」です。あるコードがどこで呼び出されているかを質問すると、Codyはインデックスからすべての呼び出し箇所を即座に返し、AIモデルのコンテキストに注入します。公式データによると、Codyを導入した企業の開発者はコードナビゲーション効率が45%向上し、コードレビューの時間が30%短縮されます。無料版は個人開発者向けに公開されており、Pro版は月額9ドルです。</p>
+<h2>✨ メリット・デメリット分析</h2>
+<div class="grid2">
+<div class="pro-box"><h4>👍 メリット</h4><ul>
+<li>唯一無二のコード検索機能：Sourcegraphの検索エンジンでリポジトリやブランチをまたいでコードの参照を検索可能</li>
+<li>エンタープライズ級のコード理解：数百のマイクロサービスリポジトリを持つ環境に最適。リポジトリをまたいでサービス間の呼び出し関係を理解</li>
+<li>高品質な自動補完：現在のファイルだけでなく、コードベース全体の類似コードパターンを参考に補完</li>
+<li>オープンソースに友好的：Sourcegraph自体にオープンソース版があり、Codyの無料版も機能が充実</li>
+</ul></div>
+<div class="con-box"><h4>👎 デメリット</h4><ul>
+<li>Sourcegraphのインデックスに依存：コードリポジトリがSourcegraphに接続されていないと、コード検索の強みを活かせない</li>
+<li>学習曲線がやや急：Sourcegraphプラットフォームの設定（インデックス戦略、権限管理）にはDevOpsの知識が必要</li>
+<li>非コード系タスクの対応は並程度：ドキュメント作成や要件分析などは主なユースケースではない</li>
+</ul></div>
+</div>
+<h2>🎯 活用シーン</h2>
+<ul>
+<li><strong>大規模なマイクロサービスのリポジトリ横断修正</strong> — APIレスポンス形式の変更で、20のリポジトリを横断してすべての呼び出し元を検索し、修正コードを生成</li>
+<li><strong>新入社員のコード学習</strong> — 「このコードを説明して」を使って複雑なモジュールの呼び出しチェーンを段階的に理解</li>
+<li><strong>リファクタリングの影響分析</strong> — コア関数のリネーム前にすべての参照箇所を検索して影響範囲を評価</li>
+</ul>
+<h2>💡 活用のコツ</h2>
+<ul>
+<li><strong>インデックスカバレッジを最大化：</strong> 重要なリポジトリがすべて最新のSourcegraphインデックスに接続されていることを確認</li>
+<li><strong>@-ファイル構文を活用：</strong> 会話内で関連ファイルを明示的に参照してAIの特定を助ける</li>
+<li><strong>Code Searchと組み合わせる：</strong> まずSourcegraphで関連コードを検索し、その結果をCodyのコンテキストとして提供</li>
+</ul>
+<h2>🔄 類似ツールのおすすめ</h2>
+<p>Cody（Sourcegraph）の代替ツールに興味があれば、以下のツールも注目に値します：</p>
+<div class="related"><a href="/ja/tool-cursor-pro.html" class="related-card"><div class="name">Cursor Pro</div><div class="cat">AIコーディング</div></a><a href="/ja/tool-github-copilot.html" class="related-card"><div class="name">GitHub Copilot</div><div class="cat">AIコーディング</div></a><a href="/ja/tool-codeium.html" class="related-card"><div class="name">Codeium</div><div class="cat">AIコーディング</div></a><a href="/ja/tool-tabnine.html" class="related-card"><div class="name">Tabnine</div><div class="cat">AIコーディング</div></a></div>
+</div>
+
+<article class="review-body">
+
+<h2>🔧 コア機能</h2>
+<p>Codyの機能は「コードベース全体のコンテキスト理解」を軸に展開され、その中核となる強みはSourcegraphの検索エンジンがもたらすコード全体の可視性です：</p>
+<p><strong>コードベース全体を対象にしたスマート補完：</strong> 現在開いているファイルだけを参照する一般的な補完ツールとは異なり、Codyの補完エンジンはSourcegraphのインデックスからコードベース全体の中の現在の編集位置に関連するコード断片をコンテキストとして取得します。例えば内部APIを呼び出す関数を書いているとき、Codyは関数名だけでなく、そのAPIのリクエストパラメータ構造、戻り値の型、一般的な呼び出しパターンも自動的に提案します。これらの情報は、コードベース内の他の場所でのそのAPIの実際の利用方法に基づいています。</p>
+<p><strong>リポジトリ横断のコードQ&amp;A：</strong> Codyの最も強力な能力はリポジトリ横断の理解です。「OrderService.createOrder関数はどのマイクロサービスで呼び出されていますか？各呼び出し箇所の引数はどう違いますか？」と自然言語で質問すると、CodyはSourcegraphのコード検索エンジンで関連するすべてのリポジトリを検索し、呼び出し箇所を集約して引数の違いを分析します。この能力はマイクロサービスアーキテクチャのチームで非常に価値が高く、開発者は手動で複数のリポジトリを行き来する必要がありません。</p>
+<p><strong>スマートなコードリファクタリング：</strong> Codyはファイル横断・リポジトリ横断のリファクタリング操作に対応しています。例えば20のマイクロサービスから呼び出されている共通ライブラリの関数をリネームする場合、CodyはまずSourcegraphで全ての参照箇所を検索して影響範囲を評価し、あなたの確認を得てからファイルごとに変更を適用します。生成された変更は自動的にブランチを作成し、PRを発行します。</p>
+<p><strong>スラッシュコマンドによるクイック操作：</strong> Codyは定義済みのスラッシュコマンドを提供しています：/explain（選択したコードの解説）、/test（単体テストの生成）、/smell（コードの臭いの検出）、/doc（ドキュメントコメントの生成）。これらのコマンドはコードベースのコンテキストと組み合わせることで、現在のファイルだけに依存するAIツールよりもはるかに高品質な出力を実現します。</p>
+<p><strong>カスタムコマンド：</strong> チームはJSONで独自のCodyコマンドを定義できます。例えば、/reviewコマンドを作成して、チームのコードレビューチェックリストに沿ってPRを項目ごとにチェックし、レビュー報告書を出力するようCodyに指示できます。これらのカスタムコマンドはチーム全体で共有できます。</p>
+
+<h2>🚀 はじめ方</h2>
+<p>Codyの利用は2つのレベルに分かれます。個人開発者はエディタのプラグインを利用し、チーム管理者はSourcegraphプラットフォームでインデックス戦略を設定します。</p>
+<p>個人開発者にとって、インストールは一般的なAIコーディングプラグインと同様です。VS CodeまたはJetBrainsのマーケットプレイスでCodyプラグインをインストールし、Sourcegraphアカウントでログインします（またはGitHub/Googleアカウントを連携）。初回利用時にCodyはコードリポジトリのSourcegraphインスタンスアドレスを尋ねます。公開リポジトリの場合はSourcegraph.comのクラウドサービスを直接利用できますが、プライベートリポジトリの場合は管理者が先にSourcegraphプラットフォームでリポジトリの接続とインデックス設定を行う必要があります。</p>
+<p>日常のコーディングでは、Codyの補完体験はCopilotに似ています。入力中に自動的にグレーの候補が表示されます。違いは、大規模なコードベースの奥深くでコードを書いているとき、Codyの提案はより正確であることが多い点です。他のモジュールでの同じAPIの使い方を「見る」ことができるからです。チャットパネルは複数ターンの会話に対応しており、各質問で@-ファイル構文を使って特定のファイルを追加コンテキストとして手動参照できます。</p>
+<p>チーム管理者はSourcegraphコンソールでインデックス戦略を設定します：インデックス対象のリポジトリの選択、インデックス更新頻度の設定、アクセス権限の管理。インデックスの品質はCodyの検索・補完品質に直接影響します。インデックスのカバレッジが高いほど、Codyのリポジトリ横断能力は強くなります。</p>
+
+<h2>💲 料金プラン</h2>
+<p>Codyの料金はSourcegraphプラットフォームのプラン階層に連動しており、現在公開されている情報は以下の通りです：</p>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>プラン</th><th>月額料金</th><th>主な機能</th></tr>
+<tr><td>Free</td><td>$0</td><td>公開リポジトリのコード検索・補完、基本Q&amp;A、スラッシュコマンド、VS Code/JetBrainsプラグイン</td></tr>
+<tr><td>Pro</td><td>月額9ドル</td><td>Freeの全機能＋プライベートリポジトリ対応、高度なコードリファクタリング、カスタムコマンド、優先モデル</td></tr>
+<tr><td>Enterprise</td><td>要問い合わせ</td><td>Proの全機能＋プライベートリポジトリの無制限インデックス、SSO/SAML、プライベートデプロイ、カスタムモデル、監査ログ</td></tr>
+</table>
+<p style="color:#98a2b3;font-size:13px">上記の価格は公式サイトのリアルタイム情報に基づきます。Sourcegraphは大企業向けに年間契約のカスタムプランも提供しています。</p>
+
+<h2>👍 長所と限界</h2>
+<h3>長所</h3>
+<ul>
+<li><strong>コードベース全体のコンテキストは唯一無二：</strong> Sourcegraphの検索エンジンによるリポジトリ横断のコードインデックスにより、Codyは組織全体のコード関係を理解できます。これは現在他のAIコーディングツールにはない能力です。</li>
+<li><strong>大規模なエンタープライズコードベースに最適：</strong> 数百のマイクロサービスリポジトリを持つ大規模組織では、Codyのリポジトリ横断検索とリファクタリングによって、開発者がリポジトリ間を行き来する時間を大幅に削減できます。</li>
+<li><strong>オープンソースと無料版が充実：</strong> 公開リポジトリ向けに完全なコード検索とAI補完を提供し、オープンソースプロジェクトのメンテナーは中核機能をすべて無料で利用できます。</li>
+<li><strong>カスタムコマンドの拡張性が高い：</strong> チームは自社のワークフローに合ったカスタムコマンドを定義でき、AIにチームのレビュー基準とプロセスを守らせることができます。</li>
+</ul>
+<h3>限界</h3>
+<ul>
+<li><strong>Sourcegraphプラットフォームに依存：</strong> コードリポジトリがSourcegraphに接続・インデックスされていない場合、Codyのリポジトリ横断の強みは発揮できず、通常のAIコーディングツールとの違いはほとんどありません。</li>
+<li><strong>学習曲線がやや急：</strong> Sourcegraphプラットフォームの設定（インデックス戦略、権限管理、インスタンスのデプロイ）には一定のDevOps知識が必要で、小規模チームには運用負担が重く感じられるかもしれません。</li>
+<li><strong>非コード系タスクの対応は並程度：</strong> ドキュメント作成、要件分析、プロジェクト管理などプログラミング以外のタスクはCodyの設計上の重点ではなく、こうした場面では汎用AIツールの方が優れています。</li>
+</ul>
+
+<h2>👥 こんな人におすすめ</h2>
+<ul>
+<li><strong>大規模マイクロサービスアーキテクチャのチーム：</strong> 数十から数百のマイクロサービスリポジトリを持つ組織で、開発者が頻繁に呼び出し関係を検索し、リポジトリ横断の修正を行う環境。</li>
+<li><strong>エンタープライズコードガバナンスチーム：</strong> 組織全体のコード検索を一元管理し、コードのコンプライアンスとトレーサビリティを確保する必要があるプラットフォームエンジニアリングまたはDevExチーム。</li>
+<li><strong>オープンソースプロジェクトのコントリビューター：</strong> 大規模なオープンソースプロジェクトに貢献する開発者で、Codyを使ってプロジェクト構造とコード規約を素早く理解。</li>
+<li><strong>新しく入社したエンジニア：</strong> 大規模なコードベースを持つチームに加わった開発者で、Codyのコード検索とQ&amp;Aでシステムアーキテクチャとコード規約を素早く理解。</li>
+</ul>
+
+<h2>🔄 類似ツールとの比較</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin:12px 0">
+<tr><th>項目</th><th>Cody（Sourcegraph）</th><th>GitHub Copilot</th><th>Cursor</th></tr>
+<tr><td>主な違い</td><td>コード検索エンジン駆動のグローバルコンテキスト</td><td>GitHubエコシステムとの深い統合</td><td>AIネイティブIDE、対話型プログラミング</td></tr>
+<tr><td>リポジトリ横断の理解</td><td>強い（Sourcegraphインデックス）</td><td>弱い（ローカルインデックスのみ）</td><td>弱い（ローカルインデックスのみ）</td></tr>
+<tr><td>コード検索</td><td>全文＋セマンティック検索</td><td>GitHubコード検索</td><td>ローカルファイル検索</td></tr>
+<tr><td>エンタープライズ展開</td><td>プライベートデプロイ対応</td><td>GitHub Enterprise連携</td><td>プライベートデプロイの選択肢なし</td></tr>
+<tr><td>最低価格</td><td>無料；Pro月額9ドル</td><td>無料版あり；Business月額19ドル</td><td>無料版あり；Pro月額20ドル</td></tr>
+</table>
+
+<h2>❓ よくある質問</h2>
+<p><strong>Q：Codyは必ずSourcegraphプラットフォームと併用する必要がありますか？</strong><br>A：公開リポジトリの場合は、追加デプロイなしでSourcegraph.comのクラウドサービスを直接利用できます。プライベートリポジトリの場合は、管理者がSourcegraphプラットフォーム（SaaSまたはプライベートデプロイ）でリポジトリの接続とインデックス設定を行ってから、Codyがリポジトリ横断検索の強みを発揮できるようになります。</p>
+<p><strong>Q：CodyとGitHub Copilotは同時に使えますか？</strong><br>A：技術的には可能ですが、2つのプラグインのインライン補完が競合します（同時に2つの候補が表示されます）。片方をメインの補完ツールとして選び、もう片方は対話型Q&amp;Aのみに使うことをおすすめします。</p>
+<p><strong>Q：Codyはプライベートコードを読み取りますか？</strong><br>A：Codyのコードインデックスと分析は、指定したSourcegraphインスタンス上で実行されます。エンタープライズのプライベートデプロイ版では、コードデータが企業ネットワークの外に出ることは一切ありません。SaaS版のデータ処理方法はSourcegraph公式のプライバシーポリシーに従います。</p>
+<p><strong>Q：Codyはどのプログラミング言語に対応していますか？</strong><br>A：Codyのコード補完とQ&amp;Aは、Sourcegraphが対応するすべてのプログラミング言語（JavaScript、TypeScript、Python、Go、Java、Rust、C/C++など数十言語）をサポートしています。/testなどのスラッシュコマンドのテストフレームワーク対応は言語によって異なります。</p>
+
+<p class="review-meta" style="color:#98a2b3;font-size:13px">レビュー更新日：2026-08-09 ｜ 本記事は公開情報に基づいてまとめられており、価格は公式サイトのリアルタイム情報を基準とします</p>
+
+</article>
+</main>
+<footer class="footer"><div class="footer-bottom">© 2026 Beehive AI · <a href="/ja/">ホーム</a> · <a href="/ja/blog.html">ブログ</a> · <a href="/ja/daily.html">AIデイリー</a> · <a href="/ja/about.html">概要</a> · <a href="/ja/privacy.html">プライバシー</a></div></footer>
+</body>
+</html>
