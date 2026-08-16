@@ -1,5 +1,5 @@
 /**
- * 蜂巢 AI 多语言系统 (i18n)
+ * 星枢 AI 多语言系统 (i18n)
  * 支持: 中文·English·Deutsch·Français·日本語·Русский
  */
 (function(){
@@ -13,8 +13,8 @@
   // ═════ 翻译字典 ═════
   function loadDict(){
     DICT={
-      siteName:{zh:'蜂巢 AI',en:'Beehive AI',de:'Beehive AI',fr:'Beehive AI',ja:'ビーハイブ AI',ru:'Beehive AI'},
-      siteDesc:{zh:'发现最好用的 AI 人工智能工具 | 蜂巢式 AI 导航',en:'Discover the Best AI Tools | AI Directory',de:'KI-Tools entdecken | KI-Verzeichnis',fr:'Découvrez les meilleurs outils IA',ja:'最高のAIツールを見つける | AIナビ',ru:'Лучшие ИИ-инструменты | Навигатор'},
+      siteName:{zh:'星枢 AI',en:'StarHub AI',de:'StarHub AI',fr:'StarHub AI',ja:'ビーハイブ AI',ru:'StarHub AI'},
+      siteDesc:{zh:'发现最好用的 AI 人工智能工具 | 星枢式 AI 导航',en:'Discover the Best AI Tools | AI Directory',de:'KI-Tools entdecken | KI-Verzeichnis',fr:'Découvrez les meilleurs outils IA',ja:'最高のAIツールを見つける | AIナビ',ru:'Лучшие ИИ-инструменты | Навигатор'},
       navHome:{zh:'首页',en:'Home',de:'Start',fr:'Accueil',ja:'ホーム',ru:'Главная'},
       navDaily:{zh:'日报',en:'Briefing',de:'Bericht',fr:'Briefing',ja:'デイリー',ru:'Брифинг'},
       navBlog:{zh:'资讯',en:'Blog',de:'Blog',fr:'Blog',ja:'ブログ',ru:'Блог'},
@@ -53,10 +53,10 @@
       emptySearch:{zh:'没找到匹配的工具',en:'No matching tools',de:'Keine Treffer',fr:'Aucun résultat',ja:'一致なし',ru:'Нет результ.'},
       btnVisit:{zh:'访问官网',en:'Visit',de:'Besuchen',fr:'Visiter',ja:'訪問',ru:'Перейти'},
       btnDetail:{zh:'评测详情',en:'Review',de:'Review',fr:'Avis',ja:'レビュー',ru:'Обзор'},
-      footerDesc:{zh:'蜂巢 AI 是一站式 AI 工具导航平台。已收录 500+ 款 AI 工具，涵盖 10 大领域。',en:'Beehive AI is an AI tool directory with 500+ tools across 10 categories.',de:'Beehive AI – KI-Tool-Verzeichnis mit 500+ Tools.',fr:'Beehive AI – Annuaire IA avec 500+ outils.',ja:'ビーハイブAI – 500以上のAIツールを紹介。',ru:'Beehive AI – навигатор 500+ ИИ-инструментов.'},
+      footerDesc:{zh:'星枢 AI 是一站式 AI 工具导航平台。已收录 500+ 款 AI 工具，涵盖 10 大领域。',en:'StarHub AI is an AI tool directory with 500+ tools across 10 categories.',de:'StarHub AI – KI-Tool-Verzeichnis mit 500+ Tools.',fr:'StarHub AI – Annuaire IA avec 500+ outils.',ja:'ビーハイブAI – 500以上のAIツールを紹介。',ru:'StarHub AI – навигатор 500+ ИИ-инструментов.'},
       footerLinks:{zh:'快速链接',en:'Quick Links',de:'Links',fr:'Liens',ja:'リンク',ru:'Ссылки'},
       footerDisclaimer:{zh:'免责声明：所有工具归原作者所有。',en:'Disclaimer: All tools belong to their respective owners.',de:'Haftungsausschluss.',fr:'Avertissement.',ja:'免責事項。',ru:'Отказ от ответ.'},
-      copyright:{zh:'© 2026 蜂巢 AI',en:'© 2026 Beehive AI',de:'© 2026 Beehive AI',fr:'© 2026 Beehive AI',ja:'© 2026 ビーハイブAI',ru:'© 2026 Beehive AI'},
+      copyright:{zh:'© 2026 星枢 AI',en:'© 2026 StarHub AI',de:'© 2026 StarHub AI',fr:'© 2026 StarHub AI',ja:'© 2026 ビーハイブAI',ru:'© 2026 StarHub AI'},
       allTools:{zh:'全站工具评测',en:'All Tool Reviews',de:'Alle Reviews',fr:'Tous les avis',ja:'全レビュー',ru:'Все обзоры'},
       allPosts:{zh:'全部文章',en:'All Posts',de:'Alle Beiträge',fr:'Tous les articles',ja:'全記事',ru:'Все статьи'},
       blogHero:{zh:'AI 教程与行业观察',en:'AI Tutorials & Insights',de:'KI-Tutorials',fr:'Tutoriels IA',ja:'AIチュートリアル',ru:'ИИ-уроки'},

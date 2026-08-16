@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="robots" content="noindex"><title>蜂巢后台</title><link rel="icon" href="/favicon.svg"><style>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="robots" content="noindex"><title>星枢后台</title><link rel="icon" href="/favicon.svg"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:#0a0806;color:#faf6f0}
 .login{display:flex;align-items:center;justify-content:center;min-height:100vh}
@@ -37,10 +37,10 @@ body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:#0a0806;colo
 </style></head>
 <body>
 <div class="login" id="login">
-<div><h1>🐝 蜂巢后台</h1><input type="password" id="pw" placeholder="管理密码" onkeydown="if(event.key==='Enter')go()"><button onclick="go()">登录</button><div class="info">密码: admin888</div></div>
+<div><h1>✦ 星枢后台</h1><input type="password" id="pw" placeholder="管理密码" onkeydown="if(event.key==='Enter')go()"><button onclick="go()">登录</button><div class="info">密码: admin888</div></div>
 </div>
 <div class="admin" id="admin">
-<div class="nav"><h2>🐝 蜂巢</h2><a class="on" onclick="tab('tools')">🛠 工具</a><a onclick="tab('blog')">📝 文章</a><a onclick="tab('daily')">📰 日报</a><a onclick="tab('misc')">⚙ 设置</a></div>
+<div class="nav"><h2>✦ 星枢</h2><a class="on" onclick="tab('tools')">🛠 工具</a><a onclick="tab('blog')">📝 文章</a><a onclick="tab('daily')">日报</a><a onclick="tab('misc')">⚙ 设置</a></div>
 <div class="main" id="main"></div>
 </div>
 <button id="commitBtn" onclick="commit()" style="display:none">💾 提交到 GitHub</button>
@@ -67,7 +67,7 @@ function delTool(i){if(!confirm('删除 '+tools[i].name+'?'))return;tools.splice
 function renderBlog(){var h='<h3>📝 文章管理 ('+articles.length+')</h3><button class="badd" onclick="addArticle()" style="margin-bottom:12px">+ 写文章</button>';articles.forEach(function(a,i){h+='<div class="card"><h4>'+a.title+'</h4><p>'+a.tag+' | '+a.date+' | '+a.slug+'</p></div>'});document.getElementById('main').innerHTML=h}
 function addArticle(){var t=prompt('文章标题:');if(!t)return;var slug='article-'+Date.now();articles.unshift({slug:slug,title:t,tag:'教程',emoji:'📝',date:new Date().toISOString().substring(0,10),readTime:8,keywords:t,excerpt:'',content:'<p>内容待补充</p>'});pending.add('blog.html');changed=true;document.getElementById('commitBtn').style.display='block';renderBlog()}
 // ── Daily tab ──
-function tabDaily(){document.getElementById('main').innerHTML='<h3>📰 日报管理</h3><p style="color:#706858">日报条目通过每日自动更新维护，后台暂不支持直接编辑。如需修改，请编辑 daily.html 文件。</p>'}
+function tabDaily(){document.getElementById('main').innerHTML='<h3>日报管理</h3><p style="color:#706858">日报条目通过每日自动更新维护，后台暂不支持直接编辑。如需修改，请编辑 daily.html 文件。</p>'}
 // ── Misc ──
 function tabMisc(){document.getElementById('main').innerHTML='<h3>⚙ 设置</h3><div class="card"><h4>修改密码</h4><div class="row"><input id="np" placeholder="新密码"><button class="bsave" onclick="var n=document.getElementById("np").value;if(n){localStorage.setItem("hpwd",n);toast("密码已修改")}">保存</button></div></div><div class="card"><h4>退出登录</h4><button class="bdel" onclick="localStorage.clear();location.reload()">退出</button></div>'}
 // ── Commit ──
