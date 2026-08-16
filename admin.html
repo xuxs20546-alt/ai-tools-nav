@@ -1,78 +1,233 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="robots" content="noindex"><title>星枢后台</title><link rel="icon" href="/favicon.svg"><style>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>星枢 AI · 管理后台</title>
+<link rel="icon" href="/favicon.svg">
+<style>
+:root{--bg:#020617;--bg2:#0b1120;--bg3:#101a30;--bg4:#182648;--text:#e2e8f0;--text2:#94a3b8;--text3:#5b6b84;--accent:#7c3aed;--cyan:#22d3ee;--green:#34d399;--red:#f87171;--amber:#f59e0b;--border:#1c2940;--border2:#2c3f61;--radius:12px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,"Noto Sans SC",sans-serif;background:#0a0806;color:#faf6f0}
-.login{display:flex;align-items:center;justify-content:center;min-height:100vh}
-.login>div{background:#120e0a;border:1px solid #2a2218;border-radius:16px;padding:40px;max-width:400px;width:100%;text-align:center}
-.login h1{font-size:24px;color:#f0a830;margin-bottom:16px}
-.login input{width:100%;padding:12px;background:#1a1510;border:1px solid #2a2218;border-radius:50px;color:#fff;font-size:14px;margin-bottom:12px;outline:none}
-.login input:focus{border-color:#f0a830}
-.login button{width:100%;padding:12px;background:#f0a830;color:#1a1000;border:none;border-radius:50px;font-weight:700;font-size:15px;cursor:pointer}
-.login .info{font-size:12px;color:#706858;margin-top:12px}
-.admin{display:none;min-height:100vh}
-.admin.active{display:flex}
-.nav{width:200px;background:#120e0a;border-right:1px solid #2a2218;padding:20px 0;position:fixed;top:0;left:0;bottom:0}
-.nav h2{padding:0 20px 16px;border-bottom:1px solid #2a2218;margin-bottom:12px;font-size:16px;color:#f0a830}
-.nav a{display:block;padding:10px 20px;font-size:14px;color:#c4b8a4;text-decoration:none;cursor:pointer}.nav a:hover,.nav a.on{background:#1a1510;color:#f0a830}
-.main{margin-left:200px;padding:24px;flex:1}
-.main h3{font-size:18px;margin-bottom:16px}
-.card{background:#120e0a;border:1px solid #2a2218;border-radius:10px;padding:16px;margin-bottom:12px}
-.card h4{font-size:14px;margin-bottom:4px}
-.card p{font-size:12px;color:#706858;margin-bottom:8px}
-.card .row{display:flex;gap:8px;align-items:center}
-.card input,.card select{background:#1a1510;border:1px solid #2a2218;color:#fff;padding:8px;border-radius:6px;font-size:13px}
-.card button{padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none}
-.badd{background:rgba(52,211,153,.15);color:#34d399}
-.bsave{background:#f0a830;color:#1a1000}
-.bdel{background:rgba(248,113,113,.15);color:#f87171}
-.msg{position:fixed;top:16px;right:16px;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600;z-index:999}
-.msg.ok{background:#34d399;color:#0a0806}
-.msg.err{background:#f87171;color:#fff}
-.stats{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
-.stats>div{background:#120e0a;border:1px solid #2a2218;border-radius:10px;padding:14px 20px;min-width:120px}
-.stats .n{font-size:24px;font-weight:800;color:#f0a830}
-.stats .l{font-size:12px;color:#706858}
-#commitBtn{position:fixed;bottom:20px;right:20px;padding:12px 24px;background:#34d399;color:#0a0806;border:none;border-radius:30px;font-weight:700;font-size:14px;cursor:pointer;z-index:99;box-shadow:0 4px 20px rgba(52,211,153,.3)}
-</style></head>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit;background:var(--bg3);border:1px solid var(--border2);color:var(--text);border-radius:8px;padding:8px 12px;font-size:13px;outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
+::placeholder{color:var(--text3)}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+/* 登录 */
+#login{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(800px 400px at 50% 0%,rgba(124,58,237,.15),transparent),var(--bg);z-index:50}
+.login-box{width:360px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:36px 32px;box-shadow:0 24px 60px rgba(2,6,23,.6)}
+.login-box h1{font-size:20px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.login-box .lg-ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(34,211,238,.14));border:1px solid rgba(124,58,237,.3);display:flex;align-items:center;justify-content:center;font-size:15px}
+.login-box p{color:var(--text3);font-size:12px;margin-bottom:20px}
+.login-box input{width:100%;margin-bottom:10px}
+.login-box button{width:100%;padding:10px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;font-weight:700;font-size:14px;transition:.2s}
+.login-box button:hover{box-shadow:0 0 20px rgba(124,58,237,.35)}
+.login-box .tip{margin-top:14px;font-size:11px;color:var(--text3);line-height:1.7}
+/* 布局 */
+#app{display:none;min-height:100vh}
+#app.on{display:flex}
+.side{width:200px;background:var(--bg2);border-right:1px solid var(--border);padding:18px 12px;position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0}
+.side .s-brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;padding:4px 10px 18px;border-bottom:1px solid var(--border);margin-bottom:12px}
+.side a{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;color:var(--text2);font-size:13px;margin-bottom:2px;transition:.15s;cursor:pointer}
+.side a:hover{background:var(--bg3);color:var(--text)}
+.side a.on{background:linear-gradient(135deg,rgba(124,58,237,.18),rgba(34,211,238,.08));color:#fff;border:1px solid rgba(124,58,237,.3)}
+.side .s-foot{margin-top:16px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--text3)}
+.main{flex:1;padding:26px 30px;max-width:1240px;min-width:0}
+.page h2{font-size:19px;margin-bottom:4px}
+.page .desc{color:var(--text3);font-size:12px;margin-bottom:20px}
+/* 通用 */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px}
+.btn{padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.btn-p{background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff}
+.btn-p:hover{box-shadow:0 0 16px rgba(124,58,237,.35)}
+.btn-g{background:var(--bg3);border:1px solid var(--border2);color:var(--text2)}
+.btn-g:hover{color:var(--text);border-color:var(--accent)}
+.btn-r{background:rgba(248,113,113,.12);color:var(--red);border:1px solid rgba(248,113,113,.25)}
+.btn-r:hover{background:rgba(248,113,113,.2)}
+.btn-s{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.25)}
+.btn-s:hover{background:rgba(52,211,153,.2)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.bar input[type=search]{flex:1;min-width:200px}
+.badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:99px;background:var(--bg3);border:1px solid var(--border2);color:var(--text2)}
+.badge.cat{background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.3);color:#c4b5fd}
+.badge.chat{background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.3);color:#c4b5fd}
+.badge.image{background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.25);color:#67e8f9}
+.badge.video{background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.25);color:#fca5a5}
+.badge.code{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.25);color:#6ee7b7}
+.badge.writing{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.25);color:#fcd34d}
+.badge.research{background:rgba(232,121,249,.1);border-color:rgba(232,121,249,.25);color:#f0abfc}
+.badge.productivity{background:rgba(96,165,250,.1);border-color:rgba(96,165,250,.25);color:#93c5fd}
+.badge.design{background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.25);color:#fdba74}
+.badge.education{background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.25);color:#c4b5fd}
+.badge.audio{background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.25);color:#5eead4}
+/* 指标 */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.metric{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.metric .n{font-size:26px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.metric .l{font-size:12px;color:var(--text3);margin-top:2px}
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--text3);font-weight:600;font-size:12px;padding:9px 10px;border-bottom:1px solid var(--border2);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:var(--bg3)}
+td .t-name{font-weight:600}
+td .t-url{font-size:11px;color:var(--text3)}
+.row-act{display:flex;gap:6px;justify-content:flex-end}
+.mini{padding:4px 10px;font-size:12px;border-radius:6px}
+/* 弹窗 */
+.overlay{position:fixed;inset:0;background:rgba(2,6,23,.75);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:40px 20px;overflow-y:auto}
+.overlay.show{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;width:680px;max-width:100%;padding:26px;box-shadow:0 30px 80px rgba(2,6,23,.7)}
+.modal h3{font-size:16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.modal .x{cursor:pointer;color:var(--text3);font-size:18px}
+.modal .x:hover{color:var(--red)}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-grid .full{grid-column:1/-1}
+.f label{display:block;font-size:12px;color:var(--text3);margin-bottom:5px}
+.f textarea{width:100%;min-height:70px;resize:vertical}
+.modal .m-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+/* 列表 */
+.item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:var(--bg2);transition:.15s}
+.item:hover{border-color:var(--border2)}
+.item .ic{width:38px;height:38px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.item .inf{flex:1;min-width:0}
+.item .inf b{display:block;font-size:13px}
+.item .inf span{font-size:12px;color:var(--text3);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 分类分布 */
+.cat-dist{margin:10px 0 4px}
+.cat-dist .cd-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cat-dist .cd-name{width:90px;font-size:12px;color:var(--text2);flex-shrink:0}
+.cat-dist .cd-bar{flex:1;height:10px;background:var(--bg3);border-radius:99px;overflow:hidden}
+.cat-dist .cd-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--cyan))}
+.cat-dist .cd-num{width:44px;text-align:right;font-size:12px;color:var(--text3)}
+/* 健康检查 */
+.health li{list-style:none;padding:7px 0;border-bottom:1px dashed var(--border);font-size:13px;color:var(--text2)}
+.health li .ok{color:var(--green)}.health li .bad{color:var(--red)}.health li .warn{color:var(--amber)}
+/* 变更/发布 */
+.chg{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:var(--bg2)}
+.chg .f{font-weight:700;font-size:13px;width:180px}
+.chg .m{font-size:12px;color:var(--text3);flex:1}
+.chg .st{font-size:11px;padding:2px 10px;border-radius:99px}
+.chg .st.new{background:rgba(34,211,238,.1);color:var(--cyan)}
+.chg .st.done{background:rgba(52,211,153,.12);color:var(--green)}
+.chg .st.err{background:rgba(248,113,113,.12);color:var(--red)}
+.hist{font-size:12px;color:var(--text2)}
+.hist li{list-style:none;padding:7px 0;border-bottom:1px dashed var(--border);display:flex;gap:10px;align-items:center}
+.hist .dt{color:var(--text3);white-space:nowrap;font-size:11px}
+.hist .ms{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg3);border:1px solid var(--border2);padding:10px 22px;border-radius:11px;font-size:13px;transition:.3s;opacity:0;z-index:200;max-width:80vw}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.ok{border-color:rgba(52,211,153,.4)}.toast.err{border-color:rgba(248,113,113,.4)}
+.pager{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:14px;font-size:12px;color:var(--text3)}
+.pager button{padding:4px 12px;border-radius:7px;background:var(--bg3);border:1px solid var(--border2);font-size:12px}
+.pager button:disabled{opacity:.3}
+@media(max-width:860px){.side{width:60px}.side a span,.side .s-brand span{display:none}.side .s-foot{display:none}.main{padding:18px 14px}.f-grid{grid-template-columns:1fr}}
+</style>
+</head>
 <body>
-<div class="login" id="login">
-<div><h1>✦ 星枢后台</h1><input type="password" id="pw" placeholder="管理密码" onkeydown="if(event.key==='Enter')go()"><button onclick="go()">登录</button><div class="info">密码: admin888</div></div>
+<div id="login">
+<div class="login-box">
+<h1><span class="lg-ic">✦</span>星枢 AI 管理后台</h1>
+<p>管理工具库、文章、日报与站点配置</p>
+<input type="password" id="pw" placeholder="管理密码" autocomplete="off">
+<input type="password" id="tk" placeholder="GitHub Token（首次使用必填）" autocomplete="off">
+<button onclick="doLogin()">进入后台</button>
+<div class="tip">默认密码 <b>admin888</b>（进入后可在「设置」修改）。GitHub Token 需要仓库 <b>xuxs20546-alt/ai-tools-nav</b> 的 Contents 读写权限（fine-grained，仅限本仓库），Token 仅保存在本浏览器。</div>
 </div>
-<div class="admin" id="admin">
-<div class="nav"><h2>✦ 星枢</h2><a class="on" onclick="tab('tools')">🛠 工具</a><a onclick="tab('blog')">📝 文章</a><a onclick="tab('daily')">日报</a><a onclick="tab('misc')">⚙ 设置</a></div>
-<div class="main" id="main"></div>
 </div>
-<button id="commitBtn" onclick="commit()" style="display:none">💾 提交到 GitHub</button>
+<div id="app">
+<aside class="side">
+<div class="s-brand"><span class="lg-ic" style="width:28px;height:28px;font-size:13px">✦</span><span>星枢 AI 后台</span></div>
+<a class="on" data-t="dash"><span>📊</span><span>仪表盘</span></a>
+<a data-t="tools"><span>🛠</span><span>工具管理</span></a>
+<a data-t="cats"><span>🗂</span><span>分类管理</span></a>
+<a data-t="blog"><span>📝</span><span>博客管理</span></a>
+<a data-t="daily"><span>📰</span><span>日报管理</span></a>
+<a data-t="data"><span>💾</span><span>数据备份</span></a>
+<a data-t="settings"><span>⚙</span><span>站点设置</span></a>
+<a data-t="publish"><span>🚀</span><span>发布上线</span></a>
+<div class="s-foot">v2.0 · 数据存于 GitHub 仓库<br>本地编辑不自动保存</div>
+</aside>
+<main class="main"><div class="page" id="page"></div></main>
+</div>
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
 <script>
-// ── State ──
-let TOKEN='',tools=[],articles=[],pending=new Set(),changed=false;
-// ── API ──
-async function gh(p){const r=await fetch('https://api.github.com/repos/xuxs20546-alt/ai-tools-nav'+p,{headers:{Authorization:'Bearer '+TOKEN,Accept:'application/vnd.github+json'}});if(!r.ok)throw Error(await r.text());return r.json()}
-async function getFile(p){const d=await gh('/contents/'+p);return atob(d.content)}
-async function putFile(p,content,msg){try{const e=await gh('/contents/'+p).catch(()=>null);const b={message:msg,content:btoa(unescape(encodeURIComponent(content)))};if(e)b.sha=e.sha;await fetch('https://api.github.com/repos/xuxs20546-alt/ai-tools-nav/contents/'+p,{method:'PUT',headers:{Authorization:'Bearer '+TOKEN,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(b)});pending.add(p);changed=true;document.getElementById('commitBtn').style.display='block';return true}catch(e){toast('保存失败: '+e.message,'err');return false}}
-function toast(m,t){const el=document.createElement('div');el.className='msg '+(t||'ok');el.textContent=m;document.body.appendChild(el);setTimeout(()=>el.remove(),2500)}
-// ── Login ──
-function go(){var p=document.getElementById('pw').value;if(p!=='admin888'&&p!==localStorage.getItem('hpwd'))return toast('密码错误','err');localStorage.setItem('hpwd',p);TOKEN=localStorage.getItem('htok');if(!TOKEN){var t=prompt('首次使用，请输入GitHub Token (ghp_开头):');if(!t||!t.startsWith('ghp_'))return toast('Token格式错误','err');localStorage.setItem('htok',t);TOKEN=t}document.getElementById('login').style.display='none';document.getElementById('admin').classList.add('active');load().then(()=>tab('tools'))}
-// ── Load ──
-async function load(){var idx=await getFile('index.html');var m=idx.match(/<script type="application\/json" id="tools-data">([\s\S]*?)<\/script>/);tools=m?JSON.parse(m[1]):[];var bl=await getFile('blog.html');var am=bl.match(/const articles=\[([\s\S]*?)\];/);articles=am?new Function('return ['+am[1]+']')():[]}
-// ── Tabs ──
-function tab(t){document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('on'));event.target.classList.add('on');var m=document.getElementById('main');if(t==='tools')renderTools();else if(t==='blog')renderBlog();else if(t==='daily')tabDaily();else if(t==='misc')tabMisc()}
-// ── Tools ──
-function renderTools(){var h='<h3>🛠 工具管理 ('+tools.length+')</h3><div class="stats"><div><div class="n">'+tools.length+'</div><div class="l">工具总数</div></div></div><button class="badd" onclick="addTool()" style="margin-bottom:12px">+ 添加工具</button>';tools.forEach(function(t,i){h+='<div class="card"><h4>'+t.icon+' '+t.name+'</h4><p>'+t.cat+' | 热度:'+t.views+' | 标签:'+(t.tags||[]).join(',')+'</p><button class="badd" onclick="editTool('+i+')">编辑</button> <button class="bdel" onclick="delTool('+i+')">删除</button></div>'});document.getElementById('main').innerHTML=h}
-function addTool(){var n=prompt('工具名称:');if(!n)return;tools.push({name:n,url:'',desc:'',cat:'chat',icon:'🤖',color:'#7c6aef',tags:['free'],views:'100万',features:['AI工具']});pending.add('index.html');changed=true;document.getElementById('commitBtn').style.display='block';renderTools()}
-function editTool(i){var t=tools[i];var v=prompt('编辑 (名称||URL||描述||分类||图标):',[t.name,t.url,t.desc,t.cat,t.icon].join('||'));if(!v)return;var p=v.split('||');t.name=p[0]||t.name;t.url=p[1]||t.url;t.desc=p[2]||t.desc;t.cat=p[3]||t.cat;t.icon=p[4]||t.icon;pending.add('index.html');changed=true;document.getElementById('commitBtn').style.display='block';renderTools()}
-function delTool(i){if(!confirm('删除 '+tools[i].name+'?'))return;tools.splice(i,1);pending.add('index.html');changed=true;document.getElementById('commitBtn').style.display='block';renderTools()}
-// ── Blog ──
-function renderBlog(){var h='<h3>📝 文章管理 ('+articles.length+')</h3><button class="badd" onclick="addArticle()" style="margin-bottom:12px">+ 写文章</button>';articles.forEach(function(a,i){h+='<div class="card"><h4>'+a.title+'</h4><p>'+a.tag+' | '+a.date+' | '+a.slug+'</p></div>'});document.getElementById('main').innerHTML=h}
-function addArticle(){var t=prompt('文章标题:');if(!t)return;var slug='article-'+Date.now();articles.unshift({slug:slug,title:t,tag:'教程',emoji:'📝',date:new Date().toISOString().substring(0,10),readTime:8,keywords:t,excerpt:'',content:'<p>内容待补充</p>'});pending.add('blog.html');changed=true;document.getElementById('commitBtn').style.display='block';renderBlog()}
-// ── Daily tab ──
-function tabDaily(){document.getElementById('main').innerHTML='<h3>日报管理</h3><p style="color:#706858">日报条目通过每日自动更新维护，后台暂不支持直接编辑。如需修改，请编辑 daily.html 文件。</p>'}
-// ── Misc ──
-function tabMisc(){document.getElementById('main').innerHTML='<h3>⚙ 设置</h3><div class="card"><h4>修改密码</h4><div class="row"><input id="np" placeholder="新密码"><button class="bsave" onclick="var n=document.getElementById("np").value;if(n){localStorage.setItem("hpwd",n);toast("密码已修改")}">保存</button></div></div><div class="card"><h4>退出登录</h4><button class="bdel" onclick="localStorage.clear();location.reload()">退出</button></div>'}
-// ── Commit ──
-async function commit(){if(pending.size===0)return toast('没有待提交更改','err');var msg=prompt('提交信息:','后台更新');if(!msg)return;for(var f of pending){var content='';if(f==='index.html'){content=await getFile('index.html');var toolsJSON=JSON.stringify(tools,null,2);content=content.replace(/<script type="application\/json" id="tools-data">[\s\S]*?<\/script>/,'<script type="application/json" id="tools-data">'+toolsJSON+'\n<\/script>')}else if(f==='blog.html'){content=await getFile('blog.html');var artJS='[\n  '+articles.map(function(a){return JSON.stringify(a)}).join(',\n  ')+'\n]';content=content.replace(/const articles=\[[\s\S]*?\];/,'const articles='+artJS+';')}await putFile(f,content||f,msg)}pending.clear();changed=false;document.getElementById('commitBtn').style.display='none';toast('✅ 已提交，Vercel 自动部署中')}
-// ── Boot ──
+'use strict';
+/* ═══════ 状态 ═══════ */
+var TOKEN='',tools=[],articles=[],daily=[],cats=[],settings={},changed={},hist=[];
+var CAT_DEFS=[['chat','AI 对话','💬'],['image','AI 绘画','🎨'],['video','AI 视频','🎬'],['code','AI 编程','⌨️'],['writing','AI 写作','✍️'],['research','AI 搜索','🔍'],['productivity','效率办公','⚡'],['design','AI 设计','🖌️'],['education','AI 教育','🎓'],['audio','AI 音频','🎵']];
+var REPO='xuxs20546-alt/ai-tools-nav';
+/* ═══════ 工具函数 ═══════ */
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function toast(m,type){var el=$('toast');el.textContent=m;el.className='toast show '+(type||'ok');clearTimeout(el._t);el._t=setTimeout(function(){el.className='toast'},2400)}
+function debounce(fn,ms){var t;return function(){var a=arguments;clearTimeout(t);t=setTimeout(function(){fn.apply(null,a)},ms||250)}}
+async function gh(p,opts){var r=await fetch('https://api.github.com/repos/'+REPO+p,Object.assign({headers:{Authorization:'Bearer '+TOKEN,Accept:'application/vnd.github+json','Content-Type':'application/json'}},opts||{}));if(!r.ok){var e=await r.json().catch(function(){return{}});throw new Error((e.message||r.status)+' '+(e.documentation_url||''))}return r.json()}
+async function getFile(p){var d=await gh('/contents/'+p);return decodeURIComponent(escape(atob(d.content)))}
+async function putFile(p,content,msg){var e=null;try{e=await gh('/contents/'+p)}catch(err){}var b={message:msg,content:btoa(unescape(encodeURIComponent(content)))};if(e)b.sha=e.sha;await gh('/contents/'+p,{method:'PUT',body:JSON.stringify(b)});changed[p]={msg:msg,st:'new'};renderPublish();toast('已暂存变更：'+p)}
+function fmtDate(iso){var d=new Date(iso);return (d.getMonth()+1)+'-'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
+function buildIndex(){var t=$('idx').value;return t.replace(/var DB = (\[[\s\S]*?\]);/,function(m,j){return 'var DB = '+JSON.stringify(tools)+';'})}
+function buildBlog(){var t=$('blg').value;return t.replace(/(articles=)\[([\s\S]*?)\](;)/,function(m,a,b,c){return a+JSON.stringify(articles)+c})}
+function buildDaily(){var t=$('dly').value;var cards=daily.map(function(d,i){var badge=d.tag?('<span class="time-badge '+esc(d.tag)+'">'+esc({hot:'🔥 热点',trend:'📈 趋势',new:'✨ 新品'}[d.tag]||d.tag)+'</span>'):'';return '<div class="daily-card">'+badge+'<h3>'+esc(d.title)+'</h3><p>'+esc(d.summary)+'</p>'+(d.source?'<div class="source">来源：<a href="'+esc(d.source)+'" rel="nofollow" target="_blank">'+esc(d.sourceName||d.source)+'</a></div>':'')+'</div>'}).join('\n');var re=/(<div class="daily-wrap">)([\s\S]*?)(<\/div>\s*(?:<div class="nl-box"|<\/main>|<footer))/;if(!re.test(t))return t;return t.replace(re,function(m,a,b,c){return a+cards+c})}
+/* ═══════ 登录/加载 ═══════ */
+function doLogin(){var p=$('pw').value;if(!p)return toast('请输入密码','err');var hp=localStorage.getItem('shpwd')||'admin888';if(p!==hp)return toast('密码错误','err');var tk=$('tk').value||localStorage.getItem('shtok')||'';if(!tk)return toast('请输入 GitHub Token','err');if(!/^[A-Za-z0-9_]+$/.test(tk))return toast('Token 格式不正确','err');TOKEN=tk;localStorage.setItem('shtok',tk);$('login').style.display='none';$('app').className='on';loadAll().then(function(){tab('dash')}).catch(function(e){toast('数据加载失败：'+e.message,'err')})}
+async function loadAll(){toast('正在从 GitHub 拉取数据…');var i=await getFile('index.html');var b=await getFile('blog.html');var d=await getFile('daily.html');$('idx').value=i;$('blg').value=b;$('dly').value=d;var m=i.match(/var DB = (\[[\s\S]*?\]);/);tools=m?JSON.parse(m[1]):[];var am=b.match(/(?:const |var )?articles=\[([\s\S]*?)\];/);articles=am?new Function('return ['+am[1]+']')():[];parseDaily(d);try{var c=await getFile('data/cats.json');cats=JSON.parse(c)}catch(e){cats=CAT_DEFS.map(function(x){return{key:x[0],name:x[1],icon:x[2]}})}var st=localStorage.getItem('shts');settings=st?JSON.parse(st):{};toast('数据加载完成：'+tools.length+' 工具 / '+articles.length+' 文章 / '+daily.length+' 日报')}
+function parseDaily(t){daily=[];var re=/<div class="daily-card">([\s\S]*?)<\/div>/g,m;while((m=re.exec(t))){var b=m[1];var tag=(b.match(/time-badge[^>]*>([^<]*)/)||[])[1]||'';var h3=(b.match(/<h3>([\s\S]*?)<\/h3>/)||[])[1]||'';var p=(b.match(/<p>([\s\S]*?)<\/p>/)||[])[1]||'';var src=(b.match(/href="([^"]+)"/)||[])[1]||'';var srcn=(b.match(/<a[^>]*>([^<]*)<\/a>/)||[])[1]||'';daily.push({title:h3.trim(),summary:p.trim(),source:src,sourceName:srcn.trim(),tag:tag.indexOf('hot')>-1?'hot':tag.indexOf('trend')>-1?'trend':tag.indexOf('new')>-1?'new':''})}}
+/* ═══════ Tab 路由 ═══════ */
+function tab(t){document.querySelectorAll('.side a').forEach(function(a){a.classList.toggle('on',a.dataset.t===t)});var w={dash:renderDash,tools:renderTools,cats:renderCats,blog:renderBlog,daily:renderDaily,data:renderData,settings:renderSettings,publish:renderPublish};w[t]()}
+/* ═══════ 仪表盘 ═══════ */
+function renderDash(){var dist={};tools.forEach(function(t){dist[t.cat]=(dist[t.cat]||0)+1});var total=Object.keys(dist).reduce(function(a,k){return a+dist[k]},0);var catsHtml=CAT_DEFS.map(function(c){var n=dist[c[0]]||0;var pct=total?Math.round(n/total*100):0;return '<div class="cd-row"><span class="cd-name">'+c[1]+'</span><div class="cd-bar"><div class="cd-fill" style="width:'+pct+'%"></div></div><span class="cd-num">'+n+'</span></div>'}).join('');var issues=[];tools.forEach(function(t,i){if(!t.name||!t.url)issues.push('第'+(i+1)+'条：缺名称或链接（'+(t.name||'?')+'）');if(!t.desc||t.desc.length<20)issues.push('描述过短：'+(t.name||'?'))});var dup={};tools.forEach(function(t){if(t.url)dup[t.url]=(dup[t.url]||0)+1});var dups=Object.keys(dup).filter(function(k){return dup[k]>1});var pending=Object.keys(changed).length;var html='<h2>仪表盘</h2><p class="desc">星枢 AI 站点数据总览 · 数据源：GitHub 仓库实时读取</p><div class="metrics"><div class="metric"><div class="n">'+tools.length+'</div><div class="l">收录工具</div></div><div class="metric"><div class="n">'+CAT_DEFS.length+'</div><div class="l">分类</div></div><div class="metric"><div class="n">'+articles.length+'</div><div class="l">博客文章</div></div><div class="metric"><div class="n">'+daily.length+'</div><div class="l">今日日报</div></div><div class="metric"><div class="n">5</div><div class="l">语言版本</div></div><div class="metric"><div class="n">'+pending+'</div><div class="l">待发布变更</div></div></div><div class="card"><b>分类分布</b><div class="cat-dist">'+catsHtml+'</div></div><div class="card"><b>数据健康检查</b><ul class="health">'+(issues.length===0&&dups.length===0?'<li class="ok">✔ 未发现数据问题</li>':'')+(issues.slice(0,8).map(function(x){return '<li class="bad">✘ '+esc(x)+'</li>'}).join(''))+(dups.map(function(x){return '<li class="warn">⚠ 重复链接：'+esc(x)+'（'+dup[x]+' 次）</li>'}).join(''))+'</ul></div><div class="card"><b>快捷操作</b><div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p" onclick="tab(\'tools\')">管理工具</button><button class="btn btn-g" onclick="tab(\'blog\')">管理文章</button><button class="btn btn-g" onclick="tab(\'daily\')">管理日报</button><button class="btn btn-g" onclick="tab(\'publish\')">发布上线</button></div></div>';$('page').innerHTML=html}
+/* ═══════ 工具管理 ═══════ */
+var tQ='',tCat='',tPage=1,TP=50;
+function renderTools(){var q=tQ.toLowerCase();var list=tools.filter(function(t){return(!tCat||t.cat===tCat)&&(!q||t.name.toLowerCase().indexOf(q)>-1||(t.desc||'').toLowerCase().indexOf(q)>-1)});var pages=Math.max(1,Math.ceil(list.length/TP));if(tPage>pages)tPage=pages;var slice=list.slice((tPage-1)*TP,tPage*TP);var rows=slice.map(function(t,i){var gi=(tPage-1)*TP+i;return '<tr><td><span class="t-name">'+esc(t.icon||'🧩')+' '+esc(t.name)+'</span></td><td><span class="badge '+esc(t.cat)+'">'+esc((CAT_DEFS.find(function(c){return c[0]===t.cat})||['',t.cat])[1])+'</span></td><td class="t-url">'+esc(t.url)+'</td><td>'+esc((t.pricing||'unknown'))+'</td><td>'+esc(t.views||'0')+'</td><td><div class="row-act"><button class="btn mini btn-g" onclick="editTool('+gi+')">编辑</button><button class="btn mini btn-r" onclick="delTool('+gi+')">删</button></div></td></tr>'}).join('');var html='<h2>工具管理</h2><p class="desc">共 '+tools.length+' 件工具 · 编辑后需到「发布上线」提交才会生效</p><div class="bar"><input type="search" id="tQ" placeholder="搜索名称/描述…" value="'+esc(tQ)+'" oninput="tQ=this.value;tPage=1;renderTools()"><select id="tCat" onchange="tCat=this.value;tPage=1;renderTools()"><option value="">全部分类</option>'+CAT_DEFS.map(function(c){return '<option value="'+c[0]+'"'+(tCat===c[0]?' selected':'')+'>'+c[1]+'</option>'}).join('')+'</select><button class="btn btn-p" onclick="addTool()">+ 添加工具</button><button class="btn btn-g" onclick="exportJson(\'tools\')">导出 JSON</button></div><div class="card" style="padding:6px 10px"><table><tr><th>名称</th><th>分类</th><th>链接</th><th>定价</th><th>热度</th><th style="text-align:right">操作</th></tr>'+rows+'</table><div class="pager"><button onclick="tPage--;renderTools()" '+(tPage<=1?'disabled':'')+'>上一页</button><span>'+tPage+' / '+pages+'（共 '+list.length+' 条）</span><button onclick="tPage++;renderTools()" '+(tPage>=pages?'disabled':'')+'>下一页</button></div></div>';$('page').innerHTML=html}
+function toolForm(t){var catsOpts=CAT_DEFS.map(function(c){return '<option value="'+c[0]+'"'+(t.cat===c[0]?' selected':'')+'>'+c[1]+'</option>'}).join('');$('modal').innerHTML='<h3>'+(t.name?'编辑：'+esc(t.name):'新增工具')+'<span class="x" onclick="closeModal()">✕</span></h3><div class="f-grid"><div class="f"><label>名称 *</label><input id="f_name" value="'+esc(t.name||'')+'"></div><div class="f"><label>站内链接 URL（/tool-xxx.html）*</label><input id="f_url" value="'+esc(t.url||'')+'"></div><div class="f"><label>分类</label><select id="f_cat">'+catsOpts+'</select></div><div class="f"><label>图标（emoji）</label><input id="f_icon" value="'+esc(t.icon||'🤖')+'"></div><div class="f"><label>主题色</label><input id="f_color" value="'+esc(t.color||'#7c3aed')+'"></div><div class="f"><label>定价</label><select id="f_price"><option value="free"'+(t.pricing==='free'?' selected':'')+'>免费</option><option value="freemium"'+(t.pricing==='freemium'?' selected':'')+'>免费+增值</option><option value="paid"'+(t.pricing==='paid'?' selected':'')+'>付费</option><option value="unknown"'+(t.pricing==='unknown'?' selected':'')+'>未知</option></select></div><div class="f full"><label>描述（60-200 字）</label><textarea id="f_desc" rows="4">'+esc(t.desc||'')+'</textarea></div><div class="f"><label>标签（逗号分隔）</label><input id="f_tags" value="'+esc((t.tags||[]).join(','))+'"></div><div class="f"><label>使用场景（逗号分隔）</label><input id="f_uses" value="'+esc((t.useCases||[]).join(','))+'"></div></div><div class="m-acts"><button class="btn btn-g" onclick="closeModal()">取消</button><button class="btn btn-p" onclick="saveTool('+(t._idx==null?-1:t._idx)+')">保存</button></div>';$('overlay').classList.add('show')}
+function addTool(){toolForm({cat:'chat'})}
+function editTool(i){var t=JSON.parse(JSON.stringify(tools[i]));t._idx=i;toolForm(t)}
+function saveTool(i){var name=$('f_name').value.trim(),url=$('f_url').value.trim();if(!name||!url)return toast('名称和链接必填','err');var o={name:name,url:url,cat:$('f_cat').value,icon:$('f_icon').value.trim()||'🤖',color:$('f_color').value.trim()||'#7c3aed',desc:$('f_desc').value.trim(),tags:$('f_tags').value.split(/[,，]/).map(function(s){return s.trim()}).filter(Boolean),pricing:$('f_price').value,useCases:$('f_uses').value.split(/[,，]/).map(function(s){return s.trim()}).filter(Boolean),views:(i>=0?tools[i].views:'0')};if(i>=0)tools[i]=o;else tools.push(o);closeModal();mark('index.html','工具库变更：'+(i>=0?'编辑 ':'新增 ')+name);renderTools();toast('已保存到本地缓存，记得去发布')}
+function delTool(i){var t=tools[i];if(!confirm('确认删除工具「'+t.name+'」？'))return;tools.splice(i,1);mark('index.html','删除工具：'+t.name);renderTools();toast('已删除（本地），发布后生效')}
+function mark(f,m){changed[f]={msg:m,st:'new'};if(document.querySelector('.side a[data-t=publish] .dot')){}}
+/* ═══════ 分类管理 ═══════ */
+function renderCats(){var html='<h2>分类管理</h2><p class="desc">调整分类名称与图标（保存后写入 data/cats.json）</p>';CAT_DEFS.forEach(function(c,i){html+='<div class="item"><span class="ic">'+c[2]+'</span><div class="inf"><b>'+esc(c[1])+'</b><span>key: '+c[0]+' · 工具数：'+tools.filter(function(t){return t.cat===c[0]}).length+'</span></div><input id="cn_'+i+'" value="'+esc(c[1])+'" style="width:140px"><input id="ci_'+i+'" value="'+esc(c[2])+'" style="width:60px"></div>'});html+='<button class="btn btn-p" onclick="saveCats()">保存分类</button>';$('page').innerHTML=html}
+function saveCats(){CAT_DEFS.forEach(function(c,i){c[1]=$('cn_'+i).value.trim()||c[1];c[2]=$('ci_'+i).value.trim()||c[2]});var payload=CAT_DEFS.map(function(c){return{key:c[0],name:c[1],icon:c[2]}});putFile('data/cats.json',JSON.stringify(payload,null,1),'更新分类配置').then(function(){toast('分类已保存到仓库')}).catch(function(e){toast('保存失败：'+e.message,'err')})}
+/* ═══════ 博客管理 ═══════ */
+var bQ='';
+function renderBlog(){var q=bQ.toLowerCase();var list=articles.filter(function(a){return!q||a.title.toLowerCase().indexOf(q)>-1||(a.slug||'').indexOf(q)>-1});var rows=list.map(function(a,i){var gi=articles.indexOf(a);return '<div class="item"><span class="ic">'+esc(a.emoji||'📄')+'</span><div class="inf"><b>'+esc(a.title)+'</b><span>'+esc(a.slug)+' · '+esc(a.tag||'')+' · '+esc(a.date||'')+' · '+a.readTime+' 分钟</span></div><div class="row-act"><button class="btn mini btn-g" onclick="editArticle('+gi+')">编辑</button><button class="btn mini btn-r" onclick="delArticle('+gi+')">删</button></div></div>'}).join('');var html='<h2>博客管理</h2><p class="desc">共 '+articles.length+' 篇文章 · 正文为简化 HTML（h2/p/ul 标签）</p><div class="bar"><input type="search" placeholder="搜索标题/slug…" value="'+esc(bQ)+'" oninput="bQ=this.value;renderBlog()"><button class="btn btn-p" onclick="addArticle()">+ 新文章</button></div><div class="card" style="padding:10px">'+rows+'</div>';$('page').innerHTML=html}
+function articleForm(a){$('modal').innerHTML='<h3>'+(a.title?'编辑：'+esc(a.title):'新文章')+'<span class="x" onclick="closeModal()">✕</span></h3><div class="f-grid"><div class="f"><label>标题 *</label><input id="a_title" value="'+esc(a.title||'')+'"></div><div class="f"><label>Slug（URL 标识，如 ai-tools-weekly-0703）*</label><input id="a_slug" value="'+esc(a.slug||'')+'"></div><div class="f"><label>标签</label><input id="a_tag" value="'+esc(a.tag||'')+'"></div><div class="f"><label>Emoji</label><input id="a_emoji" value="'+esc(a.emoji||'📄')+'"></div><div class="f"><label>日期（YYYY-MM-DD）</label><input id="a_date" value="'+esc(a.date||'')+'"></div><div class="f"><label>阅读时长（分钟）</label><input id="a_read" type="number" value="'+(a.readTime||6)+'"></div><div class="f full"><label>摘要（100-300 字）</label><textarea id="a_exc" rows="3">'+esc(a.excerpt||'')+'</textarea></div><div class="f full"><label>正文（支持 &lt;h2&gt; &lt;p&gt; &lt;ul&gt; &lt;li&gt; &lt;b&gt; 标签）</label><textarea id="a_cont" rows="12">'+esc(a.content||'')+'</textarea></div></div><div class="m-acts"><button class="btn btn-g" onclick="closeModal()">取消</button><button class="btn btn-p" onclick="saveArticle('+(a._idx==null?-1:a._idx)+')">保存</button></div>';$('overlay').classList.add('show')}
+function addArticle(){articleForm({})}
+function editArticle(i){var a=JSON.parse(JSON.stringify(articles[i]));a._idx=i;articleForm(a)}
+function saveArticle(i){var title=$('a_title').value.trim();if(!title)return toast('标题必填','err');var o={slug:$('a_slug').value.trim(),title:title,tag:$('a_tag').value.trim(),emoji:$('a_emoji').value.trim()||'📄',date:$('a_date').value.trim(),readTime:parseInt($('a_read').value)||6,keywords:articles[i]?articles[i].keywords:'',excerpt:$('a_exc').value.trim(),content:$('a_cont').value};if(i>=0)articles[i]=o;else articles.unshift(o);closeModal();mark('blog.html','文章变更：'+(i>=0?'编辑 ':'新增 ')+title);renderBlog();toast('已保存到本地缓存，记得去发布')}
+function delArticle(i){var a=articles[i];if(!confirm('确认删除文章「'+a.title+'」？'))return;articles.splice(i,1);mark('blog.html','删除文章：'+a.title);renderBlog()}
+/* ═══════ 日报管理 ═══════ */
+function renderDaily(){var html='<h2>日报管理</h2><p class="desc">共 '+daily.length+' 条 · 编辑后保存将重写 daily.html 的日报列表</p><div class="bar"><button class="btn btn-p" onclick="addDaily()">+ 新增条目</button><button class="btn btn-g" onclick="previewDaily()">预览日报</button></div>';daily.forEach(function(d,i){html+='<div class="item"><span class="ic">📰</span><div class="inf"><b>'+esc(d.title)+'</b><span>'+(d.tag?'['+d.tag+'] ':'')+esc(d.summary.slice(0,60))+'…</span></div><div class="row-act"><button class="btn mini btn-g" onclick="editDaily('+i+')">编辑</button><button class="btn mini btn-r" onclick="delDaily('+i+')">删</button></div></div>'});$('page').innerHTML=html}
+function dailyForm(d){$('modal').innerHTML='<h3>'+(d.title?'编辑日报':'新增日报')+'<span class="x" onclick="closeModal()">✕</span></h3><div class="f-grid"><div class="f"><label>标题 *</label><input id="d_title" value="'+esc(d.title||'')+'"></div><div class="f"><label>标签</label><select id="d_tag"><option value="">无</option><option value="hot"'+(d.tag==='hot'?' selected':'')+'>🔥 热点</option><option value="trend"'+(d.tag==='trend'?' selected':'')+'>📈 趋势</option><option value="new"'+(d.tag==='new'?' selected':'')+'>✨ 新品</option></select></div><div class="f full"><label>摘要 *</label><textarea id="d_sum" rows="3">'+esc(d.summary||'')+'</textarea></div><div class="f"><label>来源链接</label><input id="d_src" value="'+esc(d.source||'')+'"></div><div class="f"><label>来源名称</label><input id="d_srcn" value="'+esc(d.sourceName||'')+'"></div></div><div class="m-acts"><button class="btn btn-g" onclick="closeModal()">取消</button><button class="btn btn-p" onclick="saveDaily('+(d._idx==null?-1:d._idx)+')">保存</button></div>';$('overlay').classList.add('show')}
+function addDaily(){dailyForm({})}
+function editDaily(i){var d=JSON.parse(JSON.stringify(daily[i]));d._idx=i;dailyForm(d)}
+function saveDaily(i){var title=$('d_title').value.trim();if(!title)return toast('标题必填','err');var o={title:title,tag:$('d_tag').value,summary:$('d_sum').value.trim(),source:$('d_src').value.trim(),sourceName:$('d_srcn').value.trim()};if(i>=0)daily[i]=o;else daily.unshift(o);closeModal();mark('daily.html','日报变更：'+title);renderDaily();toast('已保存到本地缓存，记得去发布')}
+function delDaily(i){if(!confirm('删除该日报条目？'))return;daily.splice(i,1);mark('daily.html','删除日报条目');renderDaily()}
+function previewDaily(){var html='<h3>日报预览<span class="x" onclick="closeModal()">✕</span></h3>'+daily.map(function(d){return '<div class="card"><b>'+esc(d.title)+'</b> '+(d.tag?'<span class="badge">'+esc(d.tag)+'</span>':'')+'<p style="color:var(--text2);font-size:13px;margin-top:6px">'+esc(d.summary)+'</p>'+(d.source?'<div style="font-size:12px;color:var(--text3)">来源：'+esc(d.sourceName||d.source)+'</div>':'')+'</div>'}).join('');$('modal').innerHTML=html;$('overlay').classList.add('show')}
+/* ═══════ 数据备份 ═══════ */
+function renderData(){var all={tools:tools,articles:articles,daily:daily,cats:CAT_DEFS,exportedAt:new Date().toISOString()};var html='<h2>数据备份</h2><p class="desc">全部数据存于 GitHub 仓库，本地编辑在发布前不会丢失（保留在页面缓存中）</p><div class="card"><b>导出全部数据</b><p style="font-size:13px;color:var(--text2);margin:8px 0 12px">下载完整 JSON 备份（工具 + 文章 + 日报 + 分类）</p><button class="btn btn-p" onclick="exportJson(\'all\')">⬇ 导出备份</button></div><div class="card"><b>从备份恢复</b><p style="font-size:13px;color:var(--text2);margin:8px 0 12px">选择之前导出的 JSON 文件，恢复数据到本地缓存（发布后生效）</p><input type="file" id="impFile" accept=".json" style="width:auto"><button class="btn btn-g" onclick="importJson()">恢复数据</button></div><div class="card"><b>从线上重新拉取</b><p style="font-size:13px;color:var(--text2);margin:8px 0 12px">放弃本地未发布修改，重新从 GitHub 加载线上数据</p><button class="btn btn-g" onclick="reloadFromRemote()">重新拉取</button></div>';$('page').innerHTML=html}
+function exportJson(kind){var data=kind==='all'?{tools:tools,articles:articles,daily:daily,cats:CAT_DEFS}:kind==='tools'?tools:articles;var blob=new Blob([JSON.stringify(data,null,1)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='starshub-'+(kind==='all'?'backup':kind)+'-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('已导出 '+kind)}
+function importJson(){var f=$('impFile').files[0];if(!f)return toast('请先选择文件','err');var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(d.tools&&d.articles){tools=d.tools;articles=d.articles;daily=d.daily||daily;if(d.cats)CAT_DEFS.splice(0,CAT_DEFS.length,d.cats.map(function(c){return[c.key,c.name,c.icon]}))}else if(Array.isArray(d)){if(d.length&&d[0].url!==undefined)tools=d;else if(d.length&&d[0].slug!==undefined)articles=d;else if(d.length&&d[0].title!==undefined)daily=d}mark('index.html','从备份恢复数据');toast('恢复完成：'+tools.length+' 工具 / '+articles.length+' 文章 / '+daily.length+' 日报')}catch(e){toast('文件解析失败：'+e.message,'err')}};r.readAsText(f)}
+function reloadFromRemote(){if(!confirm('放弃本地未发布修改，重新拉取线上数据？'))return;loadAll().then(function(){toast('已重新拉取线上数据')})}
+/* ═══════ 站点设置 ═══════ */
+function renderSettings(){var s=Object.assign({brand:'星枢 AI',seoTitle:'星枢 AI - 发现最好用的AI工具 | 525+ 工具导航站',seoDesc:'星枢 AI 导航站收录 525+ 热门 AI 产品，覆盖对话、绘画、视频、编程、写作等 10 大分类。每日更新。',ads:true,noindex:false},settings);var html='<h2>站点设置</h2><p class="desc">修改品牌与 SEO 信息（写入 index.html），统计代码与广告位开关</p><div class="card"><b>品牌与 SEO</b><div class="f-grid" style="margin-top:12px"><div class="f"><label>品牌名</label><input id="s_brand" value="'+esc(s.brand)+'"></div><div class="f"><label>站点标题</label><input id="s_seot" value="'+esc(s.seoTitle)+'"></div><div class="f full"><label>SEO 描述</label><textarea id="s_seod" rows="3">'+esc(s.seoDesc)+'</textarea></div></div></div><div class="card"><b>功能开关</b><div class="f-grid" style="margin-top:12px"><div class="f"><label>AdSense 广告</label><select id="s_ads"><option value="1"'+(s.ads?' selected':'')+'>开启</option><option value="0"'+(!s.ads?' selected':'')+'>关闭</option></select></div><div class="f"><label>搜索引擎收录（noindex）</label><select id="s_noi"><option value="0"'+(s.noindex?'':' selected')+'>允许收录</option><option value="1"'+(s.noindex?' selected':'')+'>禁止收录</option></select></div></div></div><div class="card"><b>账户安全</b><div class="f-grid" style="margin-top:12px"><div class="f"><label>修改管理密码（留空不修改）</label><input type="password" id="s_pw" placeholder="新密码"></div><div class="f"><label>GitHub Token</label><input type="password" id="s_tk" value="'+esc(TOKEN)+'"></div></div></div><div class="bar" style="margin-top:14px"><button class="btn btn-p" onclick="saveSettings()">保存设置</button></div>';$('page').innerHTML=html}
+function saveSettings(){var s=settings;settings.brand=$('s_brand').value.trim()||'星枢 AI';settings.seoTitle=$('s_seot').value.trim();settings.seoDesc=$('s_seod').value.trim();settings.ads=$('s_ads').value==='1';settings.noindex=$('s_noi').value==='1';localStorage.setItem('shts',JSON.stringify(settings));var np=$('s_pw').value;if(np)localStorage.setItem('shpwd',np);var nt=$('s_tk').value.trim();if(nt&&nt!==TOKEN){TOKEN=nt;localStorage.setItem('shtok',nt)}/* 立即应用到 index.html 缓存 */var t=$('idx').value;t=t.replace(/<title>[^<]*<\/title>/,function(){return '<title>'+esc(settings.seoTitle)+'</title>'});t=t.replace(/<meta name="description" content="[^"]*">/,function(){return '<meta name="description" content="'+esc(settings.seoDesc)+'">'});t=t.replace(/<meta name="robots" content="[^"]*">/,function(){return '<meta name="robots" content="'+(settings.noindex?'noindex, nofollow':'index, follow')+'">'});if(!settings.ads)t=t.replace(/<script async src="https:\/\/pagead2\.googlesyndication\.com[^>]*><\/script>/,'');$('idx').value=t;mark('index.html','站点设置更新：SEO/广告/收录');toast('设置已保存并应用到首页缓存，去发布生效')}
+/* ═══════ 发布 ═══════ */
+function renderPublish(){var chgHtml=Object.keys(changed).map(function(f){var c=changed[f];return '<div class="chg"><span class="f">'+esc(f)+'</span><span class="m">'+esc(c.msg)+'</span><span class="st '+c.st+'">'+(c.st==='new'?'待提交':c.st==='done'?'已提交':c.st==='err'?'失败':'')+'</span><button class="btn mini btn-g" onclick="delete changed[\\\''+f+'\\\'];renderPublish()">撤销</button></div>'}).join('');var html='<h2>发布上线</h2><p class="desc">本地编辑的内容需要提交到 GitHub 后，线上才会更新（构建约 1-3 分钟）</p><div class="card"><b>待发布变更（'+Object.keys(changed).length+'）</b><div style="margin-top:10px">'+(chgHtml||'<p style="color:var(--text3);font-size:13px">暂无变更。先去「工具/博客/日报」编辑内容。</p>')+'</div>'+(Object.keys(changed).length?'<div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-p" onclick="publishAll()">🚀 一键发布全部</button><button class="btn btn-g" onclick="clearChanged()">清空变更</button></div>':'')+'</div><div class="card"><b>最近提交记录</b><ul class="hist" id="histList"><li style="color:var(--text3)">加载中…</li></ul></div>';$('page').innerHTML=html;loadHist()}
+function clearChanged(){changed={};renderPublish();toast('已清空待发布变更')}
+async function publishAll(){var list=Object.keys(changed);if(!list.length)return toast('没有可发布的变更','err');var btn=document.querySelector('.btn-p');btn.disabled=true;btn.textContent='发布中…';for(var i=0;i<list.length;i++){var f=list[i];try{var content=f==='index.html'?buildIndex():f==='blog.html'?buildBlog():f==='daily.html'?buildDaily():$('idx').value;await putFile(f,content,changed[f].msg);changed[f].st='done'}catch(e){changed[f].st='err';toast('发布失败：'+f+' '+e.message,'err')}}btn.disabled=false;btn.textContent='🚀 一键发布全部';renderPublish();toast('发布完成：'+Object.keys(changed).filter(function(k){return changed[k].st==='done'}).length+' 个文件')}
+async function loadHist(){try{var cs=await gh('/commits?per_page=10');var html=cs.map(function(c){return '<li><span class="dt">'+fmtDate(c.commit.author.date)+'</span><span class="ms">'+esc(c.commit.message.split('\n')[0])+'</span><span style="color:var(--text3);font-size:11px">'+c.sha.slice(0,7)+'</span></li>'}).join('');$('histList').innerHTML=html||'<li>暂无记录</li>'}catch(e){$('histList').innerHTML='<li style="color:var(--red)">历史加载失败：'+esc(e.message)+'</li>'}}
+function closeModal(){$('overlay').classList.remove('show')}
+$('overlay').addEventListener('click',function(e){if(e.target===$('overlay'))closeModal()});
+/* 隐藏的源码缓存区 */
 </script>
+<textarea id="idx" style="display:none"></textarea>
+<textarea id="blg" style="display:none"></textarea>
+<textarea id="dly" style="display:none"></textarea>
 </body>
 </html>
