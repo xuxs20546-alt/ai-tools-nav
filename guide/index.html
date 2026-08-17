@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="办事指南">
+<meta name="theme-color" content="#1c1917">
+<link rel="manifest" href="/guide/manifest.json">
+<link rel="apple-touch-icon" href="/guide/icons/icon-192.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNXGE2XXCY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-PNXGE2XXCY');</script>
+<title>星枢·办事指南 — 可交互原型 V1</title>
+<style>
+:root{
+  --bg:#faf7f2;--card:#fffdf9;--ink:#1c1917;--sub:#8a7a66;--line:#e8e0d2;
+  --purple:#7c3aed;--purple-soft:#ede9fe;--orange:#ea580c;--orange-soft:#fff7ed;
+  --gold:#d97706;--green:#059669;--green-soft:#dcfce7;--red:#dc2626;
+  --serif:Georgia,'Noto Serif SC','Songti SC',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC','Microsoft YaHei',sans-serif;
+  --r:16px;--shadow:0 1px 3px rgba(28,25,23,.06),0 8px 24px rgba(28,25,23,.05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}body{font-family:var(--sans);background:var(--bg);color:var(--ink);display:flex;justify-content:center;overflow:hidden}
+.phone{width:100%;max-width:480px;background:var(--bg);position:relative;height:100%;overflow:hidden}
+.statusbar{height:48px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 8px;font-size:12px;font-weight:700}
+.screen{position:absolute;inset:0 0 0;overflow-y:auto;overflow-x:hidden;transition:opacity .22s ease,transform .22s ease}
+.screen.hide{opacity:0;transform:translateX(24px);pointer-events:none;position:absolute}
+.tabbar{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding:8px 0 calc(14px + env(safe-area-inset-bottom));z-index:50}
+.tabbar button{flex:1;background:none;border:none;font-family:var(--sans);font-size:11px;color:var(--sub);padding:6px 0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+.tabbar button .ic{width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.tabbar button.on{color:var(--ink);font-weight:700}
+.tabbar button.on .ic{background:var(--purple-soft);color:var(--purple)}
+.pad{padding:18px 20px}
+/* 通用 */
+.h1{font-family:var(--serif);font-size:26px;font-weight:800;letter-spacing:.5px}
+.sub{font-size:12px;color:var(--sub);margin-top:4px}
+.searchbar{display:flex;gap:8px;margin-top:14px}
+.searchbar .in{flex:1;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 16px;font-size:13px;color:var(--ink);outline:none;font-family:var(--sans)}
+.searchbar .in:focus{border-color:var(--purple)}
+.searchbar .go{width:40px;height:40px;border-radius:99px;background:var(--purple);color:#fff;border:none;font-size:16px;cursor:pointer;flex-shrink:0}
+.chips{display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{background:var(--card);border:1px solid var(--line);color:var(--sub);border-radius:99px;padding:7px 15px;font-size:12px;cursor:pointer;white-space:nowrap;font-family:var(--sans)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+/* 配方卡 */
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:13px;cursor:pointer;transition:transform .15s,box-shadow .15s;animation:rise .35s ease both}
+.rcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cover{height:96px;border-radius:12px;margin-bottom:11px;position:relative;overflow:hidden}
+.cover .cat{position:absolute;left:10px;top:10px;font-size:10px;background:rgba(255,255,255,.92);color:var(--ink);border-radius:99px;padding:3px 10px;font-weight:600}
+.cover .earn{position:absolute;right:10px;bottom:10px;font-size:10px;background:rgba(28,25,23,.78);color:#fff;border-radius:99px;padding:3px 10px}
+.rtitle{font-family:var(--serif);font-size:15px;font-weight:700}
+.rmeta{font-size:11px;color:var(--sub);margin-top:3px}
+.rfoot{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.price{font-size:13px;font-weight:800;color:var(--orange)}
+.price.free{color:var(--green)}
+.buy{background:var(--orange);color:#fff;border:none;border-radius:99px;padding:6px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--sans)}
+.buy.free{background:var(--ink)}
+.buy.done{background:var(--green-soft);color:var(--green)}
+.buy:disabled{opacity:.5}
+.fav{background:none;border:none;font-size:15px;cursor:pointer;color:var(--sub);padding:2px 6px}
+.fav.on{color:var(--gold)}
+/* 详情 */
+.back{width:32px;height:32px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:15px;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center}
+.detail-cover{height:170px;border-radius:18px;margin-top:14px;position:relative}
+.creator{display:flex;align-items:center;gap:10px;margin-top:14px}
+.avatar{width:36px;height:36px;border-radius:99px;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.creator .nm{font-size:13px;font-weight:700}
+.creator .bio{font-size:10px;color:var(--sub)}
+.step{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px}
+.step .n{width:22px;height:22px;border-radius:99px;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.step .t{font-size:12.5px;line-height:1.65;color:var(--ink)}
+.step.lock{opacity:.55}
+.secret{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:4px}
+.secret .st{font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.secret .st::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--purple)}
+.secret .box{margin-top:9px;background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:11px;font-size:11.5px;color:var(--sub);line-height:1.7}
+.secret .copy{margin-top:10px;background:var(--purple);color:#fff;border:none;border-radius:10px;padding:11px;font-size:12.5px;font-weight:700;width:100%;cursor:pointer;font-family:var(--sans)}
+.secret .copy:active{transform:scale(.98)}
+.buybar{background:var(--ink);color:var(--bg);border:none;border-radius:14px;padding:14px;font-size:13.5px;font-weight:800;width:100%;cursor:pointer;font-family:var(--sans);margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.buybar.unlock{background:var(--purple)}
+.buybar:disabled{opacity:.6}
+.sect{font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 11px;display:flex;align-items:center;gap:8px}
+.sect::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--purple)}
+/* 创作 */
+.stepper{display:flex;gap:8px;margin-top:14px}
+.stp{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);color:var(--sub);border-radius:99px;padding:8px 0;font-size:11.5px;font-weight:600}
+.stp.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.toolrow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px;cursor:pointer}
+.toolrow.sel{border-color:var(--purple);border-width:1.5px;background:#fbf9ff}
+.toolrow .lg{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800}
+.toolrow .nm{font-size:13px;font-weight:700}
+.toolrow .ds{font-size:10px;color:var(--sub)}
+.toolrow .ck{width:20px;height:20px;border-radius:99px;border:1.5px solid var(--line);margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff}
+.toolrow.sel .ck{background:var(--purple);border-color:var(--purple)}
+textarea.stepin{width:100%;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;font-size:12.5px;color:var(--ink);outline:none;font-family:var(--sans);resize:vertical;min-height:80px;line-height:1.7}
+textarea.stepin:focus{border-color:var(--purple)}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
+.field .hint{font-size:10.5px;color:var(--sub);margin-top:4px}
+.priceopt{display:flex;gap:8px}
+.priceopt button{flex:1;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:11px 0;font-size:12px;cursor:pointer;color:var(--ink);font-family:var(--sans)}
+.priceopt button.on{border-color:var(--purple);background:var(--purple-soft);font-weight:700}
+/* 我的 */
+.pcard{text-align:center;padding:8px 0 0}
+.bigav{width:64px;height:64px;border-radius:99px;background:linear-gradient(135deg,var(--purple),#22d3ee);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:800}
+.pcard .nm{font-size:17px;font-weight:800}
+.pcard .bio{font-size:11px;color:var(--sub);margin-top:2px}
+.income{background:var(--ink);border-radius:16px;padding:16px;display:flex;color:var(--bg);margin-top:16px}
+.income>div{flex:1;text-align:center}
+.income .n{font-size:18px;font-weight:800}
+.income .l{font-size:10px;opacity:.65;margin-top:2px}
+.income .div{width:1px;background:rgba(255,255,255,.15);margin:4px 0}
+.mlist{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:16px}
+.mlist div{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-size:13px;border-bottom:1px solid var(--line);cursor:pointer}
+.mlist div:last-child{border-bottom:none}
+.mlist .ar{color:var(--sub);font-size:15px}
+/* toast */
+.toast{position:absolute;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);font-size:12.5px;font-weight:600;border-radius:12px;padding:11px 22px;opacity:0;transition:.3s;z-index:99;pointer-events:none;white-space:nowrap;box-shadow:0 8px 30px rgba(28,25,23,.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--green);color:#fff}
+/* 支付弹层 */
+.pay{position:absolute;inset:0 0 0;background:rgba(28,25,23,.45);display:none;align-items:flex-end;justify-content:center;z-index:80;backdrop-filter:blur(2px)}
+.pay.show{display:flex}
+.pay .sheet{background:var(--card);border-radius:24px 24px 0 0;width:100%;padding:20px 20px 34px;animation:up .3s ease}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.pay .sheet h3{font-size:15px;font-weight:800;margin-bottom:4px}
+.pay .sheet .p{font-size:26px;font-weight:900;color:var(--orange);margin:10px 0 2px}
+.pay .sheet .d{font-size:11px;color:var(--sub);margin-bottom:16px}
+.pay .sheet .ok{width:100%;background:var(--orange);color:#fff;border:none;border-radius:14px;padding:15px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--sans)}
+.pay .sheet .cancel{width:100%;background:none;border:none;color:var(--sub);font-size:12px;padding:12px;cursor:pointer;font-family:var(--sans)}
+.empty{text-align:center;color:var(--sub);font-size:12.5px;padding:44px 0}
+</style>
+</head>
+<body>
+<div class="phone">
+
+<!-- ═══════ 发现页 ═══════ -->
+<div class="screen" id="scr-home">
+  <div class="pad">
+    <div class="h1">今日配方</div>
+    <div class="sub">别找工具，找菜谱 · 用 AI 做成一件具体的事</div>
+    <div class="searchbar"><input class="in" id="q" placeholder="搜索配方、工具…" oninput="applyFilter()"><button class="go" onclick="applyFilter()">⌕</button></div>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="pad" style="padding-top:10px" id="feed"></div>
+</div>
+
+<!-- ═══════ 详情页 ═══════ -->
+<div class="screen hide" id="scr-detail">
+  <div class="pad">
+    <button class="back" onclick="showHome()">‹</button>
+    <div id="detailBody"></div>
+  </div>
+</div>
+
+<!-- ═══════ 发布页 ═══════ -->
+<div class="screen hide" id="scr-create">
+  <div class="pad">
+    <div class="h1">发布配方</div>
+    <div class="sub">三步发布，七成收入归你</div>
+    <div class="stepper"><div class="stp on" id="st1">① 选工具</div><div class="stp" id="st2">② 写步骤</div><div class="stp" id="st3">③ 定价发布</div></div>
+    <div id="createBody" style="margin-top:16px"></div>
+  </div>
+</div>
+
+<!-- ═══════ 我的页 ═══════ -->
+<div class="screen hide" id="scr-mine">
+  <div class="pad">
+    <div class="pcard">
+      <div class="bigav">星</div>
+      <div class="nm">星枢创作者</div>
+      <div class="bio">已发布 12 个配方 · 本月收入 ¥326</div>
+    </div>
+    <div class="income">
+      <div><div class="n">¥326</div><div class="l">本月收入</div></div>
+      <div class="div"></div>
+      <div><div class="n">12</div><div class="l">已发布</div></div>
+      <div class="div"></div>
+      <div><div class="n">70%</div><div class="l">分成比例</div></div>
+    </div>
+    <div class="mlist">
+      <div onclick="showPurchased()"><span>已购配方</span><span class="ar">›</span></div>
+      <div onclick="showFavs()"><span>我的收藏</span><span class="ar">›</span></div>
+      <div><span>创作者收入明细</span><span class="ar">›</span></div>
+      <div><span>会员中心</span><span class="ar">›</span></div>
+    </div>
+    <div id="mineList" style="margin-top:16px"></div>
+  </div>
+</div>
+
+<div class="tabbar">
+  <button class="on" data-t="home" onclick="switchTab('home')"><span class="ic">◉</span>发现</button>
+  <button data-t="create" onclick="switchTab('create')"><span class="ic">＋</span>发布</button>
+  <button data-t="mine" onclick="switchTab('mine')"><span class="ic">●</span>我的</button>
+</div>
+
+<div class="pay" id="pay">
+  <div class="sheet">
+    <h3 id="payTitle">购买配方</h3>
+    <div class="p" id="payPrice">¥4.9</div>
+    <div class="d">体验版：点击即解锁，正式支付即将开通<br>正式版付款后永久解锁 · 7 天无理由退款</div>
+    <button class="ok" onclick="confirmPay()">确认支付</button>
+    <button class="cancel" onclick="closePay()">取消</button>
+  </div>
+</div>
+
+<div class="install-tip" id="installTip">
+<span>安装到主屏幕，随时打开用</span><button onclick="dismissInstall()">知道了</button>
+</div>
+<style>
+.install-tip{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);border-radius:12px;padding:10px 16px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:12px;z-index:98;box-shadow:0 8px 30px rgba(28,25,23,.3);white-space:nowrap}
+.install-tip button{background:var(--purple);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--sans)}
+@media(min-width:520px){.install-tip{display:none}}
+</style>
+<div class="toast" id="toast"></div>
+</div>
+
+<script>
+'use strict';
+/* ═══════ 数据 ═══════ */
+var RECIPES = [
+ {id:1,title:'小红书爆文生产线',cat:'创作',time:'30分钟',earn:'已帮 2.3w 人',price:4.9,cover:'linear-gradient(135deg,#fde68a,#f97316)',creator:'阿泽 · 爆款制造机',bio:'已发布 23 个配方 · 收入 ¥4,860',tools:['豆包','ChatGPT','即梦','Canva'],steps:['用豆包生成 20 个选题，挑互动数据最好的 3 个','粘贴秘方提示词 → ChatGPT 生成初稿 → 人工润色 10 分钟','即梦生成封面，Canva 排版，定时发布'],secret:'你是一位小红书爆款写手，请根据以下选题生成 3 版标题+正文，要求：标题含数字与情绪词，正文 800 字带 5 个 emoji 和 2 个行动指令，结尾引导评论互动。'},
+ {id:2,title:'述职 PPT 从 0 到 1',cat:'职场',time:'45分钟',earn:'已帮 1.1w 人',price:0,cover:'linear-gradient(135deg,#c7d2fe,#7c3aed)',creator:'林哥 · 大厂总监',bio:'已发布 8 个配方 · 收入 ¥2,120',tools:['ChatGPT','Gamma','Kimi'],steps:['把工作成果按 STAR 法则喂给 ChatGPT，生成大纲','用 Gamma 一键生成 PPT 初稿（选「述职汇报」模板）','Kimi 检查数据口径，人工补 2-3 页业务细节'],secret:'你是资深 HR 总监，请把我的工作成果改写为述职汇报大纲：STAR 结构、每页一个结论、数据前置、结尾要有晋升诉求的暗示。以下是成果：[粘贴你的成果]'},
+ {id:3,title:'简历改写拿下面试',cat:'职场',time:'20分钟',earn:'已帮 8.9k 人',price:3.9,cover:'linear-gradient(135deg,#bbf7d0,#059669)',creator:'小满 · 简历教练',bio:'已发布 15 个配方 · 收入 ¥3,540',tools:['Kimi','ChatGPT'],steps:['把旧简历全文贴给 Kimi，先做「经历诊断」','按秘方提示词让 AI 重写 3 版（量化版/业务版/管理版）','人工挑选 1 版，微调动词与数字'],secret:'你是资深简历顾问，请按以下原则重写我的工作经历：每条经历以「动词+量化结果」开头；用行业黑话但保持真实；突出 2 个核心能力标签。我的旧简历：[粘贴]'},
+ {id:4,title:'口播视频 1 小时成片',cat:'创作',time:'60分钟',earn:'已帮 6.2k 人',price:6.9,cover:'linear-gradient(135deg,#fecaca,#dc2626)',creator:'老周 · 口播教练',bio:'已发布 6 个配方 · 收入 ¥1,980',tools:['ChatGPT','剪映','HeyGen'],steps:['ChatGPT 按「黄金 3 秒+干货+钩子」结构写 600 字口播稿','剪映「图文成片」一键配音字幕','HeyGen 数字人版作为备选，封面用即梦出图'],secret:'写一段 60 秒口播稿：前 3 秒用反常识数字抓注意力；中间讲 1 个故事+3 个要点；结尾用「关注我，下期讲」收尾。语气口语化，不要书面语。主题：[填入]'},
+ {id:5,title:'周报 5 分钟速成',cat:'职场',time:'5分钟',earn:'已帮 3.4w 人',price:0,cover:'linear-gradient(135deg,#fef3c7,#d97706)',creator:'星枢官方',bio:'官方配方 · 每周更新',tools:['Kimi','ChatGPT'],steps:['把本周做的事用「动词+名词」流水账列出来','粘贴秘方提示词，让 AI 整理成周报格式','人工核对数字，30 秒收尾'],secret:'你是职场周报助手：请把以下流水账整理为周报：①本周成果（3 条，量化）②下周计划（3 条）③风险与求助（最多 1 条）。语气客观专业。流水账：[粘贴]'},
+ {id:6,title:'考研英语作文模板',cat:'学习',time:'30分钟',earn:'已帮 4.1k 人',price:4.9,cover:'linear-gradient(135deg,#ddd6fe,#6d28d9)',creator:'学姐阿柯',bio:'已发布 9 个配方 · 收入 ¥2,340',tools:['ChatGPT','DeepL'],steps:['按秘方生成 3 套万能模板（利弊型/图画型/书信型）','DeepL 检查语法，人工替换亮点句','每日背 1 套，考前默写 2 遍'],secret:'你是考研英语写作名师：请生成 3 套万能模板，每套含：首段 2 句、中段 5 句（支持任意话题替换）、尾段 2 句。句式要有高级感但避免模板痕迹，附 10 个可替换的高级词汇。'},
+ {id:7,title:'电商主图文案批量生成',cat:'搞钱',time:'40分钟',earn:'已帮 5.7k 人',price:9.9,cover:'linear-gradient(135deg,#fbcfe8,#db2777)',creator:'橙子 · 电商操盘手',bio:'已发布 18 个配方 · 收入 ¥8,900',tools:['ChatGPT','即梦','美图'],steps:['输入商品信息，秘方批量生成 10 条主图文案','即梦生成 5 张卖点图，美图加促销角标','A/B 测试 2 条，留数据最好的'],secret:'你是电商文案专家：为商品 [商品名/卖点] 生成 10 条主图文案，每条 ≤20 字，风格覆盖：痛点型、价格型、从众型、稀缺型，每条附推荐背景色与字号建议。'},
+ {id:8,title:'公众号日更流水线',cat:'搞钱',time:'50分钟',earn:'已帮 3.3k 人',price:7.9,cover:'linear-gradient(135deg,#a7f3d0,#0d9488)',creator:'大白 · 自媒体合伙人',bio:'已发布 11 个配方 · 收入 ¥3,120',tools:['ChatGPT','Notion','Canva'],steps:['秘方生成选题库（一次 30 个，够一个月）','每日：大纲→初稿→润色 3 步走，全程 40 分钟','Notion 管素材库，Canva 出封面'],secret:'你是公众号主编：基于我的定位 [定位]，生成 30 个选题：10 个干货型、10 个观点型、10 个故事型，每个选题附一句话切入角度和标题示例。'},
+ {id:9,title:'外语口语陪练计划',cat:'学习',time:'15分钟/天',earn:'已帮 7.8k 人',price:0,cover:'linear-gradient(135deg,#bfdbfe,#2563eb)',creator:'星枢官方',bio:'官方配方 · 每日打卡',tools:['ChatGPT','豆包'],steps:['每天用秘方提示词和 AI 聊 15 分钟（角色扮演）','让 AI 记录你 3 个错误并纠正','每周日生成本周错误总结'],secret:'你是我的英语口语陪练：请扮演 [场景角色，如咖啡店店员]，用简单英语和我对话 15 分钟，每次对话后给我 3 条具体纠错（发音/语法/用词），语气鼓励。'},
+ {id:10,title:'表情包定制小生意',cat:'搞钱',time:'30分钟',earn:'已帮 2.1k 人',price:5.9,cover:'linear-gradient(135deg,#fde68a,#f59e0b)',creator:'皮皮 · 表情包主理人',bio:'已发布 7 个配方 · 收入 ¥1,560',tools:['即梦','ChatGPT','剪映'],steps:['秘方生成 20 个热门场景梗清单','即梦批量生成表情底图（统一风格关键词）','剪映加文字，按平台规则提交上架'],secret:'你是表情包策划：请基于 [热点/人群] 生成 20 个表情包创意：每个含「场景+台词+画面描述」，台词要短（≤6 字）、有梗、可复用。'},
+];
+var CATS=['全部','搞钱','职场','学习','创作'];
+var TOOLPOOL=[{n:'ChatGPT',lg:'C',bg:'#ede9fe',d:'文本生成 · 通用'},{n:'豆包',lg:'豆',bg:'#fef3c7',d:'中文对话 · 免费'},{n:'即梦',lg:'即',bg:'#dcfce7',d:'AI 绘画 · 中文'},{n:'Kimi',lg:'K',bg:'#dbeafe',d:'长文阅读 · 免费'},{n:'剪映',lg:'剪',bg:'#fce7f3',d:'视频剪辑'},{n:'Gamma',lg:'G',bg:'#f3e8ff',d:'AI 生成 PPT'}];
+var curCat='全部', curDetail=null, payTarget=null, createStep=1, selTools={}, draft={steps:['','',''],price:'free'};
+var owned=JSON.parse(localStorage.getItem('xzh_owned')||'[]'), favs=JSON.parse(localStorage.getItem('xzh_favs')||'[]');
+function saveLS(){localStorage.setItem('xzh_owned',JSON.stringify(owned));localStorage.setItem('xzh_favs',JSON.stringify(favs))}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function toast(m,ok){var el=document.getElementById('toast');el.textContent=m;el.className='toast show'+(ok?' ok':'');clearTimeout(el._t);el._t=setTimeout(function(){el.className='toast'},2200)}
+function catName(c){return {chat:'AI对话',image:'AI绘画',video:'AI视频',code:'AI编程',writing:'AI写作',research:'AI搜索',productivity:'效率办公',design:'AI设计',education:'AI教育',audio:'AI音频'}[c]||c}
+function money(r){return r.price===0?'免费':'¥'+r.price.toFixed(1)}
+/* ═══════ 发现页 ═══════ */
+function renderChips(){document.getElementById('chips').innerHTML=CATS.map(function(c){return '<span class="chip'+(c===curCat?' on':'')+'" onclick="setCat(\''+c+'\')">'+c+'</span>'}).join('')}
+function setCat(c){curCat=c;renderChips();renderFeed()}
+function applyFilter(){renderFeed()}
+function renderFeed(){renderChips();var q=(document.getElementById('q').value||'').trim().toLowerCase();var list=RECIPES.filter(function(r){return(curCat==='全部'||r.cat===curCat)&&(!q||r.title.toLowerCase().indexOf(q)>-1||r.cat.indexOf(q)>-1||r.tools.join(',').toLowerCase().indexOf(q)>-1)});document.getElementById('feed').innerHTML=list.map(function(r,i){var isOwn=owned.indexOf(r.id)>-1;var isFav=favs.indexOf(r.id)>-1;return '<div class="rcard" style="animation-delay:'+(i*40)+'ms" onclick="openDetail('+r.id+')"><div class="cover" style="background:'+r.cover+'"><span class="cat">'+r.cat+'</span><span class="earn">'+r.earn+'</span></div><div class="rtitle">'+esc(r.title)+'</div><div class="rmeta">'+r.time+' · '+r.tools.join(' / ')+'</div><div class="rfoot"><span class="price '+(r.price===0?'free':'')+'">'+money(r)+'</span><span style="display:flex;gap:8px;align-items:center"><span class="fav'+(isFav?' on':'')+'" onclick="event.stopPropagation();toggleFav('+r.id+')">'+(isFav?'★':'☆')+'</span><button class="buy'+(r.price===0?' free':'')+(isOwn?' done':'')+'" '+(isOwn?'disabled':'')+' onclick="event.stopPropagation();startPay('+r.id+')">'+(isOwn?'已解锁':r.price===0?'免费使用':'购买')+'</button></span></div></div>'}).join('')||'<div class="empty">没有找到相关配方，换个关键词试试</div>'}
+function toggleFav(id){var i=favs.indexOf(id);if(i>-1)favs.splice(i,1);else favs.push(id);saveLS();renderFeed();toast(favs.indexOf(id)>-1?'已收藏':'已取消收藏')}
+/* ═══════ 详情 ═══════ */
+function openDetail(id){curDetail=RECIPES.find(function(r){return r.id===id});show('scr-detail');renderDetail();gaView(curDetail)}
+function renderDetail(){var r=curDetail,isOwn=owned.indexOf(r.id)>-1,isFav=favs.indexOf(r.id)>-1;var stepsHtml=r.steps.map(function(s,i){return '<div class="step'+(isOwn?'':' lock')+'"><span class="n">'+(i+1)+'</span><span class="t">'+esc(s)+'</span></div>'}).join('');var toolsHtml='<div class="sect">工具食材</div>'+r.tools.map(function(t){return '<div class="toolrow" style="cursor:default"><span class="lg" style="background:'+(TOOLPOOL.find(function(x){return x.n===t})||{bg:'#f1ece2'}).bg+'">'+(TOOLPOOL.find(function(x){return x.n===t})||{lg:'工'}).lg+'</span><div><div class="nm">'+t+'</div><div class="ds">'+(TOOLPOOL.find(function(x){return x.n===t})||{d:'AI 工具'}).d+'</div></div></div>'}).join('');document.getElementById('detailBody').innerHTML='<div class="detail-cover" style="background:'+r.cover+'"></div><div class="creator"><div class="avatar">'+r.creator.charAt(0)+'</div><div><div class="nm">'+esc(r.creator)+'</div><div class="bio">'+esc(r.bio)+'</div></div><span class="fav'+(isFav?' on':'')+'" style="margin-left:auto;font-size:18px" onclick="toggleFavDetail('+r.id+')">'+(isFav?'★':'☆')+'</span></div><div class="sect">操作步骤</div>'+stepsHtml+'<div class="sect">秘方 · 核心提示词</div><div class="secret'+(isOwn?'':'')+'"><div class="st">'+esc(r.secret.slice(0,26))+'…</div><div class="box">'+esc(isOwn?r.secret:'购买后解锁完整秘方，共 '+r.secret.length+' 字提示词')+'</div><button class="copy" '+(isOwn?'':'disabled style="opacity:.45"')+' onclick="copySecret()">复制秘方</button></div>'+toolsHtml+'<button class="buybar'+(isOwn?' unlock':'')+'" '+(isOwn?'disabled':'')+' onclick="startPay('+r.id+')">'+(isOwn?'✓ 已解锁，永久可用':'立即购买 '+money(r))+'</button><div style="height:16px"></div>'}
+function toggleFavDetail(id){toggleFav(id);renderDetail()}
+function copySecret(){navigator.clipboard&&navigator.clipboard.writeText(curDetail.secret);gaCopy(curDetail);toast('秘方已复制，去粘贴使用吧',true)}
+/* ═══════ 支付 ═══════ */
+function startPay(id){var r=RECIPES.find(function(x){return x.id===id});if(owned.indexOf(id)>-1)return;if(r.price===0){owned.push(id);gaBuyOk(r);saveLS();renderFeed();if(curDetail&&curDetail.id===id)renderDetail();toast('已解锁「'+r.title+'」',true);return}gaBuyClick(r);payTarget=r;document.getElementById('payTitle').textContent='购买配方：'+r.title;document.getElementById('payPrice').textContent='¥'+r.price.toFixed(1);document.getElementById('pay').classList.add('show')}
+function confirmPay(){owned.push(payTarget.id);gaBuyOk(payTarget);saveLS();document.getElementById('pay').classList.remove('show');renderFeed();if(curDetail&&curDetail.id===payTarget.id)renderDetail();toast('体验解锁成功！正式支付即将开通',true)}
+function closePay(){document.getElementById('pay').classList.remove('show')}
+/* ═══════ 发布 ═══════ */
+function renderCreate(){var b=document.getElementById('createBody');if(createStep===1){b.innerHTML='<div class="sect">选择工具食材（2-5 件）</div>'+TOOLPOOL.map(function(t){return '<div class="toolrow'+(selTools[t.n]?' sel':'')+'" onclick="toggleTool(\''+t.n+'\')"><span class="lg" style="background:'+t.bg+'">'+t.lg+'</span><div><div class="nm">'+t.n+'</div><div class="ds">'+t.d+'</div></div><span class="ck">'+(selTools[t.n]?'✓':'')+'</span></div>'}).join('')+'<div style="margin-top:6px;font-size:11px;color:var(--sub)">已选 '+Object.keys(selTools).length+' 件 · 从 525 件工具库中挑选</div><button class="buybar" style="margin-top:14px" onclick="nextStep()">下一步：写步骤</button>'}else if(createStep===2){b.innerHTML='<div class="sect">配方信息</div><div class="field"><label>配方标题</label><input class="stepin" id="cr_title" placeholder="例：小红书爆文生产线" value="'+esc(draft.title||'')+'"></div>'+[0,1,2].map(function(i){return '<div class="field"><label>步骤 '+(i+1)+'</label><textarea class="stepin" id="cr_s'+i+'" placeholder="这一步用什么工具、做什么、花多久…">'+esc(draft.steps[i]||'')+'</textarea></div>'}).join('')+'<div class="field"><label>秘方提示词</label><textarea class="stepin" id="cr_secret" style="min-height:110px" placeholder="这是买家一键复制的内容，请写详细、可直接使用">'+esc(draft.secret||'')+'</textarea></div><div style="display:flex;gap:10px"><button class="buybar" style="flex:1;background:var(--card);color:var(--ink);border:1px solid var(--line);margin-top:14px" onclick="prevStep()">上一步</button><button class="buybar" style="flex:1;margin-top:14px" onclick="nextStep()">下一步：定价</button></div>'}else{b.innerHTML='<div class="sect">定价与发布</div><div class="field"><label>价格</label><div class="priceopt"><button class="'+(draft.price==='free'?'on':'')+'" onclick="draft.price=\'free\';renderCreate()">免费引流</button><button class="'+(draft.price==='paid'?'on':'')+'" onclick="draft.price=\'paid\';renderCreate()">付费 ¥3.9-9.9</button></div><div class="hint">免费配方吸引人气，付费配方 70% 收入归你</div></div><div class="field"><label>分类</label><select class="stepin" id="cr_cat"><option>搞钱</option><option>职场</option><option>学习</option><option>创作</option></select></div><div style="background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:12px;color:var(--sub);line-height:1.8"><b style="color:var(--ink)">发布前检查</b><br>✓ 步骤是否完整可执行<br>✓ 秘方是否可直接复制使用<br>✓ 工具是否都真实存在</div><div style="display:flex;gap:10px"><button class="buybar" style="flex:1;background:var(--card);color:var(--ink);border:1px solid var(--line);margin-top:14px" onclick="prevStep()">上一步</button><button class="buybar" style="flex:1;margin-top:14px" onclick="publishRecipe()">发布配方</button></div>'}
+document.getElementById('st1').className='stp'+(createStep===1?' on':'');document.getElementById('st2').className='stp'+(createStep===2?' on':'');document.getElementById('st3').className='stp'+(createStep===3?' on':'')}
+function toggleTool(n){if(selTools[n]){delete selTools[n]}else{if(Object.keys(selTools).length>=5)return toast('最多选 5 件工具');selTools[n]=1}renderCreate()}
+function nextStep(){if(createStep===1&&Object.keys(selTools).length===0)return toast('至少选 1 件工具');if(createStep===2){draft.title=document.getElementById('cr_title').value;for(var i=0;i<3;i++)draft.steps[i]=document.getElementById('cr_s'+i).value;draft.secret=document.getElementById('cr_secret').value;if(!draft.title||!draft.secret)return toast('标题和秘方必填')}createStep++;renderCreate()}
+function prevStep(){createStep--;renderCreate()}
+function publishRecipe(){var t=draft.title||'我的新配方';gaPublish();draft={steps:['','',''],price:'free'};selTools={};createStep=1;switchTab('home');toast('发布成功！已上架「'+t+'」',true);setTimeout(function(){renderFeed()},300)}
+/* ═══════ 我的 ═══════ */
+function showPurchased(){var list=RECIPES.filter(function(r){return owned.indexOf(r.id)>-1});document.getElementById('mineList').innerHTML='<div class="sect">已购配方</div>'+(list.map(function(r){return '<div class="rcard" onclick="openDetail('+r.id+')"><div class="rtitle">'+esc(r.title)+'</div><div class="rmeta">'+r.cat+' · '+money(r)+' · 已解锁</div></div>'}).join('')||'<div class="empty">还没有已购配方</div>')}
+function showFavs(){var list=RECIPES.filter(function(r){return favs.indexOf(r.id)>-1});document.getElementById('mineList').innerHTML='<div class="sect">我的收藏</div>'+(list.map(function(r){return '<div class="rcard" onclick="openDetail('+r.id+')"><div class="rtitle">'+esc(r.title)+'</div><div class="rmeta">'+r.cat+' · '+money(r)+'</div></div>'}).join('')||'<div class="empty">还没有收藏，去发现页逛逛</div>')}
+/* ═══════ 路由 ═══════ */
+function show(id){['scr-home','scr-detail','scr-create','scr-mine'].forEach(function(s){document.getElementById(s).classList.toggle('hide',s!==id)})}
+function showHome(){show('scr-home')}
+function switchTab(t){var map={home:'scr-home',create:'scr-create',mine:'scr-mine'};show(map[t]);document.querySelectorAll('.tabbar button').forEach(function(b){b.className=b.dataset.t===t?'on':''});if(t==='home')renderFeed();if(t==='create')renderCreate();if(t==='mine'){document.getElementById('mineList').innerHTML=''}}
+/* ═══════ PWA / 统计 ═══════ */
+function gaEvt(n,p){try{gtag('event',n,p||{})}catch(e){}}
+function gaView(r){gaEvt('view_recipe',{recipe:r.title,price:r.price})}
+function gaBuyClick(r){gaEvt('purchase_click',{recipe:r.title,price:r.price})}
+function gaBuyOk(r){gaEvt('purchase_confirm',{recipe:r.title,price:r.price})}
+function gaCopy(r){gaEvt('copy_secret',{recipe:r.title})}
+function gaPublish(){gaEvt('publish_recipe',{tools:Object.keys(selTools).length})}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/guide/sw.js').catch(function(){})}
+var itSeen=localStorage.getItem('xzh_install_tip');
+if(!itSeen&&!window.matchMedia('(display-mode: standalone)').matches){setTimeout(function(){var el=document.getElementById('installTip');if(el)el.style.display='flex'},2500)}
+function dismissInstall(){localStorage.setItem('xzh_install_tip','1');document.getElementById('installTip').style.display='none'}
+/* init */
+renderChips();renderFeed();
+</script>
+</body>
+</html>
