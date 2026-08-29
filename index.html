@@ -125,6 +125,47 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .nav-links a{padding:6px 10px;font-size:12px}
   .hero-stats{gap:24px}
 }
+
+/* 编辑精选 */
+.epick{padding:58px 0 6px}
+.ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ep-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:.2s;display:block}
+.ep-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.14)}
+.ep-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ep-ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;background:var(--bg4);flex-shrink:0}
+.ep-name{font-weight:800;font-size:16px}
+.ep-role{font-size:11px;color:var(--cyan);border:1px solid rgba(34,211,238,.28);padding:1px 9px;border-radius:99px;margin-left:auto;white-space:nowrap}
+.ep-reason{font-size:13.5px;color:var(--text2);line-height:1.75}
+/* 场景导览 */
+.sc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.sc-card{padding:22px;border-radius:var(--radius);background:linear-gradient(165deg,var(--bg2),rgba(124,58,237,.05));border:1px solid var(--border);transition:.2s}
+.sc-card:hover{border-color:var(--border2)}
+.sc-k{font-size:11px;letter-spacing:2px;color:var(--cyan);margin-bottom:6px}
+.sc-title{font-weight:800;font-size:16.5px;margin-bottom:8px}
+.sc-desc{font-size:13.5px;color:var(--text2);line-height:1.78;margin-bottom:14px}
+.sc-tools{display:flex;flex-wrap:wrap;gap:8px}
+.sc-tools a{font-size:12.5px;color:var(--text);background:var(--bg3);border:1px solid var(--border2);padding:5px 13px;border-radius:999px;transition:.2s}
+.sc-tools a:hover{border-color:var(--accent);color:#fff;box-shadow:0 0 14px rgba(124,58,237,.2)}
+/* 横向对比 */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg2)}
+table.cmp{width:100%;border-collapse:collapse;font-size:13.5px;min-width:680px}
+.cmp th{background:var(--bg3);padding:12px 16px;text-align:left;color:var(--text2);font-size:12.5px;font-weight:600;border-bottom:1px solid var(--border);white-space:nowrap}
+.cmp td{padding:13px 16px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.cmp tr:last-child td{border-bottom:none}
+.cmp td a{color:var(--text);font-weight:700;border-bottom:1px dashed var(--border2)}
+.cmp td a:hover{color:var(--cyan);border-color:var(--cyan)}
+.cmp-verdict{font-size:14px;color:var(--text2);line-height:1.8;margin-top:16px}
+.cmp-verdict a{color:var(--cyan)}
+/* 深度文章 */
+.art-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.art-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;transition:.2s;display:block}
+.art-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.art-card .a-t{font-weight:700;font-size:15px;margin-bottom:6px;line-height:1.5}
+.art-card:hover .a-t{background:linear-gradient(135deg,#e2e8f0,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.art-card .a-x{font-size:13px;color:var(--text2);line-height:1.7}
+.art-card .a-m{font-size:11.5px;color:var(--text3);margin-top:10px}
+@media(max-width:900px){.ep-grid{grid-template-columns:repeat(2,1fr)}.sc-grid{grid-template-columns:1fr}.art-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.ep-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -149,18 +190,39 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 </div>
 </div></section>
 
-<section class="cats"><div class="wrap">
+
+<section class="epick"><div class="wrap">
+<div class="sec-h"><h2>编辑精选 · 深度评测</h2><span>编辑逐项实测后留下的六个名字</span></div>
+<div class="ep-grid">
+<a class="ep-card" href="/tool-chatgpt.html"><div class="ep-top"><span class="ep-ic">🧠</span><span class="ep-name">ChatGPT</span><span class="ep-role">全能底座</span></div><p class="ep-reason">生态最完整的 AI 助手：多模态、联网、文件分析、GPTs 一应俱全，几乎所有人工作流的第一站，没有明显短板。</p></a>
+<a class="ep-card" href="/tool-claude.html"><div class="ep-top"><span class="ep-ic">📜</span><span class="ep-name">Claude</span><span class="ep-role">长文与代码</span></div><p class="ep-reason">200K 超长上下文真实可用，整本合同一次读完；Artifacts 让原型即改即得，回答的"人味"在盲测中最像聪明的同事。</p></a>
+<a class="ep-card" href="/tool-gemini.html"><div class="ep-top"><span class="ep-ic">✦</span><span class="ep-name">Gemini</span><span class="ep-role">谷歌生态</span></div><p class="ep-reason">在 Gmail、Docs、Sheets 里召之即来，百万级上下文一次吞下 1500 页文档——谷歌全家桶用户的效率杠杆。</p></a>
+<a class="ep-card" href="/tool-deepseek.html"><div class="ep-top"><span class="ep-ic">🐋</span><span class="ep-name">DeepSeek</span><span class="ep-role">免费开源</span></div><p class="ep-reason">完全免费且权重开源，R1 的数学与编程推理进入世界第一梯队，思维链全程可见，合规场景可私有化部署。</p></a>
+<a class="ep-card" href="/tool-midjourney.html"><div class="ep-top"><span class="ep-ic">🎨</span><span class="ep-name">Midjourney</span><span class="ep-role">绘画标杆</span></div><p class="ep-reason">AI 绘画的艺术质感至今无人撼动，V7 之后上手门槛大幅降低，概念探索与视觉风格化的默认答案。</p></a>
+<a class="ep-card" href="/tool-cursor.html"><div class="ep-top"><span class="ep-ic">⌨️</span><span class="ep-name">Cursor</span><span class="ep-role">AI 原生 IDE</span></div><p class="ep-reason">把"描述需求"变成编程方式本身：对话式跨文件重构、整文件编辑，是 AI 原生开发工具的代表作。</p></a>
+</div></div></section>
+<section class="scene"><div class="wrap">
+<div class="sec-h"><h2>按场景出发</h2><span>真实工作流里的工具组合，而不是孤立的产品清单</span></div>
+<div class="sc-grid">
+<div class="sc-card"><div class="sc-k">SCENARIO 01</div><div class="sc-title">写论文与学术研究</div><p class="sc-desc">文献检索交给给出证据等级的学术搜索，综述框架自动生成，语言关用语法与改写工具收尾——从选题到投稿的完整链路。</p><div class="sc-tools"><a href="/tool-consensus-search.html">Consensus</a><a href="/tool-scispace.html">SciSpace</a><a href="/tool-elicit.html">Elicit</a><a href="/tool-grammarly.html">Grammarly</a><a href="/tool-quillbot.html">QuillBot</a></div></div>
+<div class="sc-card"><div class="sc-k">SCENARIO 02</div><div class="sc-title">做视频与剪辑</div><p class="sc-desc">生成镜头、文字式剪辑、自动切高光、AI 配音配乐——个人创作者的全流程工具链已经完全跑通。</p><div class="sc-tools"><a href="/tool-runway.html">Runway</a><a href="/tool-kuaishou-kling.html">可灵 AI</a><a href="/tool-descript.html">Descript</a><a href="/tool-opus-clip.html">Opus Clip</a><a href="/tool-suno.html">Suno</a></div></div>
+<div class="sc-card"><div class="sc-k">SCENARIO 03</div><div class="sc-title">写代码与开发</div><p class="sc-desc">AI 原生 IDE 和嵌入式补全两条路线都已成熟：对话式重构、终端代理、企业级私有化，按团队形态各取所需。</p><div class="sc-tools"><a href="/tool-cursor.html">Cursor</a><a href="/tool-github-copilot.html">GitHub Copilot</a><a href="/tool-claude-code.html">Claude Code</a><a href="/tool-codeium.html">Codeium</a><a href="/tool-tabnine.html">Tabnine</a></div></div>
+<div class="sc-card"><div class="sc-k">SCENARIO 04</div><div class="sc-title">绘画与视觉设计</div><p class="sc-desc">概念探索、精准控图、商用合规各有最优解——先想清楚你要的是风格、可控性还是版权，再选工具。</p><div class="sc-tools"><a href="/tool-midjourney.html">Midjourney</a><a href="/tool-ideogram.html">Ideogram</a><a href="/tool-firefly-adobe.html">Adobe Firefly</a><a href="/tool-canva-ai.html">Canva AI</a><a href="/tool-recraft-design.html">Recraft</a></div></div>
+</div></div></section>
+<section class="cmpsec"><div class="wrap">
+<div class="sec-h"><h2>主力 AI 助手怎么选</h2><span>五个最常被放在一起比较的名字</span></div>
+<div class="cmp-wrap"><table class="cmp">
+<tr><th>模型</th><th>最强场景</th><th>价格</th><th>一句话点评</th></tr>
+<tr><td><a href="/tool-chatgpt.html">ChatGPT</a></td><td>全能通用、多模态、插件生态</td><td>免费 + Plus $20/月</td><td>生态最全，几乎没有短板的全能选手</td></tr>
+<tr><td><a href="/tool-claude.html">Claude</a></td><td>长文档、代码、写作</td><td>免费 + Pro $20/月</td><td>文风最自然，长上下文能力真实可用</td></tr>
+<tr><td><a href="/tool-gemini.html">Gemini</a></td><td>谷歌生态、超长上下文</td><td>免费 + Advanced 订阅</td><td>在 Gmail/Docs 里召之即来的原生整合</td></tr>
+<tr><td><a href="/tool-deepseek.html">DeepSeek</a></td><td>推理、中文、私有化部署</td><td>完全免费</td><td>开源可本地部署，思维链全程透明</td></tr>
+<tr><td><a href="/tool-kimi.html">Kimi</a></td><td>中文长文本阅读</td><td>免费</td><td>中文长文场景的可靠国产行家</td></tr>
+</table></div>
+<p class="cmp-verdict">选型建议：先按生态选主力——谷歌系用户选 Gemini、微软系选 ChatGPT、预算敏感选 DeepSeek——再用垂直工具补专业场景。11 类职业（医生、律师、教师、开发者、设计师、营销人……）的完整选型逻辑，见<a href="/blog-ai-career-tools-guide.html">《不同职业怎么选 AI 工具？11 类岗位的实战选型指南》</a>。</p>
+</div></section><section class="cats"><div class="wrap">
 <div class="sec-h"><h2>全部分类</h2><span>按任务找工具，一步直达</span></div>
-<div class="cat-grid"><button class="cat-card" data-cat="chat" onclick="filterCat('chat')"><span class="cc-ic">💬</span><span class="cc-name">AI 对话</span><span class="cc-num" id="catnum-chat"></span></button>
-<button class="cat-card" data-cat="image" onclick="filterCat('image')"><span class="cc-ic">🎨</span><span class="cc-name">AI 绘画</span><span class="cc-num" id="catnum-image"></span></button>
-<button class="cat-card" data-cat="video" onclick="filterCat('video')"><span class="cc-ic">🎬</span><span class="cc-name">AI 视频</span><span class="cc-num" id="catnum-video"></span></button>
-<button class="cat-card" data-cat="code" onclick="filterCat('code')"><span class="cc-ic">⌨️</span><span class="cc-name">AI 编程</span><span class="cc-num" id="catnum-code"></span></button>
-<button class="cat-card" data-cat="writing" onclick="filterCat('writing')"><span class="cc-ic">✍️</span><span class="cc-name">AI 写作</span><span class="cc-num" id="catnum-writing"></span></button>
-<button class="cat-card" data-cat="research" onclick="filterCat('research')"><span class="cc-ic">🔍</span><span class="cc-name">AI 搜索</span><span class="cc-num" id="catnum-research"></span></button>
-<button class="cat-card" data-cat="productivity" onclick="filterCat('productivity')"><span class="cc-ic">⚡</span><span class="cc-name">效率办公</span><span class="cc-num" id="catnum-productivity"></span></button>
-<button class="cat-card" data-cat="design" onclick="filterCat('design')"><span class="cc-ic">🖌️</span><span class="cc-name">AI 设计</span><span class="cc-num" id="catnum-design"></span></button>
-<button class="cat-card" data-cat="education" onclick="filterCat('education')"><span class="cc-ic">🎓</span><span class="cc-name">AI 教育</span><span class="cc-num" id="catnum-education"></span></button>
-<button class="cat-card" data-cat="audio" onclick="filterCat('audio')"><span class="cc-ic">🎵</span><span class="cc-name">AI 音频</span><span class="cc-num" id="catnum-audio"></span></button></div>
+<div class="cat-grid"><a class="cat-card" href="/category-chat.html"><span class="cc-ic">💬</span><span class="cc-name">AI 对话</span><span class="cc-num">68 款</span></a><a class="cat-card" href="/category-image.html"><span class="cc-ic">🎨</span><span class="cc-name">AI 绘画</span><span class="cc-num">57 款</span></a><a class="cat-card" href="/category-video.html"><span class="cc-ic">🎬</span><span class="cc-name">AI 视频</span><span class="cc-num">33 款</span></a><a class="cat-card" href="/category-code.html"><span class="cc-ic">⌨️</span><span class="cc-name">AI 编程</span><span class="cc-num">64 款</span></a><a class="cat-card" href="/category-writing.html"><span class="cc-ic">✍️</span><span class="cc-name">AI 写作</span><span class="cc-num">33 款</span></a><a class="cat-card" href="/category-research.html"><span class="cc-ic">🔍</span><span class="cc-name">AI 搜索</span><span class="cc-num">34 款</span></a><a class="cat-card" href="/category-productivity.html"><span class="cc-ic">⚡</span><span class="cc-name">效率办公</span><span class="cc-num">71 款</span></a><a class="cat-card" href="/category-design.html"><span class="cc-ic">🖌️</span><span class="cc-name">AI 设计</span><span class="cc-num">43 款</span></a><a class="cat-card" href="/category-education.html"><span class="cc-ic">🎓</span><span class="cc-name">AI 教育</span><span class="cc-num">25 款</span></a><a class="cat-card" href="/category-audio.html"><span class="cc-ic">🎵</span><span class="cc-name">AI 音频</span><span class="cc-num">29 款</span></a></div>
 </div></section>
 
 <section class="picks"><div class="wrap">
@@ -220,7 +282,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 <div class="t-grid" id="resGrid"></div>
 </div></section>
 
-<section class="news"><div class="wrap">
+
+<section class="arts"><div class="wrap">
+<div class="sec-h"><h2>深度文章</h2><span>不是资讯搬运，是我们自己的判断</span></div>
+<div class="art-grid">
+<a class="art-card" href="/blog-ai-career-tools-guide.html"><div class="a-t">不同职业怎么选 AI 工具？11 类岗位的实战选型指南</div><p class="a-x">医生、律师、教师、开发者、设计师、营销人——按真实工作场景给出可直接落地的工具组合，附三条选型原则。</p><div class="a-m">选型指南 · 9 分钟</div></a>
+<a class="art-card" href="/blog-code-assistant-roundup-2026.html"><div class="a-t">AI 编程助手全面评测 2026：六大工具横评</div><p class="a-x">Cursor、Claude Code、Copilot、Windsurf 等六款工具的代理能力、语言覆盖与价格横评，附场景化推荐。</p><div class="a-m">评测 · 12 分钟</div></a>
+<a class="art-card" href="/blog-ai-agent-2026.html"><div class="a-t">AI Agent 时代来临：2026 年最值得关注的 5 个自主智能体平台</div><p class="a-x">从"大模型"到"Agent"的关键跃迁，五个平台的自主规划与执行能力对比。</p><div class="a-m">趋势 · 15 分钟</div></a>
+<a class="art-card" href="/blog-ai-chips-war-2026.html"><div class="a-t">AI 芯片战争 2026：NVIDIA、AMD、华为昇腾、Google TPU 的竞争格局</div><p class="a-x">算力即权力——四大阵营的技术路线与生态卡位分析。</p><div class="a-m">行业 · 20 分钟</div></a>
+<a class="art-card" href="/blog-ai-api-cost.html"><div class="a-t">AI API 成本优化实战：缓存、模型选择、批处理的省钱技巧</div><p class="a-x">把同一件事的成本打下来：缓存策略、模型分级、批处理调用的工程实践。</p><div class="a-m">实战 · 7 分钟</div></a>
+</div></div></section><section class="news"><div class="wrap">
 <div class="sec-h"><h2>今日快讯</h2></div>
 <div class="news-list">
 <a class="news-item" href="/blog-ai-agent-2026.html"><span class="news-dot"></span><span class="news-t">AI Agent 生态 2026：从单点工具到自主协作</span></a>
